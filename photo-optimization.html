@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Photo Optimization — Breakthrough in the Desert</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..700;1,6..72,200..600&family=Spectral:wght@300;400&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#1b1916;--bone:#ebe3d4;--sand:#c9b696;--ember:#a8502e;--bronze:#9c8254;
+  --sage:#878a76;--on-ink:#e9e0cf;--on-ink-dim:#a39a88;--on-ink-faint:#6f6757;
+  --line:rgba(233,224,207,0.14);
+}
+body{
+  background:var(--ink);color:var(--on-ink);
+  font-family:'Spectral',serif;font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:0.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+img{display:block;max-width:100%;}
+.wrap{max-width:1280px;margin:0 auto;padding:0 2rem;}
+@media(max-width:680px){.wrap{padding:0 1.2rem;}}
+.label{
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.68rem;font-weight:600;
+  letter-spacing:0.26em;text-transform:uppercase;
+}
+
+/* MASTHEAD */
+.masthead{padding:5rem 0 3rem;border-bottom:1px solid var(--line);}
+.kicker{color:var(--ember);margin-bottom:1.4rem;}
+.masthead h1{
+  font-family:'Newsreader',serif;font-weight:300;
+  font-size:clamp(2.4rem,5vw,4rem);line-height:1.04;letter-spacing:-0.025em;
+  color:var(--bone);margin-bottom:1.2rem;
+}
+.masthead h1 em{font-style:italic;color:var(--ember);}
+.masthead .lede{color:var(--on-ink-dim);max-width:42rem;font-size:1.1rem;}
+
+/* SECTION */
+.sec{padding:5rem 0;border-top:1px solid var(--line);}
+.sec-head{margin-bottom:2.6rem;}
+.sec-num{font-family:'Schibsted Grotesk',sans-serif;font-size:0.7rem;letter-spacing:0.1em;
+  color:var(--on-ink-faint);margin-bottom:0.6rem;}
+.sec-head h2{
+  font-family:'Newsreader',serif;font-weight:300;
+  font-size:clamp(1.9rem,3.5vw,2.7rem);line-height:1.08;letter-spacing:-0.02em;
+  color:var(--bone);margin-bottom:0.8rem;
+}
+.sec-head h2 em{font-style:italic;color:var(--ember);}
+.sec-head .brief{color:var(--on-ink-dim);max-width:44rem;}
+
+/* HERO TRIO */
+.hero-trio{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem;}
+@media(max-width:900px){.hero-trio{grid-template-columns:1fr;}}
+.shot{
+  background:#0f0d0b;border:1px solid var(--line);overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.shot .img-wrap{position:relative;aspect-ratio:16/9;overflow:hidden;background:#000;}
+.shot img{width:100%;height:100%;object-fit:cover;}
+.shot .meta{padding:1.1rem 1.2rem 1.3rem;}
+.shot .tag{font-family:'Schibsted Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--on-ink-faint);margin-bottom:0.4rem;}
+.shot .name{font-family:'Newsreader',serif;font-size:1.15rem;color:var(--bone);margin-bottom:0.3rem;}
+.shot .name em{color:var(--ember);font-style:italic;}
+.shot .desc{font-size:0.86rem;color:var(--on-ink-dim);line-height:1.5;}
+.shot .verdict{
+  margin-top:0.7rem;padding-top:0.6rem;border-top:1px solid var(--line);
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.66rem;letter-spacing:0.12em;
+  text-transform:uppercase;
+}
+.shot .verdict.current{color:var(--on-ink-faint);}
+.shot .verdict.win{color:var(--sage);}
+.shot .verdict.best{color:var(--ember);font-weight:700;}
+.shot.pick .img-wrap{outline:2px solid var(--ember);outline-offset:-2px;}
+
+/* SPEAKER PAIRS */
+.spk-row{
+  display:grid;grid-template-columns:auto 1fr 1fr;gap:1.4rem;
+  padding:2rem 0;border-top:1px solid var(--line);align-items:center;
+}
+.spk-row:first-of-type{border-top:none;}
+@media(max-width:760px){.spk-row{grid-template-columns:1fr;}}
+.spk-info{padding-right:1rem;}
+.spk-info .nm{font-family:'Newsreader',serif;font-size:1.35rem;color:var(--bone);margin-bottom:0.3rem;}
+.spk-info .cr{font-family:'Schibsted Grotesk',sans-serif;font-size:0.66rem;letter-spacing:0.16em;
+  text-transform:uppercase;color:var(--bronze);margin-bottom:0.7rem;}
+.spk-info .note{font-size:0.86rem;color:var(--on-ink-dim);line-height:1.55;}
+.spk-info .conf{
+  margin-top:0.9rem;display:inline-block;font-family:'Schibsted Grotesk',sans-serif;
+  font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;
+  padding:0.3rem 0.7rem;border:1px solid var(--line);border-radius:99px;
+  color:var(--on-ink-dim);
+}
+.spk-shot{position:relative;}
+.spk-shot .lbl{
+  position:absolute;top:0.6rem;left:0.6rem;z-index:2;
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.58rem;letter-spacing:0.18em;
+  text-transform:uppercase;color:var(--ink);background:var(--bone);
+  padding:0.3rem 0.6rem;
+}
+.spk-shot .lbl.after{background:var(--ember);color:#fff;}
+.spk-shot img{
+  width:100%;aspect-ratio:1;object-fit:cover;border-radius:50%;
+  filter:saturate(1.04) sepia(0.03);
+}
+
+/* RECO */
+.reco{background:linear-gradient(180deg,#191712,#0f0d0b);
+  border:1px solid var(--line);padding:2.2rem;margin-top:2rem;}
+.reco h3{font-family:'Newsreader',serif;font-weight:400;font-size:1.4rem;color:var(--bone);margin-bottom:0.8rem;}
+.reco h3 em{color:var(--ember);font-style:italic;}
+.reco p{color:var(--on-ink-dim);font-size:0.96rem;line-height:1.6;}
+.reco p+p{margin-top:0.7rem;}
+.reco ul{margin-top:1rem;list-style:none;}
+.reco li{padding:0.5rem 0 0.5rem 1.6rem;position:relative;color:var(--on-ink-dim);font-size:0.94rem;}
+.reco li::before{content:"";position:absolute;left:0;top:0.85rem;
+  width:14px;height:1px;background:var(--ember);}
+.reco li b{color:var(--bone);font-weight:600;}
+
+footer{padding:3rem 0;border-top:1px solid var(--line);text-align:center;}
+footer .label{color:var(--on-ink-faint);}
+
+.rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease;}
+.rv.in{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap rv">
+    <div class="label kicker">Photo Optimization · 5 Replicate jobs</div>
+    <h1>Hero <em>regenerated.</em><br>Three speakers <em>upscaled.</em></h1>
+    <p class="lede">FLUX 1.1 Pro Ultra produced two hero candidates with markedly less AI-feel than the current Midjourney sunrise. Clarity-upscaler doubled resolution on the three weakest speaker headshots. Pick what to ship.</p>
+  </div>
+</header>
+
+<!-- ================ HERO ================ -->
+<section class="sec">
+  <div class="wrap rv">
+    <div class="sec-head">
+      <div class="sec-num">01 · The Hero</div>
+      <h2>Three candidates. <em>One ships.</em></h2>
+      <p class="brief">The current image is a Midjourney sunrise — pretty but with the soft over-rendered look that signals AI. Both FLUX 1.1 Pro Ultra regenerations are photographic in feel. They're different moods, not different quality tiers.</p>
+    </div>
+    <div class="hero-trio">
+
+      <div class="shot">
+        <div class="img-wrap">
+          <img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/01-hero-desert-sunrise.png" alt="Current AI hero">
+        </div>
+        <div class="meta">
+          <div class="tag">Currently live</div>
+          <div class="name">Midjourney <em>sunrise</em></div>
+          <div class="desc">The original AI hero. Atmospheric but reads as generated under scrutiny — over-soft light, slightly plastic ridges.</div>
+          <div class="verdict current">— Baseline</div>
+        </div>
+      </div>
+
+      <div class="shot pick">
+        <div class="img-wrap">
+          <img src="https://guldanjamax.github.io/anthonybalduzzi/optimized/hero-flux-b-predawn.jpg" alt="FLUX hero B">
+        </div>
+        <div class="meta">
+          <div class="tag">Candidate B · FLUX 1.1 Pro Ultra (raw mode)</div>
+          <div class="name">Pre-dawn <em>threshold</em></div>
+          <div class="desc">Deep amber sunrise behind dark mountain silhouettes, saguaro foreground. Cinematic, sacred, photoreal. The dark sky is a natural host for the white headline. Strongest fit for the elevated brand system.</div>
+          <div class="verdict best">↑ Recommended</div>
+        </div>
+      </div>
+
+      <div class="shot">
+        <div class="img-wrap">
+          <img src="https://guldanjamax.github.io/anthonybalduzzi/optimized/hero-flux-a-golden.jpg" alt="FLUX hero A">
+        </div>
+        <div class="meta">
+          <div class="tag">Candidate A · FLUX 1.1 Pro Ultra</div>
+          <div class="name">Golden <em>hour</em></div>
+          <div class="desc">Soft pink and amber sky, saguaros and red rock buttes in raking warm light. Brighter, warmer, more inviting. Better if the brand wants "wellness retreat" energy than "sacred initiation."</div>
+          <div class="verdict win">↑ Strong alternative</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================ SPEAKERS ================ -->
+<section class="sec">
+  <div class="wrap rv">
+    <div class="sec-head">
+      <div class="sec-num">02 · The Weak Speaker Headshots</div>
+      <h2>Sharper, <em>not perfect.</em></h2>
+      <p class="brief">Clarity-upscaler doubled resolution and added detail. It cannot fix the underlying composition problems: side-profile shots, lifestyle poses, and weird lighting still come through. Honest verdict per speaker below.</p>
+    </div>
+
+    <div class="spk-row">
+      <div class="spk-info">
+        <div class="nm">John Salisbury</div>
+        <div class="cr">Master Yoga Teacher</div>
+        <div class="note">Upscale went from 2500×1667 to ~1500×1000 (sharpened). The detail is dramatically better — beard, headset mic, ear all crisp. <b>But the photo is still a purple-lit side-profile teaching shot.</b> It looks like the wrong picture, sharper.</div>
+        <div class="conf">Recommend: get a real headshot from Anthony, or use as-is until then</div>
+      </div>
+      <div class="spk-shot"><span class="lbl">Before</span><img src="https://guldanjamax.github.io/anthonybalduzzi/speakers/salisbury.webp" alt=""></div>
+      <div class="spk-shot"><span class="lbl after">After</span><img src="https://guldanjamax.github.io/anthonybalduzzi/optimized/salisbury-upscaled.png" alt=""></div>
+    </div>
+
+    <div class="spk-row">
+      <div class="spk-info">
+        <div class="nm">Maraya Brown</div>
+        <div class="cr">Functional Women's Health Expert</div>
+        <div class="note">Hair texture, eyes, sweater knit all noticeably sharper. The blinds/light bands in the background got more defined too. <b>Composition is the same gestural-pose lifestyle shot</b> — fine for the round speaker card crop, less ideal for a tight headshot. Site-usable.</div>
+        <div class="conf">Recommend: ship the upscale</div>
+      </div>
+      <div class="spk-shot"><span class="lbl">Before</span><img src="https://guldanjamax.github.io/anthonybalduzzi/speakers/maraya.png" alt=""></div>
+      <div class="spk-shot"><span class="lbl after">After</span><img src="https://guldanjamax.github.io/anthonybalduzzi/optimized/maraya-upscaled.png" alt=""></div>
+    </div>
+
+    <div class="spk-row">
+      <div class="spk-info">
+        <div class="nm">Luana Marzluff</div>
+        <div class="cr">Founder, KAKAO Cacao</div>
+        <div class="note">Same story — sharpness up, composition unchanged. <b>It's a beach lifestyle shot with KAKAO product packaging visible.</b> In a round crop the face reads fine, but the product elements pull focus.</div>
+        <div class="conf">Recommend: ship the upscale with a tight round crop, or get a real headshot</div>
+      </div>
+      <div class="spk-shot"><span class="lbl">Before</span><img src="https://guldanjamax.github.io/anthonybalduzzi/speakers/marzluff.jpg" alt=""></div>
+      <div class="spk-shot"><span class="lbl after">After</span><img src="https://guldanjamax.github.io/anthonybalduzzi/optimized/marzluff-upscaled.png" alt=""></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================ THE PLAY ================ -->
+<section class="sec">
+  <div class="wrap rv">
+    <div class="sec-head">
+      <div class="sec-num">03 · What I'd ship</div>
+      <h2>The honest call.</h2>
+    </div>
+    <div class="reco">
+      <h3>The <em>recommendation</em></h3>
+      <p>The hero regen is the single highest-impact photo decision on the page. It's where the AI smell lives most strongly, and FLUX 1.1 Pro Ultra fixed it cleanly. Both candidates are real upgrades; pick the one that matches the mood you want to set on the first scroll.</p>
+      <ul>
+        <li><b>Hero — ship Pre-dawn (B)</b> if the brand is sacred/elevated/initiation. The dark sky carries the headline and the mood matches the system. <b>Ship Golden Hour (A)</b> if you want a brighter, warmer welcome.</li>
+        <li><b>Maraya</b> — ship the upscale. Genuinely sharper and the composition was already serviceable.</li>
+        <li><b>Marzluff</b> — ship the upscale with a tight circular crop so the KAKAO packaging falls outside the frame.</li>
+        <li><b>Salisbury</b> — ship the upscale as a stopgap, but flag to Anthony that a real front-facing headshot would close the gap. The composition is the issue, not the resolution.</li>
+        <li><b>Optional next pass</b> — clarity-upscale the four already-strong speaker headshots (Hornaman, Sayegh, Ovadia, Alan) for retina-grade sharpness. Cheap and uniform.</li>
+      </ul>
+      <p style="margin-top:1.2rem;">Tell me your hero pick (B or A) and a "go" on the speaker upscales, and I'll rebuild the page on the brand system with all of this baked in.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="label">Breakthrough in the Desert · Photo Optimization Pass · v1</span>
+</footer>
+
+<script>
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.1});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

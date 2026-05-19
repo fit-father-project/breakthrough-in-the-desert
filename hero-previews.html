@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hero Previews — Breakthrough in the Desert</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..700;1,6..72,200..600&family=Spectral:wght@300;400&family=Schibsted+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#1b1916;--bone:#ebe3d4;--ember:#a8502e;--gold:#c49a50;
+  --on-bone-dim:rgba(235,227,212,0.78);
+  --on-bone-faint:rgba(235,227,212,0.5);
+  --line-d:rgba(235,227,212,0.16);
+}
+html,body{background:#000;color:var(--bone);overflow-x:hidden;}
+body{
+  font-family:'Spectral',serif;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+/* film grain */
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:99;opacity:0.07;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+img{display:block;max-width:100%;}
+.label{font-family:'Schibsted Grotesk',sans-serif;font-size:0.68rem;font-weight:600;
+  letter-spacing:0.26em;text-transform:uppercase;}
+
+/* ===== HERO BASE ===== */
+.hero{
+  position:relative;width:100%;height:100vh;min-height:680px;
+  overflow:hidden;display:flex;flex-direction:column;
+}
+.hero-bg{
+  position:absolute;inset:-3%;
+  background-size:cover;background-position:center;
+  will-change:transform;
+}
+.hero-glow{
+  position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;
+}
+.hero-scrim{
+  position:absolute;inset:0;pointer-events:none;
+}
+.hero-util{
+  position:relative;z-index:3;display:flex;justify-content:space-between;align-items:center;
+  gap:1rem;padding:1.2rem 2.2rem;
+  border-bottom:1px solid rgba(255,255,255,0.18);
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.66rem;font-weight:500;
+  letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.86);
+}
+.hero-util .seats{color:var(--gold);font-weight:600;}
+.hero-tag-pill{
+  position:absolute;top:1.2rem;right:2.2rem;z-index:5;
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.58rem;font-weight:700;
+  letter-spacing:0.22em;text-transform:uppercase;
+  padding:0.4rem 0.9rem;background:var(--ember);color:#fff;
+}
+.hero-content{
+  position:relative;z-index:3;margin-top:auto;
+  padding:2rem 2.6rem 5rem;max-width:52rem;
+}
+/* threshold mark */
+.thresh{display:inline-block;color:var(--gold);margin-bottom:1.6rem;}
+.thresh svg{display:block;}
+.hero-eyebrow{
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.7rem;font-weight:600;
+  letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:1.4rem;
+}
+.hero-title{
+  font-family:'Newsreader',serif;font-weight:200;
+  font-size:clamp(3rem,8.4vw,6.6rem);line-height:0.92;letter-spacing:-0.03em;
+  color:#fff;margin-bottom:1.6rem;
+  text-shadow:0 4px 30px rgba(0,0,0,0.4);
+}
+.hero-title em{font-style:italic;font-weight:300;color:var(--gold);}
+.hero-question{
+  font-family:'Newsreader',serif;font-style:italic;font-weight:300;
+  font-size:clamp(1.35rem,2.6vw,1.95rem);line-height:1.32;
+  color:rgba(255,255,255,0.94);max-width:30em;margin-bottom:2rem;
+  text-shadow:0 2px 16px rgba(0,0,0,0.4);
+}
+.hero-ctas{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin-bottom:1.4rem;}
+.cta-btn{
+  display:inline-block;font-family:'Schibsted Grotesk',sans-serif;font-size:0.74rem;
+  font-weight:600;letter-spacing:0.2em;text-transform:uppercase;
+  color:#fff;background:var(--ember);padding:1.1rem 2.2rem;text-decoration:none;
+  transition:all .3s ease;
+}
+.cta-btn:hover{background:#8b3f24;transform:translateY(-2px);}
+.cta-ghost{
+  display:inline-block;font-family:'Schibsted Grotesk',sans-serif;font-size:0.72rem;
+  font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#fff;
+  text-decoration:none;padding:1.05rem 0.4rem;
+  border-bottom:1px solid rgba(255,255,255,0.4);transition:all .3s ease;
+}
+.cta-ghost:hover{border-color:var(--gold);color:var(--gold);}
+.hero-tagline{
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.74rem;font-weight:600;
+  letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.62);
+}
+.scroll-cue{
+  position:absolute;left:50%;bottom:1.6rem;transform:translateX(-50%);z-index:4;
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.22em;
+  text-transform:uppercase;color:rgba(255,255,255,0.5);
+  animation:bob 2.4s ease-in-out infinite;
+}
+@keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,8px);}}
+
+/* ============= HERO 1 · DIEHL VIOLET DUSK ============= */
+#hero1 .hero-bg{
+  background-image:url('https://guldanjamax.github.io/anthonybalduzzi/stock/diehl-violet-dusk.jpg');
+  animation:driftA 36s ease-in-out infinite alternate;
+  background-position:50% 56%;
+}
+@keyframes driftA{
+  0%{transform:scale(1.04) translate(0%,0%);}
+  100%{transform:scale(1.11) translate(-2.2%,-1%);}
+}
+#hero1 .hero-scrim{
+  background:
+    linear-gradient(115deg,rgba(16,11,7,0.7) 0%,rgba(16,11,7,0.25) 38%,rgba(16,11,7,0.05) 62%,rgba(16,11,7,0.55) 100%),
+    linear-gradient(180deg,rgba(16,11,7,0.45) 0%,rgba(16,11,7,0.0) 30%,rgba(16,11,7,0.0) 60%,rgba(16,11,7,0.55) 100%);
+}
+#hero1 .hero-glow{
+  background:radial-gradient(60% 55% at 78% 38%,rgba(255,170,90,0.42),transparent 65%);
+  animation:glowA 11s ease-in-out infinite alternate;
+}
+@keyframes glowA{
+  0%{opacity:0.55;transform:translateY(0);}
+  100%{opacity:0.95;transform:translateY(-1.4%);}
+}
+
+/* ============= HERO 2 · BEE WIDE VISTA ============= */
+#hero2 .hero-bg{
+  background-image:url('https://guldanjamax.github.io/anthonybalduzzi/stock/bee-wide-vista.jpg');
+  animation:driftB 40s ease-in-out infinite alternate;
+  background-position:50% 60%;
+}
+@keyframes driftB{
+  0%{transform:scale(1.08) translate(1.2%,0.5%);}
+  100%{transform:scale(1.02) translate(-1.2%,-0.5%);}
+}
+#hero2 .hero-scrim{
+  background:
+    linear-gradient(115deg,rgba(12,9,5,0.65) 0%,rgba(12,9,5,0.18) 42%,rgba(12,9,5,0.0) 65%,rgba(12,9,5,0.45) 100%),
+    linear-gradient(180deg,rgba(12,9,5,0.35) 0%,rgba(12,9,5,0.0) 30%,rgba(12,9,5,0.0) 65%,rgba(12,9,5,0.5) 100%);
+}
+#hero2 .hero-glow{
+  background:radial-gradient(70% 60% at 50% 38%,rgba(255,200,120,0.32),transparent 65%);
+  animation:glowB 14s ease-in-out infinite alternate;
+}
+@keyframes glowB{
+  0%{opacity:0.7;}
+  100%{opacity:1;}
+}
+
+/* ============= COMPARE BAND ============= */
+.compare{
+  background:var(--ink);padding:5rem 2rem;
+  border-top:1px solid var(--line-d);border-bottom:1px solid var(--line-d);
+}
+.compare .wrap{max-width:1180px;margin:0 auto;}
+.compare h2{
+  font-family:'Newsreader',serif;font-weight:300;
+  font-size:clamp(1.9rem,3.5vw,2.7rem);line-height:1.08;letter-spacing:-0.02em;
+  color:var(--bone);margin-bottom:1rem;
+}
+.compare h2 em{font-style:italic;color:var(--ember);}
+.compare .lede{color:rgba(235,227,212,0.7);max-width:42rem;font-size:1.05rem;margin-bottom:2.6rem;}
+.compare .label{color:var(--ember);margin-bottom:1rem;}
+.compare-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;}
+.compare-pick{
+  display:inline-flex;align-items:center;gap:0.7rem;
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.7rem;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;
+  padding:1rem 1.6rem;border:1px solid var(--line-d);color:var(--bone);
+  background:transparent;text-decoration:none;transition:all .3s ease;
+}
+.compare-pick:hover{border-color:var(--ember);color:var(--ember);}
+.compare-pick.primary{background:var(--ember);border-color:var(--ember);color:#fff;}
+.compare-pick.primary:hover{background:#8b3f24;}
+
+/* movement note */
+.move-note{
+  position:absolute;bottom:1.4rem;right:2.2rem;z-index:5;max-width:18rem;
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.6rem;font-weight:500;
+  letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.55);
+  text-align:right;line-height:1.45;
+}
+
+@media(max-width:640px){
+  .hero-util{padding:0.9rem 1.2rem;font-size:0.56rem;letter-spacing:0.1em;}
+  .hero-tag-pill{top:0.9rem;right:1.2rem;}
+  .hero-content{padding:2rem 1.5rem 4rem;}
+  .move-note{right:1.2rem;max-width:14rem;}
+}
+
+@media(prefers-reduced-motion:reduce){
+  #hero1 .hero-bg,#hero2 .hero-bg,#hero1 .hero-glow,#hero2 .hero-glow,.scroll-cue{animation:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO 1 · DIEHL VIOLET DUSK ===== -->
+<section class="hero" id="hero1">
+  <span class="hero-tag-pill">Candidate 1 · Diehl violet dusk</span>
+  <div class="hero-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-scrim"></div>
+
+  <div class="hero-util">
+    <span>August 7&ndash;9, 2026 &middot; Arizona Grand Resort, Phoenix</span>
+    <span class="seats">Limited to 150 seats</span>
+  </div>
+
+  <div class="hero-content">
+    <span class="thresh">
+      <svg width="40" height="48" viewBox="0 0 46 56" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 56 L7 26 A16 16 0 0 1 39 26 L39 56"/><line x1="23" y1="34" x2="23" y2="56"/></svg>
+    </span>
+    <div class="hero-eyebrow">The Fit Father &amp; Fit Mother Project Present</div>
+    <h1 class="hero-title">Breakthrough <em>in the</em> Desert</h1>
+    <p class="hero-question">What if the second half of your life was the best part?</p>
+    <div class="hero-ctas">
+      <a href="#" class="cta-btn">Reserve Your Spot &rarr;</a>
+      <a href="#" class="cta-ghost">Walk through the 3-day arc</a>
+    </div>
+    <div class="hero-tagline">Three Days &middot; One Doorway &middot; The Rest of Your Life</div>
+  </div>
+
+  <div class="move-note">Slow Ken Burns drift · pulsing warm light · film grain overlay</div>
+  <div class="scroll-cue">Scroll for Candidate 2 &darr;</div>
+</section>
+
+<!-- ===== HERO 2 · BEE WIDE VISTA ===== -->
+<section class="hero" id="hero2">
+  <span class="hero-tag-pill">Candidate 2 · Bee wide vista</span>
+  <div class="hero-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-scrim"></div>
+
+  <div class="hero-util">
+    <span>August 7&ndash;9, 2026 &middot; Arizona Grand Resort, Phoenix</span>
+    <span class="seats">Limited to 150 seats</span>
+  </div>
+
+  <div class="hero-content">
+    <span class="thresh">
+      <svg width="40" height="48" viewBox="0 0 46 56" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 56 L7 26 A16 16 0 0 1 39 26 L39 56"/><line x1="23" y1="34" x2="23" y2="56"/></svg>
+    </span>
+    <div class="hero-eyebrow">The Fit Father &amp; Fit Mother Project Present</div>
+    <h1 class="hero-title">Breakthrough <em>in the</em> Desert</h1>
+    <p class="hero-question">What if the second half of your life was the best part?</p>
+    <div class="hero-ctas">
+      <a href="#" class="cta-btn">Reserve Your Spot &rarr;</a>
+      <a href="#" class="cta-ghost">Walk through the 3-day arc</a>
+    </div>
+    <div class="hero-tagline">Three Days &middot; One Doorway &middot; The Rest of Your Life</div>
+  </div>
+
+  <div class="move-note">Reverse drift (zoom out) · steady warm light · film grain overlay</div>
+  <div class="scroll-cue">Scroll for the call &darr;</div>
+</section>
+
+<!-- ===== COMPARE ===== -->
+<section class="compare">
+  <div class="wrap">
+    <div class="label">Decision time</div>
+    <h2>Which one <em>ships?</em></h2>
+    <p class="lede">Both heroes are real photographs, free-licensed, with subtle background motion (Ken Burns drift + a slowly-pulsing warm light, plus the brand's film grain). The motion is meant to read as atmosphere — slow enough that it doesn't compete with the headline, just enough that the hero feels alive when you land.</p>
+
+    <p class="lede" style="margin-bottom:0;">Tell me <b style="color:var(--bone);">"Candidate 1"</b> or <b style="color:var(--bone);">"Candidate 2"</b> and I'll wire the chosen hero into the page rebuild on the brand system. Or push back on the motion — happy to tune it slower, faster, or kill it.</p>
+
+    <div class="compare-actions">
+      <a href="#hero1" class="compare-pick">↑ See Candidate 1 again</a>
+      <a href="#hero2" class="compare-pick">↑ See Candidate 2 again</a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

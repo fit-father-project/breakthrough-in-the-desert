@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Breakthrough in the Desert — Design Iterations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..600&family=Inter:wght@400;500;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#0d0d12;
+  --bg-2:#14141b;
+  --panel:#181820;
+  --line:rgba(255,255,255,0.09);
+  --line-2:rgba(255,255,255,0.14);
+  --text:#ece8e2;
+  --text-dim:#9a958d;
+  --text-faint:#6a6660;
+  --gold:#c49a50;
+  --gold-soft:#d8b87a;
+  --rust:#c06a44;
+  --green:#7fb069;
+  --amber:#d8a24a;
+  --cool:#6f8fb0;
+}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',system-ui,sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.serif{font-family:'Fraunces',Georgia,serif;}
+
+/* ===== Layout ===== */
+.wrap{max-width:1180px;margin:0 auto;padding:0 2rem;}
+@media(max-width:680px){.wrap{padding:0 1.1rem;}}
+
+/* ===== Masthead ===== */
+.masthead{
+  padding:6rem 0 4rem;
+  border-bottom:1px solid var(--line);
+  background:
+    radial-gradient(900px 420px at 78% -8%, rgba(196,154,80,0.16), transparent 70%),
+    radial-gradient(700px 380px at 8% 4%, rgba(192,106,68,0.12), transparent 70%);
+}
+.kicker{
+  font-size:0.72rem;font-weight:600;letter-spacing:0.32em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1.6rem;
+}
+.masthead h1{
+  font-family:'Fraunces',serif;font-weight:300;
+  font-size:clamp(2.4rem,5.4vw,4.2rem);line-height:1.04;letter-spacing:-0.02em;
+  color:#fff;margin-bottom:1.4rem;
+}
+.masthead h1 em{font-style:italic;color:var(--gold-soft);}
+.masthead .lede{
+  font-size:1.12rem;color:var(--text-dim);max-width:46rem;line-height:1.7;
+}
+.masthead .lede strong{color:var(--text);font-weight:600;}
+
+/* meta strip */
+.meta-strip{
+  display:flex;flex-wrap:wrap;gap:2.4rem;margin-top:2.6rem;
+  padding-top:2.2rem;border-top:1px solid var(--line);
+}
+.meta-strip div{display:flex;flex-direction:column;gap:0.25rem;}
+.meta-strip .m-num{font-family:'Fraunces',serif;font-size:1.7rem;color:var(--gold-soft);line-height:1;}
+.meta-strip .m-lbl{font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-faint);}
+
+/* ===== Brief analysis ===== */
+.analysis{padding:4rem 0 1rem;}
+.analysis-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.5rem;
+}
+.an-card{
+  background:linear-gradient(180deg,var(--panel),var(--bg-2));
+  border:1px solid var(--line);border-radius:14px;padding:1.6rem 1.5rem;
+}
+.an-card h4{
+  font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:0.7rem;
+}
+.an-card p{font-size:0.92rem;color:var(--text-dim);line-height:1.6;}
+
+/* ===== Section group ===== */
+.group{padding:5rem 0 2rem;border-top:1px solid var(--line);margin-top:3rem;}
+.group-head{margin-bottom:2.6rem;}
+.group-index{
+  font-family:'Fraunces',serif;font-size:0.95rem;color:var(--gold);
+  letter-spacing:0.06em;margin-bottom:0.6rem;
+}
+.group-head h2{
+  font-family:'Fraunces',serif;font-weight:300;
+  font-size:clamp(1.9rem,3.6vw,2.9rem);line-height:1.08;letter-spacing:-0.02em;
+  color:#fff;margin-bottom:1rem;
+}
+.group-head h2 em{font-style:italic;color:var(--gold-soft);}
+.group-head .g-brief{font-size:1rem;color:var(--text-dim);max-width:44rem;}
+.group-head .g-brief b{color:var(--text);font-weight:600;}
+
+/* ===== Concept card ===== */
+.concept{
+  background:linear-gradient(180deg,var(--panel),#101016);
+  border:1px solid var(--line);border-radius:18px;
+  margin-bottom:2.4rem;overflow:hidden;
+}
+.concept-top{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;
+  padding:1.9rem 2rem 1.6rem;border-bottom:1px solid var(--line);
+}
+@media(max-width:560px){.concept-top{flex-direction:column;gap:1.2rem;}}
+.concept-id{
+  font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--text-faint);margin-bottom:0.5rem;
+}
+.concept-name{
+  font-family:'Fraunces',serif;font-weight:400;font-size:1.7rem;
+  color:#fff;line-height:1.1;margin-bottom:0.4rem;
+}
+.concept-name em{font-style:italic;color:var(--gold-soft);}
+.concept-tag{font-size:0.92rem;color:var(--text-dim);font-style:italic;}
+
+/* confidence ring */
+.ring-wrap{display:flex;flex-direction:column;align-items:center;gap:0.4rem;flex-shrink:0;}
+.ring{
+  position:relative;width:62px;height:62px;border-radius:50%;
+  background:conic-gradient(var(--rc) calc(var(--rv)*3.6deg), rgba(255,255,255,0.07) 0);
+}
+.ring::after{content:"";position:absolute;inset:6px;border-radius:50%;background:#101016;}
+.ring b{
+  position:absolute;inset:0;display:grid;place-items:center;z-index:2;
+  font-size:0.92rem;font-weight:700;color:#fff;
+}
+.ring-lbl{font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-faint);}
+
+/* preview frame */
+.frame{margin:0;background:#0a0a0e;padding:1.7rem;}
+.browser{
+  border-radius:10px;overflow:hidden;border:1px solid var(--line-2);
+  box-shadow:0 30px 70px rgba(0,0,0,0.55);
+}
+.browser-bar{
+  display:flex;align-items:center;gap:0.45rem;
+  padding:0.6rem 0.9rem;background:#1d1d25;border-bottom:1px solid var(--line);
+}
+.browser-bar i{width:10px;height:10px;border-radius:50%;display:block;}
+.browser-bar i:nth-child(1){background:#e0604f;}
+.browser-bar i:nth-child(2){background:#e3b34d;}
+.browser-bar i:nth-child(3){background:#5fb35f;}
+.browser-bar span{
+  margin-left:0.6rem;font-size:0.68rem;color:var(--text-faint);letter-spacing:0.04em;
+}
+
+/* concept notes */
+.notes{padding:1.9rem 2rem 2.1rem;display:grid;grid-template-columns:1fr 1fr;gap:1.6rem 2.4rem;}
+@media(max-width:680px){.notes{grid-template-columns:1fr;}}
+.note-block.full{grid-column:1/-1;}
+.note-block h5{
+  font-size:0.66rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:0.6rem;
+}
+.note-block p{font-size:0.9rem;color:var(--text-dim);line-height:1.62;}
+.note-block p+p{margin-top:0.5rem;}
+.spec{font-size:0.82rem;color:var(--text-faint);line-height:1.7;}
+.spec b{color:var(--text-dim);font-weight:600;}
+
+.pick{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  font-size:0.66rem;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;
+  color:#0d0d12;background:linear-gradient(90deg,var(--gold-soft),var(--gold));
+  padding:0.32rem 0.7rem;border-radius:99px;
+}
+
+/* ===== Summary ===== */
+.summary{padding:5rem 0 7rem;border-top:1px solid var(--line);margin-top:3rem;}
+.sum-table{
+  width:100%;border-collapse:collapse;margin-top:2rem;
+  border:1px solid var(--line);border-radius:12px;overflow:hidden;
+}
+.sum-table th,.sum-table td{
+  text-align:left;padding:1rem 1.2rem;border-bottom:1px solid var(--line);font-size:0.9rem;
+}
+.sum-table th{
+  background:var(--bg-2);color:var(--gold);
+  font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;
+}
+.sum-table td{color:var(--text-dim);}
+.sum-table td b{color:var(--text);font-weight:600;}
+.sum-table tr:last-child td{border-bottom:none;}
+.sum-table .win{color:var(--gold-soft);}
+
+.closer{
+  margin-top:3rem;background:linear-gradient(180deg,var(--panel),var(--bg-2));
+  border:1px solid var(--line);border-radius:16px;padding:2.4rem;
+}
+.closer h3{font-family:'Fraunces',serif;font-weight:400;font-size:1.5rem;color:#fff;margin-bottom:0.9rem;}
+.closer h3 em{font-style:italic;color:var(--gold-soft);}
+.closer p{font-size:0.95rem;color:var(--text-dim);max-width:48rem;}
+.closer p+p{margin-top:0.7rem;}
+
+/* fade in */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.in{opacity:1;transform:none;}
+
+/* =========================================================
+   PREVIEW DESIGN SYSTEM — the desert palette
+   ========================================================= */
+.surface{
+  --ink:#1a1614;--ink-soft:#3a312c;--paper:#faf6f1;--paper-warm:#f4ebde;
+  --paper-cream:#efe3cf;--rust:#b85c3a;--rust-deep:#8b3f24;--gold:#c49a50;
+  --gold-soft:#d8b87a;--sand:#8c6e54;--bone:#e8ddc9;--muted:#6b6b6b;
+  --dline:rgba(26,22,20,0.12);
+  font-family:'Fraunces',Georgia,serif;background:var(--paper);color:var(--ink);
+  line-height:1.6;position:relative;
+}
+.surface img{display:block;}
+.surface .ui{font-family:'Inter',sans-serif;}
+.s-eyebrow{
+  font-family:'Inter',sans-serif;font-size:0.62rem;font-weight:600;
+  letter-spacing:0.3em;text-transform:uppercase;color:var(--rust);
+}
+.s-btn{
+  display:inline-block;font-family:'Inter',sans-serif;font-size:0.66rem;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--paper);background:var(--rust);
+  padding:0.85rem 1.6rem;text-decoration:none;border:1px solid var(--rust);
+}
+.s-btn.ghost{background:transparent;color:var(--paper);border-color:rgba(255,255,255,0.5);}
+.s-btn.dark{background:var(--ink);border-color:var(--ink);}
+.s-btn.gold{background:var(--gold);border-color:var(--gold);color:var(--ink);}
+
+/* ---------- HERO A · The Threshold ---------- */
+#hero-a{height:430px;display:flex;flex-direction:column;
+  background:linear-gradient(120deg,rgba(12,9,7,0.86) 0%,rgba(12,9,7,0.32) 48%,rgba(12,9,7,0.55) 100%),
+  url('https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/01-hero-desert-sunrise.png');
+  background-size:cover;background-position:center;}
+#hero-a .util{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0.85rem 1.6rem;border-bottom:1px solid rgba(255,255,255,0.16);
+  font-family:'Inter',sans-serif;font-size:0.6rem;letter-spacing:0.16em;
+  text-transform:uppercase;color:rgba(255,255,255,0.85);}
+#hero-a .util .seats b{color:var(--gold-soft);}
+#hero-a .body{margin-top:auto;padding:1.8rem;max-width:34rem;}
+#hero-a .eb{color:var(--gold-soft);font-family:'Inter',sans-serif;font-size:0.6rem;
+  font-weight:600;letter-spacing:0.32em;text-transform:uppercase;}
+#hero-a h1{font-weight:300;font-size:3.2rem;line-height:0.94;letter-spacing:-0.02em;
+  color:#fff;margin:0.7rem 0;}
+#hero-a h1 em{font-style:italic;color:var(--gold-soft);}
+#hero-a .q{font-style:italic;font-weight:300;font-size:1.18rem;color:rgba(255,255,255,0.92);
+  margin-bottom:1.2rem;}
+#hero-a .ctas{display:flex;gap:0.7rem;align-items:center;flex-wrap:wrap;}
+#hero-a .trust{margin-top:1rem;font-family:'Inter',sans-serif;font-size:0.62rem;
+  letter-spacing:0.06em;color:rgba(255,255,255,0.66);}
+
+/* ---------- HERO B · Split Doorway ---------- */
+#hero-b{height:430px;display:grid;grid-template-columns:1.05fr 0.95fr;}
+#hero-b .left{background:var(--paper-cream);padding:2.4rem 2rem;display:flex;
+  flex-direction:column;justify-content:center;}
+#hero-b h1{font-weight:300;font-size:2.7rem;line-height:0.96;letter-spacing:-0.02em;
+  margin:0.7rem 0;}
+#hero-b h1 em{font-style:italic;color:var(--rust);}
+#hero-b .meta{font-family:'Inter',sans-serif;font-size:0.64rem;font-weight:500;
+  letter-spacing:0.14em;text-transform:uppercase;color:var(--sand);margin-bottom:0.9rem;}
+#hero-b .q{font-style:italic;font-size:1.1rem;color:var(--ink-soft);margin-bottom:1.3rem;line-height:1.35;}
+#hero-b .trust{margin-top:1.1rem;font-family:'Inter',sans-serif;font-size:0.6rem;
+  letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);}
+#hero-b .right{background:url('https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/01-hero-desert-sunrise.png');
+  background-size:cover;background-position:center;}
+
+/* ---------- HERO C · The Witness ---------- */
+#hero-c{height:430px;display:flex;align-items:center;
+  background:#100d0b url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-hero-portrait-faded.jpg');
+  background-size:cover;background-position:65% center;}
+#hero-c .scrim{position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(12,9,7,0.93) 0%,rgba(12,9,7,0.7) 38%,transparent 68%);}
+#hero-c .body{position:relative;padding:2rem;max-width:27rem;}
+#hero-c .eb{color:var(--gold-soft);font-family:'Inter',sans-serif;font-size:0.58rem;
+  font-weight:600;letter-spacing:0.3em;text-transform:uppercase;}
+#hero-c h1{font-weight:300;font-size:2.7rem;line-height:0.96;color:#fff;margin:0.7rem 0;}
+#hero-c h1 em{font-style:italic;color:var(--gold-soft);}
+#hero-c .q{font-style:italic;font-size:1.1rem;color:rgba(255,255,255,0.9);margin-bottom:0.5rem;}
+#hero-c .by{font-family:'Inter',sans-serif;font-size:0.66rem;color:rgba(255,255,255,0.7);
+  margin-bottom:1.2rem;letter-spacing:0.04em;}
+#hero-c .by b{color:var(--gold-soft);font-weight:600;}
+
+/* ---------- LEAVE-WITH A · Engraved ---------- */
+#lv-a{padding:2.6rem 2rem;background:var(--paper-warm);text-align:center;}
+#lv-a .s-title{font-weight:300;font-size:1.9rem;letter-spacing:-0.02em;margin-bottom:2rem;}
+#lv-a .s-title em{font-style:italic;color:var(--rust);}
+#lv-a .row{display:grid;grid-template-columns:repeat(3,1fr);}
+#lv-a .cell{padding:0 1.4rem;text-align:left;position:relative;}
+#lv-a .cell+.cell{border-left:1px solid var(--dline);}
+#lv-a .ic{width:42px;height:42px;border:1px solid var(--rust);border-radius:50%;
+  display:grid;place-items:center;margin-bottom:0.9rem;}
+#lv-a .num{font-family:'Inter',sans-serif;font-size:0.58rem;font-weight:700;
+  letter-spacing:0.2em;color:var(--gold);margin-bottom:0.3rem;}
+#lv-a .w{font-weight:600;font-size:1.18rem;margin-bottom:0.4rem;}
+#lv-a .bd{font-family:'Inter',sans-serif;font-size:0.78rem;color:var(--ink-soft);line-height:1.55;}
+
+/* ---------- LEAVE-WITH B · Three Cards ---------- */
+#lv-b{padding:2.6rem 2rem;background:var(--paper);text-align:center;}
+#lv-b .s-title{font-weight:300;font-size:1.9rem;letter-spacing:-0.02em;margin-bottom:1.9rem;}
+#lv-b .s-title em{font-style:italic;color:var(--rust);}
+#lv-b .row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;}
+#lv-b .card{background:var(--paper-warm);border-radius:4px;overflow:hidden;text-align:left;
+  box-shadow:0 14px 34px rgba(26,22,20,0.12);}
+#lv-b .card .ph{height:104px;overflow:hidden;}
+#lv-b .card .ph img{width:100%;height:100%;object-fit:cover;
+  filter:saturate(1.06) sepia(0.04) contrast(1.02);}
+#lv-b .card .tx{padding:1rem 1.1rem 1.3rem;}
+#lv-b .card .num{font-family:'Inter',sans-serif;font-size:0.56rem;font-weight:700;
+  letter-spacing:0.2em;color:var(--gold);}
+#lv-b .card .w{font-weight:600;font-size:1.1rem;margin:0.2rem 0 0.4rem;}
+#lv-b .card .bd{font-family:'Inter',sans-serif;font-size:0.76rem;color:var(--ink-soft);line-height:1.55;}
+
+/* ---------- LEAVE-WITH C · The Manifest ---------- */
+#lv-c{padding:2.6rem 2.4rem;background:var(--ink);color:var(--paper);}
+#lv-c .s-title{font-weight:300;font-size:1.9rem;letter-spacing:-0.02em;margin-bottom:1.6rem;
+  color:#fff;}
+#lv-c .s-title em{font-style:italic;color:var(--gold-soft);}
+#lv-c .item{display:grid;grid-template-columns:auto 1fr;gap:1.6rem;align-items:start;
+  padding:1.3rem 0;border-bottom:1px solid rgba(255,255,255,0.12);}
+#lv-c .item:last-child{border-bottom:none;}
+#lv-c .big{font-weight:300;font-size:3rem;line-height:0.8;color:var(--gold-soft);}
+#lv-c .w{font-style:italic;font-weight:400;font-size:1.5rem;color:#fff;margin-bottom:0.25rem;}
+#lv-c .bd{font-family:'Inter',sans-serif;font-size:0.82rem;color:rgba(250,246,241,0.72);
+  line-height:1.55;}
+
+/* ---------- SPEAKERS A · Faculty Grid ---------- */
+#sp-a{padding:2.4rem 2rem;background:var(--paper);}
+#sp-a .s-title{text-align:center;font-weight:300;font-size:1.8rem;margin-bottom:1.6rem;}
+#sp-a .s-title em{font-style:italic;color:var(--rust);}
+#sp-a .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.9rem;}
+#sp-a .sc{background:var(--paper-warm);border:1px solid var(--dline);border-radius:4px;
+  padding:0.9rem;text-align:center;}
+#sp-a .sc img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:3px;
+  filter:saturate(1.04) sepia(0.03);margin-bottom:0.6rem;}
+#sp-a .sc .nm{font-weight:600;font-size:0.84rem;line-height:1.15;}
+#sp-a .sc .cr{font-family:'Inter',sans-serif;font-size:0.6rem;color:var(--sand);
+  margin-top:0.2rem;font-style:italic;}
+
+/* ---------- SPEAKERS B · Lead & Circle ---------- */
+#sp-b{padding:2.4rem 2rem;background:var(--paper);}
+#sp-b .s-title{text-align:center;font-weight:300;font-size:1.8rem;margin-bottom:1.5rem;}
+#sp-b .s-title em{font-style:italic;color:var(--rust);}
+#sp-b .lead{display:grid;grid-template-columns:150px 1fr;gap:1.5rem;
+  background:var(--ink);border-radius:6px;overflow:hidden;margin-bottom:1.1rem;}
+#sp-b .lead img{width:150px;height:100%;object-fit:cover;object-position:60% 30%;}
+#sp-b .lead .tx{padding:1.2rem 1.4rem 1.2rem 0;color:var(--paper);}
+#sp-b .lead .tag{font-family:'Inter',sans-serif;font-size:0.56rem;font-weight:700;
+  letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-soft);}
+#sp-b .lead .nm{font-weight:500;font-size:1.4rem;color:#fff;margin:0.3rem 0 0.15rem;}
+#sp-b .lead .cr{font-family:'Inter',sans-serif;font-size:0.66rem;font-style:italic;
+  color:rgba(250,246,241,0.7);margin-bottom:0.5rem;}
+#sp-b .lead .bd{font-family:'Inter',sans-serif;font-size:0.76rem;
+  color:rgba(250,246,241,0.82);line-height:1.55;}
+#sp-b .circle{display:grid;grid-template-columns:repeat(4,1fr);gap:0.7rem;}
+#sp-b .mini{text-align:center;}
+#sp-b .mini img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:50%;
+  filter:saturate(1.04) sepia(0.03);margin-bottom:0.4rem;}
+#sp-b .mini .nm{font-weight:600;font-size:0.74rem;line-height:1.12;}
+#sp-b .mini .cr{font-family:'Inter',sans-serif;font-size:0.56rem;color:var(--sand);font-style:italic;}
+
+/* ---------- SPEAKERS C · Editorial Profiles ---------- */
+#sp-c{padding:2.4rem 2rem;background:var(--paper);}
+#sp-c .s-title{text-align:center;font-weight:300;font-size:1.8rem;margin-bottom:1.7rem;}
+#sp-c .s-title em{font-style:italic;color:var(--rust);}
+#sp-c .prof{display:grid;grid-template-columns:200px 1fr;gap:1.8rem;align-items:center;
+  padding:1.3rem 0;border-bottom:1px solid var(--dline);}
+#sp-c .prof:last-child{border-bottom:none;}
+#sp-c .prof.flip{grid-template-columns:1fr 200px;}
+#sp-c .prof.flip .img{order:2;}
+#sp-c .prof.flip .tx{order:1;}
+#sp-c .prof .img{width:200px;height:158px;overflow:hidden;border-radius:3px;}
+#sp-c .prof .img img{width:100%;height:100%;object-fit:cover;filter:saturate(1.04) sepia(0.03);}
+#sp-c .prof .cr{font-family:'Inter',sans-serif;font-size:0.58rem;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--rust);}
+#sp-c .prof .nm{font-weight:500;font-size:1.6rem;margin:0.3rem 0 0.4rem;letter-spacing:-0.01em;}
+#sp-c .prof .bd{font-family:'Inter',sans-serif;font-size:0.8rem;color:var(--ink-soft);line-height:1.6;}
+
+/* ---------- VENUE A · Cinematic Plate ---------- */
+#vn-a{background:var(--paper);}
+#vn-a .plate{height:210px;position:relative;
+  background:url('https://guldanjamax.github.io/anthonybalduzzi/generated/venue-desert-dawn.jpg');
+  background-size:cover;background-position:center;}
+#vn-a .plate::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(12,9,7,0.1),rgba(12,9,7,0.62));}
+#vn-a .plate .cap{position:absolute;left:0;right:0;bottom:0;padding:1.4rem 1.8rem;z-index:2;}
+#vn-a .plate .eb{font-family:'Inter',sans-serif;font-size:0.58rem;font-weight:600;
+  letter-spacing:0.28em;text-transform:uppercase;color:var(--gold-soft);}
+#vn-a .plate h2{font-weight:300;font-size:2.1rem;color:#fff;margin-top:0.3rem;}
+#vn-a .plate h2 em{font-style:italic;color:var(--gold-soft);}
+#vn-a .body{padding:1.8rem;}
+#vn-a .loc{font-family:'Inter',sans-serif;font-size:0.62rem;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--sand);text-align:center;
+  margin-bottom:1rem;}
+#vn-a .lead-p{text-align:center;font-size:0.96rem;color:var(--ink-soft);font-style:italic;
+  max-width:32rem;margin:0 auto 1.4rem;line-height:1.5;}
+#vn-a .feats{display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;}
+#vn-a .feat{display:flex;gap:0.6rem;align-items:flex-start;background:var(--paper-warm);
+  padding:0.8rem 0.9rem;border-radius:3px;}
+#vn-a .feat .gi{color:var(--gold);font-size:0.8rem;margin-top:0.1rem;}
+#vn-a .feat b{font-weight:600;font-size:0.86rem;display:block;}
+#vn-a .feat span{font-family:'Inter',sans-serif;font-size:0.72rem;color:var(--ink-soft);}
+
+/* ---------- VENUE B · The Postcard ---------- */
+#vn-b{padding:2.4rem 2rem;background:var(--paper-cream);}
+#vn-b .eb{text-align:center;font-family:'Inter',sans-serif;font-size:0.58rem;font-weight:600;
+  letter-spacing:0.28em;text-transform:uppercase;color:var(--rust);}
+#vn-b h2{text-align:center;font-weight:300;font-size:1.9rem;margin:0.4rem 0 1.6rem;}
+#vn-b h2 em{font-style:italic;color:var(--rust);}
+#vn-b .split{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;align-items:center;}
+#vn-b .postcard{background:#fff;padding:0.7rem 0.7rem 1.6rem;
+  box-shadow:0 22px 50px rgba(26,22,20,0.26);transform:rotate(-3deg);}
+#vn-b .postcard img{width:100%;height:140px;object-fit:cover;}
+#vn-b .postcard .stamp{font-family:'Caveat',cursive;font-size:1.1rem;color:var(--sand);
+  text-align:center;margin-top:0.5rem;}
+#vn-b .copy p{font-size:0.86rem;color:var(--ink-soft);line-height:1.55;margin-bottom:0.7rem;}
+#vn-b .copy .check{font-family:'Inter',sans-serif;font-size:0.74rem;color:var(--ink-soft);
+  display:flex;gap:0.5rem;padding:0.25rem 0;}
+#vn-b .copy .check::before{content:"✦";color:var(--gold);}
+
+/* ---------- VENUE C · Immersive Split ---------- */
+#vn-c{display:grid;grid-template-columns:1fr 1fr;background:var(--paper);}
+#vn-c .pic{min-height:340px;
+  background:url('https://guldanjamax.github.io/anthonybalduzzi/generated/venue-desert-dawn.jpg');
+  background-size:cover;background-position:center;position:relative;}
+#vn-c .pic .badge{position:absolute;left:1.1rem;bottom:1.1rem;
+  font-family:'Inter',sans-serif;font-size:0.56rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:#fff;background:rgba(12,9,7,0.6);padding:0.4rem 0.7rem;backdrop-filter:blur(3px);}
+#vn-c .scroll{padding:1.8rem;}
+#vn-c .eb{font-family:'Inter',sans-serif;font-size:0.58rem;font-weight:600;
+  letter-spacing:0.26em;text-transform:uppercase;color:var(--rust);}
+#vn-c h2{font-weight:300;font-size:1.85rem;margin:0.3rem 0 0.8rem;}
+#vn-c h2 em{font-style:italic;color:var(--rust);}
+#vn-c p{font-size:0.84rem;color:var(--ink-soft);line-height:1.55;margin-bottom:0.9rem;}
+#vn-c .feat{border-left:2px solid var(--gold);padding:0.4rem 0 0.4rem 0.8rem;margin-bottom:0.5rem;}
+#vn-c .feat b{font-size:0.82rem;}
+#vn-c .feat span{font-family:'Inter',sans-serif;font-size:0.72rem;color:var(--ink-soft);display:block;}
+
+/* ---------- PRICING A · VIP-Forward ---------- */
+#pr-a{padding:2.4rem 2rem;background:var(--paper-warm);}
+#pr-a .s-title{text-align:center;font-weight:300;font-size:1.8rem;margin-bottom:0.4rem;}
+#pr-a .s-title em{font-style:italic;color:var(--rust);}
+#pr-a .dl{text-align:center;font-family:'Inter',sans-serif;font-size:0.72rem;
+  color:var(--ink-soft);margin-bottom:1.5rem;font-style:italic;}
+#pr-a .grid{display:grid;grid-template-columns:1fr 1.12fr;gap:1.1rem;align-items:center;}
+#pr-a .tier{background:var(--paper);border:1px solid var(--dline);padding:1.4rem 1.3rem;}
+#pr-a .tier.vip{background:var(--ink);color:var(--paper);border-color:var(--ink);
+  padding:1.9rem 1.5rem;position:relative;box-shadow:0 26px 54px rgba(26,22,20,0.34);}
+#pr-a .ribbon{position:absolute;top:-0.7rem;left:50%;transform:translateX(-50%);
+  font-family:'Inter',sans-serif;font-size:0.56rem;font-weight:700;letter-spacing:0.16em;
+  text-transform:uppercase;color:var(--ink);background:var(--gold);padding:0.3rem 0.8rem;}
+#pr-a .lbl{font-family:'Inter',sans-serif;font-size:0.6rem;font-weight:700;
+  letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);}
+#pr-a .vip .lbl{color:var(--gold-soft);}
+#pr-a .price{font-weight:400;font-size:2.4rem;color:var(--rust);line-height:1;margin:0.4rem 0;}
+#pr-a .vip .price{font-size:2.9rem;color:var(--gold-soft);}
+#pr-a .price s{font-size:1rem;color:var(--muted);}
+#pr-a ul{list-style:none;margin:0.7rem 0 1rem;}
+#pr-a li{font-family:'Inter',sans-serif;font-size:0.74rem;color:var(--ink-soft);
+  padding:0.22rem 0 0.22rem 1rem;position:relative;line-height:1.4;}
+#pr-a .vip li{color:rgba(250,246,241,0.85);}
+#pr-a li::before{content:"✦";position:absolute;left:0;color:var(--rust);font-size:0.7rem;}
+#pr-a .vip li::before{color:var(--gold-soft);}
+
+/* ---------- PRICING B · The Single Spine ---------- */
+#pr-b{padding:2.4rem 2rem;background:var(--paper);}
+#pr-b .s-title{text-align:center;font-weight:300;font-size:1.8rem;margin-bottom:1.4rem;}
+#pr-b .s-title em{font-style:italic;color:var(--rust);}
+#pr-b table{width:100%;border-collapse:collapse;}
+#pr-b th,#pr-b td{padding:0.6rem 0.8rem;border-bottom:1px solid var(--dline);text-align:left;}
+#pr-b thead th{vertical-align:bottom;}
+#pr-b .col-h{font-family:'Inter',sans-serif;}
+#pr-b .col-h .nm{font-size:0.6rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--muted);}
+#pr-b .col-h .pr{font-family:'Fraunces',serif;font-size:1.7rem;color:var(--rust);}
+#pr-b thead .vipcol{background:var(--ink);}
+#pr-b thead .vipcol .nm{color:var(--gold-soft);}
+#pr-b thead .vipcol .pr{color:var(--gold-soft);}
+#pr-b td{font-family:'Inter',sans-serif;font-size:0.76rem;color:var(--ink-soft);}
+#pr-b td.vipcol{background:rgba(26,22,20,0.04);text-align:center;}
+#pr-b td.gacol{text-align:center;}
+#pr-b .yes{color:var(--rust);font-weight:700;}
+#pr-b .no{color:#c9c2b6;}
+#pr-b tfoot td{border-bottom:none;padding-top:0.9rem;}
+
+/* ---------- PRICING C · The Invitation ---------- */
+#pr-c{padding:2.4rem 2.2rem;background:var(--paper-warm);}
+#pr-c .anchor{text-align:center;font-style:italic;font-size:1.25rem;color:var(--rust);
+  max-width:30rem;margin:0 auto 1.5rem;line-height:1.35;}
+#pr-c .grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+#pr-c .inv{background:var(--paper);border:1px solid var(--dline);border-radius:5px;
+  padding:1.5rem 1.4rem;text-align:center;}
+#pr-c .inv.vip{background:#fff;border-color:var(--gold);
+  box-shadow:0 18px 40px rgba(196,154,80,0.22);}
+#pr-c .inv .nm{font-family:'Inter',sans-serif;font-size:0.6rem;font-weight:700;
+  letter-spacing:0.2em;text-transform:uppercase;color:var(--sand);}
+#pr-c .inv .head{font-style:italic;font-size:1.15rem;margin:0.5rem 0 0.7rem;color:var(--ink);}
+#pr-c .inv .price{font-weight:400;font-size:2rem;color:var(--rust);}
+#pr-c .inv .price s{font-size:0.85rem;color:var(--muted);}
+#pr-c .inv .sub{font-family:'Inter',sans-serif;font-size:0.7rem;color:var(--ink-soft);
+  margin:0.5rem 0 0.9rem;line-height:1.45;}
+#pr-c .inv .pay{font-family:'Inter',sans-serif;font-size:0.66rem;color:var(--muted);
+  margin-top:0.6rem;}
+
+@media(max-width:760px){
+  #hero-b,#vn-c{grid-template-columns:1fr;}
+  #hero-c .body{max-width:none;}
+  #lv-a .row,#lv-b .row,#sp-a .grid,#sp-b .circle,
+  #vn-a .feats,#pr-a .grid,#pr-c .grid,#vn-b .split{grid-template-columns:1fr;}
+  #lv-a .cell+.cell{border-left:none;border-top:1px solid var(--dline);padding-top:1rem;}
+  #sp-c .prof,#sp-c .prof.flip{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== MASTHEAD ===================== -->
+<header class="masthead">
+  <div class="wrap reveal">
+    <div class="kicker">Design Iterations · Working Session</div>
+    <h1>Breakthrough in the Desert<br><em>five sections, fifteen directions.</em></h1>
+    <p class="lede">An audit and design exploration of the event landing page. The copy is locked and strong. This document pushes the <strong>visual execution</strong> to match the ambition of the writing. Each of the five highest-leverage sections is explored through <strong>three genuinely distinct directions</strong>, rendered as real previews, scored by how hard each one converts.</p>
+    <div class="meta-strip">
+      <div><span class="m-num">5</span><span class="m-lbl">Sections explored</span></div>
+      <div><span class="m-num">15</span><span class="m-lbl">Rendered directions</span></div>
+      <div><span class="m-num">8</span><span class="m-lbl">Real speaker faces sourced</span></div>
+      <div><span class="m-num">$845+</span><span class="m-lbl">Ticket — design must earn it</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== BRIEF ANALYSIS ===================== -->
+<section class="analysis">
+  <div class="wrap reveal">
+    <div class="analysis-grid">
+      <div class="an-card">
+        <h4>Functional goal</h4>
+        <p>Move a 40+ reader from quiet stagnation to a booked seat. Every section either builds belief or removes friction. Nothing is decoration.</p>
+      </div>
+      <div class="an-card">
+        <h4>Emotional register</h4>
+        <p>Soul-aware but grounded. The page should feel like a confessional that becomes an invitation. Premium, never hype. It must feel worth the price before the price is named.</p>
+      </div>
+      <div class="an-card">
+        <h4>Where it falls short today</h4>
+        <p>Faculty has zero faces. Emoji icons undercut the craft. Hero is quiet rather than arresting. Venue is a placeholder. Real proof photos are underused.</p>
+      </div>
+      <div class="an-card">
+        <h4>The bar</h4>
+        <p>It should look unmistakably premium — the kind of page where the design itself is evidence the room will be worth three days of your life.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GROUP 1 · HERO ===================== -->
+<section class="group">
+  <div class="wrap">
+    <div class="group-head reveal">
+      <div class="group-index">Section 01</div>
+      <h2>The Hero — <em>the three-second verdict.</em></h2>
+      <p class="g-brief">A scroller decides in three seconds whether this is a fitness webinar or a once-a-year experience. Today the hero is a centered headline on a pretty image. <b>It is calm where it needs to be arresting.</b> All three directions keep the locked copy and add gravity, proof, and a reason to act now.</p>
+    </div>
+
+    <!-- HERO A -->
+    <article class="concept reveal">
+      <div class="concept-top">
+        <div>
+          <div class="concept-id">Direction A</div>
+          <div class="concept-name">The <em>Threshold</em></div>
+          <div class="concept-tag">A film poster, not a flyer.</div>
+        </div>
+        <div class="ring-wrap">
+          <div class="ring" style="--rv:91;--rc:var(--green);"><b>91</b></div>
+          <div class="ring-lbl">Confidence</div>
+        </div>
+      </div>
+      <div class="frame">
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span>breakthroughinthedesert.com</span></div>
+          <div class="surface" id="hero-a">
+            <div class="util">
+              <span>Aug 7&ndash;9, 2026 · Arizona Grand Resort</span>
+              <span class="seats">150 seats · <b>40 claimed</b></span>
+            </div>
+            <div class="body">
+              <div class="eb">Presented by Fit Father &amp; Fit Mother Project</div>
+              <h1>Breakthrough <em>in the</em> Desert</h1>
+              <div class="q">What if the second half of your life was the best part?</div>
+              <div class="ctas">
+                <a class="s-btn">Reserve Your Spot &rarr;</a>
+                <a class="s-btn ghost">▶ Watch the 2025 film</a>
+              </div>
+              <div class="trust">70,000+ members across 100+ countries · Three days · One doorway</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="notes">
+        <div class="note-block">
+          <h5>Design direction</h5>
+          <p>Full-bleed sunrise, but graded down hard with a directional dark scrim so type sits in the lower-left third — the asymmetric anchor of a movie one-sheet. A hairline utility bar across the top carries the date and a live scarcity count. The headline runs large at 3x its current weight presence. Two CTAs: a solid commitment and a low-friction "watch the film" for the not-yet-ready.</p>
+        </div>
+        <div class="note-block">
+          <h5>Strategic rationale</h5>
+          <p>Asymmetry reads as editorial confidence; centered reads as default template. The scarcity line ("40 claimed") and the founder attribution do trust and urgency work in the first viewport, before a single objection forms. The secondary CTA captures the large segment who feel the pull but need proof first.</p>
+        </div>
+        <div class="note-block full">
+          <h5>Visual spec</h5>
+          <p class="spec"><b>Type:</b> Fraunces 300 display / Inter 600 UI. &nbsp; <b>Palette:</b> ink scrim #1a1614 at 86→32%, paper #faf6f1, gold-soft #d8b87a accents. &nbsp; <b>Layout:</b> 92vh, content max-width 34rem anchored bottom-left, top utility bar 1px rule. &nbsp; <b>Motion:</b> slow 8s background scale 1.0→1.06, CTA arrow nudge on hover, scarcity count can pull a real number.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- HERO B -->
+    <article class="concept reveal">
+      <div class="concept-top">
+        <div>
+          <div class="concept-id">Direction B</div>
+          <div class="concept-name">Split <em>Doorway</em></div>
+          <div class="concept-tag">A magazine cover. Type breathes on one side, the desert opens on the other.</div>
+        </div>
+        <div class="ring-wrap">
+          <div class="ring" style="--rv:84;--rc:var(--amber);"><b>84</b></div>
+          <div class="ring-lbl">Confidence</div>
+        </div>
+      </div>
+      <div class="frame">
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span>breakthroughinthedesert.com</span></div>
+          <div class="surface" id="hero-b">
+            <div class="left">
+              <div class="s-eyebrow">Breakthrough</div>
+              <h1>Breakthrough <em>in the</em> Desert</h1>
+              <div class="meta">Aug 7&ndash;9, 2026 — Arizona Grand Resort, Phoenix</div>
+              <div class="q">What if the second half of your life was the best part?</div>
+              <a class="s-btn">Reserve Your Spot &rarr;</a>
+              <div class="trust">Presented by Fit Father &amp; Fit Mother Project</div>
+            </div>
+            <div class="right"></div>
+          </div>
+        </div>
+      </div>
+      <div class="notes">
+        <div class="note-block">
+          <h5>Design direction</h5>
+          <p>A hard vertical split. The left panel is warm paper and holds all type with editorial calm. The right panel is the desert image bleeding off every edge — a literal doorway you look through. On mobile the panels stack, image first, so the phone still leads with atmosphere.</p>
+        </div>
+        <div class="note-block">
+          <h5>Strategic rationale</h5>
+          <p>White space around the headline signals confidence and gives the question room to land emotionally. The split mirrors the brand thesis — "health is the doorway" — structurally, not just verbally. Trades raw cinematic punch for clarity and a premium, considered feel.</p>
+        </div>
+        <div class="note-block full">
+          <h5>Visual spec</h5>
+          <p class="spec"><b>Type:</b> Fraunces 300, italic accent in rust #b85c3a. &nbsp; <b>Palette:</b> paper-cream #efe3cf left panel, full-bleed image right. &nbsp; <b>Layout:</b> 1.05fr / 0.95fr grid, min-height 90vh, stacks under 760px. &nbsp; <b>Motion:</b> subtle parallax drift on the image panel, type fades up on load.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- HERO C -->
+    <article class="concept reveal">
+      <div class="concept-top">
+        <div>
+          <div class="concept-id">Direction C</div>
+          <div class="concept-name">The <em>Witness</em></div>
+          <div class="concept-tag">Founder-led. A real face in the desert, looking toward the next chapter.</div>
+        </div>
+        <div class="ring-wrap">
+          <div class="ring" style="--rv:78;--rc:var(--amber);"><b>78</b></div>
+          <div class="ring-lbl">Confidence</div>
+        </div>
+      </div>
+      <div class="frame">
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span>breakthroughinthedesert.com</span></div>
+          <div class="surface" id="hero-c">
+            <div class="scrim"></div>
+            <div class="body">
+              <div class="eb">Breakthrough in the Desert · Aug 2026</div>
+              <h1>Breakthrough <em>in the</em> Desert</h1>
+              <div class="q">What if the second half of your life was the best part?</div>
+              <div class="by">A three-day experience hosted by <b>Dr. Anthony Balduzzi</b></div>
+              <a class="s-btn">Reserve Your Spot &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="notes">
+        <div class="note-block">
+          <h5>Design direction</h5>
+          <p>Uses the real cinematic portrait of Dr. Anthony in the Sedona desert at dusk. A directional scrim darkens the left for type; he occupies the right, gaze toward the horizon. The hero becomes a human being at a threshold rather than a landscape.</p>
+        </div>
+        <div class="note-block">
+          <h5>Strategic rationale</h5>
+          <p>Faces out-convert landscapes — people trust people. For a personality-driven event this borrows the founder's credibility instantly. Scored lower only because it spends the founder card in the hero, which overlaps the "From the Founder" section, and leans the whole event on one person rather than the collective experience.</p>
+        </div>
+        <div class="note-block full">
+          <h5>Visual spec</h5>
+          <p class="spec"><b>Type:</b> Fraunces 300 on ink. &nbsp; <b>Image:</b> duzzi-hero-portrait-faded, focal point 65% across. &nbsp; <b>Palette:</b> ink #100d0b scrim 93→0%, gold-soft accent. &nbsp; <b>Layout:</b> single frame, type max-width 27rem left-anchored. &nbsp; <b>Note:</b> if chosen, swap the founder-section image so the face is not used twice.</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===================== GROUP 2 · LEAVE-WITH ===================== -->
+<section class="group">
+  <div class="wrap">
+    <div class="group-head reveal">
+      <div class="group-index">Section 02</div>
+      <h2>You'll Leave With — <em>kill the emoji.</em></h2>
+      <p class="g-brief">Three outcomes money can't buy: Clarity, Energy, a Circle of Aligned Friends. Today they sit under 🔥 ⚡ 🤝 — <b>the single cheapest element on an otherwise refined page.</b> These directions make the promise feel earned.</p>
+    </div>
+
+    <!-- LV A -->
+    <article class="concept reveal">
+      <div class="concept-top">
+        <div>
+          <div class="concept-id">Direction A</div>
+          <div class="concept-name">Engraved</div>
+          <div class="concept-tag">Fine line icons, numbered, hairline-divided. Quiet authority.</div>
+        </div>
+        <div class="ring-wrap">
+          <div class="ring" style="--rv:88;--rc:var(--green);"><b>88</b></div>
+          <div class="ring-lbl">Confidence</div>
+        </div>
+      </div>
+      <div class="frame">
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span>section · what you'll leave with</span></div>
+          <div class="surface" id="lv-a">
+            <div class="s-title">You'll leave with three things <em>money can't buy.</em></div>
+            <div class="row">
+              <div class="cell">
+                <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b85c3a" stroke-width="1.4"><path d="M12 3c1 4-3 5-3 9a3 3 0 006 0c0-2-1-3-1-3 2 1 3 3 3 6a6 6 0 01-12 0c0-5 5-7 7-12z"/></svg></div>
+                <div class="num">01</div>
+                <div class="w">Clarity</div>
+                <div class="bd">A real plan for the next chapter — health, relationships, purpose. No more vague longing.</div>
+              </div>
+              <div class="cell">
+                <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b85c3a" stroke-width="1.4"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div>
+                <div class="num">02</div>
+                <div class="w">Energy</div>
+                <div class="bd">The science and protocols to live with the vitality you were built for after 40. What works.</div>
+              </div>
+              <div class="cell">
+                <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b85c3a" stroke-width="1.4"><circle cx="9" cy="10" r="3.4"/><circle cx="15" cy="10" r="3.4"/><path d="M4 19c1-3 3.5-4 5-4M20 19c-1-3-3.5-4-5-4"/></svg></div>
+                <div class="num">03</div>
+                <div class="w">A Circle of Friends</div>
+                <div class="bd">A community walking the same path. Friendships that last long after the weekend ends.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="notes">
+        <div class="note-block">
+          <h5>Design direction</h5>
+          <p>Custom thin-stroke line icons inside hairline circles, in rust. Each column carries a small numeral and is separated by a 1px rule rather than floating in space. The grid stops looking like a feature block and starts looking like a page from a well-set book.</p>
+        </div>
+        <div class="note-block">
+          <h5>Strategic rationale</h5>
+          <p>Emoji are operating-system artifacts — they render differently on every device and read as casual. Bespoke iconography is a craft signal that quietly says "everything here was considered." Numbering implies a sequence, a journey, which is exactly the brand promise. Lowest risk, highest fit with the existing system.</p>
+        </div>
+        <div class="note-block full">
+          <h5>Visual spec</h5>
+          <p class="spec"><b>Icons:</b> 1.4px stroke SVG, 42px circle, rust #b85c3a. &nbsp; <b>Type:</b> Fraunces 600 word, Inter 400 body, Inter 700 numeral in gold. &nbsp; <b>Layout:</b> 3-col grid, 1px vertical dividers, left-aligned text within each cell. &nbsp; <b>Motion:</b> icons draw-on via stroke-dashoffset when section enters view.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- LV B -->
+    <article class="concept reveal">
+      <div class="concept-top">
+        <div>
+          <div class="concept-id">Direction B</div>
+          <div class="concept-name">The Three <em>Cards</em></div>
+          <div class="concept-tag">Each outcome gets a real photograph. Show it, don't say it.</div>
+        </div>
+        <div class="ring-wrap">
+          <div class="ring" style="--rv:85;--rc:var(--green);"><b>85</b></div>
+          <div class="ring-lbl">Confidence</div>
+        </div>
+      </div>
+      <div class="frame">
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span>section · what you'll leave with</span></div>
+          <div class="surface" id="lv-b">
+            <div class="s-title">You'll leave with three things <em>money can't buy.</em></div>
+            <div class="row">
+              <div class="card">
+                <div class="ph"><img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/05-saturday-feet-mat.png" alt=""></div>
+                <div class="tx"><div class="num">01</div><div class="w">Clarity</div>
+                <div class="bd">A real plan for the next chapter of your life. No more vague longing.</div></div>
+              </div>
+              <div class="card">
+                <div class="ph"><img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/09-gallery-workout.png" alt=""></div>
+                <div class="tx"><div class="num">02</div><div class="w">Energy</div>
+                <div class="bd">The protocols to live with the vitality you were built for after 40.</div></div>
+              </div>
+              <div class="card">
+                <div class="ph"><img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/11-gallery-love-friends.png" alt=""></div>
+                <div class="tx"><div class="num">03</div><div class="w">A Circle of Friends</div>
+                <div class="bd">A community walking the same path. You'll never do this alone again.</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="notes">
+        <div class="note-block">
+          <h5>Design direction</h5>
+          <p>Each promise becomes a card with a real 2025 photograph on top — bare feet on a sunrise mat for Clarity, a movement class for Energy, the community embrace for Circle. Word and body sit on warm paper below, with a soft lifted shadow.</p>
+        </div>
+        <div class="note-block">
+          <h5>Strategic rationale</h5>
+          <p>Abstractions like "clarity" are hard to feel. A photograph of the actual room makes the outcome concrete and pulls real proof higher up the page. Warmest, most vivid option. Scored just behind Engraved because it depends on photo quality and adds visual weight to a section that benefits from restraint.</p>
+        </div>
+        <div class="note-block full">
+          <h5>Visual spec</h5>
+          <p class="spec"><b>Images:</b> real 2025 event photos, warm-tone harmonized. &nbsp; <b>Cards:</b> 4px radius, shadow 0 14px 34px ink/12%. &nbsp; <b>Type:</b> Fraunces 600 word, Inter body, gold numeral. &nbsp; <b>Layout:</b> equal 3-col, photo 4:3 crop. &nbsp; <b>Motion:</b> staggered fade-up, gentle image zoom on hover.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- LV C -->
+    <article class="concept reveal">
+      <div class="concept-top">
+        <div>
+          <div class="concept-id">Direction C</div>
+          <div class="concept-name">The <em>Manifest</em></div>
+          <div class="concept-tag">No grid. A bold numbered list, set like a table of contents for a life.</div>
+        </div>
+        <div class="ring-wrap">
+          <div class="ring" style="--rv:79;--rc:var(--amber);"><b>79</b></div>
+          <div class="ring-lbl">Confidence</div>
+        </div>
+      </div>
+      <div class="frame">
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span>section · what you'll leave with</span></div>
+          <div class="surface" id="lv-c">
+            <div class="s-title">You'll leave with three things <em>money can't buy.</em></div>
+            <div class="item"><div class="big">01</div><div><div class="w">Clarity</div><div class="bd">A clear picture of the next chapter — your health, relationships, purpose, and next adventures. No more vague longing. A real plan.</div></div></div>
+            <div class="item"><div class="big">02</div><div><div class="w">Energy</div><div class="bd">The health science, practices, and protocols to live with the peak vitality you were built for after 40. Not theory. What works.</div></div></div>
+            <div class="item"><div class="big">03</div><div><div class="w">A Circle of Aligned Friends</div><div class="bd">A community walking the same path of inspired living. Friendships rooted in trust that last long after the event ends.</div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="notes">
+        <div class="note-block">
+          <h5>Design direction</h5>
+          <p>The grid is dropped entirely. Three full-width rows on a deep ink background, each with an oversized gold numeral and the outcome set as a large italic serif. It reads like a manifesto or the contents page of a book about the rest of your life.</p>
+        </div>
+        <div class="note-block">
+          <h5>Strategic rationale</h5>
+          <p>A dark band gives the page a dramatic tonal shift and slows the reader down — the copy here deserves to be read, not skimmed. The vertical list format implies gravity and sequence. Scored lower because it breaks the page's light rhythm and the longer body copy can feel heavy without imagery.</p>
+        </div>
+        <div class="note-block full">
+          <h5>Visual spec</h5>
+          <p class="spec"><b>Background:</b> ink #1a1614, paper text. &nbsp; <b>Numerals:</b> Fraunces 300, ~5rem, gold-soft. &nbsp; <b>Type:</b> Fraunces italic 1.5rem word, Inter body at 72% opacity. &nbsp; <b>Layout:</b> full-width rows, 1px white/12% dividers. &nbsp; <b>Motion:</b> each row slides in from left on scroll.</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===================== GROUP 3 · SPEAKERS ===================== -->
+<section class="group">
+  <div class="wrap">
+    <div class="group-head reveal">
+      <div class="group-index">Section 03</div>
+      <h2>The Faculty — <em>put faces in the room.</em></h2>
+      <p class="g-brief">Today: eight dashed placeholder circles. <b>A faculty section with no faces is the biggest trust hole on the page.</b> Real headshots for all eight speakers are now sourced and shown below. The question is how to arrange them.</p>
+    </div>
+
+    <!-- SP A -->
+    <article class="concept reveal">
+      <div class="concept-top">
+        <div>
+          <div class="concept-id">Direction A</div>
+          <div class="concept-name">The Faculty <em>Grid</em></div>
+          <div class="concept-tag">Eight faces at once. Scannable, credentialed, expandable.</div>
+        </div>
+        <div class="ring-wrap">
+          <div class="ring" style="--rv:86;--rc:var(--green);"><b>86</b></div>
+          <div class="ring-lbl">Confidence</div>
+        </div>
+      </div>
+      <div class="frame">
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span>section · the faculty</span></div>
+          <div class="surface" id="sp-a">
+            <div class="s-title">The people <em>in the room</em> with you.</div>
+            <div class="grid">
+              <div class="sc"><img src="https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-hero-portrait-faded.jpg" alt=""><div class="nm">Dr. Anthony Balduzzi</div><div class="cr">Host &amp; Founder</div></div>
+              <div class="sc"><img src="https://guldanjamax.github.io/anthonybalduzzi/speakers/hornaman.webp" alt=""><div class="nm">Dr. Amie Hornaman</div><div class="cr">The Thyroid-Fixer</div></div>
+              <div class="sc"><img src="https://guldanjamax.github.io/anthonybalduzzi/speakers/sayegh.jpg" alt=""><div class="nm">Dr. Jamil Sayegh</div><div class="cr">Transformation Coach</div></div>
+              <div class="sc"><img src="https://guldanjamax.github.io/anthonybalduzzi/speakers/ovadia.png" alt=""><div class="nm">Dr. Philip Ovadia</div><div class="cr">Cardiac Surgeon</div></div>
+              <div class="sc"><img src="https://guldanjamax.github.io/anthonybalduzzi/speakers/maraya.png" alt=""><div class="nm">Maraya Brown</div><div class="cr">Women's Health</div></div>
+              <div class="sc"><img src="https://guldanjamax.github.io/anthonybalduzzi/speakers/alan.png" alt=""><div class="nm">Caroline Alan</div><div class="cr">The Mineral Geek</div></div>
+              <div class="sc"><img src="https://guldanjamax.github.io/anthonybalduzzi/speakers/marzluff.jpg" alt=""><div class="nm">Luana Marzluff</div><div class="cr">KAKAO Cacao</div></div>
+              <div class="sc"><img src="https://guldanjamax.github.io/anthonybalduzzi/speakers/salisbury.webp" alt=""><div class="nm">John Salisbury</div><div class="cr">Master Yoga Teacher</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="notes">
+        <div class="note-block">
+          <h5>Design direction</h5>
+          <p>A four-up grid of compact cards: square portrait, name, one-line credential. Eight faces visible in a single glance. Tapping a card expands the full bio in place, so the rich existing copy is one click away without dominating the layout.</p>
+        </div>
+        <div class="note-block">
+          <h5>Strategic rationale</h5>
+          <p>Density is the point — a grid of credentialed faces reads instantly as "this is a serious faculty." It is the fastest way to convert the current dashed-circle void into a trust asset, and it scales gracefully if more speakers are added. Trades depth of first read for breadth.</p>
+        </div>
+        <div class="note-block full">
+          <h5>Visual spec</h5>
+          <p class="spec"><b>Grid:</b> 4-up desktop, 2-up tablet, 1-up phone. &nbsp; <b>Photo:</b> 1:1 cover crop, warm harmonized. &nbsp; <b>Type:</b> Fraunces 600 name, Inter italic credential in sand. &nbsp; <b>Interaction:</b> click-to-expand bio, gold hairline border on hover. &nbsp; <b>Note:</b> photos normalize to one tone so mixed sources cohere.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- SP B -->
+    <article class="concept reveal">
+      <div class="concept-top">
+        <div>
+          <div class="concept-id">Direction B</div>
+          <div class="concept-name">The Lead &amp; <em>The Circle</em></div>
+          <div class="concept-tag">The host anchors. The faculty orbits.</div>
+        </div>
+        <div class="ring-wrap">
+          <div class="ring" style="--rv:90;--rc:var(--green);"><b>90</b></div>
+          <div class="ring-lbl">Confidence</div>
+        </div>
+      </div>
+      <div class="frame">
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span>section · the faculty</span></div>
+          <div class="surface" id="sp-b">
+            <div class="s-title">The people <em>in the room</em> with you.</div>
+            <div class="lead">
+              <img src="https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-hero-portrait-faded.jpg" alt="">
+              <div class="tx">
+                <div class="tag">Your Host</div>
+                <div class="nm">Dr. Anthony Balduzzi</div>
+                <div class="cr">Founder, Fit Father Project &amp; Fit Mother Project</div>
+                <div class="bd">Naturopathic physician and founder of one of the world's largest health communities for parents over 40. He opens and closes the weekend — naming the patterns that quietly steal your aliveness, and showing you how to design the next chapter with clarity and purpose.</div>
+              </div>
+            </div>
+            <div class="circle">
+              <div class="mini"><img src="https://guldanjamax.github.io/anthonybalduzzi/speakers/hornaman.webp" alt=""><div class="nm">Dr. Amie Hornaman</div><div class="cr">The Thyroid-Fixer</div></div>
+              <div class="mini"><img src="https://guldanjamax.github.io/anthonybalduzzi/speakers/sayegh.jpg" alt=""><div class="nm">Dr. Jamil Sayegh</div><div class="cr">Transformation</div></div>
+              <div class="mini"><img src="https://guldanjamax.github.io/anthonybalduzzi/speakers/ovadia.png" alt=""><div class="nm">Dr. Philip Ovadia</div><div class="cr">Cardiac Surgeon</div></div>
+              <div class="mini"><img src="https://guldanjamax.github.io/anthonybalduzzi/speakers/maraya.png" alt=""><div class="nm">Maraya Brown</div><div class="cr">Women's Health</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="notes">
+        <div class="note-block">
+          <h5>Design direction</h5>
+          <p>Dr. Anthony gets a wide featured card — large portrait on ink, full bio alongside — establishing him as the anchor. The other seven sit below in a tighter four-up "circle" grid of round portraits, each expandable. Clear hierarchy: one host, one faculty.</p>
+        </div>
+        <div class="note-block">
+          <h5>Strategic rationale</h5>
+          <p>Personality-driven events convert on the host relationship first, then the supporting credibility. This structure tells that story in layout: you buy into Anthony, then the faculty multiplies the value. It also gracefully solves the uneven photo set — the host's strong portrait leads, softer headshots sit smaller. Strongest direction for this section.</p>
+        </div>
+        <div class="note-block full">
+          <h5>Visual spec</h5>
+          <p class="spec"><b>Lead card:</b> 150px image / text on ink #1a1614, 6px radius. &nbsp; <b>Circle grid:</b> 4-up round portraits, gold-soft credential. &nbsp; <b>Type:</b> Fraunces 500 names. &nbsp; <b>Interaction:</b> mini cards expand to full bio modal or inline. &nbsp; <b>Motion:</b> lead card fades up, circle staggers in.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- SP C -->
+    <article class="concept reveal">
+      <div class="concept-top">
+        <div>
+          <div class="concept-id">Direction C</div>
+          <div class="concept-name">Editorial <em>Profiles</em></div>
+          <div class="concept-tag">A magazine feature spread. The bios are too good to hide.</div>
+        </div>
+        <div class="ring-wrap">
+          <div class="ring" style="--rv:82;--rc:var(--amber);"><b>82</b></div>
+          <div class="ring-lbl">Confidence</div>
+        </div>
+      </div>
+      <div class="frame">
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span>section · the faculty</span></div>
+          <div class="surface" id="sp-c">
+            <div class="s-title">The people <em>in the room</em> with you.</div>
+            <div class="prof">
+              <div class="img"><img src="https://guldanjamax.github.io/anthonybalduzzi/speakers/hornaman.webp" alt=""></div>
+              <div class="tx">
+                <div class="cr">Doctor of Clinical Nutrition</div>
+                <div class="nm">Dr. Amie Hornaman</div>
+                <div class="bd">Known globally as The Thyroid-Fixer, Dr. Amie is one of the most trusted voices in metabolism and hormone optimization for people over 40. At Breakthrough she reveals why so many feel "tired but wired" — and the protocols that actually work.</div>
+              </div>
+            </div>
+            <div class="prof flip">
+              <div class="img"><img src="https://guldanjamax.github.io/anthonybalduzzi/speakers/ovadia.png" alt=""></div>
+              <div class="tx">
+                <div class="cr">Board-Certified Cardiac Surgeon</div>
+                <div class="nm">Dr. Philip Ovadia</div>
+                <div class="bd">After thousands of open-heart surgeries, Dr. Ovadia made a discovery that changed his career: most of the patients on his table didn't have to be there. He shares the metabolic truths the medical system never told you.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="notes">
+        <div class="note-block">
+          <h5>Design direction</h5>
+          <p>Keeps one speaker per row, but elevates it: large rectangular portraits instead of small circles, the credential set as an eyebrow, the name in a big serif, photo side alternating left and right down the page like a printed feature.</p>
+        </div>
+        <div class="note-block">
+          <h5>Strategic rationale</h5>
+          <p>These bios are genuinely well-written and carry real persuasion — Ovadia's "didn't have to be there" line is a hook. This layout honors the copy and gives the section a slow, premium cadence. Scored lower because eight full-depth rows is a long scroll, and it asks the visitor to read rather than scan.</p>
+        </div>
+        <div class="note-block full">
+          <h5>Visual spec</h5>
+          <p class="spec"><b>Layout:</b> 200px portrait / flexible text, alternating sides per row. &nbsp; <b>Type:</b> Inter 600 eyebrow in rust, Fraunces 500 name ~1.6rem, Inter body. &nbsp; <b>Rhythm:</b> 1px rule between rows. &nbsp; <b>Motion:</b> portrait and text fade in from opposite sides.</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===================== GROUP 4 · VENUE ===================== -->
+<section class="group">
+  <div class="wrap">
+    <div class="group-head reveal">
+      <div class="group-index">Section 04</div>
+      <h2>The Venue — <em>sell the desert itself.</em></h2>
+      <p class="g-brief">Today: a dashed placeholder box. The copy frames the desert as sacred ground — Jesus, Moses, the Buddha, vision quests. <b>The imagery has to carry that weight.</b> An atmospheric desert-resort-at-dawn image is generated and shown below; swap to real Arizona Grand photography Wednesday.</p>
+    </div>
+
+    <!-- VN A -->
+    <article class="concept reveal">
+      <div class="concept-top">
+        <div>
+          <div class="concept-id">Direction A</div>
+          <div class="concept-name">The Cinematic <em>Plate</em></div>
+          <div class="concept-tag">One wide image, edge to edge, headline riding on it.</div>
+        </div>
+        <div class="ring-wrap">
+          <div class="ring" style="--rv:90;--rc:var(--green);"><b>90</b></div>
+          <div class="ring-lbl">Confidence</div>
+        </div>
+      </div>
+      <div class="frame">
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span>section · the venue</span></div>
+          <div class="surface" id="vn-a">
+            <div class="plate">
+              <div class="cap">
+                <div class="eb">The Venue</div>
+                <h2>Where <em>breakthrough</em> happens.</h2>
+              </div>
+            </div>
+            <div class="body">
+              <div class="loc">Arizona Grand Resort · Phoenix, Arizona</div>
+              <div class="lead-p">There's a reason the great traditions all sent their seekers into the desert when something inside them needed to break open.</div>
+              <div class="feats">
+                <div class="feat"><span class="gi">✦</span><div><b>All-Suite Accommodations</b><span>Discounted Breakthrough rate near $150/night.</span></div></div>
+                <div class="feat"><span class="gi">✦</span><div><b>7-Acre Oasis Water Park</b><span>Lazy river, slides, spa pools. Bring the family.</span></div></div>
+                <div class="feat"><span class="gi">✦</span><div><b>Sunrise Trails at South Mountain</b><span>Optional guided morning hikes in the cool desert.</span></div></div>
+                <div class="feat"><span class="gi">✦</span><div><b>20,000 sq ft Spa &amp; Fitness</b><span>Train, recover, decompress all weekend.</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="notes">
+        <div class="note-block">
+          <h5>Design direction</h5>
+          <p>A full-bleed 16:9 image opens the section with the headline overlaid on a soft bottom scrim. Below, the desert-as-sacred-ground copy, then the amenities as a calm two-column grid with small gold marks rather than heavy bordered cards.</p>
+        </div>
+        <div class="note-block">
+          <h5>Strategic rationale</h5>
+          <p>The venue is part of the product — three days in the desert is the transformation container. A cinematic plate sells place as experience and gives the long page a wide visual exhale before pricing. The lighter feature grid stops the section from feeling like a hotel brochure. Cleanest, most premium, lowest build cost.</p>
+        </div>
+        <div class="note-block full">
+          <h5>Visual spec</h5>
+          <p class="spec"><b>Image:</b> generated desert-resort-dawn now, real Arizona Grand photos Wednesday. &nbsp; <b>Plate:</b> 16:9, bottom scrim ink 0→62%. &nbsp; <b>Type:</b> Fraunces 300 headline reversed on image. &nbsp; <b>Features:</b> 2-col grid, gold ✦ marks, warm-paper tiles. &nbsp; <b>Motion:</b> slow image scale on scroll.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- VN B -->
+    <article class="concept reveal">
+      <div class="concept-top">
+        <div>
+          <div class="concept-id">Direction B</div>
+          <div class="concept-name">The <em>Postcard</em></div>
+          <div class="concept-tag">A photograph you could hold. Tactile, warm, human.</div>
+        </div>
+        <div class="ring-wrap">
+          <div class="ring" style="--rv:76;--rc:var(--amber);"><b>76</b></div>
+          <div class="ring-lbl">Confidence</div>
+        </div>
+      </div>
+      <div class="frame">
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span>section · the venue</span></div>
+          <div class="surface" id="vn-b">
+            <div class="eb">The Venue</div>
+            <h2>Where <em>breakthrough</em> happens.</h2>
+            <div class="split">
+              <div class="postcard">
+                <img src="https://guldanjamax.github.io/anthonybalduzzi/generated/venue-desert-dawn.jpg" alt="">
+                <div class="stamp">Greetings from the desert</div>
+              </div>
+              <div class="copy">
+                <p>You'll spend three days in the same landscape the great traditions sent their seekers into — not roughing it, but rooted in it.</p>
+                <div class="check">All-suite accommodations near $150/night</div>
+                <div class="check">7-acre water park and lazy river</div>
+                <div class="check">Sunrise trails at South Mountain</div>
+                <div class="check">10 minutes from Phoenix Sky Harbor</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="notes">
+        <div class="note-block">
+          <h5>Design direction</h5>
+          <p>The venue image is treated as a physical postcard — white border, soft drop shadow, a few degrees of rotation, a handwritten caption in the Caveat script already used for signatures. It sits beside the copy and a light amenity checklist.</p>
+        </div>
+        <div class="note-block">
+          <h5>Strategic rationale</h5>
+          <p>The tilt and handwriting add human warmth and a sense of a trip you'll actually take. It echoes the signature motif elsewhere on the page. Scored lower: the playful skew slightly undercuts the soul-aware gravity of the desert copy, and skeuomorphic touches date faster than clean editorial.</p>
+        </div>
+        <div class="note-block full">
+          <h5>Visual spec</h5>
+          <p class="spec"><b>Postcard:</b> white frame, rotate -3deg, shadow 0 22px 50px ink/26%. &nbsp; <b>Caption:</b> Caveat cursive in sand. &nbsp; <b>Layout:</b> 2-col split on paper-cream. &nbsp; <b>Checklist:</b> gold ✦ + Inter. &nbsp; <b>Motion:</b> postcard settles from a slight extra tilt on entry.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- VN C -->
+    <article class="concept reveal">
+      <div class="concept-top">
+        <div>
+          <div class="concept-id">Direction C</div>
+          <div class="concept-name">Immersive <em>Split</em></div>
+          <div class="concept-tag">The desert holds still while the details scroll past it.</div>
+        </div>
+        <div class="ring-wrap">
+          <div class="ring" style="--rv:83;--rc:var(--amber);"><b>83</b></div>
+          <div class="ring-lbl">Confidence</div>
+        </div>
+      </div>
+      <div class="frame">
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span>section · the venue</span></div>
+          <div class="surface" id="vn-c">
+            <div class="pic"><div class="badge">Arizona Grand Resort · Phoenix</div></div>
+            <div class="scroll">
+              <div class="eb">The Venue</div>
+              <h2>Where <em>breakthrough</em> happens.</h2>
+              <p>The Arizona Grand sits against South Mountain, the largest municipal park in the country, with miles of sunrise trails steps from the door.</p>
+              <div class="feat"><b>All-Suite Accommodations</b><span>Discounted rate near $150/night.</span></div>
+              <div class="feat"><b>7-Acre Oasis Water Park</b><span>Lazy river, slides, spa pools.</span></div>
+              <div class="feat"><b>Curated Healthy Cuisine</b><span>Real food, no seed oils, no compromises.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="notes">
+        <div class="note-block">
+          <h5>Design direction</h5>
+          <p>A two-column section where the image column is sticky — pinned in the viewport while the venue copy and amenities scroll past in the adjacent column. The desert quite literally stays with you as you read.</p>
+        </div>
+        <div class="note-block">
+          <h5>Strategic rationale</h5>
+          <p>Sticky media is an immersion device — it keeps the emotional anchor on screen during the rational read, which is exactly the bridge this section needs before pricing. Scored mid: it is the most build-intensive option and sticky behavior needs careful mobile handling, where it collapses to a stacked layout.</p>
+        </div>
+        <div class="note-block full">
+          <h5>Visual spec</h5>
+          <p class="spec"><b>Layout:</b> 1fr / 1fr, left column position:sticky. &nbsp; <b>Image:</b> full-height cover, small glass badge. &nbsp; <b>Features:</b> gold left-rule list. &nbsp; <b>Mobile:</b> unsticks, image stacks on top. &nbsp; <b>Motion:</b> features fade in as they enter while image holds.</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===================== GROUP 5 · PRICING ===================== -->
+<section class="group">
+  <div class="wrap">
+    <div class="group-head reveal">
+      <div class="group-index">Section 05</div>
+      <h2>Pricing — <em>make VIP the obvious yes.</em></h2>
+      <p class="g-brief">Two tiers, a $450 gap. Today they sit as equal twins. <b>Equal weight means the visitor has to do the work of choosing.</b> These directions use hierarchy, comparison, or reframing to make the decision easy and soften the price.</p>
+    </div>
+
+    <!-- PR A -->
+    <article class="concept reveal">
+      <div class="concept-top">
+        <div>
+          <div class="concept-id">Direction A</div>
+          <div class="concept-name">VIP-<em>Forward</em></div>
+          <div class="concept-tag">Stop presenting two options. Present a recommendation.</div>
+        </div>
+        <div class="ring-wrap">
+          <div class="ring" style="--rv:89;--rc:var(--green);"><b>89</b></div>
+          <div class="ring-lbl">Confidence</div>
+        </div>
+      </div>
+      <div class="frame">
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span>section · reserve your spot</span></div>
+          <div class="surface" id="pr-a">
+            <div class="s-title">Two ways to step through <em>the doorway.</em></div>
+            <div class="dl">Early-bird pricing ends Sunday, June 21 — Father's Day.</div>
+            <div class="grid">
+              <div class="tier">
+                <div class="lbl">GA+ Ticket</div>
+                <div class="price">$845 <s>$995</s></div>
+                <ul>
+                  <li>All three days of keynotes and workshops</li>
+                  <li>Every experiential breakout and movement session</li>
+                  <li>Three clean connection lunches</li>
+                  <li>2025 Live Event recordings included</li>
+                </ul>
+                <a class="s-btn" style="width:100%;text-align:center;">Reserve GA+</a>
+              </div>
+              <div class="tier vip">
+                <div class="ribbon">Most attendees choose this</div>
+                <div class="lbl">VIP Ticket</div>
+                <div class="price">$1,295 <s>$1,495</s></div>
+                <ul>
+                  <li>Front-row priority seating, all sessions</li>
+                  <li>VIP daily lunch with Dr. Anthony and the speakers</li>
+                  <li>VIP-only Q&amp;A with Dr. Anthony</li>
+                  <li>VIP lounge and priority speaker access</li>
+                  <li>2025 <b>and</b> 2026 recordings, yours to keep</li>
+                </ul>
+                <a class="s-btn gold" style="width:100%;text-align:center;">Reserve VIP</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="notes">
+        <div class="note-block">
+          <h5>Design direction</h5>
+          <p>VIP is physically elevated — a touch larger, lifted on a real shadow, crowned with a "Most attendees choose this" ribbon, finished in ink and gold. GA+ stays calm and light as the honest baseline. The eye is led, not left to wander.</p>
+        </div>
+        <div class="note-block">
+          <h5>Strategic rationale</h5>
+          <p>Two equal cards force a decision; a recommended card makes one. Social proof on the ribbon plus the visual lift triggers the center-stage and bandwagon effects that reliably move buyers up a tier. GA+ staying gracious avoids a bait feel. Highest-converting pricing pattern on the web.</p>
+        </div>
+        <div class="note-block full">
+          <h5>Visual spec</h5>
+          <p class="spec"><b>Grid:</b> 1fr / 1.12fr, VIP scaled up with 0 26px 54px shadow. &nbsp; <b>VIP:</b> ink card, gold-soft price and ticks, gold CTA. &nbsp; <b>Ribbon:</b> Inter 700 on gold, centered overlap. &nbsp; <b>Type:</b> Fraunces price ~2.9rem VIP / 2.4rem GA+. &nbsp; <b>Motion:</b> VIP lifts another 4px on hover.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- PR B -->
+    <article class="concept reveal">
+      <div class="concept-top">
+        <div>
+          <div class="concept-id">Direction B</div>
+          <div class="concept-name">The Single <em>Spine</em></div>
+          <div class="concept-tag">One comparison table. Every difference, instantly legible.</div>
+        </div>
+        <div class="ring-wrap">
+          <div class="ring" style="--rv:80;--rc:var(--amber);"><b>80</b></div>
+          <div class="ring-lbl">Confidence</div>
+        </div>
+      </div>
+      <div class="frame">
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span>section · reserve your spot</span></div>
+          <div class="surface" id="pr-b">
+            <div class="s-title">Two ways to step through <em>the doorway.</em></div>
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th class="col-h gacol"><div class="nm">GA+</div><div class="pr">$845</div></th>
+                  <th class="col-h vipcol"><div class="nm">VIP</div><div class="pr">$1,295</div></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>All keynotes, workshops &amp; breakouts</td><td class="gacol"><span class="yes">✦</span></td><td class="vipcol"><span class="yes">✦</span></td></tr>
+                <tr><td>Connection lunches</td><td class="gacol">Standard</td><td class="vipcol">With Dr. Anthony</td></tr>
+                <tr><td>Front-row priority seating</td><td class="gacol"><span class="no">—</span></td><td class="vipcol"><span class="yes">✦</span></td></tr>
+                <tr><td>VIP-only Q&amp;A &amp; lounge access</td><td class="gacol"><span class="no">—</span></td><td class="vipcol"><span class="yes">✦</span></td></tr>
+                <tr><td>Event recordings</td><td class="gacol">2025</td><td class="vipcol">2025 + 2026</td></tr>
+              </tbody>
+              <tfoot>
+                <tr><td></td>
+                  <td class="gacol"><a class="s-btn">Reserve GA+</a></td>
+                  <td class="vipcol"><a class="s-btn dark">Reserve VIP</a></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="notes">
+        <div class="note-block">
+          <h5>Design direction</h5>
+          <p>The twin cards collapse into one comparison table. Benefits run down the left spine; GA+ and VIP are columns. The VIP column is tinted and slightly raised. Every difference between the tiers is visible in one glance, no card-to-card memory required.</p>
+        </div>
+        <div class="note-block">
+          <h5>Strategic rationale</h5>
+          <p>Side-by-side cards make buyers hold features in memory and compare; a table removes that cognitive load entirely. It is the clearest possible answer to "what do I actually get for the extra $450." Scored lower because tables read more transactional than the page's soul-aware tone and need careful mobile design.</p>
+        </div>
+        <div class="note-block full">
+          <h5>Visual spec</h5>
+          <p class="spec"><b>Layout:</b> 3-col table, feature spine left. &nbsp; <b>VIP column:</b> tinted ink/4%, ink header block, gold-soft type. &nbsp; <b>Marks:</b> rust ✦ for yes, faint dash for no. &nbsp; <b>Mobile:</b> collapses to stacked per-tier blocks. &nbsp; <b>CTA:</b> sits in a sticky table footer.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- PR C -->
+    <article class="concept reveal">
+      <div class="concept-top">
+        <div>
+          <div class="concept-id">Direction C</div>
+          <div class="concept-name">The <em>Invitation</em></div>
+          <div class="concept-tag">Reframe the money before the number ever lands.</div>
+        </div>
+        <div class="ring-wrap">
+          <div class="ring" style="--rv:84;--rc:var(--amber);"><b>84</b></div>
+          <div class="ring-lbl">Confidence</div>
+        </div>
+      </div>
+      <div class="frame">
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span>section · reserve your spot</span></div>
+          <div class="surface" id="pr-c">
+            <div class="anchor">"This isn't an expense. It's the gift you give your next chapter."</div>
+            <div class="grid">
+              <div class="inv">
+                <div class="nm">GA+ Ticket</div>
+                <div class="head">The full Breakthrough</div>
+                <div class="price">$845 <s>$995</s></div>
+                <div class="sub">Three days, all in. Every keynote, every breakout, every meal at the table.</div>
+                <a class="s-btn" style="width:100%;text-align:center;">Reserve GA+</a>
+                <div class="pay">or 3 payments of $282</div>
+              </div>
+              <div class="inv vip">
+                <div class="nm">VIP Ticket</div>
+                <div class="head">Breakthrough, front row</div>
+                <div class="price">$1,295 <s>$1,495</s></div>
+                <div class="sub">Everything in GA+, plus the front row, the VIP table with Dr. Anthony, and both years of recordings.</div>
+                <a class="s-btn gold" style="width:100%;text-align:center;">Reserve VIP</a>
+                <div class="pay">or 3 payments of $432</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="notes">
+        <div class="note-block">
+          <h5>Design direction</h5>
+          <p>The locked "gift you give your next chapter" line is lifted to the top as the section's emotional anchor — the reframe lands before any number does. Each tier becomes a warm invitation card with a human headline, and the payment plan is surfaced as a calm line, not buried fine print.</p>
+        </div>
+        <div class="note-block">
+          <h5>Strategic rationale</h5>
+          <p>Price resistance is set by the frame around the number. Naming the reframe first, and showing the monthly figure plainly, lowers the felt cost before the objection forms. Most on-brand with the soul-aware voice. Scored just under VIP-Forward because it does less hierarchy work — both cards still read fairly equal.</p>
+        </div>
+        <div class="note-block full">
+          <h5>Visual spec</h5>
+          <p class="spec"><b>Anchor:</b> Fraunces italic ~1.25rem rust, centered. &nbsp; <b>Cards:</b> warm invitations, VIP with gold border and soft gold shadow. &nbsp; <b>Type:</b> human headline in italic serif over the tier label. &nbsp; <b>Payment:</b> plain Inter line under each CTA. &nbsp; <b>Motion:</b> anchor fades in first, cards follow.</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===================== SUMMARY ===================== -->
+<section class="summary">
+  <div class="wrap reveal">
+    <div class="group-index">The Recommendation</div>
+    <h2 class="group-head" style="font-family:'Fraunces',serif;font-weight:300;font-size:clamp(1.9rem,3.6vw,2.9rem);color:#fff;margin-bottom:0.6rem;">If I were shipping this Wednesday.</h2>
+    <p style="color:var(--text-dim);max-width:44rem;">One coherent page can be assembled straight from the strongest direction in each section. They were designed to share a system — palette, type, and motion all carry across.</p>
+
+    <table class="sum-table">
+      <thead>
+        <tr><th>Section</th><th>Pick</th><th>Why it wins</th><th>Confidence</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Hero</b></td><td class="win">The Threshold</td><td>Cinematic gravity plus first-viewport proof and urgency. Stops the scroll without abandoning the editorial voice.</td><td>91%</td></tr>
+        <tr><td><b>You'll Leave With</b></td><td class="win">Engraved</td><td>Removes the emoji credibility leak with the least risk and the cleanest fit to the existing system.</td><td>88%</td></tr>
+        <tr><td><b>The Faculty</b></td><td class="win">The Lead &amp; The Circle</td><td>Tells the host-then-faculty trust story in layout, and gracefully absorbs an uneven headshot set.</td><td>90%</td></tr>
+        <tr><td><b>The Venue</b></td><td class="win">The Cinematic Plate</td><td>Sells place as part of the transformation, gives the long page a visual exhale, lowest build cost.</td><td>90%</td></tr>
+        <tr><td><b>Pricing</b></td><td class="win">VIP-Forward</td><td>Turns two equal options into a clear recommendation. Highest-converting pricing pattern there is.</td><td>89%</td></tr>
+      </tbody>
+    </table>
+
+    <div class="closer">
+      <h3>The trade-off worth your <em>attention</em>.</h3>
+      <p>The one genuine fork is the Hero. <b>The Threshold</b> (recommended) keeps the event bigger than any one person and is the safer, more scalable choice. <b>The Witness</b> is more emotionally magnetic and uses a real, striking founder portrait — but it spends the founder card early and overlaps the founder section. If Breakthrough markets primarily on Dr. Anthony's personal brand, The Witness is worth a real look. If it markets as a collective experience, The Threshold wins.</p>
+      <p>Tell me your picks for each section, or just say "go with your recommendations," and I'll assemble the full updated page and deploy it for a live preview.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

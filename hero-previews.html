@@ -3,24 +3,20 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Hero Previews — Breakthrough in the Desert</title>
+<title>Hero Previews v2 — Breakthrough in the Desert</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..700;1,6..72,200..600&family=Spectral:wght@300;400&family=Schibsted+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --ink:#1b1916;--bone:#ebe3d4;--ember:#a8502e;--gold:#c49a50;
-  --on-bone-dim:rgba(235,227,212,0.78);
-  --on-bone-faint:rgba(235,227,212,0.5);
+  --ink:#1b1916;--bone:#ebe3d4;--ember:#a8502e;--ember-deep:#7a3920;
+  --gold:#d8b87a;--gold-deep:#9c7a3a;
   --line-d:rgba(235,227,212,0.16);
 }
 html,body{background:#000;color:var(--bone);overflow-x:hidden;}
-body{
-  font-family:'Spectral',serif;line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-}
-/* film grain */
+body{font-family:'Spectral',serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
+/* fine film grain */
 body::after{
   content:"";position:fixed;inset:0;pointer-events:none;z-index:99;opacity:0.07;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -32,137 +28,219 @@ img{display:block;max-width:100%;}
 /* ===== HERO BASE ===== */
 .hero{
   position:relative;width:100%;height:100vh;min-height:680px;
-  overflow:hidden;display:flex;flex-direction:column;
+  overflow:hidden;display:flex;flex-direction:column;isolation:isolate;
 }
+
+/* Background image (Ken Burns) */
 .hero-bg{
-  position:absolute;inset:-3%;
+  position:absolute;inset:-4%;
   background-size:cover;background-position:center;
-  will-change:transform;
+  will-change:transform;z-index:1;
 }
-.hero-glow{
-  position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;
+
+/* Slow horizontal light sweep */
+.hero-sweep{
+  position:absolute;inset:-10% -30%;z-index:2;pointer-events:none;mix-blend-mode:screen;
+  background:linear-gradient(105deg,
+    transparent 0%, transparent 30%,
+    rgba(255,200,140,0.0) 40%,
+    rgba(255,200,140,0.16) 50%,
+    rgba(255,200,140,0.0) 60%,
+    transparent 70%, transparent 100%);
+  animation:sweep 22s linear infinite;
 }
+@keyframes sweep{
+  0%{transform:translateX(-30%);}
+  100%{transform:translateX(30%);}
+}
+
+/* Pulsing warm halo */
+.hero-glow{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;z-index:3;}
+
+/* Dust particles */
+.hero-dust{position:absolute;inset:0;pointer-events:none;z-index:4;overflow:hidden;}
+.dust{position:absolute;background:radial-gradient(circle,rgba(255,235,200,0.9),rgba(255,235,200,0) 65%);
+  border-radius:50%;animation:rise linear infinite;opacity:0.0;}
+@keyframes rise{
+  0%{transform:translate3d(0,20px,0);opacity:0;}
+  10%{opacity:0.65;}
+  90%{opacity:0.55;}
+  100%{transform:translate3d(40px,-110vh,0);opacity:0;}
+}
+
+/* Contrast scrim — heavier on left where text lives */
 .hero-scrim{
-  position:absolute;inset:0;pointer-events:none;
+  position:absolute;inset:0;pointer-events:none;z-index:5;
+  background:
+    linear-gradient(95deg,rgba(10,7,4,0.78) 0%,rgba(10,7,4,0.55) 28%,rgba(10,7,4,0.12) 56%,rgba(10,7,4,0.0) 78%,rgba(10,7,4,0.28) 100%),
+    linear-gradient(180deg,rgba(10,7,4,0.48) 0%,rgba(10,7,4,0.0) 26%,rgba(10,7,4,0.0) 64%,rgba(10,7,4,0.62) 100%);
 }
+
+/* Top utility bar */
 .hero-util{
-  position:relative;z-index:3;display:flex;justify-content:space-between;align-items:center;
-  gap:1rem;padding:1.2rem 2.2rem;
+  position:relative;z-index:6;display:flex;justify-content:space-between;align-items:center;
+  gap:1rem;padding:1.2rem 2.4rem;
   border-bottom:1px solid rgba(255,255,255,0.18);
   font-family:'Schibsted Grotesk',sans-serif;font-size:0.66rem;font-weight:500;
-  letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.86);
+  letter-spacing:0.18em;text-transform:uppercase;color:#fff;
+  text-shadow:0 1px 8px rgba(0,0,0,0.6);
 }
 .hero-util .seats{color:var(--gold);font-weight:600;}
+
+/* Candidate pill */
 .hero-tag-pill{
-  position:absolute;top:1.2rem;right:2.2rem;z-index:5;
+  position:absolute;top:1.2rem;right:2.4rem;z-index:8;
   font-family:'Schibsted Grotesk',sans-serif;font-size:0.58rem;font-weight:700;
   letter-spacing:0.22em;text-transform:uppercase;
   padding:0.4rem 0.9rem;background:var(--ember);color:#fff;
 }
+
+/* Content */
 .hero-content{
-  position:relative;z-index:3;margin-top:auto;
-  padding:2rem 2.6rem 5rem;max-width:52rem;
+  position:relative;z-index:7;margin-top:auto;
+  padding:2rem 2.8rem 5rem;max-width:54rem;
 }
-/* threshold mark */
-.thresh{display:inline-block;color:var(--gold);margin-bottom:1.6rem;}
-.thresh svg{display:block;}
 .hero-eyebrow{
-  font-family:'Schibsted Grotesk',sans-serif;font-size:0.7rem;font-weight:600;
-  letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.74rem;font-weight:600;
+  letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);
   margin-bottom:1.4rem;
+  text-shadow:0 1px 10px rgba(0,0,0,0.7);
 }
 .hero-title{
   font-family:'Newsreader',serif;font-weight:200;
-  font-size:clamp(3rem,8.4vw,6.6rem);line-height:0.92;letter-spacing:-0.03em;
+  font-size:clamp(3rem,8.8vw,7rem);line-height:0.92;letter-spacing:-0.03em;
   color:#fff;margin-bottom:1.6rem;
-  text-shadow:0 4px 30px rgba(0,0,0,0.4);
+  text-shadow:0 4px 40px rgba(0,0,0,0.55), 0 2px 16px rgba(0,0,0,0.4);
 }
 .hero-title em{font-style:italic;font-weight:300;color:var(--gold);}
 .hero-question{
   font-family:'Newsreader',serif;font-style:italic;font-weight:300;
-  font-size:clamp(1.35rem,2.6vw,1.95rem);line-height:1.32;
-  color:rgba(255,255,255,0.94);max-width:30em;margin-bottom:2rem;
-  text-shadow:0 2px 16px rgba(0,0,0,0.4);
+  font-size:clamp(1.4rem,2.7vw,2.05rem);line-height:1.32;
+  color:#fff;max-width:30em;margin-bottom:2.2rem;
+  text-shadow:0 2px 22px rgba(0,0,0,0.7), 0 1px 6px rgba(0,0,0,0.5);
 }
-.hero-ctas{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin-bottom:1.4rem;}
-.cta-btn{
-  display:inline-block;font-family:'Schibsted Grotesk',sans-serif;font-size:0.74rem;
-  font-weight:600;letter-spacing:0.2em;text-transform:uppercase;
-  color:#fff;background:var(--ember);padding:1.1rem 2.2rem;text-decoration:none;
-  transition:all .3s ease;
+.hero-tagline{
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.76rem;font-weight:600;
+  letter-spacing:0.24em;text-transform:uppercase;color:rgba(255,255,255,0.78);
+  text-shadow:0 1px 8px rgba(0,0,0,0.6);
 }
-.cta-btn:hover{background:#8b3f24;transform:translateY(-2px);}
+
+/* ===== COOL CTA BUTTON ===== */
+.cta-row{display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap;margin-bottom:1.6rem;}
+.cta-primary{
+  position:relative;display:inline-flex;align-items:center;gap:0.9rem;
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.76rem;font-weight:700;
+  letter-spacing:0.22em;text-transform:uppercase;color:#fff;text-decoration:none;
+  padding:1.25rem 2.4rem;overflow:hidden;
+  background:linear-gradient(180deg,#b85c3a 0%,#a8502e 50%,#8b3f24 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,210,170,0.4),
+    inset 0 -1px 0 rgba(0,0,0,0.3),
+    0 0 0 1px var(--gold-deep) inset,
+    0 18px 48px rgba(168,80,46,0.42),
+    0 0 32px rgba(168,80,46,0.28);
+  transition:transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s ease;
+  isolation:isolate;
+}
+.cta-primary::before{
+  content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(105deg,transparent 30%,rgba(255,235,200,0.55) 50%,transparent 70%);
+  transform:translateX(-130%);
+  animation:shine 5.5s ease-in-out infinite;
+  animation-delay:1s;
+}
+@keyframes shine{
+  0%,18%{transform:translateX(-130%);}
+  35%{transform:translateX(130%);}
+  100%{transform:translateX(130%);}
+}
+.cta-primary .ctxt{position:relative;z-index:2;}
+.cta-primary .arrow{
+  position:relative;z-index:2;display:inline-flex;align-items:center;justify-content:center;
+  width:28px;height:28px;border:1px solid rgba(255,235,200,0.7);border-radius:50%;
+  transition:transform .35s ease, background .35s ease;
+}
+.cta-primary .arrow svg{width:14px;height:14px;color:#fff;transition:transform .35s ease;}
+.cta-primary:hover{transform:translateY(-2px);box-shadow:
+    inset 0 1px 0 rgba(255,210,170,0.5),
+    inset 0 -1px 0 rgba(0,0,0,0.3),
+    0 0 0 1px var(--gold) inset,
+    0 24px 56px rgba(168,80,46,0.55),
+    0 0 48px rgba(168,80,46,0.4);}
+.cta-primary:hover .arrow{background:rgba(255,235,200,0.18);}
+.cta-primary:hover .arrow svg{transform:translateX(2px);}
+
 .cta-ghost{
-  display:inline-block;font-family:'Schibsted Grotesk',sans-serif;font-size:0.72rem;
-  font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#fff;
-  text-decoration:none;padding:1.05rem 0.4rem;
-  border-bottom:1px solid rgba(255,255,255,0.4);transition:all .3s ease;
+  display:inline-flex;align-items:center;gap:0.6rem;
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.74rem;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;color:#fff;text-decoration:none;
+  padding:1.15rem 0;
+  border-bottom:1px solid rgba(255,255,255,0.42);transition:all .3s ease;
+  text-shadow:0 1px 8px rgba(0,0,0,0.6);
 }
 .cta-ghost:hover{border-color:var(--gold);color:var(--gold);}
-.hero-tagline{
-  font-family:'Schibsted Grotesk',sans-serif;font-size:0.74rem;font-weight:600;
-  letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.62);
-}
+
+/* Scroll cue */
 .scroll-cue{
-  position:absolute;left:50%;bottom:1.6rem;transform:translateX(-50%);z-index:4;
+  position:absolute;left:50%;bottom:1.6rem;transform:translateX(-50%);z-index:7;
   font-family:'Schibsted Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.22em;
-  text-transform:uppercase;color:rgba(255,255,255,0.5);
+  text-transform:uppercase;color:rgba(255,255,255,0.55);
   animation:bob 2.4s ease-in-out infinite;
+  text-shadow:0 1px 8px rgba(0,0,0,0.6);
 }
 @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,8px);}}
+
+/* Motion note */
+.move-note{
+  position:absolute;bottom:1.6rem;right:2.4rem;z-index:7;max-width:18rem;
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.58rem;font-weight:500;
+  letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);
+  text-align:right;line-height:1.5;
+  text-shadow:0 1px 8px rgba(0,0,0,0.6);
+}
 
 /* ============= HERO 1 · DIEHL VIOLET DUSK ============= */
 #hero1 .hero-bg{
   background-image:url('https://guldanjamax.github.io/anthonybalduzzi/stock/diehl-violet-dusk.jpg');
-  animation:driftA 36s ease-in-out infinite alternate;
   background-position:50% 56%;
+  animation:driftA 22s ease-in-out infinite alternate;
 }
 @keyframes driftA{
   0%{transform:scale(1.04) translate(0%,0%);}
-  100%{transform:scale(1.11) translate(-2.2%,-1%);}
-}
-#hero1 .hero-scrim{
-  background:
-    linear-gradient(115deg,rgba(16,11,7,0.7) 0%,rgba(16,11,7,0.25) 38%,rgba(16,11,7,0.05) 62%,rgba(16,11,7,0.55) 100%),
-    linear-gradient(180deg,rgba(16,11,7,0.45) 0%,rgba(16,11,7,0.0) 30%,rgba(16,11,7,0.0) 60%,rgba(16,11,7,0.55) 100%);
+  100%{transform:scale(1.14) translate(-3%,-1.4%);}
 }
 #hero1 .hero-glow{
-  background:radial-gradient(60% 55% at 78% 38%,rgba(255,170,90,0.42),transparent 65%);
-  animation:glowA 11s ease-in-out infinite alternate;
+  background:radial-gradient(60% 55% at 76% 38%,rgba(255,170,90,0.5),transparent 65%);
+  animation:glowA 9s ease-in-out infinite alternate;
 }
 @keyframes glowA{
-  0%{opacity:0.55;transform:translateY(0);}
-  100%{opacity:0.95;transform:translateY(-1.4%);}
+  0%{opacity:0.55;transform:translateY(0) scale(1);}
+  100%{opacity:1;transform:translateY(-1.8%) scale(1.05);}
 }
 
 /* ============= HERO 2 · BEE WIDE VISTA ============= */
 #hero2 .hero-bg{
   background-image:url('https://guldanjamax.github.io/anthonybalduzzi/stock/bee-wide-vista.jpg');
-  animation:driftB 40s ease-in-out infinite alternate;
   background-position:50% 60%;
+  animation:driftB 26s ease-in-out infinite alternate;
 }
 @keyframes driftB{
-  0%{transform:scale(1.08) translate(1.2%,0.5%);}
-  100%{transform:scale(1.02) translate(-1.2%,-0.5%);}
-}
-#hero2 .hero-scrim{
-  background:
-    linear-gradient(115deg,rgba(12,9,5,0.65) 0%,rgba(12,9,5,0.18) 42%,rgba(12,9,5,0.0) 65%,rgba(12,9,5,0.45) 100%),
-    linear-gradient(180deg,rgba(12,9,5,0.35) 0%,rgba(12,9,5,0.0) 30%,rgba(12,9,5,0.0) 65%,rgba(12,9,5,0.5) 100%);
+  0%{transform:scale(1.1) translate(1.6%,0.6%);}
+  100%{transform:scale(1.02) translate(-1.6%,-0.8%);}
 }
 #hero2 .hero-glow{
-  background:radial-gradient(70% 60% at 50% 38%,rgba(255,200,120,0.32),transparent 65%);
-  animation:glowB 14s ease-in-out infinite alternate;
+  background:radial-gradient(70% 60% at 50% 38%,rgba(255,210,140,0.36),transparent 65%);
+  animation:glowB 12s ease-in-out infinite alternate;
 }
 @keyframes glowB{
-  0%{opacity:0.7;}
-  100%{opacity:1;}
+  0%{opacity:0.7;transform:translateY(0);}
+  100%{opacity:1;transform:translateY(-1%);}
 }
 
 /* ============= COMPARE BAND ============= */
 .compare{
   background:var(--ink);padding:5rem 2rem;
-  border-top:1px solid var(--line-d);border-bottom:1px solid var(--line-d);
+  border-top:1px solid var(--line-d);
 }
 .compare .wrap{max-width:1180px;margin:0 auto;}
 .compare h2{
@@ -171,9 +249,9 @@ img{display:block;max-width:100%;}
   color:var(--bone);margin-bottom:1rem;
 }
 .compare h2 em{font-style:italic;color:var(--ember);}
-.compare .lede{color:rgba(235,227,212,0.7);max-width:42rem;font-size:1.05rem;margin-bottom:2.6rem;}
+.compare .lede{color:rgba(235,227,212,0.78);max-width:46rem;font-size:1.05rem;margin-bottom:1.2rem;}
 .compare .label{color:var(--ember);margin-bottom:1rem;}
-.compare-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;}
+.compare-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.8rem;}
 .compare-pick{
   display:inline-flex;align-items:center;gap:0.7rem;
   font-family:'Schibsted Grotesk',sans-serif;font-size:0.7rem;font-weight:600;
@@ -182,26 +260,27 @@ img{display:block;max-width:100%;}
   background:transparent;text-decoration:none;transition:all .3s ease;
 }
 .compare-pick:hover{border-color:var(--ember);color:var(--ember);}
-.compare-pick.primary{background:var(--ember);border-color:var(--ember);color:#fff;}
-.compare-pick.primary:hover{background:#8b3f24;}
 
-/* movement note */
-.move-note{
-  position:absolute;bottom:1.4rem;right:2.2rem;z-index:5;max-width:18rem;
-  font-family:'Schibsted Grotesk',sans-serif;font-size:0.6rem;font-weight:500;
-  letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.55);
-  text-align:right;line-height:1.45;
-}
+.diff{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-d);
+  border:1px solid var(--line-d);margin-top:2rem;}
+@media(max-width:760px){.diff{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.diff{grid-template-columns:1fr;}}
+.diff div{background:var(--ink);padding:1.2rem;}
+.diff h4{font-family:'Schibsted Grotesk',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:0.18em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;}
+.diff p{font-size:0.86rem;color:rgba(235,227,212,0.7);line-height:1.55;}
 
 @media(max-width:640px){
   .hero-util{padding:0.9rem 1.2rem;font-size:0.56rem;letter-spacing:0.1em;}
   .hero-tag-pill{top:0.9rem;right:1.2rem;}
   .hero-content{padding:2rem 1.5rem 4rem;}
   .move-note{right:1.2rem;max-width:14rem;}
+  .cta-primary{padding:1.05rem 1.7rem;font-size:0.7rem;}
 }
 
 @media(prefers-reduced-motion:reduce){
-  #hero1 .hero-bg,#hero2 .hero-bg,#hero1 .hero-glow,#hero2 .hero-glow,.scroll-cue{animation:none;}
+  .hero-bg,.hero-glow,.hero-sweep,.scroll-cue,.dust,.cta-primary::before{animation:none !important;}
+  .dust{display:none;}
 }
 </style>
 </head>
@@ -211,7 +290,18 @@ img{display:block;max-width:100%;}
 <section class="hero" id="hero1">
   <span class="hero-tag-pill">Candidate 1 · Diehl violet dusk</span>
   <div class="hero-bg"></div>
+  <div class="hero-sweep"></div>
   <div class="hero-glow"></div>
+  <div class="hero-dust">
+    <span class="dust" style="width:3px;height:3px;left:18%;bottom:-5%;animation-duration:24s;animation-delay:0s;"></span>
+    <span class="dust" style="width:2px;height:2px;left:33%;bottom:-5%;animation-duration:32s;animation-delay:6s;"></span>
+    <span class="dust" style="width:4px;height:4px;left:52%;bottom:-5%;animation-duration:28s;animation-delay:11s;"></span>
+    <span class="dust" style="width:2px;height:2px;left:68%;bottom:-5%;animation-duration:36s;animation-delay:3s;"></span>
+    <span class="dust" style="width:3px;height:3px;left:82%;bottom:-5%;animation-duration:30s;animation-delay:15s;"></span>
+    <span class="dust" style="width:2px;height:2px;left:9%;bottom:-5%;animation-duration:38s;animation-delay:18s;"></span>
+    <span class="dust" style="width:3px;height:3px;left:45%;bottom:-5%;animation-duration:26s;animation-delay:9s;"></span>
+    <span class="dust" style="width:2px;height:2px;left:74%;bottom:-5%;animation-duration:34s;animation-delay:22s;"></span>
+  </div>
   <div class="hero-scrim"></div>
 
   <div class="hero-util">
@@ -220,20 +310,20 @@ img{display:block;max-width:100%;}
   </div>
 
   <div class="hero-content">
-    <span class="thresh">
-      <svg width="40" height="48" viewBox="0 0 46 56" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 56 L7 26 A16 16 0 0 1 39 26 L39 56"/><line x1="23" y1="34" x2="23" y2="56"/></svg>
-    </span>
     <div class="hero-eyebrow">The Fit Father &amp; Fit Mother Project Present</div>
     <h1 class="hero-title">Breakthrough <em>in the</em> Desert</h1>
     <p class="hero-question">What if the second half of your life was the best part?</p>
-    <div class="hero-ctas">
-      <a href="#" class="cta-btn">Reserve Your Spot &rarr;</a>
-      <a href="#" class="cta-ghost">Walk through the 3-day arc</a>
+    <div class="cta-row">
+      <a href="#" class="cta-primary">
+        <span class="ctxt">Reserve Your Spot</span>
+        <span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </a>
+      <a href="#" class="cta-ghost">Walk through the 3-day arc &darr;</a>
     </div>
     <div class="hero-tagline">Three Days &middot; One Doorway &middot; The Rest of Your Life</div>
   </div>
 
-  <div class="move-note">Slow Ken Burns drift · pulsing warm light · film grain overlay</div>
+  <div class="move-note">Ken Burns drift · drifting light sweep · floating dust motes · pulsing warm halo · film grain</div>
   <div class="scroll-cue">Scroll for Candidate 2 &darr;</div>
 </section>
 
@@ -241,7 +331,18 @@ img{display:block;max-width:100%;}
 <section class="hero" id="hero2">
   <span class="hero-tag-pill">Candidate 2 · Bee wide vista</span>
   <div class="hero-bg"></div>
+  <div class="hero-sweep"></div>
   <div class="hero-glow"></div>
+  <div class="hero-dust">
+    <span class="dust" style="width:3px;height:3px;left:22%;bottom:-5%;animation-duration:28s;animation-delay:2s;"></span>
+    <span class="dust" style="width:2px;height:2px;left:37%;bottom:-5%;animation-duration:34s;animation-delay:8s;"></span>
+    <span class="dust" style="width:4px;height:4px;left:58%;bottom:-5%;animation-duration:26s;animation-delay:14s;"></span>
+    <span class="dust" style="width:2px;height:2px;left:72%;bottom:-5%;animation-duration:32s;animation-delay:5s;"></span>
+    <span class="dust" style="width:3px;height:3px;left:88%;bottom:-5%;animation-duration:36s;animation-delay:17s;"></span>
+    <span class="dust" style="width:2px;height:2px;left:13%;bottom:-5%;animation-duration:30s;animation-delay:20s;"></span>
+    <span class="dust" style="width:3px;height:3px;left:49%;bottom:-5%;animation-duration:38s;animation-delay:11s;"></span>
+    <span class="dust" style="width:2px;height:2px;left:78%;bottom:-5%;animation-duration:24s;animation-delay:25s;"></span>
+  </div>
   <div class="hero-scrim"></div>
 
   <div class="hero-util">
@@ -250,35 +351,54 @@ img{display:block;max-width:100%;}
   </div>
 
   <div class="hero-content">
-    <span class="thresh">
-      <svg width="40" height="48" viewBox="0 0 46 56" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 56 L7 26 A16 16 0 0 1 39 26 L39 56"/><line x1="23" y1="34" x2="23" y2="56"/></svg>
-    </span>
     <div class="hero-eyebrow">The Fit Father &amp; Fit Mother Project Present</div>
     <h1 class="hero-title">Breakthrough <em>in the</em> Desert</h1>
     <p class="hero-question">What if the second half of your life was the best part?</p>
-    <div class="hero-ctas">
-      <a href="#" class="cta-btn">Reserve Your Spot &rarr;</a>
-      <a href="#" class="cta-ghost">Walk through the 3-day arc</a>
+    <div class="cta-row">
+      <a href="#" class="cta-primary">
+        <span class="ctxt">Reserve Your Spot</span>
+        <span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </a>
+      <a href="#" class="cta-ghost">Walk through the 3-day arc &darr;</a>
     </div>
     <div class="hero-tagline">Three Days &middot; One Doorway &middot; The Rest of Your Life</div>
   </div>
 
-  <div class="move-note">Reverse drift (zoom out) · steady warm light · film grain overlay</div>
+  <div class="move-note">Reverse drift (zooming out) · drifting light sweep · floating dust motes · pulsing halo · film grain</div>
   <div class="scroll-cue">Scroll for the call &darr;</div>
 </section>
 
 <!-- ===== COMPARE ===== -->
 <section class="compare">
   <div class="wrap">
-    <div class="label">Decision time</div>
-    <h2>Which one <em>ships?</em></h2>
-    <p class="lede">Both heroes are real photographs, free-licensed, with subtle background motion (Ken Burns drift + a slowly-pulsing warm light, plus the brand's film grain). The motion is meant to read as atmosphere — slow enough that it doesn't compete with the headline, just enough that the hero feels alive when you land.</p>
+    <div class="label">What changed this round</div>
+    <h2>Five upgrades on each <em>hero.</em></h2>
+    <p class="lede">No icon. More visible background motion. Stronger contrast for the headline and body. A more deliberate, premium-feeling CTA button with a slow shine and a gold-rule inner border. Same two real photographs — just dialed in.</p>
 
-    <p class="lede" style="margin-bottom:0;">Tell me <b style="color:var(--bone);">"Candidate 1"</b> or <b style="color:var(--bone);">"Candidate 2"</b> and I'll wire the chosen hero into the page rebuild on the brand system. Or push back on the motion — happy to tune it slower, faster, or kill it.</p>
+    <div class="diff">
+      <div>
+        <h4>01 · Icon retired</h4>
+        <p>The threshold doorway mark is gone from the hero. Reserved for body sections only.</p>
+      </div>
+      <div>
+        <h4>02 · Motion layered up</h4>
+        <p>Faster Ken Burns drift + a slow horizontal light sweep + eight floating dust motes + a pulsing warm halo. Multiple speeds so none read as a loop.</p>
+      </div>
+      <div>
+        <h4>03 · The button has weight</h4>
+        <p>Gradient ember, inner gold rule, warm ambient glow, an animated shine that crosses every 5.5 seconds, a circular arrow that nudges on hover.</p>
+      </div>
+      <div>
+        <h4>04 · Stronger contrast</h4>
+        <p>Heavier left-side scrim, full-white question copy, multi-layer text shadow on title and question. Every line reads cleanly over either photo.</p>
+      </div>
+    </div>
+
+    <p class="lede" style="margin-top:2rem;margin-bottom:0;">Tell me <b style="color:var(--bone);">"Candidate 1"</b> or <b style="color:var(--bone);">"Candidate 2"</b> and I'll wire the chosen hero into the page rebuild. Or call out any motion or button tweak you want.</p>
 
     <div class="compare-actions">
-      <a href="#hero1" class="compare-pick">↑ See Candidate 1 again</a>
-      <a href="#hero2" class="compare-pick">↑ See Candidate 2 again</a>
+      <a href="#hero1" class="compare-pick">↑ Candidate 1 again</a>
+      <a href="#hero2" class="compare-pick">↑ Candidate 2 again</a>
     </div>
   </div>
 </section>

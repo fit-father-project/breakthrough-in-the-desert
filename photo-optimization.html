@@ -82,12 +82,12 @@ img{display:block;max-width:100%;}
 
 /* SPEAKER PAIRS */
 .spk-row{
-  display:grid;grid-template-columns:auto 1fr 1fr;gap:1.4rem;
+  display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr);gap:1.4rem;
   padding:2rem 0;border-top:1px solid var(--line);align-items:center;
 }
 .spk-row:first-of-type{border-top:none;}
 @media(max-width:760px){.spk-row{grid-template-columns:1fr;}}
-.spk-info{padding-right:1rem;}
+.spk-info{padding-right:1rem;min-width:0;}
 .spk-info .nm{font-family:'Newsreader',serif;font-size:1.35rem;color:var(--bone);margin-bottom:0.3rem;}
 .spk-info .cr{font-family:'Schibsted Grotesk',sans-serif;font-size:0.66rem;letter-spacing:0.16em;
   text-transform:uppercase;color:var(--bronze);margin-bottom:0.7rem;}

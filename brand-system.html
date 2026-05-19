@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Breakthrough in the Desert — Brand System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..700;1,6..72,200..600&family=Spectral:ital,wght@0,300;0,400;0,500;1,400&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#1b1916;
+  --ink-2:#241f19;
+  --umber:#5a4631;
+  --bone:#ebe3d4;
+  --plaster:#ded0b8;
+  --sand:#c9b696;
+  --sage:#878a76;
+  --ember:#a8502e;
+  --bronze:#9c8254;
+  --on-ink:#e9e0cf;
+  --on-ink-dim:#a39a88;
+  --on-ink-faint:#6f6757;
+  --on-bone:#1b1916;
+  --on-bone-dim:#6b6253;
+  --line-d:rgba(233,224,207,0.14);
+  --line-l:rgba(27,25,22,0.16);
+  --display:'Newsreader',Georgia,serif;
+  --body:'Spectral',Georgia,serif;
+  --label:'Schibsted Grotesk',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--ink);color:var(--on-ink);
+  font-family:var(--body);font-size:17px;line-height:1.7;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+/* film grain */
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:0.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+img{display:block;max-width:100%;}
+
+.wrap{max-width:1140px;margin:0 auto;padding:0 2.4rem;}
+@media(max-width:680px){.wrap{padding:0 1.3rem;}}
+
+/* shared type */
+.label{
+  font-family:var(--label);font-size:0.68rem;font-weight:600;
+  letter-spacing:0.28em;text-transform:uppercase;
+}
+.threshold{display:inline-block;color:var(--ember);}
+.threshold svg{display:block;}
+
+.sec{padding:7rem 0;position:relative;border-top:1px solid var(--line-d);}
+.sec.bone{background:var(--bone);color:var(--on-bone);border-top:none;}
+.sec.bone .sec-num{color:var(--on-bone-dim);}
+.sec.bone .sec-kicker{color:var(--ember);}
+.sec.bone .h2{color:var(--ink);}
+
+.sec-head{display:flex;gap:1.4rem;align-items:baseline;margin-bottom:2.6rem;}
+.sec-num{
+  font-family:var(--label);font-size:0.7rem;font-weight:600;letter-spacing:0.1em;
+  color:var(--on-ink-faint);padding-top:0.5rem;
+}
+.sec-kicker{
+  font-family:var(--label);font-size:0.68rem;font-weight:600;
+  letter-spacing:0.28em;text-transform:uppercase;color:var(--bronze);
+  margin-bottom:1rem;
+}
+.h2{
+  font-family:var(--display);font-weight:300;
+  font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.04;letter-spacing:-0.02em;
+}
+.h2 em{font-style:italic;color:var(--ember);}
+.lede{
+  font-family:var(--body);font-weight:300;
+  font-size:clamp(1.15rem,1.9vw,1.45rem);line-height:1.55;
+  max-width:34rem;color:var(--on-ink-dim);margin-top:1.5rem;
+}
+.sec.bone .lede{color:var(--on-bone-dim);}
+p{margin-bottom:1.1rem;}
+p:last-child{margin-bottom:0;}
+
+/* ============ MASTHEAD ============ */
+.masthead{
+  min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;
+  padding:2.4rem 0 4rem;position:relative;overflow:hidden;
+}
+.masthead-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(900px 600px at 82% 12%, rgba(168,80,46,0.22), transparent 66%),
+    radial-gradient(700px 500px at 6% 96%, rgba(90,70,49,0.4), transparent 70%);
+}
+.mast-top{
+  position:relative;display:flex;justify-content:space-between;align-items:center;
+  border-bottom:1px solid var(--line-d);padding-bottom:1.4rem;
+}
+.mast-top .label{color:var(--on-ink-dim);}
+.mast-center{position:relative;margin:auto 0;}
+.mast-mark{margin-bottom:2.4rem;}
+.mast-title{
+  font-family:var(--display);font-weight:200;
+  font-size:clamp(3.2rem,10vw,8.2rem);line-height:0.92;letter-spacing:-0.035em;
+  color:var(--bone);
+}
+.mast-title em{font-style:italic;font-weight:300;color:var(--ember);}
+.mast-sub{
+  margin-top:2rem;max-width:33rem;font-family:var(--body);font-weight:300;
+  font-size:1.3rem;line-height:1.5;color:var(--on-ink-dim);
+}
+.mast-foot{
+  position:relative;display:flex;justify-content:space-between;align-items:flex-end;
+  gap:2rem;flex-wrap:wrap;
+}
+.mast-foot .stat .n{font-family:var(--display);font-size:2.2rem;color:var(--sand);line-height:1;}
+.mast-foot .stat .l{font-family:var(--label);font-size:0.62rem;letter-spacing:0.18em;
+  text-transform:uppercase;color:var(--on-ink-faint);margin-top:0.4rem;}
+.mast-stats{display:flex;gap:2.6rem;}
+
+/* ============ DIAGNOSIS ============ */
+.diag-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-d);
+  border:1px solid var(--line-d);margin-top:1rem;}
+@media(max-width:680px){.diag-grid{grid-template-columns:1fr;}}
+.diag{background:var(--ink);padding:1.8rem;}
+.diag .x{font-family:var(--display);font-style:italic;color:var(--ember);font-size:1.2rem;}
+.diag h4{font-family:var(--display);font-weight:400;font-size:1.2rem;margin:0.5rem 0 0.4rem;color:var(--bone);}
+.diag p{font-size:0.95rem;color:var(--on-ink-dim);line-height:1.6;}
+
+/* ============ ESSENCE ============ */
+.essence-quote{
+  font-family:var(--display);font-weight:300;font-style:italic;
+  font-size:clamp(1.8rem,3.6vw,2.9rem);line-height:1.28;letter-spacing:-0.02em;
+  color:var(--bone);max-width:24em;
+}
+.essence-quote .e{color:var(--ember);font-style:normal;}
+.keywords{display:flex;flex-wrap:wrap;gap:0.7rem;margin-top:2.8rem;}
+.kw{
+  font-family:var(--label);font-size:0.72rem;font-weight:600;letter-spacing:0.16em;
+  text-transform:uppercase;color:var(--sand);
+  border:1px solid var(--line-d);padding:0.6rem 1.1rem;border-radius:99px;
+}
+.essence-body{margin-top:2.8rem;max-width:38rem;column-gap:2.4rem;}
+.essence-body p{color:var(--on-ink-dim);}
+
+/* ============ TYPE ============ */
+.type-block{border-top:1px solid var(--line-l);padding:2.4rem 0;}
+.type-block:first-of-type{border-top:none;}
+.type-meta{display:flex;gap:1.4rem;align-items:baseline;margin-bottom:1.2rem;flex-wrap:wrap;}
+.type-name{font-family:var(--display);font-size:1.5rem;color:var(--ink);}
+.type-role{font-family:var(--label);font-size:0.64rem;font-weight:600;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--ember);}
+.type-note{font-family:var(--body);font-size:0.95rem;color:var(--on-bone-dim);max-width:30rem;}
+.spec-display{font-family:var(--display);font-weight:300;font-size:clamp(2.6rem,7vw,5rem);
+  line-height:1;letter-spacing:-0.02em;color:var(--ink);}
+.spec-display em{font-style:italic;color:var(--ember);}
+.spec-body{font-family:var(--body);font-weight:400;font-size:1.15rem;line-height:1.7;
+  color:var(--ink);max-width:34rem;}
+.spec-label{font-family:var(--label);font-weight:600;font-size:1.1rem;letter-spacing:0.22em;
+  text-transform:uppercase;color:var(--ink);}
+.glyphs{font-family:var(--display);font-size:1.6rem;color:var(--on-bone-dim);
+  letter-spacing:0.1em;margin-top:0.8rem;}
+.upgrade{margin-top:2.6rem;padding:1.5rem 1.7rem;border:1px solid var(--line-l);
+  border-left:2px solid var(--bronze);}
+.upgrade .label{color:var(--bronze);}
+.upgrade p{font-size:0.95rem;color:var(--on-bone-dim);margin-top:0.6rem;}
+
+/* ============ COLOR ============ */
+.swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--line-d);border:1px solid var(--line-d);margin-top:0.5rem;}
+@media(max-width:760px){.swatches{grid-template-columns:repeat(2,1fr);}}
+.sw{padding:1.4rem 1.3rem;min-height:170px;display:flex;flex-direction:column;justify-content:flex-end;}
+.sw .nm{font-family:var(--display);font-size:1.15rem;line-height:1.1;}
+.sw .hx{font-family:var(--label);font-size:0.64rem;letter-spacing:0.12em;margin-top:0.35rem;text-transform:uppercase;}
+.sw .ro{font-family:var(--body);font-size:0.84rem;font-style:italic;margin-top:0.5rem;opacity:0.75;}
+.color-principle{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;margin-top:2.4rem;}
+@media(max-width:680px){.color-principle{grid-template-columns:1fr;}}
+.cp-card{border:1px solid var(--line-d);padding:1.6rem;}
+.cp-card h4{font-family:var(--display);font-weight:400;font-size:1.25rem;color:var(--bone);margin-bottom:0.5rem;}
+.cp-card p{font-size:0.95rem;color:var(--on-ink-dim);}
+.rhythm{display:flex;height:60px;margin-top:1.4rem;border:1px solid var(--line-d);}
+.rhythm div{flex:1;display:flex;align-items:center;justify-content:center;
+  font-family:var(--label);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;}
+
+/* ============ MARK ============ */
+.mark-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:center;}
+@media(max-width:760px){.mark-grid{grid-template-columns:1fr;}}
+.mark-stage{
+  border:1px solid var(--line-d);aspect-ratio:1;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:1.6rem;
+  background:radial-gradient(circle at 50% 42%,rgba(168,80,46,0.12),transparent 62%);
+}
+.mark-uses{display:flex;flex-direction:column;gap:1.3rem;}
+.mark-use{display:flex;gap:1rem;align-items:flex-start;}
+.mark-use .ic{color:var(--ember);flex-shrink:0;margin-top:0.15rem;}
+.mark-use h4{font-family:var(--display);font-weight:400;font-size:1.15rem;color:var(--bone);margin-bottom:0.2rem;}
+.mark-use p{font-size:0.92rem;color:var(--on-ink-dim);}
+.contour{width:100%;height:120px;margin-top:1.6rem;color:var(--bronze);opacity:0.5;}
+
+/* ============ IMAGERY ============ */
+.do-dont{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;margin-top:1rem;}
+@media(max-width:680px){.do-dont{grid-template-columns:1fr;}}
+.dd{border:1px solid var(--line-d);padding:1.7rem;}
+.dd.do{border-left:2px solid var(--sage);}
+.dd.dont{border-left:2px solid var(--ember);}
+.dd .tag{font-family:var(--label);font-size:0.64rem;font-weight:700;letter-spacing:0.2em;
+  text-transform:uppercase;margin-bottom:1rem;}
+.dd.do .tag{color:var(--sage);}
+.dd.dont .tag{color:var(--ember);}
+.dd ul{list-style:none;}
+.dd li{font-size:0.95rem;color:var(--on-ink-dim);padding:0.4rem 0 0.4rem 1.3rem;
+  position:relative;line-height:1.5;border-top:1px solid var(--line-d);}
+.dd li:first-child{border-top:none;}
+.dd li::before{position:absolute;left:0;top:0.4rem;font-family:var(--label);font-size:0.8rem;}
+.dd.do li::before{content:"+";color:var(--sage);}
+.dd.dont li::before{content:"\00d7";color:var(--ember);}
+
+/* ============ APPLIED ============ */
+.applied-frame{
+  border:1px solid var(--line-d);overflow:hidden;margin-top:1rem;
+  box-shadow:0 40px 90px rgba(0,0,0,0.5);
+}
+.applied-bar{display:flex;align-items:center;gap:0.4rem;padding:0.7rem 1rem;
+  background:var(--ink-2);border-bottom:1px solid var(--line-d);}
+.applied-bar i{width:9px;height:9px;border-radius:50%;background:var(--on-ink-faint);}
+.applied-bar span{font-family:var(--label);font-size:0.62rem;letter-spacing:0.06em;
+  color:var(--on-ink-faint);margin-left:0.5rem;}
+.ah{
+  position:relative;min-height:520px;display:flex;flex-direction:column;
+  background:linear-gradient(105deg,rgba(15,12,10,0.94) 0%,rgba(15,12,10,0.5) 46%,rgba(15,12,10,0.3) 72%,rgba(15,12,10,0.62) 100%),
+  url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-hero-portrait-faded.jpg');
+  background-size:cover;background-position:60% center;
+}
+.ah-util{display:flex;justify-content:space-between;padding:1.2rem 1.8rem;
+  border-bottom:1px solid rgba(233,224,207,0.16);}
+.ah-util .label{color:rgba(233,224,207,0.7);font-size:0.6rem;}
+.ah-util .label.e{color:var(--ember);}
+.ah-body{margin-top:auto;padding:2.4rem 2.2rem;max-width:38rem;}
+.ah-mark{color:var(--ember);margin-bottom:1.4rem;}
+.ah-eyebrow{font-family:var(--label);font-size:0.62rem;font-weight:600;letter-spacing:0.26em;
+  text-transform:uppercase;color:var(--sand);margin-bottom:1rem;}
+.ah h1{font-family:var(--display);font-weight:200;font-size:clamp(2.8rem,6vw,4.6rem);
+  line-height:0.94;letter-spacing:-0.03em;color:var(--bone);}
+.ah h1 em{font-style:italic;font-weight:300;color:var(--ember);}
+.ah .q{font-family:var(--body);font-weight:300;font-style:italic;font-size:1.2rem;
+  color:rgba(233,224,207,0.9);margin:1.1rem 0 1.6rem;}
+.ah-cta{display:inline-flex;align-items:center;gap:0.7rem;font-family:var(--label);
+  font-size:0.72rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--ink);background:var(--ember);padding:1rem 1.8rem;text-decoration:none;}
+.ah-foot{font-family:var(--label);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:rgba(233,224,207,0.55);margin-top:1.3rem;}
+.applied-note{display:flex;gap:0.8rem;margin-top:1.4rem;font-size:0.9rem;
+  color:var(--on-ink-dim);font-style:italic;}
+.applied-note .threshold{flex-shrink:0;}
+
+/* ============ ROADMAP ============ */
+.road{border-top:1px solid var(--line-l);}
+.road-row{display:grid;grid-template-columns:auto 1fr auto;gap:1.6rem;align-items:baseline;
+  padding:1.5rem 0;border-bottom:1px solid var(--line-l);}
+.road-row .rn{font-family:var(--display);font-size:1.6rem;color:var(--bronze);font-style:italic;}
+.road-row .rt{font-family:var(--display);font-size:1.2rem;color:var(--ink);}
+.road-row .rd{font-family:var(--body);font-size:0.95rem;color:var(--on-bone-dim);margin-top:0.2rem;}
+.road-row .rp{font-family:var(--label);font-size:0.62rem;font-weight:600;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--ember);white-space:nowrap;}
+@media(max-width:680px){.road-row{grid-template-columns:auto 1fr;}.road-row .rp{grid-column:2;}}
+
+.closer{margin-top:3rem;font-family:var(--display);font-weight:300;font-style:italic;
+  font-size:1.5rem;line-height:1.4;color:var(--ink);max-width:30rem;}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease;}
+.rv.in{opacity:1;transform:none;}
+
+footer{padding:3rem 0;border-top:1px solid var(--line-d);text-align:center;}
+footer .label{color:var(--on-ink-faint);}
+</style>
+</head>
+<body>
+
+<!-- ===================== MASTHEAD ===================== -->
+<header class="masthead">
+  <div class="masthead-bg"></div>
+  <div class="wrap" style="position:relative;display:flex;flex-direction:column;flex:1;">
+    <div class="mast-top">
+      <span class="label">Breakthrough in the Desert</span>
+      <span class="label">Brand System &nbsp;·&nbsp; v1 &nbsp;·&nbsp; 2026</span>
+    </div>
+
+    <div class="mast-center">
+      <div class="mast-mark threshold">
+        <svg width="46" height="56" viewBox="0 0 46 56" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M7 56 L7 26 A16 16 0 0 1 39 26 L39 56"/>
+          <line x1="23" y1="34" x2="23" y2="56"/>
+        </svg>
+      </div>
+      <h1 class="mast-title">The Identity<br><em>Beyond</em> the Template</h1>
+      <p class="mast-sub">A researched brand system for Breakthrough in the Desert. Built to move the page from 60% to 85% by replacing defaults with decisions.</p>
+    </div>
+
+    <div class="mast-foot">
+      <div class="mast-stats">
+        <div class="stat"><div class="n">03</div><div class="l">Research streams</div></div>
+        <div class="stat"><div class="n">07</div><div class="l">System foundations</div></div>
+        <div class="stat"><div class="n">85%</div><div class="l">The target</div></div>
+      </div>
+      <span class="label" style="color:var(--on-ink-faint);">Scroll to begin &darr;</span>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== 01 · DIAGNOSIS ===================== -->
+<section class="sec">
+  <div class="wrap rv">
+    <div class="sec-head">
+      <div class="sec-num">01</div>
+      <div>
+        <div class="sec-kicker">The Honest Part</div>
+        <h2 class="h2">Why v1 reads as a <em>template.</em></h2>
+        <p class="lede">The current page is not bad. It is <em>average</em>, in the precise sense that matters: every fork took the safe default. A brand is a set of choices. An average is the absence of them. Three research streams confirmed the same six tells.</p>
+      </div>
+    </div>
+    <div class="diag-grid">
+      <div class="diag">
+        <span class="x">&times;</span>
+        <h4>Fraunces + Inter</h4>
+        <p>The single most AI-generated serif and sans pairing of 2024 to 2026. Together they signal that no typographic decision was made.</p>
+      </div>
+      <div class="diag">
+        <span class="x">&times;</span>
+        <h4>Cream, terracotta, gold</h4>
+        <p>The "warm trustworthy wellness" palette. Pleasant, softened, averaged, and forgettable. It has no tension and no owned note.</p>
+      </div>
+      <div class="diag">
+        <span class="x">&times;</span>
+        <h4>Centered everything</h4>
+        <p>Centered text is the lowest-risk composition. It removes the entry point and the eye-path. It reads as the absence of a layout system.</p>
+      </div>
+      <div class="diag">
+        <span class="x">&times;</span>
+        <h4>One global fade-up</h4>
+        <p>Every block rises 20 pixels on the same easing. Motion as a default setting, not as choreography with intent.</p>
+      </div>
+      <div class="diag">
+        <span class="x">&times;</span>
+        <h4>Midjourney hero imagery</h4>
+        <p>Over-rendered light, dreamy haze, plastic skin. For a real event with real people, this is the loudest tell of all. It whispers that the event may not exist.</p>
+      </div>
+      <div class="diag">
+        <span class="x">&times;</span>
+        <h4>The &#10022; sparkle mark</h4>
+        <p>The most overused "tasteful AI" glyph of the era. It is iconography that belongs to everyone, which means it belongs to no one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 02 · ESSENCE ===================== -->
+<section class="sec">
+  <div class="wrap rv">
+    <div class="sec-head">
+      <div class="sec-num">02</div>
+      <div>
+        <div class="sec-kicker">The Essence</div>
+        <h2 class="h2">What the brand <em>is.</em></h2>
+      </div>
+    </div>
+    <div class="essence-quote">
+      The desert has always been where people go to <span class="e">break open.</span> The brand is not a wellness event. It is a <span class="e">threshold</span> &mdash; and the page should feel like standing at one.
+    </div>
+    <div class="keywords">
+      <span class="kw">Threshold</span>
+      <span class="kw">Elemental</span>
+      <span class="kw">Reverent</span>
+      <span class="kw">Earned</span>
+      <span class="kw">Still</span>
+    </div>
+    <div class="essence-body">
+      <p>Every brand in the men's-work and sacred-space field splits into two camps. One manufactures depth with symbols, gradients, and hype: wolves, Spartan helmets, glowing chakras, "unleash your warrior." The other earns it through restraint &mdash; few marks, real photographs, deep space, and plain language about real human experience.</p>
+      <p>Breakthrough belongs unambiguously in the second camp. The single biggest separator the research found is this: credible brands look like they were <em>made by people who were actually there.</em> Cheap ones look assembled from spiritual clip art. Every decision in this system serves that one principle.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 03 · TYPOGRAPHY ===================== -->
+<section class="sec bone">
+  <div class="wrap rv">
+    <div class="sec-head">
+      <div class="sec-num">03</div>
+      <div>
+        <div class="sec-kicker">Typography</div>
+        <h2 class="h2">A voice, not a <em>default.</em></h2>
+        <p class="lede">Two serifs and one grotesk. A characterful display serif carries emotion, a literary text serif carries the reading, and a quiet grotesk handles labels in tracked capitals &mdash; the carved-in-stone, ceremonial register.</p>
+      </div>
+    </div>
+
+    <div class="type-block">
+      <div class="type-meta">
+        <span class="type-name">Newsreader</span>
+        <span class="type-role">Display &middot; Headlines</span>
+        <span class="type-note">Soulful and editorial, with a genuinely beautiful italic. Distinctive where Fraunces is generic. Set it light, large, and tightly tracked.</span>
+      </div>
+      <div class="spec-display">Three days. One <em>doorway.</em><br>The rest of your life.</div>
+    </div>
+
+    <div class="type-block">
+      <div class="type-meta">
+        <span class="type-name">Spectral</span>
+        <span class="type-role">Body &middot; Long-form reading</span>
+        <span class="type-note">A literary serif with generous spacing. Calm, considered, and human at paragraph sizes. It makes the page feel written, not generated.</span>
+      </div>
+      <div class="spec-body">You have already done the hard part. You built the career, raised the kids, kept it together when it would have been easier to give up. And somewhere along the way, you got stagnant. The desert is where that ends.</div>
+    </div>
+
+    <div class="type-block">
+      <div class="type-meta">
+        <span class="type-name">Schibsted Grotesk</span>
+        <span class="type-role">Labels &middot; UI &middot; Eyebrows</span>
+        <span class="type-note">Clean and editorial. Used only in small sizes, tracked wide, in capitals. It replaces Inter entirely. Never used for body copy.</span>
+      </div>
+      <div class="spec-label">August 7&ndash;9, 2026 &middot; Arizona Grand Resort</div>
+      <div class="glyphs">Aa Gg Rr &nbsp; 0123456789 &nbsp; &amp; &middot; &mdash;</div>
+    </div>
+
+    <div class="upgrade">
+      <div class="label">Premium upgrade path</div>
+      <p>The three fonts above are free, deployable today, and escape the template. If the budget allows a licensed step up later, the research-backed pairing is <strong>GT Sectra Display</strong> (a carved, near-sacred display serif) with <strong>Söhne</strong> for labels. Same system, higher polish.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 04 · COLOR ===================== -->
+<section class="sec">
+  <div class="wrap rv">
+    <div class="sec-head">
+      <div class="sec-num">04</div>
+      <div>
+        <div class="sec-kicker">Color</div>
+        <h2 class="h2">The mineral <em>desert.</em></h2>
+        <p class="lede">Not cozy cream. The benchmark is Amangiri: monastic, sun-bleached, elemental. A tight tonal range of bone, stone, and shadow &mdash; warm, low-saturation, with one note of fire and one cool counter-tone for tension.</p>
+      </div>
+    </div>
+    <div class="swatches">
+      <div class="sw" style="background:#1b1916;color:#ebe3d4;"><div class="nm">Canyon Ink</div><div class="hx label">#1B1916</div><div class="ro">Primary dark ground &amp; type</div></div>
+      <div class="sw" style="background:#5a4631;color:#ebe3d4;"><div class="nm">Burnt Umber</div><div class="hx label">#5A4631</div><div class="ro">Deep earth, shadowed panels</div></div>
+      <div class="sw" style="background:#878a76;color:#1b1916;"><div class="nm">Pinyon Sage</div><div class="hx label">#878A76</div><div class="ro">The cool counter-tone. Tension.</div></div>
+      <div class="sw" style="background:#a8502e;color:#ebe3d4;"><div class="nm">Ember</div><div class="hx label">#A8502E</div><div class="ro">The one accent. Used like fire.</div></div>
+      <div class="sw" style="background:#ebe3d4;color:#1b1916;"><div class="nm">Bone</div><div class="hx label">#EBE3D4</div><div class="ro">Primary light ground</div></div>
+      <div class="sw" style="background:#ded0b8;color:#1b1916;"><div class="nm">Plaster</div><div class="hx label">#DED0B8</div><div class="ro">Secondary warm surface</div></div>
+      <div class="sw" style="background:#c9b696;color:#1b1916;"><div class="nm">Sandstone</div><div class="hx label">#C9B696</div><div class="ro">Tonal depth, mid surface</div></div>
+      <div class="sw" style="background:#9c8254;color:#1b1916;"><div class="nm">Aged Bronze</div><div class="hx label">#9C8254</div><div class="ro">Fine lines, detail, never bright gold</div></div>
+    </div>
+    <div class="color-principle">
+      <div class="cp-card">
+        <h4>One accent. Used like fire.</h4>
+        <p>Ember is the only saturated color in the system. It appears rarely &mdash; on the primary action, one word in a headline, the mark. Scarcity is what gives it heat. The old page spent rust and gold everywhere; this one rations them.</p>
+      </div>
+      <div class="cp-card">
+        <h4>A rhythm of dawn and dusk.</h4>
+        <p>The page alternates bone-light and ink-dark sections like the desert moves through a day. Dark sections carry the weight: the founder, the threshold, the close. Light sections carry the air.</p>
+      </div>
+    </div>
+    <div class="rhythm">
+      <div style="background:#ebe3d4;color:#1b1916;">Bone</div>
+      <div style="background:#1b1916;color:#ebe3d4;">Ink</div>
+      <div style="background:#ded0b8;color:#1b1916;">Plaster</div>
+      <div style="background:#1b1916;color:#ebe3d4;">Ink</div>
+      <div style="background:#ebe3d4;color:#1b1916;">Bone</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 05 · THE MARK ===================== -->
+<section class="sec">
+  <div class="wrap rv">
+    <div class="sec-head">
+      <div class="sec-num">05</div>
+      <div>
+        <div class="sec-kicker">The Signature Device</div>
+        <h2 class="h2">The <em>Threshold.</em></h2>
+        <p class="lede">One mark, owned by this event alone. A doorway: two posts, an arch, a centerline where you cross. It retires the sparkle and becomes the brand's shorthand &mdash; section marker, divider, bullet, favicon.</p>
+      </div>
+    </div>
+    <div class="mark-grid">
+      <div class="mark-stage">
+        <span class="threshold">
+          <svg width="84" height="100" viewBox="0 0 46 56" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M7 56 L7 26 A16 16 0 0 1 39 26 L39 56"/>
+            <line x1="23" y1="34" x2="23" y2="56"/>
+          </svg>
+        </span>
+        <span class="label" style="color:var(--on-ink-faint);">The Threshold Mark</span>
+      </div>
+      <div class="mark-uses">
+        <div class="mark-use">
+          <span class="ic threshold"><svg width="20" height="24" viewBox="0 0 46 56" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 56 L7 26 A16 16 0 0 1 39 26 L39 56"/><line x1="23" y1="34" x2="23" y2="56"/></svg></span>
+          <div><h4>Section marker</h4><p>Opens each major section in place of a generic eyebrow rule.</p></div>
+        </div>
+        <div class="mark-use">
+          <span class="ic threshold"><svg width="20" height="24" viewBox="0 0 46 56" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 56 L7 26 A16 16 0 0 1 39 26 L39 56"/><line x1="23" y1="34" x2="23" y2="56"/></svg></span>
+          <div><h4>List bullet</h4><p>Replaces the &#10022; sparkle on every highlight and feature list.</p></div>
+        </div>
+        <div class="mark-use">
+          <span class="ic threshold"><svg width="20" height="24" viewBox="0 0 46 56" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 56 L7 26 A16 16 0 0 1 39 26 L39 56"/><line x1="23" y1="34" x2="23" y2="56"/></svg></span>
+          <div><h4>Contour lines</h4><p>A secondary device: topographic desert contours as faint section dividers and texture, never as loud pattern.</p></div>
+        </div>
+      </div>
+    </div>
+    <svg class="contour" viewBox="0 0 1000 120" fill="none" stroke="currentColor" stroke-width="1" preserveAspectRatio="none">
+      <path d="M0 96 Q 250 60 500 86 T 1000 72"/>
+      <path d="M0 78 Q 250 40 500 66 T 1000 52"/>
+      <path d="M0 60 Q 250 22 500 48 T 1000 34"/>
+      <path d="M0 42 Q 250 6 500 30 T 1000 16"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ===================== 06 · IMAGERY ===================== -->
+<section class="sec bone">
+  <div class="wrap rv">
+    <div class="sec-head">
+      <div class="sec-num">06</div>
+      <div>
+        <div class="sec-kicker">Imagery &amp; Art Direction</div>
+        <h2 class="h2">Real, or <em>nothing.</em></h2>
+        <p class="lede">The fastest way to kill the AI smell is evidently real photography. Documentary, available-light, grainy, golden-hour. The landscape is a character. Faces show vulnerability, not flexed jaws.</p>
+      </div>
+    </div>
+    <div class="do-dont">
+      <div class="dd do">
+        <div class="tag">Shoot &amp; source this</div>
+        <ul>
+          <li>Real 2025 attendees and speakers, mid-emotion, candid</li>
+          <li>Pre-dawn and golden-hour desert; long raked shadows</li>
+          <li>Wide frames: a lone figure small against vast rock and sky</li>
+          <li>Firelight, the circle, stone, sand, water, smoke</li>
+          <li>Black-and-white reportage moments for gravity</li>
+          <li>Texture close-ups: plaster, stone grain, skin, sand</li>
+          <li>One consistent warm grade; visible film grain</li>
+        </ul>
+      </div>
+      <div class="dd dont">
+        <div class="tag">Never this</div>
+        <ul>
+          <li>AI-generated or Midjourney hero imagery</li>
+          <li>Stock smiling groups and staged hands-on-shoulders shots</li>
+          <li>Saturated postcard sunsets and lens flares</li>
+          <li>Wolves, lions, Spartan helmets, screaming men</li>
+          <li>Glowing chakras, dreamcatchers, "tribal" patterns</li>
+          <li>Clinical blue color grading; perfect plastic skin</li>
+          <li>More than one image fighting for a single viewport</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:1.8rem;font-style:italic;color:var(--on-bone-dim);max-width:38rem;">The current AI hero is the first thing to replace. Until real desert photography is commissioned, lead with the strongest real 2025 photograph.</p>
+  </div>
+</section>
+
+<!-- ===================== 07 · APPLIED ===================== -->
+<section class="sec">
+  <div class="wrap rv">
+    <div class="sec-head">
+      <div class="sec-num">07</div>
+      <div>
+        <div class="sec-kicker">The System, Applied</div>
+        <h2 class="h2">What 85% <em>looks like.</em></h2>
+        <p class="lede">The hero, rebuilt in the system: Newsreader display, the Threshold mark, Canyon Ink and Ember, a real photograph, grain, and a decentered, left-anchored composition. The same copy. A different brand.</p>
+      </div>
+    </div>
+    <div class="applied-frame">
+      <div class="applied-bar"><i></i><i></i><i></i><span>breakthrough in the desert &mdash; hero, rebuilt</span></div>
+      <div class="ah">
+        <div class="ah-util">
+          <span class="label">August 7&ndash;9, 2026 &middot; Arizona Grand Resort</span>
+          <span class="label e">Limited to 150</span>
+        </div>
+        <div class="ah-body">
+          <div class="ah-mark threshold">
+            <svg width="32" height="39" viewBox="0 0 46 56" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 56 L7 26 A16 16 0 0 1 39 26 L39 56"/><line x1="23" y1="34" x2="23" y2="56"/></svg>
+          </div>
+          <div class="ah-eyebrow">The Fit Father &amp; Fit Mother Project Present</div>
+          <h1>Breakthrough <em>in the</em> Desert</h1>
+          <div class="q">What if the second half of your life was the best part?</div>
+          <a class="ah-cta" href="#">Reserve Your Spot &nbsp;&rarr;</a>
+          <div class="ah-foot">Three Days &middot; One Doorway &middot; The Rest of Your Life</div>
+        </div>
+      </div>
+    </div>
+    <div class="applied-note">
+      <span class="threshold"><svg width="15" height="18" viewBox="0 0 46 56" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 56 L7 26 A16 16 0 0 1 39 26 L39 56"/><line x1="23" y1="34" x2="23" y2="56"/></svg></span>
+      <span>Shown with a real photograph as a stand-in. The final hero uses commissioned or real 2025 desert photography, never AI.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 08 · ROADMAP ===================== -->
+<section class="sec bone">
+  <div class="wrap rv">
+    <div class="sec-head">
+      <div class="sec-num">08</div>
+      <div>
+        <div class="sec-kicker">The Path</div>
+        <h2 class="h2">60% to <em>85%.</em></h2>
+        <p class="lede">In order. Each step is a visible decision, and decisions are the one thing a template cannot fake.</p>
+      </div>
+    </div>
+    <div class="road">
+      <div class="road-row">
+        <span class="rn">01</span>
+        <div><span class="rt">Re-typeset the whole page</span><div class="rd">Newsreader, Spectral, Schibsted Grotesk replace Fraunces and Inter everywhere.</div></div>
+        <span class="rp">Biggest single lift</span>
+      </div>
+      <div class="road-row">
+        <span class="rn">02</span>
+        <div><span class="rt">Re-skin to the mineral palette</span><div class="rd">Canyon Ink, Bone, Ember and the dawn-to-dusk section rhythm replace cream and terracotta.</div></div>
+        <span class="rp">High impact</span>
+      </div>
+      <div class="road-row">
+        <span class="rn">03</span>
+        <div><span class="rt">Retire the sparkle, place the Threshold</span><div class="rd">The mark becomes section markers, bullets, divider, and favicon. Add film grain and contour lines.</div></div>
+        <span class="rp">Owns the brand</span>
+      </div>
+      <div class="road-row">
+        <span class="rn">04</span>
+        <div><span class="rt">Decenter the layout</span><div class="rd">Left-anchored type, asymmetry, oversized section numerals, captioned images, editorial detailing.</div></div>
+        <span class="rp">Kills the template feel</span>
+      </div>
+      <div class="road-row">
+        <span class="rn">05</span>
+        <div><span class="rt">Replace the AI hero image</span><div class="rd">Lead with real photography. Build the chosen section directions: Three Cards, Immersive Split.</div></div>
+        <span class="rp">Needs real photos</span>
+      </div>
+      <div class="road-row">
+        <span class="rn">06</span>
+        <div><span class="rt">The pricing deep-dive</span><div class="rd">A dedicated working session on the conversion moment, in the new system.</div></div>
+        <span class="rp">Your call &mdash; lots of time</span>
+      </div>
+    </div>
+    <p class="closer">Approve the system, or push back on any piece. Then I rebuild the page on it &mdash; and 85% stops being a target and becomes the floor.</p>
+  </div>
+</section>
+
+<footer>
+  <span class="label">Breakthrough in the Desert &nbsp;·&nbsp; Brand System v1 &nbsp;·&nbsp; Built for James &amp; Anthony</span>
+</footer>
+
+<script>
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.1});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

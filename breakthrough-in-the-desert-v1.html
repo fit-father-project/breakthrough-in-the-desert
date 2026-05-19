@@ -1,0 +1,2187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Breakthrough in the Desert · August 7–9, 2026 · Phoenix</title>
+<meta name="description" content="A three-day live experience to break out of default patterns and step into the inspired life you're actually here to live. Arizona Grand Resort, Phoenix. August 7-9, 2026." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* ===========================================================
+   BREAKTHROUGH IN THE DESERT — v2.0
+   Design direction: Refined editorial. Warm desert palette.
+   Long-form premium event page.
+   =========================================================== */
+
+:root {
+  /* Palette */
+  --ink: #1a1614;
+  --ink-soft: #3a312c;
+  --paper: #faf6f1;
+  --paper-warm: #f4ebde;
+  --paper-cream: #efe3cf;
+  --rust: #b85c3a;
+  --rust-deep: #8b3f24;
+  --gold: #c49a50;
+  --gold-soft: #d8b87a;
+  --sand: #8c6e54;
+  --bone: #e8ddc9;
+  --muted: #6b6b6b;
+  --line: rgba(26,22,20,0.12);
+  --line-strong: rgba(26,22,20,0.22);
+
+  /* Type */
+  --serif: 'Fraunces', Georgia, serif;
+  --sans: 'Inter', system-ui, sans-serif;
+  --hand: 'Caveat', cursive;
+
+  /* Spacing rhythm */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+  --space-2xl: 10rem;
+
+  /* Content */
+  --measure: 36rem;
+  --measure-wide: 56rem;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.7;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* === Countdown bar === */
+.countdown-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.75rem 1rem;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.countdown-bar strong { color: var(--gold-soft); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+.countdown-bar .timer { color: var(--paper); font-weight: 500; margin-left: 0.5rem; }
+
+/* === Hero === */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-xl) var(--space-md);
+  text-align: center;
+  background: linear-gradient(180deg, var(--paper-cream) 0%, var(--paper-warm) 60%, var(--paper) 100%);
+  overflow: hidden;
+}
+
+/* Hero atmospheric layer — darkening overlay for text legibility */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(26,22,20,0.20) 0%, rgba(26,22,20,0.05) 40%, rgba(250,246,241,0.88) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Hero background image */
+.hero-image-placeholder {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/01-hero-desert-sunrise.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Global warm-tone harmonizer for all real photos — subtle */
+.photo-img {
+  filter: saturate(1.06) sepia(0.04) contrast(1.02);
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Real photo container — full-width section image */
+.real-photo {
+  margin: 3rem 0;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 20px 60px rgba(26,22,20,0.15);
+}
+.real-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: saturate(1.06) sepia(0.04) contrast(1.02);
+}
+
+/* AI image container — same treatment but slightly less filter since they're already warm */
+.ai-image {
+  margin: 3rem 0;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 20px 60px rgba(26,22,20,0.15);
+}
+.ai-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 64rem;
+}
+.hero-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--paper);
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 12px rgba(26,22,20,0.6);
+}
+.hero-title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--paper);
+  margin-bottom: 1.25rem;
+  text-shadow: 0 4px 30px rgba(26,22,20,0.5);
+}
+.hero-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold-soft);
+}
+.hero-meta {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--paper);
+  margin-bottom: 3rem;
+  text-shadow: 0 2px 12px rgba(26,22,20,0.6);
+}
+.hero-meta span { display: inline-block; }
+.hero-meta .dot { color: var(--gold-soft); margin: 0 0.5rem; }
+
+.hero-question {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--paper);
+  max-width: 32em;
+  margin: 0 auto 3rem;
+  text-shadow: 0 4px 30px rgba(26,22,20,0.6);
+}
+
+.cta-button {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: var(--rust);
+  padding: 1.2rem 2.5rem;
+  text-decoration: none;
+  border: 1px solid var(--rust);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.cta-button:hover {
+  background: var(--rust-deep);
+  border-color: var(--rust-deep);
+  transform: translateY(-1px);
+}
+.cta-button .arrow { display: inline-block; transition: transform 0.3s ease; margin-left: 0.5rem; }
+.cta-button:hover .arrow { transform: translateX(4px); }
+
+.cta-secondary {
+  background: transparent;
+  color: var(--rust);
+}
+.cta-secondary:hover {
+  background: var(--rust);
+  color: var(--paper);
+}
+
+/* === Section common === */
+section {
+  padding: var(--space-2xl) var(--space-md);
+  position: relative;
+}
+@media (max-width: 768px) {
+  section { padding: var(--space-xl) 1.25rem; }
+}
+
+.container {
+  max-width: var(--measure);
+  margin: 0 auto;
+}
+.container-wide {
+  max-width: var(--measure-wide);
+  margin: 0 auto;
+}
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--rust);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.section-title em { font-style: italic; color: var(--rust); }
+
+p { margin-bottom: 1.4rem; }
+p:last-child { margin-bottom: 0; }
+
+strong { font-weight: 600; color: var(--ink); }
+em { font-style: italic; }
+
+/* === Mirror Section === */
+.mirror {
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+}
+.mirror p {
+  font-size: 1.15rem;
+  color: var(--ink-soft);
+  line-height: 1.75;
+}
+.mirror .pillar-lead {
+  font-weight: 700;
+  color: var(--ink);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  font-family: var(--sans);
+}
+.mirror .divider-mini {
+  width: 4rem;
+  height: 1px;
+  background: var(--line-strong);
+  margin: 2.5rem auto;
+}
+.question-block {
+  text-align: center;
+  margin-top: 3rem;
+}
+.question-block .lead-in {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+.question-block .question {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  line-height: 1.25;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.question-block .question + .question { color: var(--rust); }
+
+/* === Pivot Section === */
+.pivot {
+  background: var(--paper-warm);
+  position: relative;
+}
+.pivot::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 200px;
+  background: linear-gradient(180deg, var(--paper) 0%, transparent 100%);
+  pointer-events: none;
+}
+.pivot-answer {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  line-height: 1.2;
+  text-align: center;
+  color: var(--rust);
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+}
+.pivot-answer-sub {
+  text-align: center;
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin-bottom: 4rem;
+  position: relative;
+  z-index: 2;
+}
+.pivot p {
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+}
+.pivot .anchor-line {
+  text-align: center;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.35rem;
+  line-height: 1.4;
+  color: var(--ink);
+  margin: 2.5rem 0;
+  letter-spacing: -0.01em;
+}
+.pivot .anchor-line em { color: var(--rust); font-weight: 600; }
+.pivot .golden-years { color: var(--rust); font-weight: 600; }
+.pivot .now-emphasis {
+  display: inline-block;
+  font-weight: 700;
+  color: var(--rust);
+  font-style: italic;
+  font-size: 1.1em;
+}
+.doorway-line {
+  text-align: center;
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--ink);
+  margin-top: 3rem;
+  letter-spacing: -0.01em;
+}
+
+/* === Scenes from 2025 Gallery (in Social Proof section) === */
+.scenes-gallery {
+  margin: 4rem 0 5rem;
+  max-width: var(--measure-wide);
+  margin-left: auto;
+  margin-right: auto;
+}
+.scenes-gallery-title {
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 2rem;
+}
+.scenes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+@media (max-width: 768px) {
+  .scenes-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+}
+.scene-tile {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  border-radius: 3px;
+}
+.scene-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.06) sepia(0.04) contrast(1.02);
+  transition: transform 0.6s ease;
+}
+.scene-tile:hover img { transform: scale(1.04); }
+
+/* === Founder Photo === */
+.founder-photo {
+  margin: 0 auto 3rem;
+  max-width: 28rem;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+.founder-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: saturate(1.05) sepia(0.03) contrast(1.02);
+}
+
+/* === Speakers — use real photos when available === */
+.speaker-photo-real {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--bone);
+}
+.speaker-photo-real img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.05) sepia(0.03) contrast(1.02);
+}
+
+/* === Section image (used in Promise, Friday, Saturday, Sunday) === */
+.section-image {
+  margin: 3rem auto;
+  max-width: var(--measure-wide);
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 20px 60px rgba(26,22,20,0.18);
+}
+.section-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.section-image.real-photo img {
+  filter: saturate(1.06) sepia(0.04) contrast(1.02);
+}
+
+/* === Final CTA closing image === */
+.final-cta-image {
+  margin: 4rem auto 3rem;
+  max-width: var(--measure-wide);
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 20px 60px rgba(26,22,20,0.18);
+}
+.final-cta-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: saturate(1.06) sepia(0.04) contrast(1.02);
+}
+
+/* === Venue placeholder (until real Arizona Grand photos are sourced) === */
+.image-placeholder {
+  background: linear-gradient(135deg, var(--bone) 0%, var(--paper-cream) 100%);
+  border: 1px dashed var(--gold);
+  padding: 4rem 2rem;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 3rem 0;
+  position: relative;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+.image-placeholder::before {
+  content: "✦";
+  font-size: 1.5rem;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.image-placeholder .ip-label {
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+.image-placeholder .ip-desc {
+  font-size: 0.75rem;
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: var(--sand);
+  max-width: 28rem;
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+.image-placeholder.cinematic { aspect-ratio: 16/9; min-height: auto; }
+
+/* === Promise Section === */
+.promise {
+  background: var(--paper);
+  text-align: center;
+}
+.promise-title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.85rem, 4vw, 2.75rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--rust);
+  margin-bottom: 3rem;
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.promise p {
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+  text-align: left;
+}
+.promise .anchor {
+  text-align: center;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.35rem;
+  color: var(--ink);
+  margin: 2.5rem 0;
+}
+.promise .closer {
+  text-align: center;
+  font-size: 1.15rem;
+  color: var(--ink-soft);
+  margin-top: 2rem;
+}
+.promise .closer strong { color: var(--rust); font-weight: 600; }
+
+/* === Three Things You'll Leave With === */
+.leave-with {
+  background: var(--paper-warm);
+  text-align: center;
+}
+.leave-with-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  margin: 3rem 0;
+  max-width: var(--measure-wide);
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 768px) {
+  .leave-with-grid { grid-template-columns: 1fr; gap: 3rem; }
+}
+.leave-card {
+  padding: 1rem;
+}
+.leave-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+.leave-word {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: var(--ink);
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+.leave-body {
+  font-size: 1rem;
+  color: var(--ink-soft);
+  line-height: 1.65;
+}
+
+/* === Social Proof === */
+.social-proof {
+  background: var(--paper);
+  text-align: center;
+}
+.social-proof .subhead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-bottom: 4rem;
+  margin-top: -2rem;
+}
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  max-width: var(--measure-wide);
+  margin: 0 auto;
+  text-align: left;
+}
+@media (max-width: 768px) {
+  .testimonials-grid { grid-template-columns: 1fr; }
+}
+.testimonial-card {
+  background: var(--paper-warm);
+  padding: 2.5rem;
+  border-left: 3px solid var(--rust);
+  position: relative;
+}
+.testimonial-card.sample {
+  border-left-color: var(--gold);
+  background: linear-gradient(135deg, var(--paper-warm) 0%, var(--bone) 100%);
+}
+.testimonial-card.sample::before {
+  content: "SAMPLE — Replace with real attendee";
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: var(--paper);
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--gold);
+}
+.testimonial-quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin-bottom: 1.5rem;
+}
+.testimonial-attribution {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: var(--rust);
+  text-transform: uppercase;
+}
+.testimonial-attribution .role {
+  font-weight: 400;
+  text-transform: none;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+
+/* === Founder section === */
+.founder {
+  background: var(--ink);
+  color: var(--paper);
+  position: relative;
+}
+.founder .eyebrow { color: var(--gold-soft); }
+.founder .section-title { color: var(--paper); font-style: italic; font-weight: 300; }
+.founder p {
+  font-size: 1.1rem;
+  color: rgba(250,246,241,0.85);
+  line-height: 1.8;
+}
+.founder strong { color: var(--paper); }
+.founder em { color: var(--gold-soft); }
+.founder .anchor-line {
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+  line-height: 1.3;
+  color: var(--gold-soft);
+  margin: 3rem 0;
+  letter-spacing: -0.01em;
+}
+.founder .signature {
+  font-family: var(--hand);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold-soft);
+  margin-top: 2rem;
+  font-style: normal;
+}
+
+/* === Speakers === */
+.speakers { background: var(--paper); }
+.speaker-card {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2.5rem;
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--line);
+  align-items: start;
+}
+.speaker-card:last-of-type { border-bottom: none; }
+@media (max-width: 768px) {
+  .speaker-card { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+.speaker-photo {
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, var(--bone), var(--paper-cream));
+  border-radius: 50%;
+  border: 1px dashed var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: center;
+  padding: 1rem;
+}
+.speaker-name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.85rem;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+.speaker-title {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--sand);
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.02em;
+}
+.speaker-bio {
+  font-size: 1rem;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+.speaker-bio .fact-lead {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--rust);
+  font-style: normal;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.speaker-bio .endorsement {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  font-style: italic;
+}
+.speakers-tba {
+  text-align: center;
+  margin-top: 4rem;
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--sand);
+}
+.speakers-tba .main {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--rust);
+  margin-bottom: 0.5rem;
+}
+.speakers-tba .sub {
+  font-size: 0.9rem;
+}
+
+/* === Agenda === */
+.agenda { background: var(--paper-warm); }
+.agenda-intro {
+  text-align: center;
+  font-size: 1.15rem;
+  color: var(--ink-soft);
+  margin-bottom: 1rem;
+}
+.agenda-intro-end {
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.15rem;
+  color: var(--rust);
+  margin-bottom: 4rem;
+}
+.day-card {
+  margin-bottom: 6rem;
+}
+.day-card:last-child { margin-bottom: 0; }
+.day-label {
+  text-align: center;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 1rem;
+}
+.day-label .day { color: var(--ink); }
+.day-tagline {
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--ink-soft);
+  margin-bottom: 3rem;
+}
+.day-opener {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.35rem;
+  line-height: 1.5;
+  color: var(--ink);
+  text-align: center;
+  margin-bottom: 2rem;
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+  letter-spacing: -0.01em;
+}
+.day-body p {
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  line-height: 1.75;
+}
+.day-body .jamil-endorsement {
+  font-weight: 600;
+  color: var(--ink);
+  font-style: italic;
+}
+.day-highlights {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: var(--paper);
+  border-left: 3px solid var(--rust);
+}
+.day-highlights-title {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 1rem;
+}
+.day-highlights ul {
+  list-style: none;
+  padding: 0;
+}
+.day-highlights li {
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  position: relative;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+.day-highlights li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: 0.85rem;
+  top: 0.6rem;
+}
+
+/* === Venue === */
+.venue { background: var(--paper); }
+.venue-location {
+  text-align: center;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sand);
+  margin-bottom: 3rem;
+  margin-top: -1.5rem;
+}
+.venue p {
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+}
+.venue-features-title {
+  text-align: center;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--ink);
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+.venue-features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  max-width: var(--measure-wide);
+  margin: 0 auto;
+}
+.venue-feature {
+  padding: 1.25rem 1.5rem;
+  background: var(--paper-warm);
+  border-left: 3px solid var(--gold);
+}
+.venue-feature strong {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--ink);
+  margin-bottom: 0.25rem;
+}
+.venue-feature span {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+.venue-august {
+  margin-top: 4rem;
+  padding: 2.5rem;
+  background: var(--ink);
+  color: var(--paper);
+  text-align: center;
+  max-width: var(--measure-wide);
+  margin-left: auto;
+  margin-right: auto;
+}
+.venue-august h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--gold-soft);
+  margin-bottom: 1rem;
+}
+.venue-august p {
+  color: rgba(250,246,241,0.85);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+.venue-august .closer {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--gold-soft);
+  font-size: 1.15rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+/* === Pricing === */
+.pricing { background: var(--paper-warm); text-align: center; }
+.pricing-deadline {
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  margin-bottom: 4rem;
+}
+.pricing-deadline strong { color: var(--rust); font-style: normal; }
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: var(--measure-wide);
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .pricing-grid { grid-template-columns: 1fr; }
+}
+.tier-card {
+  background: var(--paper);
+  padding: 2.5rem 2rem;
+  border: 1px solid var(--line);
+  text-align: left;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.tier-card.vip {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.tier-card.vip .tier-label,
+.tier-card.vip .tier-tagline,
+.tier-card.vip .price-strike,
+.tier-card.vip .tier-features li,
+.tier-card.vip .tier-partner small { color: rgba(250,246,241,0.8); }
+.tier-card.vip .tier-features li::before { color: var(--gold-soft); }
+.tier-card.vip .tier-features strong { color: var(--gold-soft); }
+.tier-label {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+.tier-price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.price-current {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 3.5rem;
+  color: var(--rust);
+  line-height: 1;
+}
+.tier-card.vip .price-current { color: var(--gold-soft); }
+.price-strike {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  color: var(--muted);
+  text-decoration: line-through;
+}
+.tier-tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+.tier-summary {
+  font-size: 1rem;
+  color: var(--ink-soft);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+.tier-card.vip .tier-summary { color: rgba(250,246,241,0.9); }
+.tier-features {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+}
+.tier-features li {
+  position: relative;
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.tier-features li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  color: var(--rust);
+  top: 0.6rem;
+}
+.tier-features strong { color: var(--ink); font-weight: 600; }
+.tier-partner {
+  padding: 1rem;
+  background: var(--paper-warm);
+  border-radius: 2px;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+.tier-card.vip .tier-partner { background: rgba(255,255,255,0.05); color: var(--paper); }
+.tier-partner strong { display: block; color: var(--ink); margin-bottom: 0.25rem; }
+.tier-card.vip .tier-partner strong { color: var(--gold-soft); }
+.tier-partner small { font-size: 0.85rem; color: var(--muted); font-style: italic; }
+.tier-cta {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 1.1rem 1.5rem;
+  background: var(--rust);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--rust);
+  transition: all 0.3s ease;
+  margin-bottom: 0.75rem;
+}
+.tier-card.vip .tier-cta {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--ink);
+}
+.tier-cta:hover { transform: translateY(-1px); background: var(--rust-deep); }
+.tier-card.vip .tier-cta:hover { background: var(--gold-soft); }
+.tier-pay {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--muted);
+  text-align: center;
+}
+.tier-card.vip .tier-pay { color: rgba(250,246,241,0.6); }
+.pricing-worth {
+  max-width: var(--measure);
+  margin: 5rem auto 0;
+  text-align: center;
+}
+.pricing-worth h3 {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+.pricing-worth p {
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  margin-bottom: 1.25rem;
+}
+.pricing-worth .gift-line {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--rust);
+  font-style: italic;
+}
+
+/* === FAQ === */
+.faq { background: var(--paper); }
+.faq-intro {
+  text-align: center;
+  color: var(--ink-soft);
+  margin-bottom: 4rem;
+  font-size: 1.05rem;
+}
+.faq-list { max-width: var(--measure); margin: 0 auto; }
+.faq-item {
+  border-bottom: 1px solid var(--line);
+  padding: 0;
+}
+.faq-question {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 1.5rem 0;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  letter-spacing: -0.01em;
+}
+.faq-question:hover { color: var(--rust); }
+.faq-question .toggle {
+  font-family: var(--sans);
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--rust);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+.faq-item.open .faq-question .toggle { transform: rotate(45deg); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+.faq-item.open .faq-answer {
+  max-height: 800px;
+  padding-bottom: 1.5rem;
+}
+.faq-answer p {
+  font-size: 1rem;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+.faq-contact {
+  text-align: center;
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--line);
+}
+.faq-contact h3 {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+.faq-contact p {
+  font-size: 1rem;
+  color: var(--ink-soft);
+}
+.faq-contact a {
+  color: var(--rust);
+  text-decoration: none;
+  font-weight: 600;
+}
+.faq-contact a:hover { text-decoration: underline; }
+
+/* === Final CTA === */
+.final-cta {
+  background: linear-gradient(180deg, var(--paper) 0%, var(--paper-warm) 100%);
+  text-align: center;
+}
+.final-cta .lead-question {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 3rem;
+  letter-spacing: -0.02em;
+}
+.final-cta p {
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+  margin-bottom: 1.25rem;
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.final-cta .voice-emphasis {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--ink);
+  font-size: 1.25rem;
+}
+.final-cta .dont-let {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--rust);
+  margin: 3rem 0;
+}
+.final-cta-divider {
+  width: 4rem;
+  height: 1px;
+  background: var(--line-strong);
+  margin: 3rem auto;
+}
+.tagline {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--rust);
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+.tagline-meta {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 0.5rem;
+}
+.tagline-deadline {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 3rem;
+}
+.final-cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.final-fine {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 3rem;
+}
+.fence h3 {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.35rem;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+.see-you {
+  margin-top: 5rem;
+  padding-top: 4rem;
+  border-top: 1px solid var(--line);
+}
+.see-you-line {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--rust);
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+.see-you-sig {
+  font-family: var(--hand);
+  font-size: 1.5rem;
+  color: var(--sand);
+}
+
+/* === Footer === */
+.footer {
+  background: var(--ink);
+  color: rgba(250,246,241,0.6);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+}
+.footer-brands {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--gold-soft);
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+}
+.footer a { color: var(--gold-soft); text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+
+/* === Utility: subtle reveal === */
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Mobile refinements === */
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .hero-meta { font-size: 0.75rem; letter-spacing: 0.1em; }
+  .hero-meta .dot { margin: 0 0.3rem; }
+  .countdown-bar { font-size: 0.75rem; }
+  .speaker-photo { max-width: 160px; margin: 0 auto; }
+  .image-placeholder { padding: 3rem 1rem; min-height: 220px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Countdown Bar ===== -->
+<div class="countdown-bar">
+  <strong>Early-bird pricing ends</strong>
+  <span class="timer" id="countdown">Sunday, June 21, 2026 · Father's Day</span>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-image-placeholder"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Breakthrough</div>
+    <h1 class="hero-title">Breakthrough <em>in the</em> Desert</h1>
+    <div class="hero-meta">
+      <span>August 7–9, 2026</span>
+      <span class="dot">·</span>
+      <span>Arizona Grand Resort</span>
+      <span class="dot">·</span>
+      <span>Phoenix</span>
+    </div>
+    <p class="hero-question">What if the second half of your life was the best part?</p>
+    <a href="#pricing" class="cta-button">Reserve Your Spot <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<!-- ===== MIRROR ===== -->
+<section class="mirror">
+  <div class="container">
+    <p>You've already done the hard part.</p>
+    <p>You built the career. Worked the long hours. Raised the kids. Kept it together when it would've been easier to give up. You showed up, over and over, for everyone who needed you.</p>
+    <p>And somewhere along the way, you got... <em>stagnant</em>.</p>
+
+    <p><span class="pillar-lead">Physically</span> — you're doing okay, but nowhere near as good as you could be. You carry weight you don't want to be carrying. Your joints ache in places they never used to. Your energy isn't what it was a decade ago, and you've been trying — but pushing through without breaking through. Underneath the trying, a quieter fear has started to live: <em>what if my best days are already behind me?</em></p>
+
+    <p><span class="pillar-lead">Mentally</span> — you're running on autopilot. Same routines. Same week, repeating. The same scrolling, the same drinks on Friday. You haven't done anything that scared you in the good way for a long time. You're not depressed — you're just <em>coasting</em>.</p>
+
+    <p><span class="pillar-lead">In your relationships</span> — the spark has dimmed. Your marriage is good on paper, but real intimacy has been missing for longer than you want to admit. You go to bed at different times. You watch the same shows half-paying attention to each other. The adult kids don't really call. And in unguarded moments, you catch yourself becoming your father.</p>
+
+    <div class="question-block">
+      <div class="lead-in">And underneath all of it, the question you don't ask out loud:</div>
+      <div class="question">Is this it?</div>
+      <div class="question">Is what I have right now... the rest of it?</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PIVOT ===== -->
+<section class="pivot">
+  <div class="container">
+    <div class="pivot-answer">No. This isn't it.</div>
+    <div class="pivot-answer-sub">Unless you let it be.</div>
+
+    <p>The rest of your life isn't going to be the rest of <em>this</em>. Unless you let it.</p>
+
+    <p class="anchor-line">You're <em>NOT</em> at the end of your story. You're at the beginning of the most important chapter of it.</p>
+
+    <p>The back half of life has the potential to be your <span class="golden-years">golden wisdom years</span> — filled with creation, adventure, deep relationships, real success, and physical vibrancy. The years you've been quietly waiting for without realizing it.</p>
+
+    <p>But golden years don't happen by accident. They are created — <em>intentionally</em> — through commitment and through <em>breakthrough</em>.</p>
+
+    <p>They require you to break through the stagnant patterns that have been quietly running your life. To shed the bad habits, the wasted time, the negative thinking, and the routines that have been killing your aliveness one ordinary day at a time.</p>
+
+    <p><strong>This is the season you were built to express it.</strong> Not someday. Not when things calm down. <span class="now-emphasis">Now.</span> Because life isn't forever, and these are the years you'll either come alive in or coast through.</p>
+
+    <div class="section-image ai-image">
+      <img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/02-pivot-doorway.png" alt="A cave opening reveals a vast sunlit desert vista beyond — a visual metaphor for the doorway." />
+    </div>
+
+    <p>The version of you who walks lighter, sleeps deeper, wants the morning, holds eye contact with the person you married, has friends you'd take a bullet for, and knows — without having to convince yourself — that your life means something...</p>
+
+    <div class="doorway-line">That version of you is on the other side of a doorway you haven't walked through yet.</div>
+  </div>
+</section>
+
+<!-- ===== PROMISE ===== -->
+<section class="promise">
+  <div class="container">
+    <h2 class="promise-title">Breakthrough in the Desert is where you reconnect with your most inspired Self &amp; Life.</h2>
+
+    <div class="section-image real-photo">
+      <img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/03-promise-hands-up.png" alt="An attendee at the 2025 event, arms raised, eyes closed, captured in a moment of release and breakthrough — surrounded by 150 others doing the same." />
+    </div>
+
+    <p>Picture Sunday morning. The whole room sitting in a circle. A clay cup of ceremonial cacao warming your hands. The desert sun rising outside as 150 people, who arrived as strangers two days ago, fall silent at the same moment.</p>
+
+    <p class="anchor">That's the kind of thing that happens here.</p>
+
+    <p>Join us for <strong>three transformational days</strong> in Phoenix — a curated experience with aligned people, world-class doctors and teachers, movement, science, ceremony, and soul. Designed for one purpose: to break you out of default patterns and step you into the inspired life you're actually here to live.</p>
+
+    <p class="closer">Not a conference. Not a retreat. <strong>A true breakthrough</strong> — and one of the greatest gifts you can give yourself this year.</p>
+  </div>
+</section>
+
+<!-- ===== THREE THINGS YOU'LL LEAVE WITH ===== -->
+<section class="leave-with">
+  <div class="container-wide">
+    <h2 class="section-title">You'll leave with three things <em>money can't buy.</em></h2>
+    <div class="leave-with-grid">
+      <div class="leave-card">
+        <div class="leave-icon">🔥</div>
+        <div class="leave-word">Clarity</div>
+        <div class="leave-body">A clear picture of the next chapter of your life — your health, relationships, purpose, and next adventures. No more vague longing. A real plan.</div>
+      </div>
+      <div class="leave-card">
+        <div class="leave-icon">⚡</div>
+        <div class="leave-word">Energy</div>
+        <div class="leave-body">The health science, practices, and protocols to live with the peak vitality you were built for after 40 — taught by world-class doctors. Not theory. What works.</div>
+      </div>
+      <div class="leave-card">
+        <div class="leave-icon">🤝</div>
+        <div class="leave-word">A Circle of Aligned Friends</div>
+        <div class="leave-body">A community walking the same path of inspired living. You'll build friendships rooted in trust, respect, and real connection that last long after the event ends. You'll never have to do this alone again.</div>
+      </div>
+    </div>
+    <a href="#pricing" class="cta-button" style="margin-top: 2rem;">Reserve Your Spot <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<!-- ===== SOCIAL PROOF ===== -->
+<section class="social-proof">
+  <div class="container-wide">
+    <div class="eyebrow">Voices from the Community</div>
+    <h2 class="section-title">Real people. <em>Real breakthroughs.</em></h2>
+    <div class="subhead">What attendees are saying about last year's transformational weekend.</div>
+
+    <div class="scenes-gallery">
+      <div class="scenes-gallery-title">Scenes from 2025</div>
+      <div class="scenes-grid">
+        <div class="scene-tile">
+          <img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/09-gallery-workout.png" alt="A 2025 group workout class on rebounder trampolines, led by an energetic instructor." />
+        </div>
+        <div class="scene-tile">
+          <img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/10-gallery-coldplunge.png" alt="A 2025 attendee in a cold plunge bath, smiling, as ice is poured in." />
+        </div>
+        <div class="scene-tile">
+          <img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/03-promise-hands-up.png" alt="A 2025 attendee with arms raised, eyes closed, in a moment of release." />
+        </div>
+        <div class="scene-tile">
+          <img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/11-gallery-love-friends.png" alt="Dr. Anthony embracing a longtime community member at the 2025 event." />
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"From start to finish, this was not just an event — it was a life-changing experience. The Fit Father / Fit Mother Team brought such innate kindness that made everyone feel comfortable and safe to be vulnerable. What followed was nothing short of extraordinary. My heart has been touched forever!"</div>
+        <div class="testimonial-attribution">Irma <span class="role">· 2025 attendee</span></div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"I knew this event would help me with my fitness. What I didn't expect was that the Live Event gave me the tools and skills to grow mentally and emotionally alongside my fitness. I see it, my family sees it, and my friends have already noticed a change for the better."</div>
+        <div class="testimonial-attribution">Nick <span class="role">· 2025 attendee</span></div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"This past weekend made it abundantly clear that my limiting beliefs kept me safe and protected me as a child, but have been holding me back from my next level. I'm now empowered to change that."</div>
+        <div class="testimonial-attribution">Geoff <span class="role">· 2025 attendee</span></div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"Wow! I wish everyone could have been able to live this experience. Beyond the very palpable, intense energy within a group of like-minded people, I believe every person was feeling 'I am where I am supposed to be at this moment' by God's plan."</div>
+        <div class="testimonial-attribution">Ron <span class="role">· 2025 attendee</span></div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"This weekend reminded me why I've been part of this Brotherhood for 6+ years. The combination of evidence-based health principles, genuine community support, and faith-based values creates something you won't find anywhere else in the health and fitness space."</div>
+        <div class="testimonial-attribution">Zebb <span class="role">· 2025 attendee</span></div>
+      </div>
+
+      <div class="testimonial-card sample">
+        <div class="testimonial-quote">"I came thinking I was here for the workouts and meal plans. By Sunday I'd cried twice, hugged people I'd never met, and finally understood why I'd been so stuck. I'm 54. I haven't felt this clear about what I want from the rest of my life since I was 20."</div>
+        <div class="testimonial-attribution">[Name] <span class="role">· 2025 attendee</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FROM THE FOUNDER ===== -->
+<section class="founder">
+  <div class="container">
+    <div class="eyebrow">A Note From the Founder</div>
+    <h2 class="section-title">Why I really built this event.</h2>
+
+    <div class="founder-photo">
+      <img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/07-founder-dr-balduzzi.png" alt="Dr. Anthony Balduzzi on stage at the 2025 event, speaking to attendees with members of his team behind him." />
+    </div>
+
+    <p>I'm Dr. Anthony Balduzzi — founder of the Fit Father Project and Fit Mother Project. Over the past decade, our team has helped over 70,000 people across 100+ countries reclaim their health. I'm grateful every day for the work we do.</p>
+
+    <p>But I'm going to be honest with you.</p>
+
+    <p>A few years ago, a question started rising in me that I couldn't shake: <strong><em>Is this all I'm here to do?</em></strong></p>
+
+    <p>I'd started to notice that the people getting the deepest results in our programs weren't just losing weight. They were <em>waking up</em>. Repairing marriages. Reconnecting with their grown kids. Finding deep purpose they'd put on a shelf decades ago. Coming alive in ways that had nothing to do with the scale.</p>
+
+    <p>So I started doing my own work. I sat in ceremony. I learned to play the Native American flute. I studied with men's mentors. I spent time in the desert and in the darkness. I let myself be cracked open by the parts of life a medical degree never prepared me for — grief, fatherhood, faith, the bigger questions.</p>
+
+    <p>And what I found on the other side was this:</p>
+
+    <div class="anchor-line">Health is the doorway. Aliveness is the room.</div>
+
+    <p>Most people in their 40s, 50s, and 60s are quietly stagnating in a life that looks fine on the outside. They have one season left to choose: <em>wake up and claim the next chapter the way they were built to live it</em> — or take the average path of slow, depressing decline.</p>
+
+    <p>And almost no one is being shown how to make a breakthrough for the back half of life.</p>
+
+    <p>I built <strong>Breakthrough in the Desert</strong> for those people. For the ones who feel the call to experience their full potential but haven't found the doorway. For the ones who know — somewhere deep — that they have more in them than they've been letting out.</p>
+
+    <p>Last year's 2025 event was the most powerful thing we've ever created. People left changed. Some called it a divine appointment. Others said it was the thing they didn't know they needed. All of them said the same thing on the last day: <em>"This is exactly what I came here for."</em></p>
+
+    <p>We're doing it again in 2026. And if you've read this far, I think there's a reason.</p>
+
+    <p>I'd love to have you with us in the room.</p>
+
+    <div class="signature">— Dr. Anthony Balduzzi</div>
+  </div>
+</section>
+
+<!-- ===== SPEAKERS ===== -->
+<section class="speakers">
+  <div class="container-wide">
+    <div class="eyebrow">The Faculty</div>
+    <h2 class="section-title">The people <em>in the room</em> with you.</h2>
+    <p style="text-align: center; max-width: 36rem; margin: 0 auto 4rem; font-size: 1.1rem; color: var(--ink-soft);">Breakthrough in the Desert isn't a parade of celebrity speakers reading from slides. It's a curated circle of world-class doctors, healers, and teachers — each one brought here because they deeply practice and embody what they teach.</p>
+
+    <div class="speaker-card">
+      <div class="speaker-photo">[ Dr. Anthony ]<br>Photo</div>
+      <div class="speaker-info">
+        <h3 class="speaker-name">Dr. Anthony Balduzzi</h3>
+        <div class="speaker-title">Host &amp; Founder, Fit Father Project &amp; Fit Mother Project</div>
+        <div class="speaker-bio">Dr. Anthony is a naturopathic physician and founder of one of the world's largest health communities for parents over 40 — serving over 70,000 members across 100+ countries. After losing his own father at age 9 to preventable disease, he's spent the last decade on a mission to help families thrive together. At Breakthrough, he'll open and close the experience — walking you through a framework for intentional living, naming the patterns that quietly steal your aliveness, and showing you how to design the next chapter of your life with clarity, energy, and purpose.</div>
+      </div>
+    </div>
+
+    <div class="speaker-card">
+      <div class="speaker-photo">[ Dr. Amie ]<br>Photo</div>
+      <div class="speaker-info">
+        <h3 class="speaker-name">Dr. Amie Hornaman</h3>
+        <div class="speaker-title">"The Thyroid-Fixer" · Doctor of Clinical Nutrition · Host of The Thyroid Fixer Podcast</div>
+        <div class="speaker-bio">Known globally as The Thyroid-Fixer, Dr. Amie is one of the most trusted voices in metabolism and hormone optimization for people over 40. After her own years of being misdiagnosed and dismissed by conventional medicine, she's built an international practice helping thousands reclaim their metabolism, energy, and vitality. At Breakthrough, Dr. Amie will reveal why so many people over 40 feel "tired but wired," how thyroid and hormone dysfunction silently sabotage your weight and energy, and the exact natural protocols that actually work to optimize your hormones for the back half of life so you feel alive.</div>
+      </div>
+    </div>
+
+    <div class="speaker-card">
+      <div class="speaker-photo">[ Dr. Jamil ]<br>Photo</div>
+      <div class="speaker-info">
+        <h3 class="speaker-name">Dr. Jamil Sayegh</h3>
+        <div class="speaker-title">Naturopathic Physician · Transformation Coach · Host of Transformation Starts Today Podcast</div>
+        <div class="speaker-bio">Dr. Jamil is a naturopathic physician, energy healer, and transformation coach who works with leaders and high-performers ready to heal deeply and live fully. He blends clinical medicine with spiritual wisdom, somatic awareness, and inner work to help people break through the invisible patterns that have been quietly running their lives. At Breakthrough, Dr. Jamil will lead two of the most powerful sessions of the weekend — a Saturday morning <em>Wake Up</em> keynote on deepening your presence, intentionality, and the choice to fully live — and a 2-hour Sunday workshop on releasing the limiting beliefs and emotional patterns that have been holding you back from your next chapter. <span class="endorsement">Dr. Jamil's sessions alone will be worth the entire investment in coming to the event.</span></div>
+      </div>
+    </div>
+
+    <div class="speaker-card">
+      <div class="speaker-photo">[ Maraya ]<br>Photo</div>
+      <div class="speaker-info">
+        <h3 class="speaker-name">Maraya Brown, CNM, MSN</h3>
+        <div class="speaker-title">Functional Women's Health Expert · Founder of the Women's Vibrancy Code · Host of The Women's Vibrancy Code Podcast</div>
+        <div class="speaker-bio">Maraya is a Yale-trained Certified Nurse Midwife who has built her practice around the territory most medicine refuses to touch: women's energy, hormones, libido, and the lived experience of being turned on by your own life. Maraya has worked with today's most impressive powerhouse women — from billionaire entrepreneurs to domestic goddesses — and has been featured in Forbes, Harper's Bazaar, and beyond. At Breakthrough, Maraya will lead one of the most talked-about moments of the weekend: a Saturday evening keynote on reigniting the spark that's gone missing in long-term relationships and marriages. She'll show you how to rebuild the intimacy most people have stopped fighting for so you can have deeper, more fulfilling connections.</div>
+      </div>
+    </div>
+
+    <div class="speaker-card">
+      <div class="speaker-photo">[ Dr. Ovadia ]<br>Photo</div>
+      <div class="speaker-info">
+        <h3 class="speaker-name">Dr. Philip Ovadia</h3>
+        <div class="speaker-title">Board-Certified Cardiac Surgeon · Bestselling Author of Stay Off My Operating Table</div>
+        <div class="speaker-bio">
+          <span class="fact-lead">Heart disease is the #1 killer of adults over 40 in America. Most of it is preventable.</span>
+          Dr. Philip Ovadia knows because he's spent his career operating on the people who didn't know it in time. After performing thousands of open-heart surgeries on people over 40, Dr. Ovadia made a discovery that changed his career: most of the patients on his table didn't have to be there. As a former morbidly obese heart surgeon who lost over 100 pounds by fixing his own metabolic health, he's now on a mission to help people stay <em>off</em> his operating table — by reversing the root cause of heart disease, diabetes, and chronic illness before it ever requires the knife. At Breakthrough, Dr. Ovadia will share the metabolic truths the mainstream medical system never told you, and the simple framework for protecting your heart and lifespan for decades to come.
+        </div>
+      </div>
+    </div>
+
+    <div class="speaker-card">
+      <div class="speaker-photo">[ Luana ]<br>Photo</div>
+      <div class="speaker-info">
+        <h3 class="speaker-name">Luana Makenzie Marzluff</h3>
+        <div class="speaker-title">Founder, KAKAO Ceremonial Drinking Chocolate · Cacao Ceremony Facilitator</div>
+        <div class="speaker-bio">Luana is the founder of KAKAO — a 501(c)(3) non-profit she launched in 2016 to bring true ceremonial-grade cacao to the Western world for healing, heart-opening, and connection. She travels throughout Central and South America to source the most potent heirloom cacao beans in the world, and has guided thousands through cacao ceremonies as a tool for awakening and integration. On Sunday morning, Luana will lead a heart-opening cacao ceremony — a contemplative, sensory experience that creates the conditions for the emotional integration work that follows. Dr. Balduzzi drinks Luana's cacao daily and will also share his longevity elixir using cacao alongside a few other high-polyphenol ingredients.</div>
+      </div>
+    </div>
+
+    <div class="speaker-card">
+      <div class="speaker-photo">[ John ]<br>Photo</div>
+      <div class="speaker-info">
+        <h3 class="speaker-name">John Salisbury</h3>
+        <div class="speaker-title">Owner &amp; Master Yoga Instructor, Modern Yoga Scottsdale</div>
+        <div class="speaker-bio">John is the owner and head teacher at Modern Yoga in Scottsdale, one of Arizona's most respected and longest-standing yoga communities. He has been teaching in the Valley since 2000, carrying forward a lineage that began with his step-father Dave Oliver — one of the first yoga teachers to seed the Phoenix area in the 1980s. With over 25 years of teaching experience and deep roots in classical yoga, John blends authentic tradition with a modern, accessible approach. On Saturday morning at Breakthrough, John will lead the entire community through a powerful 60-minute yoga and movement session — designed to open the body, settle the mind, and prepare you for the deepest work of the weekend.</div>
+      </div>
+    </div>
+
+    <div class="speaker-card">
+      <div class="speaker-photo">[ Caroline ]<br>Photo</div>
+      <div class="speaker-info">
+        <h3 class="speaker-name">Caroline Alan</h3>
+        <div class="speaker-title">"The Mineral Geek" · Co-Founder &amp; CEO, BEAM Minerals · Author, The Mineral Reset (Hay House, 2026)</div>
+        <div class="speaker-bio">
+          <span class="fact-lead">Up to 90% of Americans are deficient in at least one essential mineral. Most don't know it.</span>
+          Caroline Alan is here to change that. After her own corporate career left her physically, mentally, and energetically depleted — chasing answers across adrenal fatigue, gut inflammation, and a slew of symptoms she was told were "just normal" — Caroline discovered the foundational role minerals play in cellular health. Today she's one of the world's leading voices on mineral replenishment, co-founder of BEAM Minerals, and author of the Hay House book <em>The Mineral Reset</em> (with a foreword by Dr. Mindy Pelz). At Breakthrough, Caroline will show you why mineral depletion is the hidden driver behind midlife fatigue, sleep issues, and brain fog — and the simple cellular reset that has transformed thousands.
+        </div>
+      </div>
+    </div>
+
+    <div class="speakers-tba">
+      <div class="main">More speakers and special guests to be announced.</div>
+      <div class="sub">Confirmed lineup includes additional contributors through our partners and select event sponsors.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AGENDA ===== -->
+<section class="agenda">
+  <div class="container-wide">
+    <div class="eyebrow">The Three-Day Arc</div>
+    <h2 class="section-title">Three days. One journey. <em>A different you.</em></h2>
+    <p class="agenda-intro">Most events are a stack of unrelated talks. Breakthrough in the Desert is a curated journey. Each day moves you one step further across the threshold — from waking up to where you are, to coming alive in your body, to stepping into who you're meant to be.</p>
+    <p class="agenda-intro-end">Here's the arc of our journey.</p>
+
+    <!-- FRIDAY -->
+    <div class="day-card">
+      <div class="day-label"><span class="day">FRIDAY</span> · AWARENESS</div>
+      <div class="day-tagline">Wake up to where you are. See the patterns. Name what's been holding you back.</div>
+
+      <div class="section-image real-photo">
+        <img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/04-friday-stage-view.png" alt="A panel discussion on Day Two of the 2025 event, with attendees seated and engaged." />
+      </div>
+
+      <p class="day-opener">"What if you could see — clearly, for the first time in years — exactly what's been quietly draining your life?"</p>
+
+      <div class="day-body">
+        <p>That's the question Dr. Anthony will put in front of you within the first hour of the weekend. You'll arrive at the Arizona Grand Resort, find your seat among 150 aligned humans, and step into the experience that will rewire how you experience the next chapter of your life.</p>
+
+        <p>Dr. Anthony will open the day with his keynote on <strong>Intentional Living</strong> — a framework for looking honestly at the dimensions of your life, the energy leaks quietly draining your vitality, and the patterns you've been running on autopilot for years. You'll reflect, share at your table, and start sketching a real plan for where you want to go.</p>
+
+        <p>Throughout the day, you'll move between the main stage and experiential movement breakouts — stretching, exercise, breathwork, hands-on workshops, and vendor hall conversations. The afternoon will feature a live Q&amp;A health panel on what it actually takes to build healthspan after 40. The day closes with a special evening keynote, followed by an alcohol-free happy hour featuring Kava — where the conversations get deep and real.</p>
+      </div>
+
+      <div class="day-highlights">
+        <div class="day-highlights-title">Friday Highlights</div>
+        <ul>
+          <li>Welcome &amp; Opening Keynote with Dr. Anthony: <em>Intentional Living — The Dimensions of an Aliveness-Centered Life</em></li>
+          <li>Experiential breakout sessions: workouts, breathwork, stretching, somatic practices</li>
+          <li>Afternoon Q&amp;A health panel featuring Caroline Alan and other special guests</li>
+          <li>Curated vendor hall featuring leading-edge health and wellness brands</li>
+          <li>Connection lunch with all attendees (clean, high-quality food — no seed oils, no compromises)</li>
+          <li>Special evening keynote — speaker to be announced</li>
+          <li>Alcohol-free Kava happy hour to close the day</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SATURDAY -->
+    <div class="day-card">
+      <div class="day-label"><span class="day">SATURDAY</span> · ACTIVATION</div>
+      <div class="day-tagline">Wake up the body. Reconnect with what's alive in you. Step into vitality.</div>
+
+      <div class="section-image ai-image">
+        <img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/05-saturday-feet-mat.png" alt="Bare feet resting on a yoga mat at sunrise, with desert mountains in the distance — the moment before practice begins." />
+      </div>
+
+      <div class="day-body">
+        <p>The desert wakes up early. By 8am you're on a mat, breathing with 149 other people, the sun rising over South Mountain, your body opening for what's about to happen next.</p>
+
+        <p>Saturday is the day your body, mind, and spirit come fully online.</p>
+
+        <p>You'll start with a 60-minute yoga and movement session led by John Salisbury — one of Phoenix's most respected master yoga teachers. From there, Dr. Jamil Sayegh takes the main stage with his <em>Wake Up</em> keynote — a presence-driven, soul-level invitation to stop sleepwalking through your one life. The morning continues with a somatic breathwork experience designed to reconnect you with the deeper signals and sensations your body has been trying to send you for years.</p>
+
+        <p>The afternoon brings two of the most clinically powerful sessions of the weekend: Dr. Amie Hornaman presents on thyroid, metabolism, and the hidden hormonal drivers of midlife fatigue and weight gain — followed by breakout sessions including Dr. Philip Ovadia on heart health and the metabolic truths your cardiologist never told you.</p>
+
+        <p>Saturday evening is the moment many attendees remember most. Maraya Brown will lead an honest, soul-level keynote on relationships, intimacy, and reclaiming the spark that's gone missing in long-term relationships and marriages — followed by a sunset pool party at the resort, where the community starts to feel like family.</p>
+      </div>
+
+      <div class="day-highlights">
+        <div class="day-highlights-title">Saturday Highlights</div>
+        <ul>
+          <li>Sunrise yoga &amp; movement with John Salisbury (Modern Yoga Scottsdale)</li>
+          <li><em>Wake Up</em> keynote with Dr. Jamil Sayegh</li>
+          <li>Somatic breathwork &amp; body reconnection session</li>
+          <li>Keynote with Dr. Amie Hornaman: <em>Thyroid, Hormones &amp; the Hidden Drivers of Midlife Fatigue</em></li>
+          <li>Breakout with Dr. Philip Ovadia: <em>Stay Off the Operating Table — Heart Health Myths Debunked</em></li>
+          <li>Maraya Brown evening keynote: <em>Reclaiming Aliveness, Intimacy &amp; the Spark</em></li>
+          <li>Sunset pool party at Arizona Grand Resort</li>
+          <li>Additional presenters being announced</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SUNDAY -->
+    <div class="day-card">
+      <div class="day-label"><span class="day">SUNDAY</span> · INTEGRATION</div>
+      <div class="day-tagline">Release what no longer serves you. Commit to your next chapter. Walk out changed.</div>
+
+      <div class="section-image real-photo">
+        <img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/06-sunday-prayer-hands.png" alt="A row of 2025 attendees holding hands on stage in a ceremonial circle while Dr. Anthony speaks." />
+      </div>
+
+      <div class="day-body">
+        <p>Something shifts on Sunday. People who arrived as strangers Friday are now eating breakfast together, sharing what cracked open the night before, asking questions they didn't know they had. The room feels different. <em>You</em> feel different.</p>
+
+        <p>Sunday is the day the breakthrough lands.</p>
+
+        <p>The day opens with optional cold plunge and morning movement — including a guided workout for those who want to start the day moving. Then comes one of the most distinctive experiences of the entire weekend: a heart-opening cacao ceremony led by Luana Makenzie Marzluff, founder of KAKAO — a contemplative, sensory experience that creates the conditions for the emotional integration work that follows.</p>
+
+        <p>Dr. Jamil returns mid-morning for a deep workshop on releasing the emotional patterns, limiting beliefs, and inherited stories that have quietly run your life. <span class="jamil-endorsement">Dr. Jamil's session has the potential to transform how you live for the rest of your life.</span> Afternoon breakouts and a final connection lunch let you integrate what you've learned with the new friends you've made at the event.</p>
+
+        <p>The weekend closes with Dr. Anthony on the main stage for a powerful final session — designed to help you commit to your next chapter and walk out the door already living it.</p>
+      </div>
+
+      <div class="day-highlights">
+        <div class="day-highlights-title">Sunday Highlights</div>
+        <ul>
+          <li>Optional sunrise cold plunge &amp; morning movement</li>
+          <li>Cacao ceremony with Luana Makenzie Marzluff (KAKAO)</li>
+          <li>Integration workshop with Dr. Jamil Sayegh: <em>Releasing What's Been Holding You Back</em></li>
+          <li>Afternoon breakout sessions</li>
+          <li>Final connection lunch with the community</li>
+          <li>Closing keynote with Dr. Anthony: <em>Walking Through the Doorway — Your Next Chapter Starts Now</em></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VENUE ===== -->
+<section class="venue">
+  <div class="container-wide">
+    <div class="eyebrow">The Venue</div>
+    <h2 class="section-title">Where <em>breakthrough</em> happens.</h2>
+    <div class="venue-location">Arizona Grand Resort · Phoenix, Arizona</div>
+
+    <div class="image-placeholder cinematic">
+      <div class="ip-label">Venue — Arizona Grand Resort</div>
+      <div class="ip-desc">Use real official Arizona Grand Resort photography — pool / suite / South Mountain view.</div>
+    </div>
+
+    <div class="container">
+      <p>The desert has been a place of transformation for as long as humans have existed. Jesus. Moses. The Buddha. Indigenous vision quests. Sufi mystics. There's a reason the great traditions all sent their seekers into the desert when something inside them needed to break open.</p>
+
+      <p>You'll spend three days in that same landscape — not roughing it, but rooted in it. The Arizona Grand Resort sits against South Mountain, the largest municipal park in the country, with miles of sunrise hiking trails just steps from the door. The venue is 10 minutes from Phoenix Sky Harbor and a short drive from Sedona and the red rock country if you want to extend your trip.</p>
+
+      <p>This is your wellness vacation, your retreat, and your breakthrough — all in one place.</p>
+    </div>
+
+    <h3 class="venue-features-title">What's waiting for you</h3>
+    <div class="venue-features">
+      <div class="venue-feature">
+        <strong>All-Suite Accommodations</strong>
+        <span>Every room is a full suite, designed for rest and recovery. Discounted Breakthrough rate of approximately $150/night for attendees.</span>
+      </div>
+      <div class="venue-feature">
+        <strong>7-Acre Oasis Water Park</strong>
+        <span>Lazy river, slides, spa pools. Bring the family. Make it the vacation they remember.</span>
+      </div>
+      <div class="venue-feature">
+        <strong>20,000-Square-Foot Fitness Center &amp; Luxury Spa</strong>
+        <span>Train, recover, decompress. Available throughout your stay.</span>
+      </div>
+      <div class="venue-feature">
+        <strong>Sunrise Trails at South Mountain</strong>
+        <span>Optional guided morning hikes for those who want to start the day in the desert sun.</span>
+      </div>
+      <div class="venue-feature">
+        <strong>18-Hole Championship Golf Course</strong>
+        <span>For the early arrivers and the post-event extenders.</span>
+      </div>
+      <div class="venue-feature">
+        <strong>Curated Healthy Cuisine</strong>
+        <span>Every meal provided during the event is real food: clean protein, vegetables, no seed oils, no compromises. You'll feel the difference by Saturday morning.</span>
+      </div>
+      <div class="venue-feature">
+        <strong>Family-Friendly</strong>
+        <span>Bring your spouse, your kids, your whole family. The resort is built for it. Conference sessions are reserved for ages 15+, but the rest of the property is paradise for everyone.</span>
+      </div>
+    </div>
+
+    <div class="venue-august">
+      <h3>About the desert in August</h3>
+      <p>Yes, it's hot. It's also dry — which most people find dramatically more comfortable than the humidity they're used to. Outside of optional sunrise hikes (stunning at 6am when the desert is cool), every minute of the event experience happens inside an air-conditioned venue. And when you're not in session, the 7-acre water park and lazy river make 105° feel like a gift, not a problem.</p>
+      <p class="closer">The desert in August is part of the magic. Embrace it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="pricing" id="pricing">
+  <div class="container-wide">
+    <div class="eyebrow">Reserve Your Spot</div>
+    <h2 class="section-title">Two ways to step through <em>the doorway.</em></h2>
+    <p class="pricing-deadline">Early-bird pricing ends <strong>Sunday, June 21, 2026</strong> (Father's Day). After that, prices return to full.</p>
+
+    <div class="pricing-grid">
+      <!-- GA+ -->
+      <div class="tier-card">
+        <div class="tier-label">GA+ Ticket</div>
+        <div class="tier-price">
+          <span class="price-current">$845</span>
+          <span class="price-strike">$995</span>
+        </div>
+        <div class="tier-tagline">Early-bird through Father's Day</div>
+        <div class="tier-summary">The full Breakthrough experience. Three days, all in.</div>
+        <ul class="tier-features">
+          <li>All three days of keynotes, workshops, and main-stage sessions</li>
+          <li>Access to every experiential breakout — workouts, breathwork, somatic practices, yoga</li>
+          <li>Curated vendor hall featuring leading-edge health brands</li>
+          <li>Three clean, high-quality connection lunches daily</li>
+          <li>2025 Live Event recordings included</li>
+          <li>Optional sunrise hikes, cold plunge, and pool access throughout</li>
+        </ul>
+        <div class="tier-partner">
+          <strong>Add a partner ticket for +$595</strong>
+          <small>Full GA+ access for your spouse, partner, children ages 15+, or close friend.</small>
+        </div>
+        <a href="#" class="tier-cta">Reserve Your GA+ Spot →</a>
+        <div class="tier-pay">3-pay option available at checkout</div>
+      </div>
+
+      <!-- VIP -->
+      <div class="tier-card vip">
+        <div class="tier-label">VIP Ticket</div>
+        <div class="tier-price">
+          <span class="price-current">$1,295</span>
+          <span class="price-strike">$1,495</span>
+        </div>
+        <div class="tier-tagline">Early-bird through Father's Day</div>
+        <div class="tier-summary">Everything in GA+, plus front-row access to the speakers, the experience, and Dr. Anthony.</div>
+        <ul class="tier-features">
+          <li><strong>Front-row, priority seating</strong> in all main stage sessions</li>
+          <li><strong>VIP daily connection lunch</strong> with Dr. Anthony, the speakers, and fellow VIPs (every day)</li>
+          <li><strong>VIP-only Q&amp;A session</strong> with Dr. Anthony — ask the questions you can't ask in a room of 150</li>
+          <li><strong>VIP lounge access</strong> with premium refreshments throughout the event</li>
+          <li><strong>Priority access to speakers</strong> between sessions</li>
+          <li><strong>2025 AND 2026 Live Event recordings included</strong> — yours to keep, revisit, and apply for the rest of your life</li>
+          <li>All GA+ benefits included</li>
+        </ul>
+        <div class="tier-partner">
+          <strong>Add a partner ticket for +$895</strong>
+          <small>Full VIP access for your spouse, partner, children ages 15+, or close friend, including VIP lunches.</small>
+        </div>
+        <a href="#" class="tier-cta">Reserve Your VIP Spot →</a>
+        <div class="tier-pay">3-pay option available at checkout</div>
+      </div>
+    </div>
+
+    <div class="pricing-worth">
+      <h3>Why coming to Breakthrough is worth the investment.</h3>
+      <p>Three days that change the rest of your life — for less than what most people spend on a single failed health protocol, a year of underused gym memberships, or a vacation they won't remember six months from now.</p>
+      <p class="gift-line">This isn't an expense. It's the gift you give your next chapter.</p>
+      <p style="margin-top: 1.5rem;">You can bring your partner, friends, and older children to walk through the doorway alongside you. Breakthroughs are deeper — and last longer — when the people closest to you are walking the same path.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq">
+  <div class="container">
+    <div class="eyebrow">Frequently Asked Questions</div>
+    <h2 class="section-title">The questions <em>we hear most.</em></h2>
+    <p class="faq-intro">Below are the questions we hear most often. If yours isn't here, reach out — our team is happy to help you decide if Breakthrough is the right fit for you.</p>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">Is this for me? Who is Breakthrough actually for? <span class="toggle">+</span></button>
+        <div class="faq-answer">
+          <p>Breakthrough is for adults 40 and over who feel a quiet but unmistakable sense that there's more in them than they've been letting out. You don't need to be in great shape. You don't need to know what your "next chapter" looks like. You don't even need to be a member of Fit Father or Fit Mother. You just need to be ready to stop coasting through your best years.</p>
+          <p>We've welcomed entrepreneurs, doctors, teachers, executives, retirees, stay-at-home parents, empty-nesters, couples in long marriages, people who recently lost a parent, people facing health scares, and people who simply woke up one day and decided they wanted <em>more</em>. If you read the page above and felt something inside you say <em>yes</em>, you belong here.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Who is this NOT for? <span class="toggle">+</span></button>
+        <div class="faq-answer">
+          <p>If you're looking for a tactical fitness bootcamp, a quick-fix weight-loss weekend, or another conference where you take notes and forget them by Tuesday — this isn't that. Breakthrough goes deeper. We touch on relationships, purpose, grief, intimacy, faith, and the soul-level patterns that have been quietly running your life. If that's not what you're looking for, save your money. If it is, you've found your people.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Do I need to be a member of Fit Father or Fit Mother to attend? <span class="toggle">+</span></button>
+        <div class="faq-answer">
+          <p>Not at all. Breakthrough is open to everyone. Many attendees are FFP/FMP members, but you'll also meet people coming from outside our community — friends, partners, professionals, and curious humans who heard about the event and felt the pull.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">When should I arrive and depart? <span class="toggle">+</span></button>
+        <div class="faq-answer">
+          <p>The event runs <strong>Friday, August 7 through Sunday, August 9, 2026</strong>. We recommend arriving <strong>Thursday, August 6</strong> to settle in, register early, and join optional Thursday evening gatherings. The first session begins <strong>Friday morning at 8:45am</strong>. The final session wraps <strong>Sunday afternoon by 4:00pm</strong> — plan to depart Sunday evening or Monday morning. Out-of-towners often build in an extra day to enjoy the resort, hike South Mountain, or take a side trip to Sedona.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Which airport should I fly into? <span class="toggle">+</span></button>
+        <div class="faq-answer">
+          <p>Phoenix Sky Harbor International Airport (PHX). It's just 10 minutes from the Arizona Grand Resort and serves every major airline.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">What are hotel rooms like, and what do they cost? <span class="toggle">+</span></button>
+        <div class="faq-answer">
+          <p>We've secured a discounted Breakthrough rate of approximately <strong>$150/night</strong> at the Arizona Grand Resort. Every room is a full suite — designed for rest, recovery, and bringing your family if you choose. Hotel accommodations are not included in your ticket price, but the discounted rate makes the resort experience significantly more accessible than its standard rates. You're welcome to stay elsewhere, though we strongly recommend staying on property for the full experience.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Isn't it going to be hot in Arizona in August? <span class="toggle">+</span></button>
+        <div class="faq-answer">
+          <p>Yes — and most people find Arizona's dry heat dramatically more comfortable than the humidity they're used to. Outside of optional sunrise hikes (stunning at 6am when the desert is cool), every minute of the event happens inside an air-conditioned venue. The Arizona Grand also has a 7-acre water park, lazy river, and pools that turn 105° into a feature, not a problem. The desert in August is part of the medicine. Embrace it.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Can I bring my spouse, partner, or family? <span class="toggle">+</span></button>
+        <div class="faq-answer">
+          <p>Yes — and we encourage it. We offer <strong>Bring-a-Partner add-ons</strong> at both ticket tiers (+$595 for GA+, +$895 for VIP) that give your spouse, partner, older children (ages 15+), or close friend full access to all conference sessions. Many sessions are designed for couples or accountability partners working through the breakthrough together.</p>
+          <p>For families: the Arizona Grand Resort is a true family-friendly paradise. The 7-acre water park, lazy river, spa, and golf course make it the perfect place for your spouse and kids to vacation while you do the deeper work. <strong>Conference sessions are reserved for ages 15+,</strong> but the rest of the resort is built for everyone.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Do I need to be in great shape to come? <span class="toggle">+</span></button>
+        <div class="faq-answer">
+          <p>No. Every fitness level is welcome. All workouts, yoga sessions, breathwork, and somatic experiences are designed to be adaptable — and full participation is encouraged but never required. We have attendees who run marathons and attendees who are just starting their health journey. Both belong.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Will there be sessions specific to women? <span class="toggle">+</span></button>
+        <div class="faq-answer">
+          <p>Yes. Our 2026 lineup includes Dr. Amie Hornaman on thyroid and hormone optimization, and Maraya Brown on women's vibrancy, intimacy, and reclaiming aliveness — both of which directly serve women 40+ navigating perimenopause, menopause, and the unique terrain of midlife. Several other sessions throughout the weekend address topics that hit differently for women.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Are payment plans available? <span class="toggle">+</span></button>
+        <div class="faq-answer">
+          <p>Yes. We offer a <strong>3-pay installment option</strong> on both GA+ and VIP tickets at checkout. This makes the investment accessible without compromising the experience.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">What about the offers I'll hear about at the event? <span class="toggle">+</span></button>
+        <div class="faq-answer">
+          <p>Toward the end of the event, you'll be introduced to a few ways to continue the journey beyond the three days — programs designed for attendees who feel called to go deeper. There's never any pressure to say yes, and the event itself is complete and life-changing on its own. The offers exist for those who feel the call. You'll know if it's for you.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">What should I bring or wear? <span class="toggle">+</span></button>
+        <div class="faq-answer">
+          <p>Comfortable, breathable clothing for movement (workouts, yoga, breathwork). A water bottle. A notebook (we'll provide one too). Light layers — air conditioning can be cool. An open heart. That's most of it. We'll provide the rest.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">What if I have accessibility needs or dietary restrictions? <span class="toggle">+</span></button>
+        <div class="faq-answer">
+          <p>We're committed to making Breakthrough accessible to everyone. Please contact our support team after registering with any accessibility requirements or dietary needs (gluten-free, dairy-free, vegetarian, etc.) and we'll work directly with the Arizona Grand to accommodate.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Are tickets refundable? <span class="toggle">+</span></button>
+        <div class="faq-answer">
+          <p>All Breakthrough ticket purchases are <strong>non-refundable</strong> — but tickets are <strong>fully transferable</strong> up until July 1, 2026. If your plans change, you can transfer your ticket to a spouse, friend, or anyone else in your community at no additional cost. Just email our team to update the name on file.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Will there be photography or video at the event? <span class="toggle">+</span></button>
+        <div class="faq-answer">
+          <p>Yes. Our team will be capturing photo and video throughout the weekend for future event marketing and community storytelling. By attending, you grant permission for your image to be used in promotional materials. If you'd prefer to opt out of being featured, please let our team know at registration and we'll make sure your preference is honored.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">How do I know if this is the right time for me? <span class="toggle">+</span></button>
+        <div class="faq-answer">
+          <p>Most people who've come to Breakthrough say two things on Sunday afternoon: <em>"I almost didn't come"</em> — and <em>"This is exactly what I needed."</em> If you've read this far, something inside you is already pointing toward yes. Trust it. The doorway doesn't stay open forever.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-contact">
+      <h3>Still have questions?</h3>
+      <p>Email <a href="mailto:support@fitfatherproject.com">support@fitfatherproject.com</a> or text <a href="sms:602-999-0004">602-999-0004</a>. Our team will help you decide if Breakthrough is the right next step for you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="final-cta">
+  <div class="container">
+    <h2 class="lead-question">You've read this far <em>for a reason.</em></h2>
+    <p>Somewhere inside you, something has been quietly pointing toward this for a while now.</p>
+    <p>The voice that tells the truth in unguarded moments. The one that knows you have more in you than you've been letting out. The one that's tired of coasting and ready to come alive.</p>
+    <p class="voice-emphasis">That voice is the reason you read this whole page.</p>
+    <p class="dont-let">Don't let it be the reason you wish you had.</p>
+
+    <div class="final-cta-divider"></div>
+
+    <div class="tagline">Three Days. One Doorway. The Rest of Your Life.</div>
+    <div class="tagline-meta">August 7–9, 2026 · Arizona Grand Resort, Phoenix</div>
+    <div class="tagline-deadline">Early-bird pricing ends Sunday, June 21 (Father's Day).</div>
+
+    <div class="final-cta-buttons">
+      <a href="#" class="cta-button">Reserve Your GA+ Spot — $845 →</a>
+      <a href="#" class="cta-button cta-secondary">Reserve Your VIP Spot — $1,295 →</a>
+    </div>
+    <div class="final-fine">3-pay option available at checkout. Tickets are transferable through July 1.</div>
+
+    <div class="fence">
+      <h3>Still on the fence?</h3>
+      <p>Email <a href="mailto:support@fitfatherproject.com" style="color: var(--rust); text-decoration: none; font-weight: 600;">support@fitfatherproject.com</a> or text <a href="sms:602-999-0004" style="color: var(--rust); text-decoration: none; font-weight: 600;">602-999-0004</a>. Our team will help you decide if Breakthrough is the right next step for you.</p>
+    </div>
+
+    <div class="see-you">
+      <div class="final-cta-image">
+        <img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/08-final-cta-full-group.png" alt="The full 2025 Breakthrough in the Desert community, arms raised in celebration on the final day." />
+      </div>
+      <div class="see-you-line">See you in the desert.</div>
+      <div class="see-you-sig">— Dr. Anthony and the Breakthrough Team</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="footer-brands">Breakthrough in the Desert · 2026</div>
+  <p>Presented by <a href="#">The Fit Father Project</a> &amp; <a href="#">The Fit Mother Project</a></p>
+  <p style="margin-top: 1rem;">© 2026 Fit Father Project &amp; Fit Mother Project · All rights reserved</p>
+  <p style="margin-top: 1rem;"><a href="#">Terms &amp; Conditions</a> · <a href="#">Privacy Policy</a> · <a href="#">Health Disclaimer</a></p>
+</footer>
+
+<script>
+// FAQ toggle
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.parentElement.classList.toggle('open');
+  });
+});
+
+// Countdown timer
+function updateCountdown() {
+  const target = new Date('2026-06-21T23:59:59-07:00');
+  const now = new Date();
+  const diff = target - now;
+  if (diff <= 0) {
+    document.getElementById('countdown').textContent = 'Father\'s Day, June 21, 2026';
+    return;
+  }
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  document.getElementById('countdown').textContent =
+    `${days} days, ${hours} hours · Sunday, June 21 (Father's Day)`;
+}
+updateCountdown();
+setInterval(updateCountdown, 60000);
+
+// Smooth fade-in on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('section').forEach(el => {
+  el.classList.add('fade-in');
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>

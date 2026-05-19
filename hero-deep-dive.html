@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hero Photo — Deep Dive · Breakthrough in the Desert</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..700;1,6..72,200..600&family=Spectral:wght@300;400&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#1b1916;--bone:#ebe3d4;--sand:#c9b696;--ember:#a8502e;--bronze:#9c8254;
+  --sage:#878a76;--on-ink:#e9e0cf;--on-ink-dim:#a39a88;--on-ink-faint:#6f6757;
+  --line:rgba(233,224,207,0.14);
+}
+body{
+  background:var(--ink);color:var(--on-ink);
+  font-family:'Spectral',serif;font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:0.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+img{display:block;max-width:100%;}
+.wrap{max-width:1280px;margin:0 auto;padding:0 2rem;}
+@media(max-width:680px){.wrap{padding:0 1.2rem;}}
+.label{
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.68rem;font-weight:600;
+  letter-spacing:0.26em;text-transform:uppercase;
+}
+.masthead{padding:5rem 0 3rem;border-bottom:1px solid var(--line);}
+.kicker{color:var(--ember);margin-bottom:1.4rem;}
+.masthead h1{
+  font-family:'Newsreader',serif;font-weight:300;
+  font-size:clamp(2.4rem,5vw,4rem);line-height:1.04;letter-spacing:-0.025em;
+  color:var(--bone);margin-bottom:1.2rem;
+}
+.masthead h1 em{font-style:italic;color:var(--ember);}
+.masthead .lede{color:var(--on-ink-dim);max-width:46rem;font-size:1.1rem;}
+
+.sec{padding:5rem 0;border-top:1px solid var(--line);}
+.sec-head{margin-bottom:2.6rem;}
+.sec-num{font-family:'Schibsted Grotesk',sans-serif;font-size:0.7rem;letter-spacing:0.1em;
+  color:var(--on-ink-faint);margin-bottom:0.6rem;}
+.sec-head h2{
+  font-family:'Newsreader',serif;font-weight:300;
+  font-size:clamp(1.9rem,3.5vw,2.7rem);line-height:1.08;letter-spacing:-0.02em;
+  color:var(--bone);margin-bottom:0.8rem;
+}
+.sec-head h2 em{font-style:italic;color:var(--ember);}
+.sec-head .brief{color:var(--on-ink-dim);max-width:46rem;}
+
+/* card grid */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;}
+@media(max-width:760px){.grid{grid-template-columns:1fr;}}
+.grid.three{grid-template-columns:repeat(3,1fr);}
+@media(max-width:900px){.grid.three{grid-template-columns:1fr;}}
+
+.card{
+  background:#0f0d0b;border:1px solid var(--line);overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.card.pick{outline:2px solid var(--ember);outline-offset:-2px;}
+.card .img-wrap{position:relative;aspect-ratio:16/9;overflow:hidden;background:#000;}
+.card img{width:100%;height:100%;object-fit:cover;}
+.card .badge{
+  position:absolute;top:0.9rem;left:0.9rem;z-index:2;
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.58rem;letter-spacing:0.18em;
+  text-transform:uppercase;padding:0.32rem 0.7rem;
+  background:rgba(15,13,11,0.78);backdrop-filter:blur(4px);color:var(--on-ink);
+  border:1px solid var(--line);
+}
+.card .badge.real{background:rgba(135,138,118,0.85);color:#0f0d0b;border-color:transparent;}
+.card .badge.ai{background:rgba(168,80,46,0.85);color:#fff;border-color:transparent;}
+.card .meta{padding:1.2rem 1.3rem 1.4rem;}
+.card .tag{font-family:'Schibsted Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--on-ink-faint);margin-bottom:0.4rem;}
+.card .name{font-family:'Newsreader',serif;font-size:1.2rem;color:var(--bone);margin-bottom:0.3rem;line-height:1.2;}
+.card .name em{color:var(--ember);font-style:italic;}
+.card .desc{font-size:0.88rem;color:var(--on-ink-dim);line-height:1.55;}
+.card .verdict{
+  margin-top:0.8rem;padding-top:0.7rem;border-top:1px solid var(--line);
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.66rem;letter-spacing:0.12em;
+  text-transform:uppercase;
+}
+.card .verdict.faint{color:var(--on-ink-faint);}
+.card .verdict.warn{color:var(--bronze);}
+.card .verdict.good{color:var(--sage);}
+.card .verdict.best{color:var(--ember);font-weight:700;}
+.card .attr{font-family:'Schibsted Grotesk',sans-serif;font-size:0.62rem;letter-spacing:0.05em;
+  color:var(--on-ink-faint);margin-top:0.5rem;font-style:italic;}
+
+/* mood section header */
+.mood{
+  font-family:'Newsreader',serif;font-style:italic;font-weight:400;
+  font-size:1.5rem;color:var(--bone);margin:3rem 0 1.4rem;
+}
+.mood em{color:var(--ember);}
+
+/* reco panel */
+.reco{background:linear-gradient(180deg,#191712,#0f0d0b);
+  border:1px solid var(--line);padding:2.2rem;margin-top:2.4rem;}
+.reco h3{font-family:'Newsreader',serif;font-weight:400;font-size:1.4rem;color:var(--bone);margin-bottom:0.8rem;}
+.reco h3 em{color:var(--ember);font-style:italic;}
+.reco p{color:var(--on-ink-dim);font-size:0.96rem;line-height:1.6;}
+.reco p+p{margin-top:0.7rem;}
+.reco ul{margin-top:1rem;list-style:none;}
+.reco li{padding:0.6rem 0 0.6rem 1.6rem;position:relative;color:var(--on-ink-dim);font-size:0.95rem;}
+.reco li::before{content:"";position:absolute;left:0;top:1rem;
+  width:14px;height:1px;background:var(--ember);}
+.reco li b{color:var(--bone);font-weight:600;}
+
+footer{padding:3rem 0;border-top:1px solid var(--line);text-align:center;}
+footer .label{color:var(--on-ink-faint);}
+
+.rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease;}
+.rv.in{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap rv">
+    <div class="label kicker">Hero Photo · Deep Dive</div>
+    <h1>You were right. They <em>were</em> fake.<br>Real photographs <em>win.</em></h1>
+    <p class="lede">Three more AI generations, eight real free-licensed photographs. Verdict: even with the best prompting, AI still has the smooth-painted tell at scrutiny. The strongest real Sonoran desert photo beats every AI candidate, and Unsplash and Pexels both grant free commercial use. Pick a real one.</p>
+  </div>
+</header>
+
+<!-- ============== ORIGINALS ============== -->
+<section class="sec">
+  <div class="wrap rv">
+    <div class="sec-head">
+      <div class="sec-num">01 · The Originals (the fake ones)</div>
+      <h2>What you reacted to.</h2>
+      <p class="brief">For context. These were the first FLUX 1.1 Pro Ultra outputs. Atmospheric, but the smooth gradients and too-perfect lighting read as generated.</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="img-wrap">
+          <span class="badge ai">AI · FLUX Pro Ultra</span>
+          <img src="https://guldanjamax.github.io/anthonybalduzzi/optimized/hero-flux-b-predawn.jpg" alt="FLUX B Pre-dawn">
+        </div>
+        <div class="meta">
+          <div class="tag">First-round candidate B</div>
+          <div class="name">Pre-dawn <em>threshold</em></div>
+          <div class="desc">The moody pre-dawn FLUX attempt. Painterly sky, mountains read CGI.</div>
+          <div class="verdict faint">— Looks fake</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="img-wrap">
+          <span class="badge ai">AI · FLUX Pro Ultra</span>
+          <img src="https://guldanjamax.github.io/anthonybalduzzi/optimized/hero-flux-a-golden.jpg" alt="FLUX A Golden">
+        </div>
+        <div class="meta">
+          <div class="tag">First-round candidate A · Your pick last round</div>
+          <div class="name">Golden <em>hour</em></div>
+          <div class="desc">Beautiful but plasticky cacti and over-soft mountain ridges.</div>
+          <div class="verdict faint">— Looks fake</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== BETTER AI ============== -->
+<section class="sec">
+  <div class="wrap rv">
+    <div class="sec-head">
+      <div class="sec-num">02 · The Better AI</div>
+      <h2>Sexier prompts. Still <em>AI.</em></h2>
+      <p class="brief">Same models, much better photographic prompting — named cameras, film stocks, photographer references, raw-mode toggling, biological asymmetry callouts. Markedly closer to real. Two of three would pass a casual scan. None match a real photograph.</p>
+    </div>
+    <div class="grid three">
+      <div class="card pick">
+        <div class="img-wrap">
+          <span class="badge ai">AI · FLUX Ultra raw</span>
+          <img src="https://guldanjamax.github.io/anthonybalduzzi/optimized/hero-flux-doc.jpg" alt="FLUX documentary">
+        </div>
+        <div class="meta">
+          <div class="tag">Candidate C</div>
+          <div class="name">The <em>documentary</em></div>
+          <div class="desc">Large foreground saguaro left, mountains right, asymmetric and shot-feeling. Would pass casual scrutiny. Strongest AI of the new batch.</div>
+          <div class="verdict best">Strongest AI option</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="img-wrap">
+          <span class="badge ai">AI · FLUX Ultra raw</span>
+          <img src="https://guldanjamax.github.io/anthonybalduzzi/optimized/hero-flux-minimal.jpg" alt="FLUX minimal">
+        </div>
+        <div class="meta">
+          <div class="tag">Candidate D</div>
+          <div class="name">Saguaro <em>forest</em></div>
+          <div class="desc">Dusk over a forest of saguaros, distant mountains, restrained palette. Very Mitch Dobrowner. Convincing.</div>
+          <div class="verdict good">Solid alternative</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="img-wrap">
+          <span class="badge ai">AI · Imagen 4 Ultra</span>
+          <img src="https://guldanjamax.github.io/anthonybalduzzi/optimized/hero-imagen-ultra.jpg" alt="Imagen 4 Ultra">
+        </div>
+        <div class="meta">
+          <div class="tag">Candidate E</div>
+          <div class="name">Imagen <em>painterly</em></div>
+          <div class="desc">Google's flagship — produces more illustrated/painterly outputs. Closer to digital art than photo.</div>
+          <div class="verdict warn">Still feels AI</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== REAL PHOTOS ============== -->
+<section class="sec">
+  <div class="wrap rv">
+    <div class="sec-head">
+      <div class="sec-num">03 · Real photographs (the real answer)</div>
+      <h2>The honest <em>fix.</em></h2>
+      <p class="brief">Free-licensed real photographs of the Sonoran desert. Unsplash and Pexels both allow commercial use without payment. Attribution is appreciated but not required (we'll credit photographers in the page footer). Eight candidates, ranked.</p>
+    </div>
+
+    <div class="mood">The <em>top picks.</em></div>
+    <div class="grid">
+
+      <div class="card pick">
+        <div class="img-wrap">
+          <span class="badge real">REAL · Unsplash</span>
+          <img src="https://guldanjamax.github.io/anthonybalduzzi/stock/diehl-violet-dusk.jpg" alt="Jacob Diehl violet dusk">
+        </div>
+        <div class="meta">
+          <div class="tag">Candidate 1 · The recommendation</div>
+          <div class="name">The lone <em>saguaro.</em></div>
+          <div class="desc">Single tall saguaro silhouetted against a warm golden-to-violet dusk, distant blue mountains, atmospheric haze. Wide composition. Massive sky room for a headline. Sacred and quiet — the brand thesis made literal.</div>
+          <div class="verdict best">↑ Top pick · ships at 95% confidence</div>
+          <div class="attr">© Jacob Diehl · Saguaro National Park · Unsplash License (free commercial)</div>
+        </div>
+      </div>
+
+      <div class="card pick">
+        <div class="img-wrap">
+          <span class="badge real">REAL · Pexels</span>
+          <img src="https://guldanjamax.github.io/anthonybalduzzi/stock/bee-wide-vista.jpg" alt="Haley Bee wide vista">
+        </div>
+        <div class="meta">
+          <div class="tag">Candidate 2 · The warm alternative</div>
+          <div class="name">Golden <em>vista.</em></div>
+          <div class="desc">Sweeping golden-hour vista with rolling saguaros, layered mountain ranges in soft haze. Warmer, more welcoming mood than the Diehl. Wide clean horizon band for headline.</div>
+          <div class="verdict best">↑ Top pick · ships at 92%</div>
+          <div class="attr">© Haley Bee · Pexels License (free commercial, no attribution required)</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="img-wrap">
+          <span class="badge real">REAL · Unsplash</span>
+          <img src="https://guldanjamax.github.io/anthonybalduzzi/stock/cook-phoenix-silhouette.jpg" alt="Joe Cook Phoenix silhouette">
+        </div>
+        <div class="meta">
+          <div class="tag">Candidate 3</div>
+          <div class="name">Phoenix <em>silhouette.</em></div>
+          <div class="desc">Saguaro silhouette against a soft sun, real grain, Phoenix-shot. Sun-in-center fights slightly with hero text overlay, but the atmosphere is genuine.</div>
+          <div class="verdict good">Strong, light text-overlay friction</div>
+          <div class="attr">© Joe Cook · Phoenix, AZ · Unsplash License</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="img-wrap">
+          <span class="badge real">REAL · Pexels</span>
+          <img src="https://guldanjamax.github.io/anthonybalduzzi/stock/bee-companion.jpg" alt="Haley Bee companion">
+        </div>
+        <div class="meta">
+          <div class="tag">Candidate 4</div>
+          <div class="name">Companion <em>shot.</em></div>
+          <div class="desc">From the same Bee shoot. More vertical framing, tighter mountain band. Beautiful but less ideal for a 16:9 hero crop.</div>
+          <div class="verdict good">Section-image candidate</div>
+          <div class="attr">© Haley Bee · Pexels License</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mood">Strong as <em>section images</em>, less ideal as wide hero.</div>
+    <div class="grid">
+
+      <div class="card">
+        <div class="img-wrap">
+          <span class="badge real">REAL · Unsplash</span>
+          <img src="https://guldanjamax.github.io/anthonybalduzzi/stock/larovere-rain-sun.jpg" alt="LaRovere rain sun">
+        </div>
+        <div class="meta">
+          <div class="tag">Candidate 5</div>
+          <div class="name">Rain-diffused <em>sun.</em></div>
+          <div class="desc">Saguaro silhouette with sunburst, atmospheric depth. Portrait orientation. Stunning shot — better in the founder section or as a day-marker.</div>
+          <div class="verdict warn">Portrait, not a 16:9 hero</div>
+          <div class="attr">© Nick LaRovere · Cave Creek, AZ · Unsplash License</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="img-wrap">
+          <span class="badge real">REAL · Pexels</span>
+          <img src="https://guldanjamax.github.io/anthonybalduzzi/stock/seidl-saguaro-np-sunrise.jpg" alt="Nicole Seidl Saguaro NP">
+        </div>
+        <div class="meta">
+          <div class="tag">Candidate 6</div>
+          <div class="name">Sunrise <em>starburst.</em></div>
+          <div class="desc">Saguaro National Park sunrise with a graphic sunburst through cacti. Vertical/portrait. Striking but won't crop cleanly to a hero.</div>
+          <div class="verdict warn">Portrait</div>
+          <div class="attr">© Nicole Seidl · Pexels License</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="img-wrap">
+          <span class="badge real">REAL · Unsplash</span>
+          <img src="https://guldanjamax.github.io/anthonybalduzzi/stock/dan-begel-two.jpg" alt="Dan Begel two saguaros">
+        </div>
+        <div class="meta">
+          <div class="tag">Candidate 7</div>
+          <div class="name">Two <em>saguaros.</em></div>
+          <div class="desc">Two side-lit saguaros at warm golden hour, hillside framing. Beautiful but reads slightly more "postcard" than the Diehl.</div>
+          <div class="verdict good">Pleasant, less atmospheric</div>
+          <div class="attr">© Dan Begel · Unsplash License</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="img-wrap">
+          <span class="badge real">REAL · Pexels</span>
+          <img src="https://guldanjamax.github.io/anthonybalduzzi/stock/hovee-tucson-vibrant.jpg" alt="Hovee Tucson vibrant">
+        </div>
+        <div class="meta">
+          <div class="tag">Candidate 8</div>
+          <div class="name">Vibrant <em>Tucson.</em></div>
+          <div class="desc">Saguaros against a vivid orange-pink sunset. High saturation. Reads "postcard energetic," not "elevated monastic." Skip for hero.</div>
+          <div class="verdict warn">Too saturated for the brand</div>
+          <div class="attr">© Nate Hovee · Tucson, AZ · Pexels License</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============== RECO ============== -->
+<section class="sec">
+  <div class="wrap rv">
+    <div class="sec-head">
+      <div class="sec-num">04 · The play</div>
+      <h2>What I'd actually <em>ship.</em></h2>
+    </div>
+    <div class="reco">
+      <h3>Go with a <em>real photograph.</em></h3>
+      <p>The AI hero will always have at least a 5% tell at scrutiny. A real photo is free, legally clean, and unmistakably real. The cost of switching is zero. The Diehl violet-dusk is my recommendation; the Bee wide-vista is the warm-mood alternative if "sacred initiation" feels too somber.</p>
+      <ul>
+        <li><b>Ship — Candidate 1 (Diehl, violet dusk)</b> · the soulful, monastic version. Best alignment with the brand thesis and Newsreader headline reverses cleanly over the warm sky.</li>
+        <li><b>Alternative — Candidate 2 (Bee, wide vista)</b> · if you want "warm welcome" instead of "sacred threshold."</li>
+        <li><b>Fallback AI — Candidate C (FLUX documentary)</b> · use only if you want to avoid stock-photo aesthetics entirely. Still has minor AI tells.</li>
+        <li><b>Skip everything else</b> for hero. Some are excellent <i>section images</i> (LaRovere especially) and we can use them inside the page.</li>
+      </ul>
+      <p style="margin-top:1.2rem;">Pick by candidate number and I'll wire it into the rebuild. If you want, I can also test a couple of variants with a film-grain overlay applied to whichever you choose so the AI smell drops another level.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="label">Breakthrough in the Desert · Hero deep dive · v2</span>
+</footer>
+
+<script>
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.1});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

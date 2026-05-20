@@ -1,4 +1,43 @@
+# robots.txt for Breakthrough in the Desert 2026
 User-agent: *
 Allow: /
+Disallow: /faculty-iterations.html
+Disallow: /faculty-iterations-v2.html
+Disallow: /iteration-2.html
+Disallow: /iteration-3.html
+Disallow: /section-designs.html
+Disallow: /design-iterations.html
+Disallow: /hero-deep-dive.html
+Disallow: /hero-previews.html
+Disallow: /button-design.html
+Disallow: /mobile-scorecard.html
+Disallow: /pricing-iteration.html
+Disallow: /photo-optimization.html
+Disallow: /brand-system.html
+Disallow: /_outpaint/
+Disallow: /outpaint-tmp/
 
-Sitemap: https://anthonybalduzzi.com/sitemap.xml
+# Sitemap
+Sitemap: https://guldanjamax.github.io/anthonybalduzzi/sitemap.xml
+
+# AI / LLM crawlers — explicit allow for visible content
+User-agent: GPTBot
+Allow: /breakthrough-in-the-desert-v3.html
+Allow: /breakthrough-in-the-desert.html
+Allow: /privacy.html
+Allow: /terms.html
+Allow: /health-disclaimer.html
+
+User-agent: ClaudeBot
+Allow: /breakthrough-in-the-desert-v3.html
+Allow: /breakthrough-in-the-desert.html
+Allow: /privacy.html
+Allow: /terms.html
+Allow: /health-disclaimer.html
+
+User-agent: PerplexityBot
+Allow: /breakthrough-in-the-desert-v3.html
+Allow: /breakthrough-in-the-desert.html
+
+User-agent: Google-Extended
+Allow: /

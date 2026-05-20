@@ -195,7 +195,7 @@ body {
 .mirror {
   position: relative;
   min-height: 540px;
-  background-image: url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-meditating.jpg');
+  background-image: url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-meditating-flipped.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -623,66 +623,82 @@ body {
   .poster-row { grid-template-columns: 1fr; }
 }
 
-/* ===== 7. FAQ - Concerns Map ===== */
+/* ===== 7. FAQ - Concerns Map, full-bleed background ===== */
 .faq {
-  background: var(--bone);
-  padding: 80px 0;
+  position: relative;
+  background-image: url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-profile-lake.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  padding: 90px 0;
+  overflow: hidden;
+}
+.faq::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.85) 70%),
+    linear-gradient(180deg, rgba(27,25,22,0.7) 0%, rgba(10,9,8,0.92) 100%);
 }
 .faq-inner {
+  position: relative; z-index: 2;
   max-width: 1080px;
   margin: 0 auto;
-  padding: 0 40px 0;
+  padding: 0 40px;
 }
 .faq-head {
-  margin-bottom: 40px;
+  margin-bottom: 44px;
 }
 .faq-eyebrow {
   font-family: var(--label);
   font-size: 12px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--ember);
-  margin-bottom: 12px;
+  color: var(--ember-warm);
+  margin-bottom: 14px;
 }
 .faq h3 {
   font-family: var(--display);
-  font-size: clamp(32px, 3.6vw, 48px);
+  font-size: clamp(34px, 4vw, 52px);
   font-weight: 400;
   letter-spacing: -0.015em;
-  color: var(--ink);
+  color: var(--bone);
   line-height: 1.05;
+  text-shadow: 0 2px 14px rgba(0,0,0,0.5);
 }
-.faq h3 em { font-style: italic; color: var(--ember); }
+.faq h3 em { font-style: italic; color: var(--gold); }
 .faq-deck {
   font-family: var(--body);
-  font-size: 16px;
-  color: rgba(27, 25, 22, 0.62);
+  font-size: 17px;
+  color: rgba(235, 227, 212, 0.78);
   font-style: italic;
-  margin-top: 12px;
-  max-width: 600px;
+  margin-top: 14px;
+  max-width: 620px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
 }
 .faq-layout {
   display: grid;
   grid-template-columns: 220px 1fr;
-  gap: 56px;
-  margin-top: 8px;
+  gap: 40px;
 }
 .faq-nav {
   position: sticky;
   top: 24px;
   align-self: start;
-  background: var(--ink);
+  background: rgba(27, 25, 22, 0.72);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  border: 1px solid rgba(216, 184, 122, 0.20);
   color: var(--bone);
-  padding: 32px 24px;
-  border-radius: 4px;
+  padding: 28px 22px;
+  border-radius: 6px;
 }
 .faq-nav .nav-label {
   font-family: var(--label);
   font-size: 10px;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 .faq-nav h4 {
   font-family: var(--display);
@@ -695,16 +711,16 @@ body {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 .faq-nav li {
   font-family: var(--label);
   font-size: 12px;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(235, 227, 212, 0.65);
+  color: rgba(235, 227, 212, 0.7);
   padding: 6px 0 6px 12px;
-  border-left: 1.5px solid rgba(235, 227, 212, 0.15);
+  border-left: 1.5px solid rgba(235, 227, 212, 0.18);
   cursor: pointer;
   transition: color 0.15s, border-color 0.15s;
 }
@@ -718,48 +734,56 @@ body {
 .faq-body {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 22px;
 }
 .faq-cat {
   scroll-margin-top: 100px;
+  background: rgba(27, 25, 22, 0.65);
+  backdrop-filter: blur(14px) saturate(110%);
+  -webkit-backdrop-filter: blur(14px) saturate(110%);
+  border: 1px solid rgba(216, 184, 122, 0.18);
+  border-radius: 6px;
+  padding: 28px 30px;
 }
 .faq-cat-label {
   font-family: var(--label);
   font-size: 10px;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: var(--ember);
+  color: var(--ember-warm);
   margin-bottom: 8px;
 }
 .faq-cat h4 {
   font-family: var(--display);
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 400;
-  color: var(--ink);
-  margin-bottom: 22px;
+  color: var(--bone);
+  margin-bottom: 20px;
 }
 .qa-item {
-  padding: 18px 0;
-  border-bottom: 1px solid rgba(27, 25, 22, 0.12);
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(235, 227, 212, 0.12);
 }
-.qa-item:last-child { border-bottom: none; }
+.qa-item:last-child { border-bottom: none; padding-bottom: 0; }
+.qa-item:first-of-type { padding-top: 4px; }
 .qa-item .q {
   font-family: var(--display);
   font-size: 18px;
-  color: var(--ink);
+  color: var(--bone);
   margin-bottom: 8px;
   line-height: 1.3;
 }
 .qa-item .a {
   font-family: var(--body);
   font-size: 15px;
-  color: var(--ink-soft);
+  color: rgba(235, 227, 212, 0.85);
   line-height: 1.65;
 }
 @media (max-width: 880px) {
-  .faq-layout { grid-template-columns: 1fr; gap: 32px; }
-  .faq-nav { position: relative; top: 0; padding: 24px; }
+  .faq-layout { grid-template-columns: 1fr; gap: 24px; }
+  .faq-nav { position: relative; top: 0; padding: 22px; }
   .faq-nav ul { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .faq-cat { padding: 22px 20px; }
 }
 
 /* ============ FINAL SUMMARY ============ */

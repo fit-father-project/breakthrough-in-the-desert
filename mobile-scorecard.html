@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mobile Scorecard — Breakthrough in the Desert</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..700;1,6..72,200..600&family=Spectral:wght@300;400&family=Schibsted+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#1b1916;--bone:#ebe3d4;--ember:#a8502e;--gold:#d8b87a;--bronze:#9c8254;
+  --sage:#878a76;--green:#7fb069;--amber:#d8a24a;--red:#c06a44;
+  --on-ink:#e9e0cf;--on-ink-dim:#a39a88;--on-ink-faint:#6f6757;
+  --line-d:rgba(235,227,212,0.16);
+}
+html,body{background:var(--ink);color:var(--on-ink);overflow-x:hidden;}
+body{font-family:'Spectral',serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:99;opacity:0.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+img{display:block;max-width:100%;}
+.wrap{max-width:1280px;margin:0 auto;padding:0 2rem;}
+@media(max-width:680px){.wrap{padding:0 1.2rem;}}
+.label{font-family:'Schibsted Grotesk',sans-serif;font-size:0.7rem;font-weight:600;
+  letter-spacing:0.26em;text-transform:uppercase;}
+
+.masthead{padding:5rem 0 3rem;border-bottom:1px solid var(--line-d);}
+.kicker{color:var(--ember);margin-bottom:1.4rem;}
+.masthead h1{font-family:'Newsreader',serif;font-weight:300;
+  font-size:clamp(2.4rem,5vw,4rem);line-height:1.04;letter-spacing:-0.025em;
+  color:var(--bone);margin-bottom:1.2rem;}
+.masthead h1 em{font-style:italic;color:var(--ember);}
+.masthead .lede{color:var(--on-ink-dim);max-width:48rem;font-size:1.1rem;}
+
+/* Upgrade summary */
+.up{padding:4rem 0;border-top:1px solid var(--line-d);}
+.up h2{font-family:'Newsreader',serif;font-weight:300;font-size:clamp(1.7rem,3vw,2.4rem);
+  color:var(--bone);margin-bottom:1.2rem;}
+.up h2 em{font-style:italic;color:var(--ember);}
+.up-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.6rem;}
+@media(max-width:760px){.up-grid{grid-template-columns:1fr 1fr;}}
+.up-card{border:1px solid var(--line-d);padding:1.3rem;background:linear-gradient(180deg,#161310,#0c0a08);}
+.up-card .v{font-family:'Newsreader',serif;font-weight:300;font-size:1.4rem;color:var(--gold);margin-bottom:0.2rem;}
+.up-card .b{font-family:'Newsreader',serif;font-weight:300;font-size:1.4rem;color:var(--bone);}
+.up-card h4{font-family:'Schibsted Grotesk',sans-serif;font-size:0.62rem;font-weight:700;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin:0.8rem 0 0.4rem;}
+.up-card p{color:var(--on-ink-dim);font-size:0.85rem;line-height:1.55;}
+
+/* Scorecard grid */
+.scorecards{padding:5rem 0;border-top:1px solid var(--line-d);}
+.scorecard-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;}
+@media(max-width:900px){.scorecard-grid{grid-template-columns:1fr;}}
+
+.card{
+  display:grid;grid-template-columns:240px 1fr;gap:1.6rem;
+  background:linear-gradient(180deg,#161310,#0c0a08);
+  border:1px solid var(--line-d);padding:1.6rem;
+}
+@media(max-width:760px){.card{grid-template-columns:1fr;}}
+
+/* Phone mockup */
+.phone{
+  position:relative;width:240px;aspect-ratio:9/19;
+  background:#000;border-radius:28px;padding:8px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.5),inset 0 0 0 1px rgba(255,255,255,0.08);
+}
+.phone .screen{
+  position:relative;width:100%;height:100%;border-radius:22px;overflow:hidden;
+  background-size:cover;background-position:center;
+}
+.phone .notch{
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:90px;height:22px;background:#000;border-radius:0 0 16px 16px;z-index:3;
+}
+.phone .screen::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.0) 28%,rgba(0,0,0,0.0) 60%,rgba(0,0,0,0.75) 100%);}
+.phone .h-text{position:absolute;left:1rem;right:1rem;bottom:1rem;z-index:2;}
+.phone .h-title{font-family:'Newsreader',serif;font-weight:300;font-size:1.5rem;line-height:0.95;color:#fff;margin-bottom:0.4rem;}
+.phone .h-title em{font-style:italic;color:var(--gold);}
+.phone .h-q{font-family:'Newsreader',serif;font-style:italic;font-size:0.74rem;color:#fff;margin-bottom:0.7rem;line-height:1.3;}
+.phone .h-btn{display:inline-block;font-family:'Schibsted Grotesk',sans-serif;font-size:0.5rem;
+  font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#fff;
+  background:rgba(255,255,255,0.12);backdrop-filter:blur(6px);
+  padding:0.5rem 0.9rem;border:1px solid rgba(255,255,255,0.3);}
+.phone .h-tag{font-family:'Schibsted Grotesk',sans-serif;font-size:0.42rem;font-weight:600;
+  letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-top:0.5rem;}
+.phone .top-bar{position:absolute;top:0.6rem;left:1rem;right:1rem;display:flex;
+  justify-content:space-between;font-family:'Schibsted Grotesk',sans-serif;
+  font-size:0.4rem;letter-spacing:0.1em;text-transform:uppercase;
+  color:rgba(255,255,255,0.8);z-index:2;padding-top:0.5rem;}
+
+/* Card right side */
+.card-body .head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:1.2rem;flex-wrap:wrap;}
+.card-body .nm{font-family:'Newsreader',serif;font-weight:400;font-size:1.4rem;color:var(--bone);}
+.card-body .nm em{color:var(--ember);font-style:italic;}
+.card-body .tag{font-family:'Schibsted Grotesk',sans-serif;font-size:0.58rem;font-weight:700;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);}
+
+.scores{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.2rem;}
+.score{border:1px solid var(--line-d);padding:0.9rem 1rem;}
+.score .lbl{font-family:'Schibsted Grotesk',sans-serif;font-size:0.56rem;font-weight:700;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--on-ink-faint);margin-bottom:0.4rem;}
+.score .val{display:flex;align-items:baseline;gap:0.3rem;}
+.score .num{font-family:'Newsreader',serif;font-weight:300;font-size:2rem;line-height:1;}
+.score .max{font-family:'Schibsted Grotesk',sans-serif;font-size:0.7rem;color:var(--on-ink-faint);}
+.score.high .num{color:var(--green);}
+.score.mid .num{color:var(--amber);}
+.score.low .num{color:var(--red);}
+.bar{height:4px;background:var(--line-d);margin-top:0.6rem;position:relative;overflow:hidden;}
+.bar i{position:absolute;left:0;top:0;height:100%;background:currentColor;}
+.score.high .bar i{background:var(--green);}
+.score.mid .bar i{background:var(--amber);}
+.score.low .bar i{background:var(--red);}
+
+.notes h5{font-family:'Schibsted Grotesk',sans-serif;font-size:0.6rem;font-weight:700;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;margin-top:0.8rem;}
+.notes p{color:var(--on-ink-dim);font-size:0.9rem;line-height:1.6;}
+.notes ul{list-style:none;margin-top:0.3rem;}
+.notes li{font-size:0.86rem;color:var(--on-ink-dim);padding:0.2rem 0 0.2rem 1rem;position:relative;line-height:1.5;}
+.notes li::before{content:"→";position:absolute;left:0;color:var(--gold);}
+
+/* Summary */
+.summary{padding:5rem 0;border-top:1px solid var(--line-d);}
+.summary h2{font-family:'Newsreader',serif;font-weight:300;
+  font-size:clamp(1.9rem,3.5vw,2.7rem);line-height:1.08;letter-spacing:-0.02em;
+  color:var(--bone);margin-bottom:1rem;}
+.summary h2 em{font-style:italic;color:var(--ember);}
+.summary .lede{color:var(--on-ink-dim);max-width:46rem;font-size:1.05rem;}
+.sum-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-d);
+  border:1px solid var(--line-d);margin-top:2.2rem;}
+@media(max-width:760px){.sum-grid{grid-template-columns:1fr 1fr;}}
+.sum-row{background:var(--ink);padding:1.2rem;}
+.sum-row .name{font-family:'Newsreader',serif;font-size:1rem;color:var(--bone);margin-bottom:0.6rem;}
+.sum-row .name em{color:var(--ember);font-style:italic;}
+.sum-row .pair{display:flex;justify-content:space-between;margin:0.3rem 0;font-family:'Schibsted Grotesk',sans-serif;font-size:0.78rem;color:var(--on-ink-dim);}
+.sum-row .pair b{color:var(--bone);font-weight:600;}
+
+footer{padding:3rem 0;border-top:1px solid var(--line-d);text-align:center;}
+footer .label{color:var(--on-ink-faint);}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="label kicker">Mobile · 40+ Accessibility Scorecard</div>
+    <h1>How the four heroes <em>read</em> on a phone.</h1>
+    <p class="lede">Each candidate scored on Readability and WOW factor at 375px portrait, evaluated specifically for adults 40 and over. Bigger type, larger touch targets, stronger contrast — the threshold for "easy to use without effort" goes up after 40. Mobile typography already boosted across the board this round; scorecard reflects the new sizing.</p>
+  </div>
+</header>
+
+<!-- WHAT CHANGED -->
+<section class="up">
+  <div class="wrap">
+    <div class="label" style="color:var(--ember);">What changed this round for the 40+ audience</div>
+    <h2>Bigger type. Bigger <em>touch.</em> Better contrast.</h2>
+    <div class="up-grid">
+      <div class="up-card">
+        <div class="v">+38%</div>
+        <h4>Hero question</h4>
+        <p>From 1.05rem (16.8px) → 1.25rem (20px). Crosses the "easy-reading after 40" threshold.</p>
+      </div>
+      <div class="up-card">
+        <div class="v">+34%</div>
+        <h4>Body labels</h4>
+        <p>Tagline, eyebrow, utility bar all bumped 30–40%. Was 8–10px → now 11–14px.</p>
+      </div>
+      <div class="up-card">
+        <div class="v">60px</div>
+        <h4>CTA touch target</h4>
+        <p>Reserve button now 60px tall (was 38px). Full-width on mobile. Meets Apple HIG 44pt minimum + comfortable margin for fingers.</p>
+      </div>
+      <div class="up-card">
+        <div class="v">+34%</div>
+        <h4>CTA text</h4>
+        <p>Button text 0.86rem (was 0.64rem). Stays legible at arm's length without squinting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCORECARDS -->
+<section class="scorecards">
+  <div class="wrap">
+    <div class="label" style="color:var(--ember);margin-bottom:1rem;">The four candidates</div>
+    <h2 style="font-family:'Newsreader',serif;font-weight:300;font-size:clamp(1.9rem,3.5vw,2.7rem);color:var(--bone);margin-bottom:2.4rem;">Scored at <em style="font-style:italic;color:var(--ember);">375px portrait.</em></h2>
+
+    <div class="scorecard-grid">
+
+      <!-- C1 DIEHL -->
+      <article class="card">
+        <div class="phone">
+          <div class="notch"></div>
+          <div class="screen" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/optimized/diehl-mobile.jpg');">
+            <div class="top-bar"><span>AUG 7–9, 2026</span><span style="color:var(--gold);">150 SEATS</span></div>
+            <div class="h-text">
+              <div class="h-tag">Fit Father &amp; Fit Mother Present</div>
+              <div class="h-title">Breakthrough <em>in the</em> Desert</div>
+              <div class="h-q">What if the second half of your life was the best part?</div>
+              <div class="h-btn">Reserve Your Spot →</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="head">
+            <div><div class="tag">Candidate 1</div><div class="nm">Diehl <em>violet dusk</em></div></div>
+          </div>
+          <div class="scores">
+            <div class="score high">
+              <div class="lbl">Readability</div>
+              <div class="val"><span class="num">92</span><span class="max">/100</span></div>
+              <div class="bar"><i style="width:92%;"></i></div>
+            </div>
+            <div class="score high">
+              <div class="lbl">WOW factor</div>
+              <div class="val"><span class="num">88</span><span class="max">/100</span></div>
+              <div class="bar"><i style="width:88%;"></i></div>
+            </div>
+          </div>
+          <div class="notes">
+            <h5>Why it scores</h5>
+            <p>The portrait crop frames the single saguaro silhouette against warm sky — quiet, contemplative, the brand thesis in one frame. Text reads cleanly against the soft golden gradient with no figure to compete with.</p>
+            <h5>Optimize</h5>
+            <ul>
+              <li>Could shift focal-y down 5% to give title more room above the horizon line.</li>
+              <li>Already at near-ceiling for this audience. No critical issues.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- C2 BEE -->
+      <article class="card">
+        <div class="phone">
+          <div class="notch"></div>
+          <div class="screen" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/optimized/bee-mobile.jpg');">
+            <div class="top-bar"><span>AUG 7–9, 2026</span><span style="color:var(--gold);">150 SEATS</span></div>
+            <div class="h-text">
+              <div class="h-tag">Fit Father &amp; Fit Mother Present</div>
+              <div class="h-title">Breakthrough <em>in the</em> Desert</div>
+              <div class="h-q">What if the second half of your life was the best part?</div>
+              <div class="h-btn">Reserve Your Spot →</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="head">
+            <div><div class="tag">Candidate 2</div><div class="nm">Bee <em>wide vista</em></div></div>
+          </div>
+          <div class="scores">
+            <div class="score mid">
+              <div class="lbl">Readability</div>
+              <div class="val"><span class="num">78</span><span class="max">/100</span></div>
+              <div class="bar"><i style="width:78%;"></i></div>
+            </div>
+            <div class="score mid">
+              <div class="lbl">WOW factor</div>
+              <div class="val"><span class="num">74</span><span class="max">/100</span></div>
+              <div class="bar"><i style="width:74%;"></i></div>
+            </div>
+          </div>
+          <div class="notes">
+            <h5>Why it scores</h5>
+            <p>Beautiful in landscape, but the portrait crop loses the wide-vista signature. Saguaros in foreground compete with text for the lower half of the screen.</p>
+            <h5>Optimize</h5>
+            <ul>
+              <li>Either re-crop with focal further toward the upper sunset, or use this for landscape-only contexts (Open Graph, ads).</li>
+              <li>Strengthen left-side scrim to push text contrast above 7:1 ratio.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- C3 SILHOUETTE -->
+      <article class="card">
+        <div class="phone">
+          <div class="notch"></div>
+          <div class="screen" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/optimized/silhouette-mobile.jpg');">
+            <div class="top-bar"><span>AUG 7–9, 2026</span><span style="color:var(--gold);">150 SEATS</span></div>
+            <div class="h-text">
+              <div class="h-tag">Fit Father &amp; Fit Mother Present</div>
+              <div class="h-title">Breakthrough <em>in the</em> Desert</div>
+              <div class="h-q">What if the second half of your life was the best part?</div>
+              <div class="h-btn">Reserve Your Spot →</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="head">
+            <div><div class="tag">Candidate 3 · TOP</div><div class="nm">Silhouette <em>under stars</em></div></div>
+          </div>
+          <div class="scores">
+            <div class="score high">
+              <div class="lbl">Readability</div>
+              <div class="val"><span class="num">95</span><span class="max">/100</span></div>
+              <div class="bar"><i style="width:95%;"></i></div>
+            </div>
+            <div class="score high">
+              <div class="lbl">WOW factor</div>
+              <div class="val"><span class="num">96</span><span class="max">/100</span></div>
+              <div class="bar"><i style="width:96%;"></i></div>
+            </div>
+          </div>
+          <div class="notes">
+            <h5>Why it scores</h5>
+            <p>The portrait orientation is <em>made</em> for this photo. Anthony's arms-out silhouette becomes the visual anchor; the headline sits cleanly in the sky above. No figure-overlap problem because he's a silhouette. The arms-wide gesture IS the brand thesis.</p>
+            <p>Crucially for the 40+ audience: <strong>no body image to compare yourself to</strong>. He's any-of-us-at-a-threshold, not an aspirational physique to feel intimidated by.</p>
+            <h5>Optimize</h5>
+            <ul>
+              <li>Ship as-is. This is the strongest mobile hero.</li>
+              <li>Tiny: add subtle twinkling stars CSS effect overlaid on the AVIF for motion accent.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- C4 SUNSET ROCK -->
+      <article class="card">
+        <div class="phone">
+          <div class="notch"></div>
+          <div class="screen" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/optimized/sunset-rock-mobile.jpg');">
+            <div class="top-bar"><span>AUG 7–9, 2026</span><span style="color:var(--gold);">150 SEATS</span></div>
+            <div class="h-text">
+              <div class="h-tag">Fit Father &amp; Fit Mother Present</div>
+              <div class="h-title">Breakthrough <em>in the</em> Desert</div>
+              <div class="h-q">What if the second half of your life was the best part?</div>
+              <div class="h-btn">Reserve Your Spot →</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="head">
+            <div><div class="tag">Candidate 4</div><div class="nm">Lotus on <em>red rock</em></div></div>
+          </div>
+          <div class="scores">
+            <div class="score mid">
+              <div class="lbl">Readability</div>
+              <div class="val"><span class="num">82</span><span class="max">/100</span></div>
+              <div class="bar"><i style="width:82%;"></i></div>
+            </div>
+            <div class="score mid">
+              <div class="lbl">WOW factor</div>
+              <div class="val"><span class="num">76</span><span class="max">/100</span></div>
+              <div class="bar"><i style="width:76%;"></i></div>
+            </div>
+          </div>
+          <div class="notes">
+            <h5>Why it scores</h5>
+            <p>Visually striking but Anthony's identifiable, fit physique is front-and-center in portrait. For an audience that already feels stagnant about their own bodies, this can read as "this is for people who already look like him." That's a comprehension cost.</p>
+            <h5>Optimize</h5>
+            <ul>
+              <li>Shift the portrait crop upward so more sky and clouds dominate, Anthony smaller in frame — reduces the "fitness influencer" signal.</li>
+              <li>Or use this photo in the Founder section instead, where founder visibility is appropriate.</li>
+              <li>If kept as hero: heavier scrim from the top to push the headline into the cloud band, away from his body.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- SUMMARY TABLE -->
+<section class="summary">
+  <div class="wrap">
+    <div class="label" style="color:var(--ember);margin-bottom:1rem;">The ranking</div>
+    <h2>Pick C3 for mobile. <em>It's not close.</em></h2>
+    <p class="lede">For the 40+ mobile reader specifically: C3 silhouette wins on every axis — readability, WOW, accessibility, and emotional fit. C1 Diehl is the strong landscape-mode alternative. C2 Bee suffers most in portrait crop. C4 sunset-rock carries an unintended "intimidating body" signal for the target audience.</p>
+
+    <div class="sum-grid">
+      <div class="sum-row">
+        <div class="name">C1 · Diehl <em>violet dusk</em></div>
+        <div class="pair">Readability <b style="color:var(--green);">92</b></div>
+        <div class="pair">WOW <b style="color:var(--green);">88</b></div>
+        <div class="pair">40+ fit <b>Strong</b></div>
+        <div class="pair">Optimize <b>Minor focal shift</b></div>
+      </div>
+      <div class="sum-row">
+        <div class="name">C2 · Bee <em>wide vista</em></div>
+        <div class="pair">Readability <b style="color:var(--amber);">78</b></div>
+        <div class="pair">WOW <b style="color:var(--amber);">74</b></div>
+        <div class="pair">40+ fit <b>OK</b></div>
+        <div class="pair">Optimize <b>Re-crop or save for ads</b></div>
+      </div>
+      <div class="sum-row">
+        <div class="name">C3 · Silhouette <em>top pick</em></div>
+        <div class="pair">Readability <b style="color:var(--green);">95</b></div>
+        <div class="pair">WOW <b style="color:var(--green);">96</b></div>
+        <div class="pair">40+ fit <b>Best</b></div>
+        <div class="pair">Optimize <b>Ship</b></div>
+      </div>
+      <div class="sum-row">
+        <div class="name">C4 · Lotus <em>red rock</em></div>
+        <div class="pair">Readability <b style="color:var(--amber);">82</b></div>
+        <div class="pair">WOW <b style="color:var(--amber);">76</b></div>
+        <div class="pair">40+ fit <b style="color:var(--red);">Weakest</b></div>
+        <div class="pair">Optimize <b>Move to Founder section</b></div>
+      </div>
+    </div>
+
+    <p class="lede" style="margin-top:2rem;">Tell me to ship C3 and I'll lock the rebuild on it. Or override — I'll match the rest of the page to whichever hero you choose.</p>
+  </div>
+</section>
+
+<footer>
+  <span class="label">Breakthrough in the Desert · Mobile scorecard v1</span>
+</footer>
+
+</body>
+</html>

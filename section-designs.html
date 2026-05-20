@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Section Designs — Breakthrough in the Desert</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..700;1,6..72,200..600&family=Spectral:wght@300;400&family=Schibsted+Grotesk:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#1b1916;--ink-2:#241f19;--umber:#5a4631;
+  --bone:#ebe3d4;--plaster:#ded0b8;--sand:#c9b696;
+  --ember:#a8502e;--ember-deep:#7a3920;--gold:#d8b87a;--gold-deep:#9c7a3a;
+  --sage:#878a76;--bronze:#9c8254;
+  --on-ink:#e9e0cf;--on-ink-dim:#a39a88;--on-ink-faint:#6f6757;
+  --on-bone:#1b1916;--on-bone-dim:#6b6253;
+  --line-d:rgba(235,227,212,0.14);
+  --line-l:rgba(27,25,22,0.14);
+  --green:#7fb069;--amber:#d8a24a;--cool:#6f8fb0;
+}
+html,body{background:var(--ink);color:var(--on-ink);overflow-x:hidden;}
+body{font-family:'Spectral',serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:99;opacity:0.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+img{display:block;max-width:100%;}
+.label{font-family:'Schibsted Grotesk',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.26em;text-transform:uppercase;}
+.wrap{max-width:1200px;margin:0 auto;padding:0 2rem;}
+@media(max-width:680px){.wrap{padding:0 1.2rem;}}
+
+/* MASTHEAD */
+.masthead{padding:5rem 0 3rem;border-bottom:1px solid var(--line-d);}
+.kicker{color:var(--ember);margin-bottom:1.4rem;}
+.masthead h1{font-family:'Newsreader',serif;font-weight:300;font-size:clamp(2.4rem,5vw,4rem);
+  line-height:1.04;letter-spacing:-0.025em;color:var(--bone);margin-bottom:1.2rem;}
+.masthead h1 em{font-style:italic;color:var(--ember);}
+.masthead .lede{color:var(--on-ink-dim);max-width:48rem;font-size:1.1rem;}
+.meta-strip{display:flex;flex-wrap:wrap;gap:2.4rem;margin-top:2.4rem;padding-top:2rem;border-top:1px solid var(--line-d);}
+.meta-strip div{display:flex;flex-direction:column;gap:0.25rem;}
+.meta-strip .m-num{font-family:'Newsreader',serif;font-size:1.6rem;color:var(--gold);line-height:1;}
+.meta-strip .m-lbl{font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--on-ink-faint);}
+
+/* GROUP */
+.group{padding:4.5rem 0 2rem;border-top:1px solid var(--line-d);margin-top:2.5rem;}
+.group-head{margin-bottom:2rem;}
+.group-num{font-family:'Newsreader',serif;font-size:0.9rem;color:var(--gold);letter-spacing:0.06em;margin-bottom:0.5rem;}
+.group-head h2{font-family:'Newsreader',serif;font-weight:300;font-size:clamp(1.8rem,3.4vw,2.6rem);
+  line-height:1.08;letter-spacing:-0.02em;color:var(--bone);margin-bottom:0.8rem;}
+.group-head h2 em{font-style:italic;color:var(--ember);}
+.group-head .g-brief{color:var(--on-ink-dim);max-width:46rem;font-size:0.98rem;}
+.group-head .g-brief b{color:var(--bone);font-weight:600;}
+
+/* CONCEPT */
+.concept{background:linear-gradient(180deg,#181520,#101016);border:1px solid var(--line-d);
+  margin-bottom:2rem;overflow:hidden;border-radius:6px;}
+.concept-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;
+  padding:1.5rem 1.8rem 1.3rem;border-bottom:1px solid var(--line-d);}
+@media(max-width:560px){.concept-top{flex-direction:column;gap:1rem;}}
+.concept-id{font-family:'Schibsted Grotesk',sans-serif;font-size:0.62rem;letter-spacing:0.18em;
+  text-transform:uppercase;color:var(--on-ink-faint);margin-bottom:0.4rem;}
+.concept-name{font-family:'Newsreader',serif;font-weight:400;font-size:1.45rem;color:var(--bone);
+  line-height:1.1;margin-bottom:0.3rem;}
+.concept-name em{font-style:italic;color:var(--gold);}
+.concept-tag{font-size:0.86rem;color:var(--on-ink-dim);font-style:italic;}
+
+.ring-wrap{display:flex;flex-direction:column;align-items:center;gap:0.3rem;flex-shrink:0;}
+.ring{position:relative;width:54px;height:54px;border-radius:50%;
+  background:conic-gradient(var(--rc) calc(var(--rv)*3.6deg),rgba(255,255,255,0.07) 0);}
+.ring::after{content:"";position:absolute;inset:5px;border-radius:50%;background:#0e0c14;}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;z-index:2;font-size:0.82rem;font-weight:700;color:#fff;}
+.ring-lbl{font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--on-ink-faint);}
+
+.frame{margin:0;background:#0a0a0e;padding:1.4rem;}
+.browser{border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);box-shadow:0 24px 56px rgba(0,0,0,0.5);}
+.browser-bar{display:flex;align-items:center;gap:0.4rem;padding:0.55rem 0.8rem;background:#1d1d25;border-bottom:1px solid var(--line-d);}
+.browser-bar i{width:9px;height:9px;border-radius:50%;display:block;}
+.browser-bar i:nth-child(1){background:#e0604f;}
+.browser-bar i:nth-child(2){background:#e3b34d;}
+.browser-bar i:nth-child(3){background:#5fb35f;}
+.browser-bar span{margin-left:0.5rem;font-family:'Schibsted Grotesk',sans-serif;
+  font-size:0.6rem;letter-spacing:0.04em;color:var(--on-ink-faint);}
+
+.notes{padding:1.6rem 1.8rem 1.9rem;display:grid;grid-template-columns:1fr 1fr;gap:1.4rem 2rem;}
+@media(max-width:680px){.notes{grid-template-columns:1fr;}}
+.note-block.full{grid-column:1/-1;}
+.note-block h5{font-family:'Schibsted Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;}
+.note-block p{font-size:0.88rem;color:var(--on-ink-dim);line-height:1.6;}
+.note-block .spec{font-size:0.78rem;color:var(--on-ink-faint);line-height:1.7;}
+.note-block .spec b{color:var(--on-ink-dim);font-weight:600;}
+
+/* PREVIEW SURFACE — desert brand system */
+.surface{
+  --ink:#1b1916;--ink-soft:#3a312c;--paper:#faf6f1;--paper-warm:#f4ebde;
+  --paper-cream:#efe3cf;--rust:#a8502e;--rust-deep:#7a3920;--gold:#d8b87a;
+  --gold-soft:#e6c890;--sand:#8c6e54;--bone:#ece4d6;--muted:#6b6b6b;
+  --dline:rgba(26,22,20,0.14);
+  font-family:'Spectral',serif;background:var(--bone);color:var(--ink);
+  line-height:1.55;position:relative;
+}
+.surface img{display:block;}
+.surface .ui{font-family:'Schibsted Grotesk',sans-serif;}
+.s-eyebrow{font-family:'Schibsted Grotesk',sans-serif;font-size:0.6rem;font-weight:600;
+  letter-spacing:0.3em;text-transform:uppercase;color:var(--rust);}
+
+/* ============================================================ */
+/* SECTION 01 · MIRROR                                            */
+/* ============================================================ */
+#mir-a,#mir-b,#mir-c{padding:2.4rem 2rem;}
+#mir-a{background:var(--bone);}
+#mir-a .pillar{display:grid;grid-template-columns:auto 1fr;gap:1.3rem;padding:1.4rem 0;border-top:1px solid var(--dline);}
+#mir-a .pillar:first-child{border-top:none;}
+#mir-a .pillar-mark{font-family:'Newsreader',serif;font-style:italic;font-weight:300;font-size:1.4rem;color:var(--rust);}
+#mir-a .pillar-mark .pn{display:block;font-family:'Schibsted Grotesk',sans-serif;font-style:normal;
+  font-size:0.55rem;font-weight:700;letter-spacing:0.2em;color:var(--gold);margin-bottom:0.3rem;}
+#mir-a .pillar-body{font-size:0.92rem;color:var(--ink-soft);}
+#mir-a .pillar-body em{color:var(--ink);font-style:italic;}
+#mir-a .q-block{text-align:center;margin-top:2rem;padding-top:1.6rem;border-top:1px solid var(--dline);}
+#mir-a .q-block .li{font-family:'Schibsted Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.06em;
+  color:var(--muted);font-style:italic;margin-bottom:0.7rem;}
+#mir-a .q{font-family:'Newsreader',serif;font-style:italic;font-weight:300;font-size:1.5rem;color:var(--ink);line-height:1.2;}
+#mir-a .q+.q{color:var(--rust);}
+
+#mir-b{background:var(--paper-warm);}
+#mir-b .row{display:grid;grid-template-columns:repeat(3,1fr);gap:0.9rem;margin-top:1.4rem;}
+#mir-b .card{background:#fff;border:1px solid var(--dline);padding:1.2rem;}
+#mir-b .card .num{font-family:'Schibsted Grotesk',sans-serif;font-size:0.55rem;font-weight:700;letter-spacing:0.2em;color:var(--gold);}
+#mir-b .card .nm{font-family:'Newsreader',serif;font-style:italic;font-size:1.3rem;color:var(--rust);margin:0.4rem 0 0.6rem;}
+#mir-b .card .bd{font-size:0.82rem;color:var(--ink-soft);line-height:1.5;}
+#mir-b .closer{text-align:center;margin-top:1.5rem;font-family:'Newsreader',serif;font-style:italic;font-size:1.2rem;color:var(--ink);}
+#mir-b .closer em{color:var(--rust);}
+
+#mir-c{background:var(--bone);display:grid;grid-template-columns:1.5fr 1fr;gap:2rem;align-items:start;}
+#mir-c .body{font-size:0.92rem;color:var(--ink-soft);}
+#mir-c .body p{margin-bottom:0.7rem;}
+#mir-c .body em{color:var(--ink);font-style:italic;}
+#mir-c .quote{padding:1.4rem 1.3rem;background:#fff;border-left:3px solid var(--rust);}
+#mir-c .quote .li{font-family:'Schibsted Grotesk',sans-serif;font-size:0.55rem;letter-spacing:0.16em;color:var(--muted);font-style:italic;text-transform:uppercase;margin-bottom:0.8rem;}
+#mir-c .quote .q{font-family:'Newsreader',serif;font-style:italic;font-weight:300;font-size:1.35rem;color:var(--ink);line-height:1.25;margin-bottom:0.3rem;}
+#mir-c .quote .q.rust{color:var(--rust);}
+
+/* ============================================================ */
+/* SECTION 02 · PIVOT                                             */
+/* ============================================================ */
+#piv-a{height:340px;position:relative;color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  background:url('https://guldanjamax.github.io/anthonybalduzzi/stock/diehl-violet-dusk.jpg?v=5k');
+  background-size:cover;background-position:center;padding:2rem;}
+#piv-a::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,7,4,0.55) 0%,rgba(10,7,4,0.2) 40%,rgba(10,7,4,0.0) 65%,rgba(10,7,4,0.6) 100%);}
+#piv-a .body{position:relative;z-index:2;max-width:34rem;}
+#piv-a .ans{font-family:'Newsreader',serif;font-weight:300;font-size:2.4rem;line-height:1.05;color:#fff;letter-spacing:-0.02em;margin-bottom:0.5rem;text-shadow:0 4px 24px rgba(0,0,0,0.6);}
+#piv-a .ans em{font-style:italic;color:var(--gold-soft);}
+#piv-a .sub{font-family:'Newsreader',serif;font-style:italic;font-size:1.1rem;color:rgba(255,255,255,0.85);margin-bottom:1rem;}
+#piv-a .copy{font-size:0.95rem;color:rgba(255,255,255,0.92);line-height:1.55;}
+
+#piv-b{background:var(--paper-warm);padding:2.4rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;align-items:center;}
+#piv-b .col-text .ans{font-family:'Newsreader',serif;font-weight:300;font-size:2rem;color:var(--rust);line-height:1.05;margin-bottom:0.4rem;letter-spacing:-0.02em;}
+#piv-b .col-text .ans em{font-style:italic;}
+#piv-b .col-text .sub{font-family:'Newsreader',serif;font-style:italic;font-size:1.1rem;color:var(--ink-soft);margin-bottom:1rem;}
+#piv-b .col-text p{font-size:0.92rem;color:var(--ink-soft);line-height:1.55;margin-bottom:0.6rem;}
+#piv-b .col-img img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:3px;filter:saturate(1.04) sepia(0.03);}
+
+#piv-c{background:var(--paper-warm);padding:2.4rem 2rem;text-align:center;}
+#piv-c .ans{font-family:'Newsreader',serif;font-weight:300;font-size:2.2rem;color:var(--rust);line-height:1.1;letter-spacing:-0.02em;margin-bottom:0.5rem;}
+#piv-c .ans em{font-style:italic;}
+#piv-c .sub{font-family:'Newsreader',serif;font-style:italic;font-size:1.15rem;color:var(--ink-soft);margin-bottom:1.5rem;}
+#piv-c .inline-img{margin:1.5rem auto;max-width:32rem;border-radius:4px;overflow:hidden;box-shadow:0 16px 32px rgba(26,22,20,0.18);}
+#piv-c .inline-img img{width:100%;aspect-ratio:16/9;object-fit:cover;}
+#piv-c .doorway-line{font-family:'Newsreader',serif;font-style:italic;font-size:1.3rem;color:var(--ink);margin-top:1.4rem;}
+
+/* ============================================================ */
+/* SECTION 03 · PROMISE                                           */
+/* ============================================================ */
+#pro-a{height:360px;position:relative;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;
+  background:url('https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/03-promise-hands-up.png');
+  background-size:cover;background-position:center;padding:0;}
+#pro-a::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,10,5,0.4) 0%,rgba(20,10,5,0.1) 40%,rgba(20,10,5,0.7) 100%);}
+#pro-a .body{position:relative;z-index:2;padding:2rem;max-width:38rem;}
+#pro-a .s-eyebrow{color:var(--gold-soft);}
+#pro-a h2{font-family:'Newsreader',serif;font-weight:300;font-style:italic;font-size:1.9rem;color:#fff;margin:0.6rem 0 0.8rem;line-height:1.15;}
+#pro-a p{font-size:0.95rem;color:rgba(255,255,255,0.9);}
+
+#pro-b{background:var(--bone);padding:2.4rem 2rem;display:grid;grid-template-columns:0.9fr 1.1fr;gap:1.8rem;align-items:center;}
+#pro-b .card-img{transform:rotate(-2deg);background:#fff;padding:0.6rem 0.6rem 1.4rem;box-shadow:0 22px 50px rgba(26,22,20,0.22);}
+#pro-b .card-img img{width:100%;aspect-ratio:1;object-fit:cover;}
+#pro-b .card-img .stamp{font-family:'Caveat',cursive;font-size:1.05rem;color:var(--sand);text-align:center;margin-top:0.4rem;}
+#pro-b h2{font-family:'Newsreader',serif;font-weight:300;font-style:italic;font-size:1.8rem;color:var(--rust);line-height:1.15;margin-bottom:0.8rem;}
+#pro-b p{font-size:0.92rem;color:var(--ink-soft);line-height:1.55;margin-bottom:0.6rem;}
+
+#pro-c{background:var(--bone);padding:2.4rem 2rem;}
+#pro-c h2{font-family:'Newsreader',serif;font-weight:300;font-style:italic;font-size:1.85rem;color:var(--rust);line-height:1.15;margin:0 auto 1.4rem;text-align:center;max-width:32rem;}
+#pro-c p{font-size:0.95rem;color:var(--ink-soft);line-height:1.6;max-width:36rem;margin:0 auto 1rem;}
+#pro-c .anchor{text-align:center;font-family:'Newsreader',serif;font-style:italic;font-size:1.2rem;color:var(--ink);margin:1.4rem 0;}
+#pro-c .inset{max-width:30rem;margin:1.4rem auto 0;border-radius:3px;overflow:hidden;opacity:0.92;}
+#pro-c .inset img{width:100%;aspect-ratio:16/9;object-fit:cover;filter:saturate(1.05) sepia(0.05);}
+
+/* ============================================================ */
+/* SECTION 04 · SOCIAL PROOF                                      */
+/* ============================================================ */
+#sp-a{background:var(--bone);padding:2rem;}
+#sp-a .head{text-align:center;margin-bottom:1.4rem;}
+#sp-a h2{font-family:'Newsreader',serif;font-weight:300;font-size:1.6rem;color:var(--ink);}
+#sp-a h2 em{font-style:italic;color:var(--rust);}
+#sp-a .stats{display:flex;justify-content:center;gap:2rem;margin:1rem 0 1.5rem;padding:0.9rem 0;border-top:1px solid var(--dline);border-bottom:1px solid var(--dline);}
+#sp-a .stat{text-align:center;}
+#sp-a .stat .n{font-family:'Newsreader',serif;font-weight:300;font-size:1.5rem;color:var(--rust);line-height:1;}
+#sp-a .stat .l{font-family:'Schibsted Grotesk',sans-serif;font-size:0.5rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--sand);margin-top:0.2rem;}
+#sp-a .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.6rem;}
+#sp-a .card{background:#fff;padding:0.9rem;border-left:2px solid var(--rust);}
+#sp-a .card.ph{padding:0;border:none;overflow:hidden;}
+#sp-a .card.ph img{width:100%;height:100%;object-fit:cover;}
+#sp-a .card .q{font-family:'Newsreader',serif;font-style:italic;font-size:0.76rem;color:var(--ink-soft);line-height:1.4;margin-bottom:0.5rem;}
+#sp-a .card .by{font-family:'Schibsted Grotesk',sans-serif;font-size:0.55rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--rust);}
+
+#sp-b{background:var(--bone);padding:2.4rem 2rem;}
+#sp-b .head{text-align:center;margin-bottom:1.4rem;}
+#sp-b h2{font-family:'Newsreader',serif;font-weight:300;font-size:1.6rem;color:var(--ink);}
+#sp-b h2 em{font-style:italic;color:var(--rust);}
+#sp-b .letters{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;}
+#sp-b .letter{background:#fbf6ec;padding:1.3rem 1.4rem;border:1px solid var(--dline);box-shadow:0 8px 18px rgba(26,22,20,0.08);}
+#sp-b .letter:nth-child(2){transform:rotate(0.8deg);}
+#sp-b .letter:nth-child(3){transform:rotate(-0.6deg);}
+#sp-b .letter .q{font-family:'Newsreader',serif;font-style:italic;font-size:0.86rem;color:var(--ink-soft);line-height:1.5;margin-bottom:0.7rem;}
+#sp-b .letter .by{font-family:'Caveat',cursive;font-size:1rem;color:var(--rust);}
+
+#sp-c{background:var(--bone);padding:2.4rem 2rem;}
+#sp-c .photo-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:0.3rem;margin-bottom:1.4rem;}
+#sp-c .photo-strip img{width:100%;aspect-ratio:1;object-fit:cover;filter:saturate(1.05) sepia(0.04);}
+#sp-c .pullquotes{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;}
+#sp-c .pq{background:#fff;padding:1.6rem 1.5rem;border:1px solid var(--dline);}
+#sp-c .pq .q{font-family:'Newsreader',serif;font-style:italic;font-weight:300;font-size:1.1rem;color:var(--ink);line-height:1.4;margin-bottom:0.8rem;}
+#sp-c .pq .by{font-family:'Schibsted Grotesk',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--rust);}
+#sp-c .pq .by span{color:var(--muted);font-weight:400;letter-spacing:0;text-transform:none;font-style:italic;}
+
+/* ============================================================ */
+/* SECTION 05 · FOUNDER                                           */
+/* ============================================================ */
+#fnd-a{background:var(--ink);color:var(--bone);}
+#fnd-a .hero-img{position:relative;height:200px;background:url('https://guldanjamax.github.io/anthonybalduzzi/optimized/duzzi-sunset-rock-4k.jpg');background-size:cover;background-position:center 40%;}
+#fnd-a .hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 0%,transparent 50%,rgba(20,15,10,0.7) 100%);}
+#fnd-a .body{padding:1.8rem 2rem 2rem;max-width:34rem;margin:0 auto;}
+#fnd-a .s-eyebrow{color:var(--gold);}
+#fnd-a h2{font-family:'Newsreader',serif;font-weight:300;font-style:italic;font-size:1.6rem;color:#fff;margin:0.4rem 0 1rem;}
+#fnd-a p{font-family:'Spectral',serif;font-size:0.92rem;color:rgba(235,227,212,0.82);line-height:1.65;margin-bottom:0.7rem;}
+#fnd-a .sig{font-family:'Caveat',cursive;font-size:1.4rem;color:var(--gold);margin-top:1rem;}
+
+#fnd-b{background:var(--ink);color:var(--bone);padding:2rem;display:grid;grid-template-columns:1.3fr 1fr;gap:1.8rem;align-items:start;}
+#fnd-b .body p{font-size:0.88rem;color:rgba(235,227,212,0.82);line-height:1.6;margin-bottom:0.6rem;}
+#fnd-b .body em{color:var(--gold);font-style:italic;}
+#fnd-b .body .anchor{font-family:'Newsreader',serif;font-style:italic;font-weight:400;font-size:1.25rem;color:var(--gold);margin:1rem 0;}
+#fnd-b .side{position:sticky;top:1rem;}
+#fnd-b .side img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:3px;margin-bottom:0.8rem;}
+#fnd-b .side .nm{font-family:'Newsreader',serif;font-style:italic;font-size:1.05rem;color:#fff;}
+#fnd-b .side .ti{font-family:'Schibsted Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-top:0.3rem;}
+#fnd-b .side .sig{font-family:'Caveat',cursive;font-size:1.2rem;color:var(--gold);margin-top:0.7rem;}
+
+#fnd-c{background:var(--ink);color:var(--bone);padding:2.4rem 2.4rem;}
+#fnd-c .letter{max-width:38rem;margin:0 auto;background:rgba(235,227,212,0.04);border:1px solid var(--line-d);padding:2rem 2rem 2.2rem;}
+#fnd-c .letter .opener{font-family:'Newsreader',serif;font-style:italic;font-size:1.05rem;color:var(--gold);margin-bottom:0.9rem;}
+#fnd-c .letter p{font-family:'Spectral',serif;font-size:0.92rem;color:rgba(235,227,212,0.86);line-height:1.7;margin-bottom:0.7rem;text-indent:1.2rem;}
+#fnd-c .letter p:first-of-type{text-indent:0;}
+#fnd-c .letter em{color:var(--gold);font-style:italic;}
+#fnd-c .letter .anchor{font-family:'Newsreader',serif;font-style:italic;font-size:1.3rem;color:var(--gold);text-align:center;margin:1.2rem 0;text-indent:0;}
+#fnd-c .letter .close{margin-top:1.3rem;}
+#fnd-c .letter .sig{font-family:'Caveat',cursive;font-size:1.5rem;color:#fff;display:block;}
+#fnd-c .letter .by{font-family:'Schibsted Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.16em;color:var(--gold);text-transform:uppercase;margin-top:0.3rem;}
+
+/* ============================================================ */
+/* SECTION 06 · 3-DAY ARC                                         */
+/* ============================================================ */
+#arc-a{background:var(--paper-warm);padding:1.8rem 1.6rem;}
+#arc-a h2{font-family:'Newsreader',serif;font-weight:300;font-size:1.4rem;color:var(--ink);text-align:center;margin-bottom:1.4rem;}
+#arc-a h2 em{font-style:italic;color:var(--rust);}
+#arc-a .day{display:grid;grid-template-columns:auto 1fr;gap:1.2rem;padding:1.1rem 0;border-top:1px solid var(--dline);}
+#arc-a .day:first-of-type{border-top:none;}
+#arc-a .day .marker{font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--rust);min-width:7rem;padding-top:0.2rem;}
+#arc-a .day .marker .d{color:var(--ink);}
+#arc-a .day .info .nm{font-family:'Newsreader',serif;font-style:italic;font-size:1rem;color:var(--ink);margin-bottom:0.3rem;}
+#arc-a .day .info p{font-size:0.84rem;color:var(--ink-soft);line-height:1.5;}
+
+#arc-b{background:var(--paper-warm);padding:1.8rem 1.6rem;}
+#arc-b h2{font-family:'Newsreader',serif;font-weight:300;font-size:1.4rem;color:var(--ink);text-align:center;margin-bottom:1.4rem;}
+#arc-b h2 em{font-style:italic;color:var(--rust);}
+#arc-b .doors{display:grid;grid-template-columns:repeat(3,1fr);gap:0.9rem;}
+#arc-b .door{background:#fff;border:1px solid var(--dline);overflow:hidden;}
+#arc-b .door .ph{aspect-ratio:4/3;overflow:hidden;}
+#arc-b .door .ph img{width:100%;height:100%;object-fit:cover;filter:saturate(1.05) sepia(0.04);}
+#arc-b .door .info{padding:0.9rem 1rem 1.1rem;}
+#arc-b .door .lbl{font-family:'Schibsted Grotesk',sans-serif;font-size:0.55rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--rust);}
+#arc-b .door .lbl .d{color:var(--ink);}
+#arc-b .door .nm{font-family:'Newsreader',serif;font-style:italic;font-size:1rem;color:var(--ink);margin:0.4rem 0 0.4rem;}
+#arc-b .door p{font-size:0.75rem;color:var(--ink-soft);line-height:1.5;}
+
+#arc-c{padding:0;}
+#arc-c .day{position:relative;height:220px;color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background-size:cover;background-position:center;}
+#arc-c .day::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,10,5,0.4) 0%,rgba(15,10,5,0.2) 50%,rgba(15,10,5,0.65) 100%);}
+#arc-c .day .body{position:relative;z-index:2;padding:1.5rem;}
+#arc-c .day .lbl{font-family:'Schibsted Grotesk',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold-soft);}
+#arc-c .day .lbl .d{color:#fff;}
+#arc-c .day .nm{font-family:'Newsreader',serif;font-style:italic;font-weight:300;font-size:1.6rem;color:#fff;margin:0.4rem 0 0.4rem;}
+#arc-c .day p{font-family:'Spectral',serif;font-style:italic;font-size:0.85rem;color:rgba(255,255,255,0.9);}
+#arc-c .friday{background-image:url('https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/04-friday-stage-view.png');}
+#arc-c .saturday{background-image:url('https://guldanjamax.github.io/anthonybalduzzi/photos/dean-yoga.png');background-position:center 35%;}
+#arc-c .sunday{background-image:url('https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/06-sunday-prayer-hands.png');}
+
+/* ============================================================ */
+/* SECTION 07 · FAQ                                               */
+/* ============================================================ */
+#faq-a{background:var(--bone);padding:2rem 2rem;}
+#faq-a h2{font-family:'Newsreader',serif;font-weight:300;font-size:1.5rem;color:var(--ink);text-align:center;margin-bottom:1.4rem;}
+#faq-a h2 em{font-style:italic;color:var(--rust);}
+#faq-a .item{border-top:1px solid var(--dline);padding:1rem 0;display:grid;grid-template-columns:auto 1fr auto;gap:1rem;align-items:center;}
+#faq-a .item .n{font-family:'Newsreader',serif;font-style:italic;font-size:0.95rem;color:var(--gold-soft);min-width:1.5rem;}
+#faq-a .item .q{font-family:'Newsreader',serif;font-style:italic;font-size:1rem;color:var(--ink);}
+#faq-a .item .tog{font-family:'Schibsted Grotesk',sans-serif;font-size:1.2rem;font-weight:300;color:var(--rust);}
+#faq-a .item.open{background:rgba(168,80,46,0.05);padding:1rem 0.9rem;margin:0 -0.9rem;}
+#faq-a .item.open .a{grid-column:2/3;font-size:0.85rem;color:var(--ink-soft);margin-top:0.6rem;line-height:1.55;}
+
+#faq-b{background:var(--bone);padding:2rem 2rem;}
+#faq-b h2{font-family:'Newsreader',serif;font-weight:300;font-size:1.5rem;color:var(--ink);text-align:center;margin-bottom:1.4rem;}
+#faq-b h2 em{font-style:italic;color:var(--rust);}
+#faq-b .qa{display:grid;grid-template-columns:1fr 1.4fr;gap:1.4rem;padding:1rem 0;border-top:1px solid var(--dline);}
+#faq-b .qa:first-of-type{border-top:none;}
+#faq-b .qa .q{font-family:'Newsreader',serif;font-style:italic;font-size:0.95rem;color:var(--rust);}
+#faq-b .qa .a{font-size:0.85rem;color:var(--ink-soft);line-height:1.55;}
+
+#faq-c{background:var(--bone);padding:2rem 2rem;}
+#faq-c h2{font-family:'Newsreader',serif;font-weight:300;font-size:1.5rem;color:var(--ink);text-align:center;margin-bottom:1rem;}
+#faq-c h2 em{font-style:italic;color:var(--rust);}
+#faq-c .filters{display:flex;justify-content:center;gap:0.6rem;flex-wrap:wrap;margin-bottom:1.4rem;}
+#faq-c .chip{font-family:'Schibsted Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;padding:0.45rem 0.9rem;border:1px solid var(--dline);color:var(--ink-soft);background:#fff;}
+#faq-c .chip.active{background:var(--rust);border-color:var(--rust);color:#fff;font-weight:700;}
+#faq-c .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:0.9rem;}
+#faq-c .card{background:#fff;border:1px solid var(--dline);padding:1rem 1.1rem;}
+#faq-c .card .cat{font-family:'Schibsted Grotesk',sans-serif;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;}
+#faq-c .card .q{font-family:'Newsreader',serif;font-style:italic;font-size:0.95rem;color:var(--ink);}
+
+/* ============================================================ */
+/* SECTION 08 · FINAL CTA                                         */
+/* ============================================================ */
+#fin-a{height:380px;position:relative;color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  background:url('https://guldanjamax.github.io/anthonybalduzzi/optimized/duzzi-silhouette-4k.jpg');
+  background-size:cover;background-position:65% 50%;}
+#fin-a::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,10,20,0.5) 0%,rgba(15,10,20,0.15) 40%,rgba(15,10,20,0.0) 60%,rgba(15,10,20,0.7) 100%);}
+#fin-a .body{position:relative;z-index:2;padding:2rem;max-width:38rem;}
+#fin-a .see-you{font-family:'Newsreader',serif;font-style:italic;font-weight:300;font-size:2.4rem;color:#fff;line-height:1.1;margin-bottom:0.6rem;text-shadow:0 4px 24px rgba(0,0,0,0.6);}
+#fin-a .see-you em{color:var(--gold-soft);}
+#fin-a .sig{font-family:'Caveat',cursive;font-size:1.2rem;color:rgba(255,255,255,0.85);margin-bottom:1.4rem;}
+#fin-a .cta{display:inline-flex;align-items:center;gap:0.7rem;font-family:'Schibsted Grotesk',sans-serif;
+  font-size:0.74rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#fff;
+  background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);
+  border:1px solid rgba(216,184,122,0.6);padding:0.95rem 1.7rem;text-decoration:none;}
+
+#fin-b{display:grid;grid-template-columns:1fr 1fr;height:340px;}
+#fin-b .text{padding:2rem;background:var(--bone);display:flex;flex-direction:column;justify-content:center;}
+#fin-b .text .li{font-family:'Newsreader',serif;font-style:italic;font-size:1.05rem;color:var(--ink-soft);margin-bottom:0.7rem;}
+#fin-b .text .see{font-family:'Newsreader',serif;font-style:italic;font-weight:300;font-size:2rem;color:var(--rust);line-height:1.1;margin-bottom:0.8rem;letter-spacing:-0.01em;}
+#fin-b .text .see em{color:var(--ink);}
+#fin-b .text .sig{font-family:'Caveat',cursive;font-size:1.2rem;color:var(--sand);margin-bottom:1.2rem;}
+#fin-b .text .cta{align-self:flex-start;display:inline-flex;align-items:center;gap:0.7rem;font-family:'Schibsted Grotesk',sans-serif;
+  font-size:0.74rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#fff;
+  background:var(--rust);padding:0.95rem 1.7rem;text-decoration:none;}
+#fin-b .ph{background:url('https://guldanjamax.github.io/anthonybalduzzi/optimized/duzzi-silhouette-4k.jpg');background-size:cover;background-position:50% 55%;}
+
+#fin-c{background:var(--bone);padding:2.4rem 2rem;text-align:center;}
+#fin-c .li{font-family:'Newsreader',serif;font-style:italic;font-size:1.1rem;color:var(--ink-soft);margin-bottom:0.5rem;}
+#fin-c .see{font-family:'Newsreader',serif;font-style:italic;font-weight:300;font-size:2rem;color:var(--rust);line-height:1.1;margin-bottom:1.2rem;}
+#fin-c .see em{color:var(--ink);}
+#fin-c .inset{max-width:24rem;margin:1rem auto;border-radius:3px;overflow:hidden;}
+#fin-c .inset img{width:100%;aspect-ratio:16/9;object-fit:cover;}
+#fin-c .cta{display:inline-flex;align-items:center;gap:0.7rem;font-family:'Schibsted Grotesk',sans-serif;
+  font-size:0.74rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#fff;
+  background:var(--rust);padding:0.95rem 1.7rem;text-decoration:none;margin-top:0.8rem;}
+#fin-c .sig{font-family:'Caveat',cursive;font-size:1.2rem;color:var(--sand);margin-top:1rem;}
+
+footer{padding:3rem 0;border-top:1px solid var(--line-d);text-align:center;}
+footer .label{color:var(--on-ink-faint);}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="label kicker">Section Designs · 24 directions</div>
+    <h1>Every section, <em>three ways.</em></h1>
+    <p class="lede">Each of the eight remaining sections gets three distinct design directions on the brand system, with the four photo assignments wired in: C2 Bee (hero), C1 Diehl (Pivot), C4 Sedona lotus (Founder), C3 silhouette (Final CTA). Every direction is rendered as a real preview, scored, with rationale and visual spec. Pick one per section and I'll assemble the full page.</p>
+    <div class="meta-strip">
+      <div><span class="m-num">8</span><span class="m-lbl">Sections</span></div>
+      <div><span class="m-num">24</span><span class="m-lbl">Rendered directions</span></div>
+      <div><span class="m-num">4</span><span class="m-lbl">Hero photos placed</span></div>
+      <div><span class="m-num">85%+</span><span class="m-lbl">The target</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============== SECTION 01 · MIRROR ============== -->
+<section class="group"><div class="wrap">
+  <div class="group-head">
+    <div class="group-num">Section 01</div>
+    <h2>The Mirror — <em>where stagnation gets named.</em></h2>
+    <p class="g-brief">A long, prose-heavy confessional that walks the reader through the three pillars where they're stuck (Physically / Mentally / In your relationships). <b>The challenge is to make a wall of text feel intentional, not heavy.</b></p>
+  </div>
+
+  <article class="concept">
+    <div class="concept-top"><div><div class="concept-id">Direction A</div><div class="concept-name">Editorial <em>Pillars</em></div><div class="concept-tag">Each pillar a typographic monument. Hairline-divided. Quiet authority.</div></div><div class="ring-wrap"><div class="ring" style="--rv:91;--rc:var(--green);"><b>91</b></div><div class="ring-lbl">Confidence</div></div></div>
+    <div class="frame"><div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>section · the mirror</span></div><div class="surface" id="mir-a">
+      <div class="pillar"><div class="pillar-mark"><span class="pn">Pillar One</span>Physically</div><div class="pillar-body">You're doing okay, but nowhere near as good as you could be. Joints ache in places they never used to. Underneath the trying, a quieter fear lives: <em>what if my best days are already behind me?</em></div></div>
+      <div class="pillar"><div class="pillar-mark"><span class="pn">Pillar Two</span>Mentally</div><div class="pillar-body">You're running on autopilot. Same routines. Same week, repeating. You haven't done anything that scared you in the good way for a long time. You're not depressed — you're just <em>coasting</em>.</div></div>
+      <div class="pillar"><div class="pillar-mark"><span class="pn">Pillar Three</span>In your<br>relationships</div><div class="pillar-body">The spark has dimmed. Your marriage is good on paper, but real intimacy has been missing for longer than you want to admit.</div></div>
+      <div class="q-block"><div class="li">And underneath all of it, the question you don't ask out loud:</div><div class="q">Is this it?</div><div class="q">Is what I have right now... the rest of it?</div></div>
+    </div></div></div>
+    <div class="notes">
+      <div class="note-block"><h5>Design direction</h5><p>Three pillars stacked vertically with the pillar lead set as oversized italic Newsreader (rust), small grotesk numeral above. Body in Spectral at generous reading size. Hairline rules between. Closing questions get a centered emphasis block with the second question in rust.</p></div>
+      <div class="note-block"><h5>Strategic rationale</h5><p>Treats each pillar as a piece of journalism. The italic Newsreader monumentalizes the pillar word so the body copy doesn't feel like a wall. Most respectful of the soul-aware tone the brief locked. Cleanest fit with the brand system.</p></div>
+      <div class="note-block full"><h5>Visual spec</h5><p class="spec"><b>Type:</b> Newsreader italic ~1.4rem pillar lead, Schibsted Grotesk 700 numeral. Spectral 1rem body. &nbsp; <b>Layout:</b> 2-col grid (auto / 1fr), 1.4rem padding, hairline top borders. &nbsp; <b>Color:</b> bone bg, rust pillar lead, gold numeral, ink-soft body. &nbsp; <b>Closing:</b> centered question block above a hairline rule.</p></div>
+    </div>
+  </article>
+
+  <article class="concept">
+    <div class="concept-top"><div><div class="concept-id">Direction B</div><div class="concept-name">Three <em>Mirrors</em></div><div class="concept-tag">A horizontal triptych. Each pillar in its own card.</div></div><div class="ring-wrap"><div class="ring" style="--rv:82;--rc:var(--amber);"><b>82</b></div><div class="ring-lbl">Confidence</div></div></div>
+    <div class="frame"><div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>section · the mirror</span></div><div class="surface" id="mir-b">
+      <h2 style="text-align:center;font-family:'Newsreader',serif;font-weight:300;font-size:1.6rem;color:#1b1916;">Three places you've quietly <em style="color:#a8502e;font-style:italic;">stalled.</em></h2>
+      <div class="row">
+        <div class="card"><div class="num">PILLAR ONE</div><div class="nm">Physically</div><div class="bd">Doing okay, but nowhere near what you could be. Joints ache. The quieter fear lives underneath: what if my best days are already behind me?</div></div>
+        <div class="card"><div class="num">PILLAR TWO</div><div class="nm">Mentally</div><div class="bd">Running on autopilot. Same routines, same week repeating. Not depressed — just coasting.</div></div>
+        <div class="card"><div class="num">PILLAR THREE</div><div class="nm">In your<br>relationships</div><div class="bd">The spark has dimmed. Good on paper, but real intimacy has been missing longer than you want to admit.</div></div>
+      </div>
+      <div class="closer">And underneath it all: <em>is this it?</em></div>
+    </div></div></div>
+    <div class="notes">
+      <div class="note-block"><h5>Design direction</h5><p>Three side-by-side cards on warm paper, each a "mirror" you look into. White card bg, hairline border, oversized italic pillar name in rust, compact body. Closing question as a single centered italic line below.</p></div>
+      <div class="note-block"><h5>Strategic rationale</h5><p>Scannable. The 40+ reader can absorb three pillars at once instead of scrolling through long prose. Trades emotional depth for clarity — the long-form Mirror has more soul, but the Three Mirrors makes the point in 8 seconds.</p></div>
+      <div class="note-block full"><h5>Visual spec</h5><p class="spec"><b>Layout:</b> 3-col grid, equal cards. &nbsp; <b>Type:</b> Newsreader 1.3rem italic pillar name, Spectral 0.82rem body, Schibsted Grotesk 0.55rem numeric label. &nbsp; <b>Bg:</b> paper-warm section, white cards. &nbsp; <b>Closing:</b> single italic Newsreader line, centered.</p></div>
+    </div>
+  </article>
+
+  <article class="concept">
+    <div class="concept-top"><div><div class="concept-id">Direction C</div><div class="concept-name">The <em>Margin Note</em></div><div class="concept-tag">Long-form prose with the closing question as a margin pull-quote.</div></div><div class="ring-wrap"><div class="ring" style="--rv:76;--rc:var(--amber);"><b>76</b></div><div class="ring-lbl">Confidence</div></div></div>
+    <div class="frame"><div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>section · the mirror</span></div><div class="surface" id="mir-c">
+      <div class="body"><p>You've already done the hard part. You built the career. Worked the long hours. Raised the kids.</p><p>And somewhere along the way, you got... <em>stagnant</em>. Physically, mentally, in your relationships. Joints ache. Routines repeat. The spark has dimmed.</p><p>You're not depressed. You're just <em>coasting</em>.</p></div>
+      <div class="quote"><div class="li">The question you don't ask out loud:</div><div class="q">Is this it?</div><div class="q rust">Is what I have right now... the rest of it?</div></div>
+    </div></div></div>
+    <div class="notes">
+      <div class="note-block"><h5>Design direction</h5><p>Two-column layout: long-form prose on the left taking 60%, the closing question on the right as a quoted block with a rust left-rule and italic Newsreader treatment. Like a magazine feature with a pulled call-out.</p></div>
+      <div class="note-block"><h5>Strategic rationale</h5><p>Most editorial. The pull-quote in the margin gives the questions extra weight and breaks the wall. Scored lower because it shortens the confessional, which is where the section's emotional power lives — and on mobile the columns stack and lose the editorial effect.</p></div>
+      <div class="note-block full"><h5>Visual spec</h5><p class="spec"><b>Layout:</b> 1.5fr / 1fr grid. Stacks on mobile. &nbsp; <b>Type:</b> Spectral 0.92rem body left, Newsreader italic pull-quote right. &nbsp; <b>Quote block:</b> white bg, 3px rust left rule, italic. &nbsp; <b>Bg:</b> bone.</p></div>
+    </div>
+  </article>
+</div></section>
+
+<!-- ============== SECTION 02 · PIVOT ============== -->
+<section class="group"><div class="wrap">
+  <div class="group-head">
+    <div class="group-num">Section 02</div>
+    <h2>The Pivot — <em>"No. This isn't it."</em></h2>
+    <p class="g-brief">The emotional turn. The page hands the reader hope after the Mirror's diagnosis. <b>Uses C1 Diehl violet dusk per the photo assignment.</b></p>
+  </div>
+
+  <article class="concept">
+    <div class="concept-top"><div><div class="concept-id">Direction A</div><div class="concept-name">Full-Bleed <em>Threshold</em></div><div class="concept-tag">The Diehl photo IS the section. Text overlaid in the sky.</div></div><div class="ring-wrap"><div class="ring" style="--rv:92;--rc:var(--green);"><b>92</b></div><div class="ring-lbl">Confidence</div></div></div>
+    <div class="frame"><div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>section · the pivot</span></div><div class="surface" id="piv-a">
+      <div class="body"><div class="ans">No. This isn't <em>it.</em></div><div class="sub">Unless you let it be.</div><div class="copy">The rest of your life isn't going to be the rest of <em>this</em>. You're not at the end of your story. You're at the beginning of the most important chapter of it.</div></div>
+    </div></div></div>
+    <div class="notes">
+      <div class="note-block"><h5>Design direction</h5><p>The Diehl photo runs as the section's full background. A dark scrim grades over it for legibility. The pivot answer "No. This isn't it." is set huge in white Newsreader with the italic "it" in gold-soft. The copy sits below in lighter weight.</p></div>
+      <div class="note-block"><h5>Strategic rationale</h5><p>This is the emotional pivot point of the page. Letting the photo BE the moment, not just illustrate it, makes the doorway feel literal — the reader is being shown the threshold while being told they're standing at one. Strongest move.</p></div>
+      <div class="note-block full"><h5>Visual spec</h5><p class="spec"><b>Bg:</b> Diehl violet dusk full-bleed. &nbsp; <b>Scrim:</b> top-down 55% → 20% → 0% → 60%. &nbsp; <b>Type:</b> Newsreader 2.4rem light italic-on-it, gold-soft accent. &nbsp; <b>Copy:</b> Spectral 0.95rem in 92%-white. &nbsp; <b>Motion:</b> slow Ken Burns drift on the photo.</p></div>
+    </div>
+  </article>
+
+  <article class="concept">
+    <div class="concept-top"><div><div class="concept-id">Direction B</div><div class="concept-name">The <em>Split Spread</em></div><div class="concept-tag">Magazine page. Text on one side, image on the other.</div></div><div class="ring-wrap"><div class="ring" style="--rv:84;--rc:var(--amber);"><b>84</b></div><div class="ring-lbl">Confidence</div></div></div>
+    <div class="frame"><div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>section · the pivot</span></div><div class="surface" id="piv-b">
+      <div class="col-text"><div class="ans">No. This <em>isn't</em> it.</div><div class="sub">Unless you let it be.</div><p>You're not at the end of your story. You're at the beginning of the most important chapter of it.</p><p>The back half has the potential to be your golden wisdom years.</p></div>
+      <div class="col-img"><img src="https://guldanjamax.github.io/anthonybalduzzi/stock/diehl-violet-dusk.jpg?v=5k" alt=""></div>
+    </div></div></div>
+    <div class="notes">
+      <div class="note-block"><h5>Design direction</h5><p>A magazine-style split spread. Text left, image right. The image is a clean cropped panel of the Diehl photo (square-ish), text breathes on warm paper. More editorial than full-bleed.</p></div>
+      <div class="note-block"><h5>Strategic rationale</h5><p>Readable, considered, like a magazine feature. Trades the visceral threshold-feel of A for clarity. Better on mobile (stacks cleanly) than A. Strong fallback if the full-bleed feels too cinematic.</p></div>
+      <div class="note-block full"><h5>Visual spec</h5><p class="spec"><b>Layout:</b> 1fr / 1fr split, stacks on mobile (image first). &nbsp; <b>Bg:</b> paper-warm. &nbsp; <b>Type:</b> Newsreader 2rem italic answer in rust. &nbsp; <b>Image:</b> 1:1 aspect, slight desaturation filter.</p></div>
+    </div>
+  </article>
+
+  <article class="concept">
+    <div class="concept-top"><div><div class="concept-id">Direction C</div><div class="concept-name">The <em>Inline Reveal</em></div><div class="concept-tag">Text-first. The image lands as a beat mid-flow.</div></div><div class="ring-wrap"><div class="ring" style="--rv:78;--rc:var(--amber);"><b>78</b></div><div class="ring-lbl">Confidence</div></div></div>
+    <div class="frame"><div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>section · the pivot</span></div><div class="surface" id="piv-c">
+      <div class="ans">No. This <em>isn't</em> it.</div><div class="sub">Unless you let it be.</div>
+      <p style="max-width:32rem;margin:0 auto 1rem;font-size:0.95rem;color:var(--ink-soft);">The back half of life has the potential to be your golden wisdom years.</p>
+      <div class="inline-img"><img src="https://guldanjamax.github.io/anthonybalduzzi/stock/diehl-violet-dusk.jpg?v=5k" alt=""></div>
+      <div class="doorway-line">That version of you is on the other side of a doorway you <em>haven't walked through yet</em>.</div>
+    </div></div></div>
+    <div class="notes">
+      <div class="note-block"><h5>Design direction</h5><p>Single column flow. Text builds, photo lands as a 16:9 inline card in the middle of the section with a soft shadow, then text continues. The image is a beat, not a backdrop.</p></div>
+      <div class="note-block"><h5>Strategic rationale</h5><p>Treats the image as punctuation. The hand-off from text → image → text creates a rhythm. Reads more like a memoir than a hero. Trades drama for intimacy — and the photo is smaller, so less screen-time.</p></div>
+      <div class="note-block full"><h5>Visual spec</h5><p class="spec"><b>Layout:</b> centered narrow column. &nbsp; <b>Image:</b> 16:9 inline, max-width 32rem, shadow 0 16px 32px ink/18%. &nbsp; <b>Bg:</b> paper-warm.</p></div>
+    </div>
+  </article>
+</div></section>
+
+<!-- ============== SECTION 03 · PROMISE ============== -->
+<section class="group"><div class="wrap">
+  <div class="group-head">
+    <div class="group-num">Section 03</div>
+    <h2>The Promise — <em>"this is what happens here."</em></h2>
+    <p class="g-brief">First proof-image moment with the 2025 hands-up photo. The brand promise lands: "Breakthrough is where you reconnect with your most inspired Self &amp; Life."</p>
+  </div>
+
+  <article class="concept">
+    <div class="concept-top"><div><div class="concept-id">Direction A</div><div class="concept-name">Mini-Hero <em>Promise</em></div><div class="concept-tag">A second hero. The 2025 photo full-bleed, promise overlaid.</div></div><div class="ring-wrap"><div class="ring" style="--rv:88;--rc:var(--green);"><b>88</b></div><div class="ring-lbl">Confidence</div></div></div>
+    <div class="frame"><div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>section · the promise</span></div><div class="surface" id="pro-a">
+      <div class="body"><div class="s-eyebrow">The Promise</div><h2>Where you reconnect with your most <em>inspired Self &amp; Life.</em></h2><p>Three transformational days in Phoenix. Aligned people. World-class doctors and teachers. Movement, science, ceremony, soul.</p></div>
+    </div></div></div>
+    <div class="notes">
+      <div class="note-block"><h5>Design direction</h5><p>Treat the Promise like a mini-hero: 2025 hands-up photo full-bleed, scrim at top and bottom for legibility, the promise headline in italic Newsreader bottom-left. The figure with arms raised in the photo amplifies the promise — visual proof.</p></div>
+      <div class="note-block"><h5>Strategic rationale</h5><p>The real 2025 photo of an attendee with arms raised IS the promise. Cinematic framing instead of small thumbnail makes it sell harder. The viewer sees what the breakthrough looks like, not just hears about it.</p></div>
+      <div class="note-block full"><h5>Visual spec</h5><p class="spec"><b>Bg:</b> 03-promise-hands-up full-bleed. &nbsp; <b>Scrim:</b> 40% top / 10% mid / 70% bottom. &nbsp; <b>Type:</b> Newsreader 1.9rem italic headline. &nbsp; <b>Layout:</b> content max-width 38rem, bottom-left anchored.</p></div>
+    </div>
+  </article>
+
+  <article class="concept">
+    <div class="concept-top"><div><div class="concept-id">Direction B</div><div class="concept-name">The <em>Postcard</em></div><div class="concept-tag">The photo as a framed, slightly tilted card. From the album.</div></div><div class="ring-wrap"><div class="ring" style="--rv:82;--rc:var(--amber);"><b>82</b></div><div class="ring-lbl">Confidence</div></div></div>
+    <div class="frame"><div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>section · the promise</span></div><div class="surface" id="pro-b">
+      <div class="card-img"><img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/03-promise-hands-up.png"><div class="stamp">Sunday, 2025</div></div>
+      <div><h2>Where you reconnect with your <em>most inspired Self.</em></h2><p>Three transformational days. A curated circle. The kind of thing that happens here.</p><p>Not a conference. Not a retreat. A true breakthrough.</p></div>
+    </div></div></div>
+    <div class="notes">
+      <div class="note-block"><h5>Design direction</h5><p>The 2025 photo treated as a polaroid: white border, slight rotation, handwritten "Sunday, 2025" caption in Caveat. Sits beside the promise copy on warm bone bg. Tactile, "from the album."</p></div>
+      <div class="note-block"><h5>Strategic rationale</h5><p>Adds warmth — the postcard reads as a real moment captured, not a marketing asset. Echoes the signature script used elsewhere on the page. Lower confidence because the tilt is a skeuomorphic move that ages faster than clean editorial.</p></div>
+      <div class="note-block full"><h5>Visual spec</h5><p class="spec"><b>Layout:</b> 0.9fr / 1.1fr split. &nbsp; <b>Photo card:</b> white frame, rotate(-2deg), shadow 0 22px 50px ink/22%. &nbsp; <b>Stamp:</b> Caveat in sand, centered. &nbsp; <b>Bg:</b> bone.</p></div>
+    </div>
+  </article>
+
+  <article class="concept">
+    <div class="concept-top"><div><div class="concept-id">Direction C</div><div class="concept-name">Text-First <em>Vignette</em></div><div class="concept-tag">Copy leads. Photo fades in as a quiet inset.</div></div><div class="ring-wrap"><div class="ring" style="--rv:86;--rc:var(--green);"><b>86</b></div><div class="ring-lbl">Confidence</div></div></div>
+    <div class="frame"><div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>section · the promise</span></div><div class="surface" id="pro-c">
+      <h2>Where you reconnect with your most <em>inspired Self &amp; Life.</em></h2><p>Picture Sunday morning. The whole room sitting in a circle. A clay cup of ceremonial cacao warming your hands. The desert sun rising outside as 150 people, who arrived as strangers two days ago, fall silent at the same moment.</p>
+      <p class="anchor">That's the kind of thing that happens here.</p>
+      <div class="inset"><img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/03-promise-hands-up.png" alt=""></div>
+    </div></div></div>
+    <div class="notes">
+      <div class="note-block"><h5>Design direction</h5><p>The cinematic Sunday-morning copy gets to land FIRST in a clean, centered column. The hands-up photo fades in below as a 16:9 inset at slightly reduced opacity — a quiet visual confirmation, not a billboard. Memoir-like.</p></div>
+      <div class="note-block"><h5>Strategic rationale</h5><p>The copy is so good in this section — "150 people, who arrived as strangers two days ago, fall silent at the same moment" — that the design's best move might be to GET OUT OF THE WAY. Reading is the experience. The photo confirms after, doesn't lead.</p></div>
+      <div class="note-block full"><h5>Visual spec</h5><p class="spec"><b>Layout:</b> centered narrow column, max-width 36rem. &nbsp; <b>Anchor line:</b> Newsreader italic 1.2rem, centered. &nbsp; <b>Inset:</b> 16:9, max-width 30rem, slight desaturation. &nbsp; <b>Bg:</b> bone.</p></div>
+    </div>
+  </article>
+</div></section>
+
+<!-- ============== SECTION 04 · SOCIAL PROOF ============== -->
+<section class="group"><div class="wrap">
+  <div class="group-head">
+    <div class="group-num">Section 04</div>
+    <h2>Social Proof — <em>real voices, real photos.</em></h2>
+    <p class="g-brief">16 transcribed testimonials from the 2025 cohort + the 2025 photo library. <b>The job: make the proof feel earned, not manufactured.</b></p>
+  </div>
+
+  <article class="concept">
+    <div class="concept-top"><div><div class="concept-id">Direction A</div><div class="concept-name">The <em>Wall of Voices</em></div><div class="concept-tag">Dense masonry of testimonials interleaved with photos. Pinterest feed of proof.</div></div><div class="ring-wrap"><div class="ring" style="--rv:89;--rc:var(--green);"><b>89</b></div><div class="ring-lbl">Confidence</div></div></div>
+    <div class="frame"><div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>section · social proof</span></div><div class="surface" id="sp-a">
+      <div class="head"><h2>Real people. <em>Real breakthroughs.</em></h2></div>
+      <div class="stats">
+        <div class="stat"><div class="n">70K+</div><div class="l">Members</div></div>
+        <div class="stat"><div class="n">100+</div><div class="l">Countries</div></div>
+        <div class="stat"><div class="n">150</div><div class="l">In the room</div></div>
+      </div>
+      <div class="grid">
+        <div class="card"><div class="q">"This was soul changing. My heart is full."</div><div class="by">Erik · 2025</div></div>
+        <div class="card ph"><img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/09-gallery-workout.png"></div>
+        <div class="card"><div class="q">"FEAR IS A GIFT because it points us to the childhood limiting beliefs."</div><div class="by">Geoff · 2025</div></div>
+        <div class="card ph"><img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/10-gallery-coldplunge.png"></div>
+        <div class="card"><div class="q">"I'm an introvert. I don't people well. This was a big deal for me."</div><div class="by">Mike · 2025</div></div>
+        <div class="card ph"><img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/11-gallery-love-friends.png"></div>
+        <div class="card"><div class="q">"FFP works. I don't need to look for something else, it's all here."</div><div class="by">Nick · 2025</div></div>
+        <div class="card ph"><img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/08-final-cta-full-group.png"></div>
+      </div>
+    </div></div></div>
+    <div class="notes">
+      <div class="note-block"><h5>Design direction</h5><p>A 4-column grid of mixed cells: testimonial cards (white bg, rust left rule) interleaved with 2025 photo tiles. Dense, scroll-rich, "the proof is everywhere." Stat band at top.</p></div>
+      <div class="note-block"><h5>Strategic rationale</h5><p>Maximizes proof density per scroll. The eye picks up faces (photos) and voices (quotes) alternately so neither dominates. Strongest for skeptical readers — they see 12+ proof elements without trying.</p></div>
+      <div class="note-block full"><h5>Visual spec</h5><p class="spec"><b>Layout:</b> 4-col masonry grid, gap 0.6rem. &nbsp; <b>Cards:</b> white bg, 2px rust left rule, 0.9rem padding. &nbsp; <b>Photos:</b> aspect-ratio 1:1 cover. &nbsp; <b>Stat band:</b> 3 stats, top/bottom hairline.</p></div>
+    </div>
+  </article>
+
+  <article class="concept">
+    <div class="concept-top"><div><div class="concept-id">Direction B</div><div class="concept-name">The <em>Letter Wall</em></div><div class="concept-tag">Testimonials as torn-journal letters. Handwriting attribution. Slightly tilted.</div></div><div class="ring-wrap"><div class="ring" style="--rv:79;--rc:var(--amber);"><b>79</b></div><div class="ring-lbl">Confidence</div></div></div>
+    <div class="frame"><div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>section · social proof</span></div><div class="surface" id="sp-b">
+      <div class="head"><h2>Real people. <em>Real breakthroughs.</em></h2></div>
+      <div class="letters">
+        <div class="letter"><div class="q">"From start to finish, this was not just an event — it was a life-changing experience. The team brought such innate kindness that everyone felt safe to be vulnerable."</div><div class="by">— Irma, 2025</div></div>
+        <div class="letter"><div class="q">"I have about 15 pages of handwritten notes to process. FEAR IS A GIFT because it points us directly to the childhood limiting beliefs."</div><div class="by">— Geoff, 2025</div></div>
+        <div class="letter"><div class="q">"I'm an introvert. I don't people well. This was a big deal for me, well out of my comfort zone."</div><div class="by">— Mike, 2025</div></div>
+        <div class="letter"><div class="q">"FFP works. I don't need to look for something else, it's all here."</div><div class="by">— Nick, 2025</div></div>
+      </div>
+    </div></div></div>
+    <div class="notes">
+      <div class="note-block"><h5>Design direction</h5><p>Testimonials laid out as cards of warm-tinted paper with handwriting signatures in Caveat. Each card slightly rotated (-0.6° / +0.8°) for a "papers on a table" feel.</p></div>
+      <div class="note-block"><h5>Strategic rationale</h5><p>Warmest, most human treatment. Handwriting and tilt say "these are real people." Lower confidence because the tilt is a skeuomorphic move and the warm paper repeats elsewhere on the page — it could read as overused tactile language.</p></div>
+      <div class="note-block full"><h5>Visual spec</h5><p class="spec"><b>Layout:</b> 2-col grid, gap 1.2rem. &nbsp; <b>Cards:</b> #fbf6ec paper bg, hairline border, light shadow 0 8px 18px ink/8%, alternating tilt. &nbsp; <b>Body:</b> Newsreader italic. &nbsp; <b>Sig:</b> Caveat 1rem rust.</p></div>
+    </div>
+  </article>
+
+  <article class="concept">
+    <div class="concept-top"><div><div class="concept-id">Direction C</div><div class="concept-name">Editorial <em>Pull-Quotes</em></div><div class="concept-tag">A magazine letters page. Big quotes, small bylines, photo strip overhead.</div></div><div class="ring-wrap"><div class="ring" style="--rv:84;--rc:var(--amber);"><b>84</b></div><div class="ring-lbl">Confidence</div></div></div>
+    <div class="frame"><div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>section · social proof</span></div><div class="surface" id="sp-c">
+      <div class="photo-strip">
+        <img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/03-promise-hands-up.png">
+        <img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/09-gallery-workout.png">
+        <img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/10-gallery-coldplunge.png">
+        <img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/11-gallery-love-friends.png">
+        <img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/06-sunday-prayer-hands.png">
+      </div>
+      <div class="pullquotes">
+        <div class="pq"><div class="q">"In our weakest moments, the strongest version of ourselves is waiting to be born. This resonates differently after this weekend."</div><div class="by">CHRISTOPHER THATCHER <span>· 2025 attendee</span></div></div>
+        <div class="pq"><div class="q">"My heart is full. Dr. A and his team are doing all of this out of a place of love and service."</div><div class="by">ERIK COCHRAN <span>· 2025 attendee</span></div></div>
+      </div>
+    </div></div></div>
+    <div class="notes">
+      <div class="note-block"><h5>Design direction</h5><p>Editorial layout: a tight photo strip across the top showing 2025 scenes, then two large pull-quote cards below with bold Schibsted Grotesk attribution. Quote text in Newsreader italic at considered size. Magazine letters-page feel.</p></div>
+      <div class="note-block"><h5>Strategic rationale</h5><p>Most premium register. Fewer testimonials but each one gets to land properly. The photo strip provides quick proof above; the pull-quotes provide the deeper sell. Trades quantity for editorial dignity.</p></div>
+      <div class="note-block full"><h5>Visual spec</h5><p class="spec"><b>Photo strip:</b> 5-col, square crops, warm grade. &nbsp; <b>Pull-quotes:</b> 2-col grid, white bg, hairline border. &nbsp; <b>Type:</b> Newsreader italic 1.1rem quote, Schibsted Grotesk 700 attribution.</p></div>
+    </div>
+  </article>
+</div></section>
+
+<!-- ============== SECTION 05 · FOUNDER ============== -->
+<section class="group"><div class="wrap">
+  <div class="group-head">
+    <div class="group-num">Section 05</div>
+    <h2>From the Founder — <em>Anthony's letter.</em></h2>
+    <p class="g-brief">Personality moment. Anthony tells the reader why he built this. <b>Uses C4 Sedona lotus rock per the photo assignment</b> — the most intimate Anthony photo we have.</p>
+  </div>
+
+  <article class="concept">
+    <div class="concept-top"><div><div class="concept-id">Direction A</div><div class="concept-name">Photo <em>Lead</em></div><div class="concept-tag">Anthony at sunset opens the section. Letter falls below.</div></div><div class="ring-wrap"><div class="ring" style="--rv:90;--rc:var(--green);"><b>90</b></div><div class="ring-lbl">Confidence</div></div></div>
+    <div class="frame"><div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>section · from the founder</span></div><div class="surface" id="fnd-a">
+      <div class="hero-img"></div>
+      <div class="body"><div class="s-eyebrow">A note from the founder</div><h2>Why I really built this event.</h2><p>I'm Dr. Anthony Balduzzi. A few years ago, a question started rising in me I couldn't shake: <em>Is this all I'm here to do?</em></p><p>I started doing my own work. Sat in ceremony. Spent time in the desert and the darkness. What I found on the other side was this:</p><p style="font-style:italic;color:var(--gold-soft);font-size:1.05rem;text-align:center;">Health is the doorway. Aliveness is the room.</p><div class="sig">— Dr. Anthony</div></div>
+    </div></div></div>
+    <div class="notes">
+      <div class="note-block"><h5>Design direction</h5><p>Photo banner at top (Sedona lotus pose, gradient fade at bottom). Then the letter in a narrow column on dark bg with Spectral body, italic gold accents, handwritten signature in Caveat. Book-like.</p></div>
+      <div class="note-block"><h5>Strategic rationale</h5><p>The photo establishes the human first, then the letter feels like reading something personal. Strongest balance of "founder presence" and "the message lands." Best fit for the trust-build moment.</p></div>
+      <div class="note-block full"><h5>Visual spec</h5><p class="spec"><b>Bg:</b> ink. &nbsp; <b>Hero banner:</b> 200px tall, Sedona lotus photo, bottom gradient fade. &nbsp; <b>Letter:</b> max-width 34rem centered, Spectral 0.92rem, gold italic accents. &nbsp; <b>Sig:</b> Caveat 1.4rem gold.</p></div>
+    </div>
+  </article>
+
+  <article class="concept">
+    <div class="concept-top"><div><div class="concept-id">Direction B</div><div class="concept-name">Margin <em>Note</em></div><div class="concept-tag">Letter wide-left, Anthony as a small portrait byline right.</div></div><div class="ring-wrap"><div class="ring" style="--rv:81;--rc:var(--amber);"><b>81</b></div><div class="ring-lbl">Confidence</div></div></div>
+    <div class="frame"><div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>section · from the founder</span></div><div class="surface" id="fnd-b">
+      <div class="body"><p>I'm Dr. Anthony Balduzzi. A few years ago, a question started rising in me I couldn't shake: <em>Is this all I'm here to do?</em></p><p>I'd noticed that the people getting the deepest results in our programs weren't just losing weight. They were waking up. Repairing marriages. Coming alive.</p><p>So I started doing my own work. Sat in ceremony. Spent time in the desert.</p><div class="anchor">Health is the doorway. Aliveness is the room.</div><p>I built this for the ones who feel the call but haven't found the doorway.</p></div>
+      <div class="side"><img src="https://guldanjamax.github.io/anthonybalduzzi/optimized/duzzi-sunset-rock-4k.jpg"><div class="nm">Dr. Anthony Balduzzi</div><div class="ti">Founder &amp; Host</div><div class="sig">— Dr. Anthony</div></div>
+    </div></div></div>
+    <div class="notes">
+      <div class="note-block"><h5>Design direction</h5><p>Magazine feature layout. The letter takes the main column; Anthony's portrait sits in a sticky right margin with name, title, and a handwritten signature. The portrait stays visible as you read.</p></div>
+      <div class="note-block"><h5>Strategic rationale</h5><p>Treats Anthony as the author of a feature, not a celebrity. Feels like reading a profile in a magazine. Lower confidence because the portrait being smaller reduces emotional connection — and the photo we have is too good not to use bigger.</p></div>
+      <div class="note-block full"><h5>Visual spec</h5><p class="spec"><b>Layout:</b> 1.3fr / 1fr grid. &nbsp; <b>Side:</b> sticky position. &nbsp; <b>Portrait:</b> aspect 3:4 cover. &nbsp; <b>Sig:</b> Caveat 1.2rem gold.</p></div>
+    </div>
+  </article>
+
+  <article class="concept">
+    <div class="concept-top"><div><div class="concept-id">Direction C</div><div class="concept-name">The <em>Open Letter</em></div><div class="concept-tag">Formatted like an actual letter. Dear reader. Indented paragraphs. Handwritten close.</div></div><div class="ring-wrap"><div class="ring" style="--rv:85;--rc:var(--amber);"><b>85</b></div><div class="ring-lbl">Confidence</div></div></div>
+    <div class="frame"><div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>section · from the founder</span></div><div class="surface" id="fnd-c">
+      <div class="letter"><div class="opener">Reader,</div><p>I'm Dr. Anthony Balduzzi — founder of the Fit Father Project. Over the past decade, our team has helped over 70,000 people across 100+ countries reclaim their health.</p><p>A few years ago, a question started rising in me I couldn't shake: <em>Is this all I'm here to do?</em></p><p>I started doing my own work. Sat in ceremony. Spent time in the desert.</p><div class="anchor">Health is the doorway. Aliveness is the room.</div><p>I built Breakthrough for those people. The ones who feel the call but haven't found the doorway. If you've read this far, I think there's a reason.</p><div class="close"><span class="sig">— Dr. Anthony</span><div class="by">Founder, Fit Father Project</div></div></div>
+    </div></div></div>
+    <div class="notes">
+      <div class="note-block"><h5>Design direction</h5><p>The letter is literally formatted as a letter. "Reader," opener in italic Newsreader. Body paragraphs indented as in a printed manuscript. Centered anchor quote in larger italic gold. Closes with a handwritten signature block.</p></div>
+      <div class="note-block"><h5>Strategic rationale</h5><p>Maximizes the personal letter feel. The format itself does emotional work. Lower confidence than A because there's no photo at all — and we have a great photo of Anthony in this exact section's photo slot. A hybrid (A + the indented paragraphs of C) might be the strongest move.</p></div>
+      <div class="note-block full"><h5>Visual spec</h5><p class="spec"><b>Container:</b> max-width 38rem, faint warm-tinted bg over ink. &nbsp; <b>Indents:</b> text-indent 1.2rem on paragraphs (except first). &nbsp; <b>Opener:</b> Newsreader italic 1.05rem. &nbsp; <b>Close:</b> Caveat 1.5rem sig.</p></div>
+    </div>
+  </article>
+</div></section>
+
+<!-- ============== SECTION 06 · 3-DAY ARC ============== -->
+<section class="group"><div class="wrap">
+  <div class="group-head">
+    <div class="group-num">Section 06</div>
+    <h2>The Three-Day Arc — <em>Friday · Saturday · Sunday.</em></h2>
+    <p class="g-brief">The journey breakdown. Each day has a tagline, a real photo, and schedule highlights. <b>How to structure 3 deep day-blocks without losing momentum.</b></p>
+  </div>
+
+  <article class="concept">
+    <div class="concept-top"><div><div class="concept-id">Direction A</div><div class="concept-name">Vertical <em>Timeline</em></div><div class="concept-tag">A scroll through the arc. Day-marker images and rich schedules.</div></div><div class="ring-wrap"><div class="ring" style="--rv:87;--rc:var(--green);"><b>87</b></div><div class="ring-lbl">Confidence</div></div></div>
+    <div class="frame"><div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>section · the 3-day arc</span></div><div class="surface" id="arc-a">
+      <h2>Three days. <em>One journey.</em></h2>
+      <div class="day"><div class="marker"><span class="d">FRIDAY</span><br>AWARENESS</div><div class="info"><div class="nm">Wake up to where you are.</div><p>Dr. Anthony's keynote on Intentional Living. Experiential breakouts. Live health Q&amp;A. Kava happy hour close.</p></div></div>
+      <div class="day"><div class="marker"><span class="d">SATURDAY</span><br>ACTIVATION</div><div class="info"><div class="nm">Wake up the body.</div><p>Sunrise yoga with John Salisbury. Dr. Jamil's Wake Up keynote. Dr. Amie on hormones. Maraya on intimacy. Sunset pool party.</p></div></div>
+      <div class="day"><div class="marker"><span class="d">SUNDAY</span><br>INTEGRATION</div><div class="info"><div class="nm">Walk out changed.</div><p>Cacao ceremony with Luana. Dr. Jamil integration workshop. Final close with Dr. Anthony.</p></div></div>
+    </div></div></div>
+    <div class="notes">
+      <div class="note-block"><h5>Design direction</h5><p>Refined version of the current arc. Each day a vertical row with a tracked-caps day marker on the left, italic Newsreader tagline + paragraph on the right. Hairline rules between. Compact, scannable, no images per row (images live in the photo gallery elsewhere).</p></div>
+      <div class="note-block"><h5>Strategic rationale</h5><p>Lightest weight — gets all three days onto one screen without scrolling fatigue. Reads like a published itinerary. Best when the page already has heavy imagery elsewhere; this section provides clarity, not drama.</p></div>
+      <div class="note-block full"><h5>Visual spec</h5><p class="spec"><b>Layout:</b> 2-col rows (marker fixed-width 7rem / info flex). &nbsp; <b>Marker:</b> Schibsted Grotesk 700 0.7rem tracked. &nbsp; <b>Tagline:</b> Newsreader italic 1rem.</p></div>
+    </div>
+  </article>
+
+  <article class="concept">
+    <div class="concept-top"><div><div class="concept-id">Direction B</div><div class="concept-name">Three <em>Doors</em></div><div class="concept-tag">A triptych. Each day a doorway. Photo + name + tagline + highlights.</div></div><div class="ring-wrap"><div class="ring" style="--rv:84;--rc:var(--amber);"><b>84</b></div><div class="ring-lbl">Confidence</div></div></div>
+    <div class="frame"><div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>section · the 3-day arc</span></div><div class="surface" id="arc-b">
+      <h2>Three days. <em>Three doorways.</em></h2>
+      <div class="doors">
+        <div class="door"><div class="ph"><img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/04-friday-stage-view.png"></div><div class="info"><div class="lbl"><span class="d">FRIDAY</span><br>AWARENESS</div><div class="nm">Wake up to where you are.</div><p>Intentional Living keynote. Breakouts. Health Q&amp;A.</p></div></div>
+        <div class="door"><div class="ph"><img src="https://guldanjamax.github.io/anthonybalduzzi/photos/dean-yoga.png"></div><div class="info"><div class="lbl"><span class="d">SATURDAY</span><br>ACTIVATION</div><div class="nm">Wake up the body.</div><p>Sunrise yoga. Dr. Jamil's Wake Up. Hormones. Intimacy.</p></div></div>
+        <div class="door"><div class="ph"><img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/06-sunday-prayer-hands.png"></div><div class="info"><div class="lbl"><span class="d">SUNDAY</span><br>INTEGRATION</div><div class="nm">Walk out changed.</div><p>Cacao ceremony. Integration workshop. Final close.</p></div></div>
+      </div>
+    </div></div></div>
+    <div class="notes">
+      <div class="note-block"><h5>Design direction</h5><p>Three side-by-side day-cards on warm paper. Each has a photo top (4:3 crop), then the day label, italic tagline, and a compact paragraph. Visual rhythm of three doorways laid out as you'd see them on a poster.</p></div>
+      <div class="note-block"><h5>Strategic rationale</h5><p>Most graphic — all three days seen at a glance with the photos doing immediate emotional work. Trades schedule depth for visual punch. Best when you want the arc to feel like a unified product, less when you want to communicate "what happens on each day in detail."</p></div>
+      <div class="note-block full"><h5>Visual spec</h5><p class="spec"><b>Layout:</b> 3-col grid, gap 0.9rem, stacks on mobile. &nbsp; <b>Card:</b> white bg, photo 4:3 top. &nbsp; <b>Label:</b> Schibsted Grotesk 700 0.55rem rust. &nbsp; <b>Tagline:</b> Newsreader italic 1rem ink.</p></div>
+    </div>
+  </article>
+
+  <article class="concept">
+    <div class="concept-top"><div><div class="concept-id">Direction C</div><div class="concept-name">Cinematic <em>Scroll</em></div><div class="concept-tag">Each day a full-bleed photo with overlay. Three cinematic beats.</div></div><div class="ring-wrap"><div class="ring" style="--rv:88;--rc:var(--green);"><b>88</b></div><div class="ring-lbl">Confidence</div></div></div>
+    <div class="frame"><div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>section · the 3-day arc</span></div><div class="surface" id="arc-c">
+      <div class="day friday"><div class="body"><div class="lbl"><span class="d">FRIDAY</span> · AWARENESS</div><div class="nm">Wake up to where <em>you are.</em></div><p>Dr. Anthony's keynote on Intentional Living. Live health Q&amp;A.</p></div></div>
+      <div class="day saturday"><div class="body"><div class="lbl"><span class="d">SATURDAY</span> · ACTIVATION</div><div class="nm">Wake up the body.</div><p>Sunrise yoga. Dr. Jamil's Wake Up. Maraya on intimacy.</p></div></div>
+      <div class="day sunday"><div class="body"><div class="lbl"><span class="d">SUNDAY</span> · INTEGRATION</div><div class="nm">Walk out <em>changed.</em></div><p>Cacao ceremony. Integration workshop. Closing.</p></div></div>
+    </div></div></div>
+    <div class="notes">
+      <div class="note-block"><h5>Design direction</h5><p>Each day fills the viewport with its own full-bleed day photo. Overlay scrim grades for legibility, day label and tagline anchored center. Three cinematic full-width panels stacked vertically. Like turning the page of a film book.</p></div>
+      <div class="note-block"><h5>Strategic rationale</h5><p>Most cinematic, highest emotional payload. Each day becomes a moment, not a paragraph. Pairs beautifully with the brand system. Marginally higher confidence than A because the imagery does so much of the selling.</p></div>
+      <div class="note-block full"><h5>Visual spec</h5><p class="spec"><b>Layout:</b> 3 stacked full-width 220px+ panels. &nbsp; <b>Bg:</b> day photo full-bleed. &nbsp; <b>Scrim:</b> 40-65% top-bottom gradient. &nbsp; <b>Type:</b> Newsreader italic 1.6rem tagline white. &nbsp; <b>Detail blocks:</b> add full schedule below each panel in expandable accordions if needed.</p></div>
+    </div>
+  </article>
+</div></section>
+
+<!-- ============== SECTION 07 · FAQ ============== -->
+<section class="group"><div class="wrap">
+  <div class="group-head">
+    <div class="group-num">Section 07</div>
+    <h2>FAQ — <em>kill the last hesitation.</em></h2>
+    <p class="g-brief">17 questions. The job: make them dignified, scannable, and not feel like a chore to read.</p>
+  </div>
+
+  <article class="concept">
+    <div class="concept-top"><div><div class="concept-id">Direction A</div><div class="concept-name">Editorial <em>Accordion</em></div><div class="concept-tag">Numbered. Italic Newsreader questions. Generous spacing.</div></div><div class="ring-wrap"><div class="ring" style="--rv:91;--rc:var(--green);"><b>91</b></div><div class="ring-lbl">Confidence</div></div></div>
+    <div class="frame"><div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>section · faq</span></div><div class="surface" id="faq-a">
+      <h2>The questions <em>we hear most.</em></h2>
+      <div class="item"><div class="n">01.</div><div class="q">Is this for me? Who is Breakthrough actually for?</div><div class="tog">+</div></div>
+      <div class="item open"><div class="n">02.</div><div class="q">Who is this NOT for?</div><div class="tog">−</div><div class="a">If you're looking for a tactical bootcamp or another conference where you forget the notes by Tuesday — this isn't that. Breakthrough goes deeper.</div></div>
+      <div class="item"><div class="n">03.</div><div class="q">Do I need to be a member of Fit Father?</div><div class="tog">+</div></div>
+      <div class="item"><div class="n">04.</div><div class="q">When should I arrive and depart?</div><div class="tog">+</div></div>
+      <div class="item"><div class="n">05.</div><div class="q">Isn't it going to be hot in August?</div><div class="tog">+</div></div>
+    </div></div></div>
+    <div class="notes">
+      <div class="note-block"><h5>Design direction</h5><p>Numbered FAQ items. Each question in Newsreader italic at considered size, with the numeral set in lighter gold italic, +/− toggle in rust. Open state expands smoothly with the answer in Spectral body. Looks like a published Q&amp;A column, not a help docs page.</p></div>
+      <div class="note-block"><h5>Strategic rationale</h5><p>Refined evolution of the current accordion. Reads as deliberate. The numerals create visual rhythm. Highest confidence because it preserves scanning while adding craft.</p></div>
+      <div class="note-block full"><h5>Visual spec</h5><p class="spec"><b>Items:</b> 3-col grid (numeral / question / toggle), hairline top borders. &nbsp; <b>Numeral:</b> Newsreader italic gold-soft. &nbsp; <b>Question:</b> Newsreader italic 1rem ink. &nbsp; <b>Open state:</b> tinted bg, answer in row 2.</p></div>
+    </div>
+  </article>
+
+  <article class="concept">
+    <div class="concept-top"><div><div class="concept-id">Direction B</div><div class="concept-name">Two-Column <em>Q&amp;A</em></div><div class="concept-tag">Question left, answer right. No accordion. Scrollable feed.</div></div><div class="ring-wrap"><div class="ring" style="--rv:78;--rc:var(--amber);"><b>78</b></div><div class="ring-lbl">Confidence</div></div></div>
+    <div class="frame"><div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>section · faq</span></div><div class="surface" id="faq-b">
+      <h2>The questions <em>we hear most.</em></h2>
+      <div class="qa"><div class="q">Is this for me?</div><div class="a">Breakthrough is for adults 40+ who feel a quiet but unmistakable sense that there's more in them than they've been letting out. You don't need to be in shape. You don't need to be a member.</div></div>
+      <div class="qa"><div class="q">Who is this NOT for?</div><div class="a">If you're looking for a tactical bootcamp or a quick-fix weight-loss weekend, this isn't that. Breakthrough goes deeper — relationships, purpose, intimacy, faith.</div></div>
+      <div class="qa"><div class="q">When should I arrive?</div><div class="a">Event runs Friday through Sunday. We recommend arriving Thursday to settle in. First session begins Friday 8:45am.</div></div>
+    </div></div></div>
+    <div class="notes">
+      <div class="note-block"><h5>Design direction</h5><p>No accordion. Every question and answer is visible. Two-column layout: italic Newsreader question on the left, Spectral answer on the right. Scrollable feed of full content. Maximum scannability.</p></div>
+      <div class="note-block"><h5>Strategic rationale</h5><p>Best when you want every objection answered without interaction. Worst when there are 17 questions (the section becomes very long). Trades section length for zero-click reading. Lower confidence because the section is long-form already.</p></div>
+      <div class="note-block full"><h5>Visual spec</h5><p class="spec"><b>Layout:</b> 1fr / 1.4fr grid per row. &nbsp; <b>Type:</b> Newsreader italic 0.95rem question, Spectral 0.85rem answer.</p></div>
+    </div>
+  </article>
+
+  <article class="concept">
+    <div class="concept-top"><div><div class="concept-id">Direction C</div><div class="concept-name">Categorized <em>Cards</em></div><div class="concept-tag">Filter chips group questions into Logistics / Experience / Investment.</div></div><div class="ring-wrap"><div class="ring" style="--rv:80;--rc:var(--amber);"><b>80</b></div><div class="ring-lbl">Confidence</div></div></div>
+    <div class="frame"><div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>section · faq</span></div><div class="surface" id="faq-c">
+      <h2>The questions <em>we hear most.</em></h2>
+      <div class="filters"><span class="chip active">All</span><span class="chip">Logistics</span><span class="chip">Experience</span><span class="chip">Investment</span><span class="chip">Bringing Others</span></div>
+      <div class="cards">
+        <div class="card"><div class="cat">Experience</div><div class="q">Who is this actually for?</div></div>
+        <div class="card"><div class="cat">Logistics</div><div class="q">When should I arrive and depart?</div></div>
+        <div class="card"><div class="cat">Investment</div><div class="q">Are payment plans available?</div></div>
+        <div class="card"><div class="cat">Bringing Others</div><div class="q">Can I bring my spouse or kids?</div></div>
+      </div>
+    </div></div></div>
+    <div class="notes">
+      <div class="note-block"><h5>Design direction</h5><p>17 questions grouped into 4-5 categories. Filter chips at top let the reader filter to what they care about. Selected questions render as cards in a grid; clicking expands the answer. Adds an interaction layer.</p></div>
+      <div class="note-block"><h5>Strategic rationale</h5><p>Most "designed" — but adds a click for the answer and a click for filter. Best when the section is dense and the audience is goal-driven. Lower confidence because the 40+ audience may not engage with the filter; the accordion's "click to expand" already handles browsing.</p></div>
+      <div class="note-block full"><h5>Visual spec</h5><p class="spec"><b>Chips:</b> Schibsted Grotesk 0.6rem, rust pill when active. &nbsp; <b>Cards:</b> 2-col grid, white bg, hairline border, gold category label.</p></div>
+    </div>
+  </article>
+</div></section>
+
+<!-- ============== SECTION 08 · FINAL CTA ============== -->
+<section class="group"><div class="wrap">
+  <div class="group-head">
+    <div class="group-num">Section 08</div>
+    <h2>Final CTA — <em>"see you in the desert."</em></h2>
+    <p class="g-brief">The closing emotional beat. Last chance to convert. <b>Uses C3 Anthony silhouette per the photo assignment</b> — the arms-wide threshold gesture is the visual answer to "you've read this far."</p>
+  </div>
+
+  <article class="concept">
+    <div class="concept-top"><div><div class="concept-id">Direction A</div><div class="concept-name">Silhouette <em>Full-Bleed Close</em></div><div class="concept-tag">The silhouette IS the moment. Italic close + button center.</div></div><div class="ring-wrap"><div class="ring" style="--rv:94;--rc:var(--green);"><b>94</b></div><div class="ring-lbl">Confidence</div></div></div>
+    <div class="frame"><div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>section · final cta</span></div><div class="surface" id="fin-a">
+      <div class="body"><div class="see-you">See you in <em>the desert.</em></div><div class="sig">— Dr. Anthony and the Breakthrough Team</div><a class="cta" href="#">Reserve Your Spot →</a></div>
+    </div></div></div>
+    <div class="notes">
+      <div class="note-block"><h5>Design direction</h5><p>The C3 silhouette photo fills the section. Dark scrim grades for legibility. "See you in the desert." sits centered in italic Newsreader, white with gold italic on "the desert." Handwritten signature below, then a Frosted Halo CTA. The reader's last visual is a real person at a threshold under stars.</p></div>
+      <div class="note-block"><h5>Strategic rationale</h5><p>Strongest possible close. The silhouette photo IS the answer to every question the reader has been asking themselves while reading. The arms-wide gesture is the visual answer. Confidence 94% — this is the highest-conviction direction on the page.</p></div>
+      <div class="note-block full"><h5>Visual spec</h5><p class="spec"><b>Bg:</b> silhouette full-bleed at 65% focal-x. &nbsp; <b>Scrim:</b> top 50% / mid 0% / bottom 70%. &nbsp; <b>Type:</b> Newsreader 2.4rem italic light. &nbsp; <b>CTA:</b> Frosted Halo, gold-rimmed arrow. &nbsp; <b>Sig:</b> Caveat 1.2rem.</p></div>
+    </div>
+  </article>
+
+  <article class="concept">
+    <div class="concept-top"><div><div class="concept-id">Direction B</div><div class="concept-name">Two-Pane <em>Goodbye</em></div><div class="concept-tag">Left: emotional close + sig + CTA. Right: silhouette panel.</div></div><div class="ring-wrap"><div class="ring" style="--rv:85;--rc:var(--green);"><b>85</b></div><div class="ring-lbl">Confidence</div></div></div>
+    <div class="frame"><div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>section · final cta</span></div><div class="surface" id="fin-b">
+      <div class="text"><div class="li">You've read this far <em style="font-style:italic;color:#1b1916;">for a reason.</em></div><div class="see">See you in <em>the desert.</em></div><div class="sig">— Dr. Anthony</div><a class="cta" href="#">Reserve Your Spot →</a></div>
+      <div class="ph"></div>
+    </div></div></div>
+    <div class="notes">
+      <div class="note-block"><h5>Design direction</h5><p>Two-pane split. Left half: warm bone bg with the closing copy, signature, and CTA stacked vertically. Right half: the silhouette photo bleeding off the right edge. Like a magazine spread close.</p></div>
+      <div class="note-block"><h5>Strategic rationale</h5><p>Trades the full-bleed drama of A for legibility — text always has guaranteed contrast on the left pane. Strong fallback. Slightly less emotional payload than A but easier to balance with the rest of the page if it leans heavy on full-bleed sections.</p></div>
+      <div class="note-block full"><h5>Visual spec</h5><p class="spec"><b>Layout:</b> 1fr / 1fr split, stacks on mobile. &nbsp; <b>Left:</b> bone bg, vertical stack. &nbsp; <b>Right:</b> photo bg, no overlay. &nbsp; <b>Type:</b> Newsreader 2rem italic close.</p></div>
+    </div>
+  </article>
+
+  <article class="concept">
+    <div class="concept-top"><div><div class="concept-id">Direction C</div><div class="concept-name">The <em>Threshold Press</em></div><div class="concept-tag">Text-led close. Silhouette appears as a growing inset on scroll.</div></div><div class="ring-wrap"><div class="ring" style="--rv:81;--rc:var(--amber);"><b>81</b></div><div class="ring-lbl">Confidence</div></div></div>
+    <div class="frame"><div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>section · final cta</span></div><div class="surface" id="fin-c">
+      <div class="li">You've read this far <em style="font-style:italic;color:var(--ink);">for a reason</em>.</div><div class="see">See you in <em>the desert.</em></div>
+      <div class="inset"><img src="https://guldanjamax.github.io/anthonybalduzzi/optimized/duzzi-silhouette-4k.jpg" alt=""></div>
+      <a class="cta" href="#">Reserve Your Spot →</a>
+      <div class="sig">— Dr. Anthony and the Breakthrough Team</div>
+    </div></div></div>
+    <div class="notes">
+      <div class="note-block"><h5>Design direction</h5><p>Quiet, text-led close. The silhouette appears as a 16:9 inset card mid-flow, then the CTA below. The image is a beat, not a backdrop. Reads as memoir-like closure.</p></div>
+      <div class="note-block"><h5>Strategic rationale</h5><p>Lowest emotional payload of the three because the photo is smaller. Best when you want a calm, reflective close after a heavy page. For a transformational event with the brand thesis being "arms-wide at a threshold," shrinking the photo undercuts the brand promise — hence lowest confidence.</p></div>
+      <div class="note-block full"><h5>Visual spec</h5><p class="spec"><b>Layout:</b> centered narrow column. &nbsp; <b>Inset:</b> max-width 24rem, 16:9. &nbsp; <b>CTA:</b> solid rust button. &nbsp; <b>Bg:</b> bone.</p></div>
+    </div>
+  </article>
+</div></section>
+
+<!-- ============== SUMMARY ============== -->
+<section class="group">
+  <div class="wrap">
+    <div class="group-num">The Recommendation</div>
+    <h2 style="font-family:'Newsreader',serif;font-weight:300;font-size:clamp(1.9rem,3.5vw,2.8rem);color:var(--bone);margin-bottom:1rem;">If I were assembling this <em style="color:var(--ember);font-style:italic;">tomorrow.</em></h2>
+    <p style="color:var(--on-ink-dim);max-width:46rem;font-size:1.05rem;margin-bottom:2rem;">Pick one per section and I'll wire it into the full page rebuild. The strongest combination, top picks per section, would be:</p>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.6rem;border:1px solid var(--line-d);">
+      <div style="padding:1rem 1.2rem;border-bottom:1px solid var(--line-d);"><div style="font-family:'Newsreader',serif;font-size:1rem;color:var(--bone);"><b>Mirror</b> · Editorial Pillars (A · 91)</div></div>
+      <div style="padding:1rem 1.2rem;border-bottom:1px solid var(--line-d);"><div style="font-family:'Newsreader',serif;font-size:1rem;color:var(--bone);"><b>Pivot</b> · Full-Bleed Threshold (A · 92)</div></div>
+      <div style="padding:1rem 1.2rem;border-bottom:1px solid var(--line-d);"><div style="font-family:'Newsreader',serif;font-size:1rem;color:var(--bone);"><b>Promise</b> · Mini-Hero (A · 88) OR Text-First Vignette (C · 86)</div></div>
+      <div style="padding:1rem 1.2rem;border-bottom:1px solid var(--line-d);"><div style="font-family:'Newsreader',serif;font-size:1rem;color:var(--bone);"><b>Social Proof</b> · Wall of Voices (A · 89)</div></div>
+      <div style="padding:1rem 1.2rem;border-bottom:1px solid var(--line-d);"><div style="font-family:'Newsreader',serif;font-size:1rem;color:var(--bone);"><b>Founder</b> · Photo Lead (A · 90)</div></div>
+      <div style="padding:1rem 1.2rem;border-bottom:1px solid var(--line-d);"><div style="font-family:'Newsreader',serif;font-size:1rem;color:var(--bone);"><b>3-Day Arc</b> · Cinematic Scroll (C · 88)</div></div>
+      <div style="padding:1rem 1.2rem;"><div style="font-family:'Newsreader',serif;font-size:1rem;color:var(--bone);"><b>FAQ</b> · Editorial Accordion (A · 91)</div></div>
+      <div style="padding:1rem 1.2rem;"><div style="font-family:'Newsreader',serif;font-size:1rem;color:var(--bone);"><b>Final CTA</b> · Silhouette Full-Bleed Close (A · 94)</div></div>
+    </div>
+    <p style="color:var(--on-ink-dim);max-width:46rem;font-size:1rem;margin-top:1.5rem;">Tell me your picks per section (or "go with the recommendation") and I'll build the full v3 page on it.</p>
+  </div>
+</section>
+
+<footer>
+  <span class="label">Breakthrough in the Desert · Section designs · 24 directions</span>
+</footer>
+
+</body>
+</html>

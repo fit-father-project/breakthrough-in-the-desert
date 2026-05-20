@@ -170,6 +170,15 @@ strong { font-weight: 600; }
   letter-spacing: 0.22em; text-transform: uppercase;
   color: rgba(235, 227, 212, 0.62);
 }
+.hero-meta {
+  font-family: var(--label); font-size: 13px; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 28px;
+  display: flex; flex-wrap: wrap; gap: 8px 14px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+.hero-meta .sep { color: rgba(216, 184, 122, 0.4); }
+.hero-meta .price { color: var(--bone); font-weight: 700; }
 
 /* ============ FROSTED HALO BUTTON ============ */
 .btn-halo {
@@ -506,6 +515,13 @@ p:last-child { margin-bottom: 0; }
   font-family: var(--body); font-size: 16px;
   line-height: 1.65; color: var(--ink-soft);
 }
+.leave-outcome {
+  margin-top: 18px; padding-top: 14px;
+  border-top: 1px solid rgba(168, 80, 46, 0.22);
+  font-family: var(--display); font-style: italic;
+  font-size: 15px; line-height: 1.4;
+  color: var(--ember);
+}
 .foundation-note {
   font-family: var(--display); font-style: italic;
   font-size: 20px; color: var(--umber);
@@ -653,6 +669,17 @@ p:last-child { margin-bottom: 0; }
   font-family: var(--label); font-size: 10px; font-weight: 600;
   letter-spacing: 0.22em; text-transform: uppercase;
   color: var(--gold);
+}
+.social-cta {
+  text-align: center; margin-top: 48px;
+  padding-top: 36px;
+  border-top: 1px solid rgba(216, 184, 122, 0.20);
+}
+.social-cta-meta {
+  margin-top: 14px;
+  font-family: var(--label); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(216, 184, 122, 0.75);
 }
 @media (max-width: 880px) {
   .stat-band { grid-template-columns: repeat(2, 1fr); }
@@ -1120,6 +1147,22 @@ p:last-child { margin-bottom: 0; }
   margin-bottom: 56px;
 }
 .pricing-deadline strong { color: var(--ink); font-weight: 600; }
+.pricing-scarcity {
+  display: flex; align-items: center; justify-content: center;
+  gap: 14px; margin-bottom: 40px;
+  font-family: var(--label); font-size: 12px; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ember);
+}
+.pricing-scarcity .dot {
+  display: inline-block; width: 6px; height: 6px;
+  background: var(--ember); border-radius: 50%;
+  animation: scarcityPulse 2s ease-in-out infinite;
+}
+@keyframes scarcityPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
 .pricing-grid {
   display: grid; grid-template-columns: repeat(2, 1fr);
   gap: 28px; max-width: 1000px; margin: 0 auto;
@@ -1534,6 +1577,13 @@ p:last-child { margin-bottom: 0; }
     <div class="hero-eyebrow">Three days · One doorway · The rest of your life</div>
     <h1 class="hero-title">Breakthrough <em>in the desert.</em></h1>
     <p class="hero-question">For the adults 40+ who are quietly done coasting — and ready to step into the most inspired chapter of their life.</p>
+    <div class="hero-meta">
+      <span>Aug 7–9, 2026</span>
+      <span class="sep">·</span>
+      <span>Arizona Grand Resort, Phoenix</span>
+      <span class="sep">·</span>
+      <span>From <span class="price">$845</span></span>
+    </div>
     <div class="hero-ctas">
       <a href="#pricing" class="btn-halo">Reserve Your Spot <span class="arrow">→</span></a>
       <a href="#agenda" class="btn-ghost">See the Arc</a>
@@ -1572,7 +1622,7 @@ p:last-child { margin-bottom: 0; }
           <div class="num">03</div>
           <div>
             <div class="pn">IN YOUR RELATIONSHIPS</div>
-            <div class="text">The spark has dimmed. Good on paper, but real intimacy has been missing longer than you want to admit. And in unguarded moments, you catch yourself becoming your father.</div>
+            <div class="text">The spark has dimmed. Good on paper, but real intimacy has been missing longer than you want to admit. And in unguarded moments, you catch yourself becoming your parent.</div>
           </div>
         </div>
       </div>
@@ -1603,7 +1653,7 @@ p:last-child { margin-bottom: 0; }
     <div class="eyebrow">The Promise</div>
     <h2 class="promise-title">Breakthrough in the Desert is where you reconnect with your <em>most inspired</em> self and life.</h2>
     <div class="promise-image fade-in">
-      <img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/03-promise-hands-up.png" alt="An attendee at the 2025 event, arms raised, eyes closed, in a moment of release — surrounded by 150 others doing the same." loading="lazy" />
+      <img src="https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/08-final-cta-full-group.png" alt="The full 2025 community on the final day — 150 people, arms raised, on the stage at Arizona Grand Resort." loading="lazy" />
     </div>
     <p>Picture Sunday morning. The whole room sitting in a circle. A clay cup of ceremonial cacao warming your hands. The desert sun rising outside as 150 people, who arrived as strangers two days ago, fall silent at the same moment.</p>
     <p class="anchor">That's the kind of thing that happens here.</p>
@@ -1625,6 +1675,7 @@ p:last-child { margin-bottom: 0; }
         <div class="leave-num">01</div>
         <div class="leave-word">Clarity</div>
         <div class="leave-body">A clear picture of the next chapter of your life — your health, relationships, purpose, and next adventures. No more vague longing. A real plan.</div>
+        <div class="leave-outcome">A plan you're still following 90 days later.</div>
       </div>
       <div class="leave-card">
         <div class="leave-icon">
@@ -1633,6 +1684,7 @@ p:last-child { margin-bottom: 0; }
         <div class="leave-num">02</div>
         <div class="leave-word">Energy</div>
         <div class="leave-body">The health science, practices, and protocols to live with the peak vitality you were built for after 40 — taught by world-class doctors. Not theory. What works.</div>
+        <div class="leave-outcome">Practices that hold when you're back in real life.</div>
       </div>
       <div class="leave-card">
         <div class="leave-icon">
@@ -1641,6 +1693,7 @@ p:last-child { margin-bottom: 0; }
         <div class="leave-num">03</div>
         <div class="leave-word">A Circle of Aligned Friends</div>
         <div class="leave-body">A community walking the same path of inspired living. Friendships rooted in trust, respect, and real connection that last long after the event ends. You'll never have to do this alone again.</div>
+        <div class="leave-outcome">Group threads you check daily. Friends you fly to see.</div>
       </div>
     </div>
     <p class="foundation-note">Physical vitality and real connection are the foundation. Everything else is built on them.</p>
@@ -1668,20 +1721,20 @@ p:last-child { margin-bottom: 0; }
 
     <div class="glass-grid">
       <div class="glass-card">
-        <div class="avatar" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/attendees/Bruce_B.webp')"></div>
-        <div class="copy">"Donna and I got to do our first cold plunge together. What a chilling experience, pun intended."<span class="gn">Bruce Bowerman · 2025</span></div>
-      </div>
-      <div class="glass-card">
-        <div class="avatar" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/attendees/Mike_F.webp')"></div>
-        <div class="copy">"Tears were shed, hugs were given, minds and eyes were opened. If you can make it to a Live event, do it."<span class="gn">Mike Fairlie · 2025</span></div>
-      </div>
-      <div class="glass-card">
         <div class="avatar" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/attendees/Geoff_R.webp')"></div>
         <div class="copy">"I came home with 15 pages of handwritten notes to process and integrate into my life."<span class="gn">Geoff Rothman · 2025</span></div>
       </div>
       <div class="glass-card">
         <div class="avatar" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/attendees/Christopher_T.webp')"></div>
         <div class="copy">"In our weakest moments, the strongest version of ourselves is waiting to be born. This weekend confirmed it."<span class="gn">Christopher Thatcher · 2025</span></div>
+      </div>
+      <div class="glass-card">
+        <div class="avatar" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/attendees/Mike_F.webp')"></div>
+        <div class="copy">"Tears were shed, hugs were given, minds and eyes were opened. If you can make it to a Live event, do it."<span class="gn">Mike Fairlie · 2025</span></div>
+      </div>
+      <div class="glass-card">
+        <div class="avatar" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/attendees/Bruce_B.webp')"></div>
+        <div class="copy">"Donna and I got to do our first cold plunge together. What a chilling experience, pun intended."<span class="gn">Bruce Bowerman · 2025</span></div>
       </div>
     </div>
 
@@ -1702,6 +1755,11 @@ p:last-child { margin-bottom: 0; }
         </div>
       </div>
     </div>
+
+    <div class="social-cta">
+      <a href="#pricing" class="btn-halo">Hold a seat before Father's Day <span class="arrow">→</span></a>
+      <div class="social-cta-meta">Early-bird pricing ends Sunday, June 21</div>
+    </div>
   </div>
 </section>
 
@@ -1710,9 +1768,9 @@ p:last-child { margin-bottom: 0; }
   <div class="founder-inner">
     <div class="founder-content">
       <div class="founder-eyebrow">A Letter From the Founder</div>
-      <h2>I built this for the<br><em>man I want to be</em> at sixty.</h2>
+      <h2>I built this for the<br><em>version of me I want to be</em> at sixty.</h2>
       <p>I'm Dr. Anthony Balduzzi. Over the past decade our team has helped over 70,000 people across 100+ countries reclaim their health. I'm grateful every day for the work we do.</p>
-      <p>But I'm going to be honest with you. A few years ago, a question started rising in me that I couldn't shake: <em>Is this all I'm here to do?</em></p>
+      <p>But I'm going to be honest with you. A few years ago, a question started rising in me — and in my wife Brooke — that we couldn't shake: <em>Is this all we're here to do?</em></p>
       <p>I'd noticed that the people getting the deepest results in our programs weren't just losing weight. They were <em>waking up</em>. Repairing marriages. Reconnecting with their grown kids. Finding deep purpose. Coming alive in ways that had nothing to do with the scale.</p>
       <p>So I did my own work. I sat in ceremony. I learned to play the Native American flute. I studied with men's mentors. I spent time in the desert and in the darkness. I let myself be cracked open by the parts of life a medical degree never prepared me for.</p>
       <div class="anchor-quote">Health is the doorway. Aliveness is the room.</div>
@@ -1828,7 +1886,7 @@ p:last-child { margin-bottom: 0; }
       </div>
       <div>
         <div class="pname">Awareness</div>
-        <div class="pcap">Wake up to where you are. See the patterns. Name what's been holding you back.</div>
+        <div class="pcap">See the patterns. Name what's been quietly draining you.</div>
       </div>
     </div>
     <div class="poster p2">
@@ -1838,7 +1896,7 @@ p:last-child { margin-bottom: 0; }
       </div>
       <div>
         <div class="pname">Activation</div>
-        <div class="pcap">Wake up the body. Reconnect with what's alive in you. Step into vitality.</div>
+        <div class="pcap">The body comes back online. The room becomes family.</div>
       </div>
     </div>
     <div class="poster p3">
@@ -1848,7 +1906,7 @@ p:last-child { margin-bottom: 0; }
       </div>
       <div>
         <div class="pname">Integration</div>
-        <div class="pcap">Release what no longer serves you. Commit to your next chapter. Walk out changed.</div>
+        <div class="pcap">The reckoning. The doorway. The walk out the door.</div>
       </div>
     </div>
   </div>
@@ -1975,6 +2033,12 @@ p:last-child { margin-bottom: 0; }
     <h2 class="section-title">Two ways to step through <em>the doorway.</em></h2>
     <div class="pricing-deadline">Early-bird pricing ends <strong>Sunday, June 21, 2026</strong> (Father's Day). After that, prices return to full.</div>
 
+    <div class="pricing-scarcity">
+      <span class="dot"></span>
+      Only 150 seats · 2025 sold out by July
+      <span class="dot"></span>
+    </div>
+
     <div class="pricing-grid">
       <div class="tier-card">
         <div class="tier-label">GA+ Ticket</div>
@@ -1996,7 +2060,7 @@ p:last-child { margin-bottom: 0; }
           <strong>Add a partner ticket for +$595</strong>
           <small>Full GA+ access for your spouse, partner, children 15+, or close friend.</small>
         </div>
-        <a href="#" class="tier-cta">Reserve Your GA+ Spot →</a>
+        <a href="mailto:support@fitfatherproject.com?subject=Reserve%20My%20GA%2B%20Spot%20%E2%80%94%20Breakthrough%20in%20the%20Desert%202026&amp;body=Hi%20Breakthrough%20team%2C%0A%0AI%27d%20like%20to%20reserve%20a%20GA%2B%20spot%20for%20August%207%E2%80%939%2C%202026.%20Please%20send%20me%20the%20checkout%20link%20when%20it%27s%20live.%0A%0AThanks." class="tier-cta">Reserve Your GA+ Spot →</a>
         <div class="tier-pay">3-pay option available at checkout</div>
       </div>
 
@@ -2022,7 +2086,7 @@ p:last-child { margin-bottom: 0; }
           <strong>Add a partner ticket for +$895</strong>
           <small>Full VIP access for your spouse, partner, children 15+, or close friend, including VIP lunches.</small>
         </div>
-        <a href="#" class="tier-cta">Reserve Your VIP Spot →</a>
+        <a href="mailto:support@fitfatherproject.com?subject=Reserve%20My%20VIP%20Spot%20%E2%80%94%20Breakthrough%20in%20the%20Desert%202026&amp;body=Hi%20Breakthrough%20team%2C%0A%0AI%27d%20like%20to%20reserve%20a%20VIP%20spot%20for%20August%207%E2%80%939%2C%202026.%20Please%20send%20me%20the%20checkout%20link%20when%20it%27s%20live.%0A%0AThanks." class="tier-cta">Reserve Your VIP Spot →</a>
         <div class="tier-pay">3-pay option available at checkout</div>
       </div>
     </div>
@@ -2051,6 +2115,12 @@ p:last-child { margin-bottom: 0; }
       <div class="faq-item"><button class="faq-question">Who is this NOT for? <span class="toggle">+</span></button>
         <div class="faq-answer"><p>If you're looking for a tactical fitness bootcamp, a quick-fix weight-loss weekend, or another conference where you take notes and forget them by Tuesday — this isn't that. Breakthrough goes deeper. We touch on relationships, purpose, grief, intimacy, faith, and the soul-level patterns that have been quietly running your life.</p></div>
       </div>
+      <div class="faq-item"><button class="faq-question">Are payment plans available? <span class="toggle">+</span></button>
+        <div class="faq-answer"><p>Yes. We offer a <strong>3-pay installment option</strong> on both GA+ and VIP tickets at checkout.</p></div>
+      </div>
+      <div class="faq-item"><button class="faq-question">Are tickets refundable? <span class="toggle">+</span></button>
+        <div class="faq-answer"><p>Ticket purchases are <strong>non-refundable</strong> — but <strong>fully transferable</strong> up until July 1, 2026. If your plans change, you can transfer your ticket to a spouse, friend, or anyone else at no additional cost. Just email our team to update the name on file.</p></div>
+      </div>
       <div class="faq-item"><button class="faq-question">Do I need to be a member of Fit Father or Fit Mother? <span class="toggle">+</span></button>
         <div class="faq-answer"><p>Not at all. Breakthrough is open to everyone. Many attendees are FFP/FMP members, but you'll also meet people coming from outside our community.</p></div>
       </div>
@@ -2074,12 +2144,6 @@ p:last-child { margin-bottom: 0; }
       </div>
       <div class="faq-item"><button class="faq-question">Will there be sessions specific to women? <span class="toggle">+</span></button>
         <div class="faq-answer"><p>Yes. Our 2026 lineup includes Dr. Amie Hornaman on thyroid and hormone optimization, and Maraya Brown on women's vibrancy and intimacy — both of which directly serve women 40+ navigating perimenopause, menopause, and midlife.</p></div>
-      </div>
-      <div class="faq-item"><button class="faq-question">Are payment plans available? <span class="toggle">+</span></button>
-        <div class="faq-answer"><p>Yes. We offer a <strong>3-pay installment option</strong> on both GA+ and VIP tickets at checkout.</p></div>
-      </div>
-      <div class="faq-item"><button class="faq-question">Are tickets refundable? <span class="toggle">+</span></button>
-        <div class="faq-answer"><p>Ticket purchases are <strong>non-refundable</strong> — but <strong>fully transferable</strong> up until July 1, 2026. Just email our team to update the name on file.</p></div>
       </div>
       <div class="faq-item"><button class="faq-question">How do I know if this is the right time for me? <span class="toggle">+</span></button>
         <div class="faq-answer"><p>Most people who've come to Breakthrough say two things on Sunday afternoon: <em>"I almost didn't come"</em> — and <em>"This is exactly what I needed."</em> If you've read this far, something inside you is already pointing toward yes. Trust it.</p></div>
@@ -2108,8 +2172,8 @@ p:last-child { margin-bottom: 0; }
     <div class="tagline-deadline">Early-bird pricing ends Sunday, June 21 (Father's Day).</div>
 
     <div class="final-cta-buttons">
-      <a href="#pricing" class="btn-halo">Reserve GA+ — $845 <span class="arrow">→</span></a>
-      <a href="#pricing" class="btn-halo solid">Reserve VIP — $1,295 <span class="arrow">→</span></a>
+      <a href="mailto:support@fitfatherproject.com?subject=Reserve%20My%20GA%2B%20Spot%20%E2%80%94%20Breakthrough%20in%20the%20Desert%202026&amp;body=Hi%20Breakthrough%20team%2C%0A%0AI%27d%20like%20to%20reserve%20a%20GA%2B%20spot%20for%20August%207%E2%80%939%2C%202026.%20Please%20send%20me%20the%20checkout%20link%20when%20it%27s%20live.%0A%0AThanks." class="btn-halo">Reserve GA+ — $845 <span class="arrow">→</span></a>
+      <a href="mailto:support@fitfatherproject.com?subject=Reserve%20My%20VIP%20Spot%20%E2%80%94%20Breakthrough%20in%20the%20Desert%202026&amp;body=Hi%20Breakthrough%20team%2C%0A%0AI%27d%20like%20to%20reserve%20a%20VIP%20spot%20for%20August%207%E2%80%939%2C%202026.%20Please%20send%20me%20the%20checkout%20link%20when%20it%27s%20live.%0A%0AThanks." class="btn-halo solid">Reserve VIP — $1,295 <span class="arrow">→</span></a>
     </div>
     <div class="final-fine">3-pay option available at checkout. Tickets transferable through July 1.</div>
 

@@ -174,11 +174,19 @@ strong { font-weight: 600; }
   font-family: var(--label); font-size: 13px; font-weight: 500;
   letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--gold); margin-bottom: 28px;
-  display: flex; flex-wrap: wrap; gap: 8px 14px;
+  display: flex; flex-wrap: wrap; gap: 6px 14px;
   text-shadow: 0 1px 4px rgba(0,0,0,0.5);
 }
 .hero-meta .sep { color: rgba(216, 184, 122, 0.4); }
 .hero-meta .price { color: var(--bone); font-weight: 700; }
+@media (max-width: 600px) {
+  .hero-meta {
+    flex-direction: column; gap: 6px 0;
+    align-items: flex-start;
+    font-size: 12px;
+  }
+  .hero-meta .sep { display: none; }
+}
 
 /* ============ FROSTED HALO BUTTON ============ */
 .btn-halo {
@@ -753,8 +761,9 @@ p:last-child { margin-bottom: 0; }
 }
 @media (max-width: 880px) {
   .founder-inner { grid-template-columns: 1fr; padding: 70px 24px; }
-  .founder-sec::before { background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.88) 65%); }
-  .founder-sec { background-position: center top; }
+  .founder-sec::before { background: linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.65) 35%, rgba(0,0,0,0.88) 80%); }
+  .founder-sec { background-position: 65% center; min-height: 720px; }
+  .founder-sec h2 { padding-top: 180px; }
 }
 
 /* ============ 7. SPEAKERS ============ */
@@ -1048,13 +1057,42 @@ p:last-child { margin-bottom: 0; }
 .venue-sec { padding: 0; }
 .venue-plate {
   position: relative;
-  min-height: 480px;
+  min-height: 540px;
   background:
-    linear-gradient(180deg, rgba(27,25,22,0.5) 0%, rgba(27,25,22,0.85) 100%),
-    url('https://guldanjamax.github.io/anthonybalduzzi/generated/venue-desert-dawn.jpg');
+    linear-gradient(180deg, rgba(27,25,22,0.35) 0%, rgba(27,25,22,0.85) 100%),
+    image-set(
+      url('https://guldanjamax.github.io/anthonybalduzzi/optimized/venue-agr.avif') type('image/avif'),
+      url('https://guldanjamax.github.io/anthonybalduzzi/optimized/venue-agr.webp') type('image/webp'),
+      url('https://guldanjamax.github.io/anthonybalduzzi/optimized/venue-agr.jpg') type('image/jpeg')
+    );
   background-size: cover; background-position: center;
   display: flex; align-items: flex-end;
   padding: 0 40px 60px;
+}
+@media (max-width: 1100px) {
+  .venue-plate {
+    background:
+      linear-gradient(180deg, rgba(27,25,22,0.35) 0%, rgba(27,25,22,0.85) 100%),
+      image-set(
+        url('https://guldanjamax.github.io/anthonybalduzzi/optimized/venue-agr-1920.avif') type('image/avif'),
+        url('https://guldanjamax.github.io/anthonybalduzzi/optimized/venue-agr-1920.webp') type('image/webp'),
+        url('https://guldanjamax.github.io/anthonybalduzzi/optimized/venue-agr-1920.jpg') type('image/jpeg')
+      );
+    background-size: cover; background-position: center;
+  }
+}
+@media (max-width: 720px) {
+  .venue-plate {
+    min-height: 420px;
+    background:
+      linear-gradient(180deg, rgba(27,25,22,0.4) 0%, rgba(27,25,22,0.9) 100%),
+      image-set(
+        url('https://guldanjamax.github.io/anthonybalduzzi/optimized/venue-agr-mobile.avif') type('image/avif'),
+        url('https://guldanjamax.github.io/anthonybalduzzi/optimized/venue-agr-mobile.webp') type('image/webp'),
+        url('https://guldanjamax.github.io/anthonybalduzzi/optimized/venue-agr-mobile.jpg') type('image/jpeg')
+      );
+    background-size: cover; background-position: center;
+  }
 }
 .vp-cap {
   position: relative; z-index: 2; max-width: 1080px; margin: 0 auto; width: 100%;
@@ -1153,11 +1191,16 @@ p:last-child { margin-bottom: 0; }
   font-family: var(--label); font-size: 12px; font-weight: 600;
   letter-spacing: 0.22em; text-transform: uppercase;
   color: var(--ember);
+  text-align: center;
 }
 .pricing-scarcity .dot {
   display: inline-block; width: 6px; height: 6px;
   background: var(--ember); border-radius: 50%;
   animation: scarcityPulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@media (max-width: 540px) {
+  .pricing-scarcity { font-size: 11px; letter-spacing: 0.18em; gap: 10px; }
 }
 @keyframes scarcityPulse {
   0%, 100% { opacity: 1; }

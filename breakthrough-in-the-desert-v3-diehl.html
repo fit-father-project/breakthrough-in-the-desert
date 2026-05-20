@@ -1831,6 +1831,224 @@ p:last-child { margin-bottom: 0; }
 }
 .darken-bg .promise-content p.anchor { color: var(--gold); }
 
+/* =================================================================
+   MOBILE-SPECIFIC DESIGN PASS (≤640px)
+   Designed FOR mobile, not just adapted to it.
+   ================================================================= */
+@media (max-width: 640px) {
+  /* Tighter universal section padding */
+  section { padding: 64px 18px; }
+
+  /* Hero: tighter, more punch */
+  .hero { min-height: calc(100vh - 50px); }
+  .hero-util { padding: 14px 18px; font-size: 9.5px; letter-spacing: 0.14em; gap: 8px; }
+  .hero-util .threshold-mark svg { width: 14px; height: 14px; }
+  .hero-content { padding: 18px 22px 40px; max-width: 100%; }
+  .hero-eyebrow { font-size: 10px; letter-spacing: 0.22em; margin-bottom: 12px; }
+  .hero-title { font-size: 52px; line-height: 0.94; margin-bottom: 14px; }
+  .hero-question { font-size: 17px; line-height: 1.4; margin-bottom: 14px; }
+  .hero-meta { font-size: 11px; gap: 5px 0; margin-bottom: 18px; }
+  .hero-ctas { gap: 12px; margin-bottom: 10px; }
+  .hero-tagline { font-size: 10px; letter-spacing: 0.18em; }
+
+  /* Buttons: bigger touch targets, full-width-ish on mobile */
+  .btn-halo, .btn-ember {
+    padding: 18px 28px; font-size: 13px;
+    min-height: 56px; display: inline-flex; align-items: center; justify-content: center;
+  }
+  .btn-ghost { padding: 16px 4px; font-size: 12px; min-height: 48px; display: inline-flex; align-items: center; }
+  .tier-cta { padding: 20px 24px; min-height: 60px; }
+
+  /* Sticky CTA mobile: bigger, full-width centered */
+  .sticky-cta { padding: 12px 16px; gap: 12px; }
+  .sticky-cta .sc-text { display: none; }
+  .sticky-cta a { padding: 16px 24px; font-size: 13px; flex: 1; text-align: center; min-height: 52px; display: inline-flex; align-items: center; justify-content: center; }
+
+  /* Section titles smaller */
+  .section-title { font-size: 30px; margin-bottom: 28px; }
+  .pivot-sec h2, .mirror-panel h2, .social-sec h2, .founder-sec h2, .faq-sec h2, .final-cta-sec h2, .arc-sec h2, .venue-plate h2, .promise-title {
+    font-size: 30px;
+  }
+
+  /* Body text */
+  p { font-size: 16px; line-height: 1.65; }
+
+  /* Mirror: panel takes whole width */
+  .mirror-inner { padding: 48px 18px; gap: 28px; }
+  .mirror-quote-bar .pull { font-size: 16px; }
+  .mirror-panel { padding: 28px 22px; }
+  .mirror-panel h2 { font-size: 24px; margin-bottom: 22px; }
+  .mirror-panel .intro { font-size: 15px; margin-bottom: 22px; }
+  .mirror-story { grid-template-columns: 36px 1fr; gap: 12px; }
+  .mirror-story .num { font-size: 26px; }
+  .mirror-story .text { font-size: 15px; }
+  .mirror-q-block { margin-top: 24px; padding-top: 20px; }
+  .mirror-q-block .q { font-size: 22px; }
+
+  /* Pivot */
+  .pivot-inner { padding: 70px 18px; }
+  .pivot-sec p { font-size: 16px; }
+  .pivot-sec .doorway-line { font-size: 22px; margin-top: 28px; }
+
+  /* Promise */
+  .promise-content { text-align: left; }
+  .promise-content p { font-size: 16px; }
+  .promise-content p.anchor { font-size: 22px; text-align: left; margin: 24px 0; }
+  .promise-image { margin: 32px 0; }
+
+  /* Leave With cards */
+  .leave-grid { gap: 16px; margin: 36px 0 32px; }
+  .leave-card { padding: 28px 22px; }
+  .leave-word { font-size: 24px; }
+  .leave-body { font-size: 15px; }
+  .leave-outcome { font-size: 14px; }
+
+  /* Social Proof glass cards */
+  .social-inner { padding: 60px 18px; }
+  .social-head { margin-bottom: 36px; }
+  .stat-band { grid-template-columns: repeat(2, 1fr); gap: 20px 12px; padding: 24px 0; margin-bottom: 36px; }
+  .stat-band .sn { font-size: 26px; }
+  .stat-band .sl { font-size: 9px; letter-spacing: 0.18em; }
+  .glass-grid, .glass-grid-6 { gap: 14px; margin-bottom: 36px; }
+  .glass-card { grid-template-columns: 56px 1fr; gap: 14px; padding: 16px 18px; }
+  .glass-card .avatar { width: 56px; height: 56px; }
+  .glass-card .copy { font-size: 14px; line-height: 1.5; }
+  .glass-card .copy .gn { font-size: 9.5px; letter-spacing: 0.18em; margin-top: 6px; }
+  .testimonials-wall-title { margin-bottom: 22px; font-size: 10px; }
+  .tw-grid { gap: 12px; }
+  .tw-card { padding: 18px 18px; }
+  .tw-card .tq { font-size: 13.5px; line-height: 1.55; }
+  .tw-card .ta { font-size: 9.5px; margin-top: 12px; }
+  .social-cta { margin-top: 32px; padding-top: 28px; }
+  .social-cta-meta { font-size: 10px; margin-top: 12px; }
+
+  /* Founder */
+  .founder-inner { padding: 60px 18px; }
+  .founder-sec h2 { font-size: 30px; margin-bottom: 24px; }
+  .founder-sec p { font-size: 15.5px; }
+  .founder-sec .anchor-quote { font-size: 21px; margin: 24px 0; padding: 18px 0; }
+  .founder-sec .signature { font-size: 20px; }
+
+  /* Speakers */
+  .speakers-intro { font-size: 16px; margin-bottom: 36px; }
+  .lead-speaker { padding: 24px 20px; gap: 20px; margin-bottom: 36px; }
+  .lead-speaker img { width: 180px; height: 180px; }
+  .lead-speaker .ls-name { font-size: 28px; }
+  .lead-speaker .ls-title { font-size: 14px; margin-bottom: 14px; }
+  .lead-speaker .ls-bio { font-size: 15px; }
+  .circle-grid { grid-template-columns: 1fr; gap: 16px; }
+  .spk-card { padding: 22px 20px; }
+  .spk-card img { max-width: 180px; margin-left: auto; margin-right: auto; }
+  .spk-card .spk-name { font-size: 19px; }
+  .spk-card .spk-hook { font-size: 14px; }
+
+  /* 3-Day Arc posters */
+  .arc-sec { padding: 64px 18px 76px; }
+  .arc-head { margin-bottom: 36px; }
+  .arc-sec h2 { font-size: 30px; }
+  .arc-deck { font-size: 15px; }
+  .poster-row { gap: 14px; }
+  .poster { padding: 22px 20px; }
+  .poster .pnum { font-size: 48px; }
+  .poster .pname { font-size: 22px; }
+  .poster .pcap { font-size: 13.5px; }
+
+  /* Agenda */
+  .agenda-sec { padding: 64px 18px; background-attachment: scroll; }
+  .agenda-intro { font-size: 15px; }
+  .agenda-intro-end { font-size: 18px; margin-bottom: 36px; }
+  .day-card { padding: 28px 22px; margin-bottom: 22px; }
+  .day-label { font-size: 10px; }
+  .day-tagline { font-size: 19px; margin-bottom: 20px; }
+  .day-opener { font-size: 17px; margin: 18px 0 16px; }
+  .day-body p { font-size: 15px; }
+  .day-highlights { padding: 18px 20px; margin-top: 22px; }
+  .day-highlights li { font-size: 14px; }
+
+  /* Venue */
+  .venue-plate { min-height: 360px; padding: 0 18px 40px; }
+  .venue-plate h2 { font-size: 38px; }
+  .venue-body { padding: 56px 18px 70px; }
+  .venue-location { font-size: 19px; margin-bottom: 28px; }
+  .venue-features-title { font-size: 24px; margin: 44px 0 24px; }
+  .venue-features { gap: 22px; }
+  .venue-feature { gap: 14px; }
+  .venue-feature strong { font-size: 16px; }
+  .venue-feature span { font-size: 14px; }
+  .venue-august { padding: 24px 22px; margin-top: 40px; }
+  .venue-august h3 { font-size: 19px; }
+  .venue-august p { font-size: 14.5px; }
+
+  /* Pricing */
+  .pricing-sec { padding: 64px 18px; }
+  .pricing-deadline { font-size: 15px; margin-bottom: 36px; }
+  .pricing-scarcity { font-size: 10px; letter-spacing: 0.16em; gap: 10px; margin-bottom: 32px; }
+  .pricing-grid { gap: 22px; }
+  .tier-card { padding: 32px 24px; }
+  .tier-card.vip { margin-top: 12px; }
+  .tier-ribbon { font-size: 9.5px; padding: 5px 14px; }
+  .price-current { font-size: 48px; }
+  .price-strike { font-size: 19px; }
+  .tier-summary { font-size: 15px; }
+  .tier-features li { font-size: 14px; padding: 7px 0 7px 22px; }
+  .tier-partner { padding: 14px 16px; }
+  .tier-partner strong { font-size: 11px; }
+  .tier-partner small { font-size: 13px; }
+  .pricing-worth { margin-top: 44px; }
+  .pricing-worth h3 { font-size: 22px; }
+  .pricing-worth p { font-size: 15px; }
+  .pricing-worth .gift-line { font-size: 19px; margin: 20px 0; }
+
+  /* FAQ */
+  .faq-sec { padding: 70px 0; }
+  .faq-inner { padding: 0 18px; }
+  .faq-head { margin-bottom: 36px; }
+  .faq-intro { font-size: 15px; }
+  .faq-item { margin-bottom: 12px; }
+  .faq-question { padding: 18px 20px; font-size: 16px; min-height: 56px; gap: 12px; }
+  .faq-question .toggle { font-size: 22px; }
+  .faq-answer { padding: 0 20px 20px; }
+  .faq-answer p { font-size: 14.5px; }
+  .faq-contact { margin: 40px auto 0; padding: 24px 22px; }
+  .faq-contact h3 { font-size: 20px; }
+  .faq-contact p { font-size: 14.5px; }
+
+  /* Final CTA */
+  .final-cta-sec { min-height: auto; }
+  .final-cta-inner { padding: 70px 18px; }
+  .final-cta-sec h2 { font-size: 34px; margin-bottom: 26px; }
+  .final-cta-sec p { font-size: 16px; }
+  .final-cta-sec .voice-emphasis { font-size: 21px; }
+  .final-cta-sec .dont-let { font-size: 22px; }
+  .final-cta-sec .tagline { font-size: 22px; }
+  .final-cta-sec .tagline-meta { font-size: 11px; }
+  .final-cta-sec .tagline-deadline { font-size: 14px; margin-bottom: 28px; }
+  .final-cta-buttons { gap: 12px; flex-direction: column; align-items: stretch; }
+  .final-cta-buttons .btn-halo { width: 100%; }
+  .final-fine { font-size: 10px; }
+  .fence { margin-top: 44px; padding: 22px 22px; max-width: 100%; display: block; }
+  .fence h3 { font-size: 19px; }
+  .fence p { font-size: 14px; }
+  .see-you { margin-top: 44px; padding-top: 28px; }
+  .see-you-line { font-size: 22px; }
+  .see-you-sig { font-size: 11px; }
+
+  /* Footer */
+  .footer { padding: 40px 22px 70px; }
+  .footer-brands { font-size: 19px; }
+  .footer-sub { font-size: 13px; }
+
+  /* Countdown bar */
+  .countdown-bar { font-size: 11.5px; padding: 10px 14px; line-height: 1.45; }
+}
+
+/* Very small phones (≤380px) — extra tightening */
+@media (max-width: 380px) {
+  .hero-title { font-size: 46px; }
+  .section-title { font-size: 26px; }
+  .price-current { font-size: 42px; }
+}
+
 /* ============ ANIMATION ============ */
 .fade-in {
   opacity: 0;

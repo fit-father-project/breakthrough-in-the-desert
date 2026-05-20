@@ -2055,6 +2055,148 @@ p:last-child { margin-bottom: 0; }
   .price-current { font-size: 42px; }
 }
 
+/* =================================================================
+   MOTION SYSTEM — subtle, premium, respects prefers-reduced-motion
+   ================================================================= */
+
+/* ----- Background drift (slow ken-burns pan) ----- */
+@keyframes section-drift-1 {
+  0%, 100% { background-position: 48% 50%; }
+  50%      { background-position: 52% 50%; }
+}
+@keyframes section-drift-2 {
+  0%, 100% { background-position: 50% 48%; }
+  50%      { background-position: 50% 52%; }
+}
+@keyframes section-drift-3 {
+  0%, 100% { background-position: 47% 49%; }
+  50%      { background-position: 53% 51%; }
+}
+@keyframes section-drift-founder {
+  0%, 100% { background-position: 48% 22%; }
+  50%      { background-position: 52% 22%; }
+}
+@keyframes section-drift-faq {
+  0%, 100% { background-position: 48% 30%; }
+  50%      { background-position: 52% 30%; }
+}
+
+.mirror-sec    { animation: section-drift-1 38s ease-in-out infinite; }
+.pivot-sec     { animation: section-drift-2 44s ease-in-out infinite; }
+.promise-sec   { animation: section-drift-3 42s ease-in-out infinite; }
+.leave-sec     { animation: section-drift-1 40s ease-in-out infinite reverse; }
+.social-sec    { animation: section-drift-2 50s ease-in-out infinite; }
+.founder-sec   { animation: section-drift-founder 46s ease-in-out infinite; }
+.speakers-sec  { animation: section-drift-3 52s ease-in-out infinite; }
+.agenda-sec    { animation: section-drift-1 48s ease-in-out infinite reverse; }
+.venue-body    { animation: section-drift-2 46s ease-in-out infinite; }
+.pricing-sec   { animation: section-drift-3 50s ease-in-out infinite; }
+.faq-sec       { animation: section-drift-faq 48s ease-in-out infinite; }
+.final-cta-sec { animation: section-drift-1 56s ease-in-out infinite reverse; }
+
+/* venue plate uses image-set so animate separately */
+.venue-plate { animation: section-drift-2 54s ease-in-out infinite; }
+
+/* ----- Subtle pulse on hero halo button to draw eye ----- */
+@keyframes halo-pulse {
+  0%, 100% { box-shadow: 0 4px 32px rgba(0,0,0,0.25), inset 0 1px 0 rgba(235,227,212,0.10), 0 0 0 0 rgba(216,184,122,0.0); }
+  60%      { box-shadow: 0 4px 32px rgba(0,0,0,0.25), inset 0 1px 0 rgba(235,227,212,0.10), 0 0 0 8px rgba(216,184,122,0.0); }
+  80%      { box-shadow: 0 4px 32px rgba(0,0,0,0.25), inset 0 1px 0 rgba(235,227,212,0.10), 0 0 0 14px rgba(216,184,122,0.0); }
+}
+.hero .btn-halo {
+  position: relative;
+}
+.hero .btn-halo::before {
+  content: ''; position: absolute; inset: 0;
+  border-radius: 2px; pointer-events: none;
+  box-shadow: 0 0 0 0 rgba(216, 184, 122, 0.35);
+  animation: cta-ring 3.6s ease-out infinite;
+}
+@keyframes cta-ring {
+  0%   { box-shadow: 0 0 0 0 rgba(216, 184, 122, 0.45); }
+  70%  { box-shadow: 0 0 0 14px rgba(216, 184, 122, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(216, 184, 122, 0); }
+}
+
+/* ----- Scroll progress bar ----- */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 2px; z-index: 101;
+  background: linear-gradient(90deg, var(--ember) 0%, var(--gold) 50%, var(--ember-warm) 100%);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.12s ease-out;
+  pointer-events: none;
+}
+
+/* ----- Fade-up reveal on scroll (more elements) ----- */
+.section-title,
+.promise-title,
+.mirror-panel h2,
+.pivot-sec h2,
+.social-sec h2,
+.founder-sec h2,
+.arc-sec h2,
+.venue-plate h2,
+.faq-sec h2,
+.final-cta-sec h2,
+.leave-card,
+.spk-card,
+.day-card,
+.poster,
+.tier-card,
+.glass-card,
+.tw-card,
+.venue-feature {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.section-title.visible,
+.promise-title.visible,
+.mirror-panel h2.visible,
+.pivot-sec h2.visible,
+.social-sec h2.visible,
+.founder-sec h2.visible,
+.arc-sec h2.visible,
+.venue-plate h2.visible,
+.faq-sec h2.visible,
+.final-cta-sec h2.visible,
+.leave-card.visible,
+.spk-card.visible,
+.day-card.visible,
+.poster.visible,
+.tier-card.visible,
+.glass-card.visible,
+.tw-card.visible,
+.venue-feature.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Stagger card reveals within a grid */
+.leave-card:nth-child(2), .glass-card:nth-child(2), .poster:nth-child(2),
+.spk-card:nth-child(2n), .venue-feature:nth-child(2n) { transition-delay: 0.10s; }
+.leave-card:nth-child(3), .glass-card:nth-child(3), .poster:nth-child(3) { transition-delay: 0.20s; }
+.glass-card:nth-child(4) { transition-delay: 0.30s; }
+.glass-card:nth-child(5) { transition-delay: 0.40s; }
+.glass-card:nth-child(6) { transition-delay: 0.50s; }
+.spk-card:nth-child(3n) { transition-delay: 0.15s; }
+
+/* ----- Respect prefers-reduced-motion ----- */
+@media (prefers-reduced-motion: reduce) {
+  .mirror-sec, .pivot-sec, .promise-sec, .leave-sec, .social-sec,
+  .founder-sec, .speakers-sec, .agenda-sec, .venue-body, .pricing-sec,
+  .faq-sec, .final-cta-sec, .venue-plate,
+  .hero-img, .scroll-progress {
+    animation: none !important;
+  }
+  .hero .btn-halo::before { animation: none; }
+  .section-title, .promise-title, .leave-card, .spk-card, .day-card,
+  .poster, .tier-card, .glass-card, .tw-card, .venue-feature {
+    opacity: 1; transform: none; transition: none;
+  }
+}
+
 /* ============ ANIMATION ============ */
 .fade-in {
   opacity: 0;
@@ -2068,6 +2210,9 @@ p:last-child { margin-bottom: 0; }
 </style>
 </head>
 <body>
+
+<!-- ===== SCROLL PROGRESS ===== -->
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- ===== COUNTDOWN BAR ===== -->
 <div class="countdown-bar">
@@ -2758,11 +2903,29 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 60000);
 
-// Reveal on scroll
+// Reveal on scroll — applies to .fade-in plus all the motion-decorated elements
+const revealSelectors = [
+  '.fade-in',
+  '.section-title', '.promise-title',
+  '.mirror-panel h2', '.pivot-sec h2', '.social-sec h2', '.founder-sec h2',
+  '.arc-sec h2', '.venue-plate h2', '.faq-sec h2', '.final-cta-sec h2',
+  '.leave-card', '.spk-card', '.day-card', '.poster',
+  '.tier-card', '.glass-card', '.tw-card', '.venue-feature'
+];
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-}, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
-document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+}, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll(revealSelectors.join(',')).forEach(el => io.observe(el));
+
+// Scroll progress bar
+const progressBar = document.getElementById('scrollProgress');
+function updateProgress() {
+  const h = document.documentElement;
+  const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight);
+  if (progressBar) progressBar.style.transform = 'scaleX(' + scrolled + ')';
+}
+window.addEventListener('scroll', updateProgress, { passive: true });
+updateProgress();
 
 // Sticky CTA after hero
 const sticky = document.getElementById('stickyCta');

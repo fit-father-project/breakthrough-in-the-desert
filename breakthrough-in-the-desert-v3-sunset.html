@@ -56,11 +56,14 @@ strong { font-weight: 600; }
 /* ============ COUNTDOWN BAR ============ */
 .countdown-bar {
   position: sticky; top: 0; z-index: 100;
-  background: var(--ink); color: var(--bone);
+  background: rgba(27, 25, 22, 0.72);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  color: var(--bone);
   padding: 12px 16px; text-align: center;
   font-family: var(--label); font-size: 13px;
   letter-spacing: 0.04em;
-  border-bottom: 1px solid rgba(216, 184, 122, 0.15);
+  border-bottom: 1px solid rgba(216, 184, 122, 0.20);
 }
 .countdown-bar strong {
   color: var(--gold);
@@ -73,10 +76,11 @@ strong { font-weight: 600; }
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 99;
   display: flex; justify-content: center; align-items: center;
   gap: 24px; flex-wrap: wrap;
-  background: rgba(27, 25, 22, 0.96);
-  backdrop-filter: blur(10px);
+  background: rgba(27, 25, 22, 0.62);
+  backdrop-filter: blur(18px) saturate(125%);
+  -webkit-backdrop-filter: blur(18px) saturate(125%);
   padding: 14px 24px;
-  border-top: 1px solid rgba(216, 184, 122, 0.18);
+  border-top: 1px solid rgba(216, 184, 122, 0.24);
   transform: translateY(110%); transition: transform 0.45s cubic-bezier(.4,0,.2,1);
 }
 .sticky-cta.show { transform: translateY(0); }

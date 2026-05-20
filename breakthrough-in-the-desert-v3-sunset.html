@@ -470,48 +470,74 @@ p:last-child { margin-bottom: 0; }
 
 /* ============ 3. PROMISE ============ */
 .promise-sec {
-  background-image: url('https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/08-final-cta-full-group.png');
+  background-image: image-set(
+    url('https://guldanjamax.github.io/anthonybalduzzi/optimized/promise-community.avif') type('image/avif'),
+    url('https://guldanjamax.github.io/anthonybalduzzi/optimized/promise-community.webp') type('image/webp'),
+    url('https://guldanjamax.github.io/anthonybalduzzi/optimized/promise-community.jpg') type('image/jpeg')
+  );
   background-size: cover;
   background-position: center;
-  padding: 120px 32px;
+  padding: 110px 32px;
   position: relative;
+  min-height: 720px;
 }
-.promise-sec::before {
-  content: '';
-  position: absolute; left: 50%; top: 0;
-  width: 1px; height: 64px;
-  background: linear-gradient(180deg, var(--ember) 0%, transparent 100%);
-  transform: translateX(-50%);
+@media (max-width: 1100px) {
+  .promise-sec {
+    background-image: image-set(
+      url('https://guldanjamax.github.io/anthonybalduzzi/optimized/promise-community-1920.avif') type('image/avif'),
+      url('https://guldanjamax.github.io/anthonybalduzzi/optimized/promise-community-1920.webp') type('image/webp'),
+      url('https://guldanjamax.github.io/anthonybalduzzi/optimized/promise-community-1920.jpg') type('image/jpeg')
+    );
+  }
 }
-.promise-content { max-width: 820px; margin: 0 auto; text-align: center; }
+@media (max-width: 720px) {
+  .promise-sec {
+    background-image: image-set(
+      url('https://guldanjamax.github.io/anthonybalduzzi/optimized/promise-community-mobile.avif') type('image/avif'),
+      url('https://guldanjamax.github.io/anthonybalduzzi/optimized/promise-community-mobile.webp') type('image/webp'),
+      url('https://guldanjamax.github.io/anthonybalduzzi/optimized/promise-community-mobile.jpg') type('image/jpeg')
+    );
+  }
+}
+.promise-content {
+  max-width: 760px; margin: 0 auto;
+  text-align: center;
+  background: rgba(27, 25, 22, 0.72);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  border: 1px solid rgba(216, 184, 122, 0.22);
+  border-radius: 6px;
+  padding: 56px 56px 52px;
+}
 .promise-title {
   font-family: var(--display); font-weight: 400;
-  font-size: clamp(32px, 4vw, 50px);
+  font-size: clamp(30px, 3.8vw, 46px);
   line-height: 1.08; letter-spacing: -0.015em;
-  color: var(--ink); margin-bottom: 44px;
+  color: var(--bone); margin-bottom: 28px;
+  text-shadow: 0 2px 14px rgba(0,0,0,0.5);
 }
-.promise-title em { font-style: italic; color: var(--ember); }
-.promise-image {
-  margin: 48px 0;
-  border-radius: 4px; overflow: hidden;
-  box-shadow: 0 12px 60px rgba(27, 25, 22, 0.18);
-}
-.promise-image img { width: 100%; height: auto; display: block; }
+.promise-title em { font-style: italic; color: var(--gold); }
 .promise-content p {
-  font-family: var(--body); font-size: 19px;
-  line-height: 1.75; color: var(--ink-soft);
+  font-family: var(--body); font-size: 17.5px;
+  line-height: 1.7; color: rgba(235, 227, 212, 0.92);
   text-align: left;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
 }
+.promise-content p em { color: var(--bone); }
+.promise-content p strong { color: var(--bone); }
 .promise-content p.anchor {
   font-family: var(--display); font-style: italic;
   font-size: clamp(22px, 2.6vw, 30px);
-  color: var(--ember); line-height: 1.3;
-  margin: 32px 0;
+  color: var(--gold); line-height: 1.3;
+  margin: 28px 0;
   text-align: center; font-weight: 400;
 }
 .promise-content p.closer {
-  border-top: 1px solid rgba(168, 80, 46, 0.22);
-  padding-top: 22px; margin-top: 28px;
+  border-top: 1px solid rgba(216, 184, 122, 0.25);
+  padding-top: 22px; margin-top: 26px;
+}
+@media (max-width: 640px) {
+  .promise-content { padding: 36px 28px 32px; max-width: 100%; }
 }
 
 /* ============ 4. LEAVE WITH (3 Cards) ============ */
@@ -2318,21 +2344,10 @@ p:last-child { margin-bottom: 0; }
 </section>
 
 <!-- ===== 3. PROMISE ===== -->
-<section class="promise-sec darken-bg">
+<section class="promise-sec">
   <div class="promise-content">
-    <div class="eyebrow">The Promise</div>
+    <div class="eyebrow" style="color: var(--ember-warm);">The Promise</div>
     <h2 class="promise-title">Breakthrough in the Desert is where you reconnect with your <em>most inspired</em> self and life.</h2>
-    <div class="promise-image fade-in">
-      <picture>
-        <source type="image/avif" media="(min-width: 1100px)" srcset="https://guldanjamax.github.io/anthonybalduzzi/optimized/promise-community.avif">
-        <source type="image/webp" media="(min-width: 1100px)" srcset="https://guldanjamax.github.io/anthonybalduzzi/optimized/promise-community.webp">
-        <source type="image/avif" media="(min-width: 720px)" srcset="https://guldanjamax.github.io/anthonybalduzzi/optimized/promise-community-1920.avif">
-        <source type="image/webp" media="(min-width: 720px)" srcset="https://guldanjamax.github.io/anthonybalduzzi/optimized/promise-community-1920.webp">
-        <source type="image/avif" srcset="https://guldanjamax.github.io/anthonybalduzzi/optimized/promise-community-mobile.avif">
-        <source type="image/webp" srcset="https://guldanjamax.github.io/anthonybalduzzi/optimized/promise-community-mobile.webp">
-        <img src="https://guldanjamax.github.io/anthonybalduzzi/optimized/promise-community-1920.jpg" alt="The full 2025 community on the final day — 150 people, arms raised together at the Arizona Grand Resort." loading="lazy" />
-      </picture>
-    </div>
     <p>Picture Sunday morning. The whole room sitting in a circle. A clay cup of ceremonial cacao warming your hands. The desert sun rising outside as 150 people, who arrived as strangers two days ago, fall silent at the same moment.</p>
     <p class="anchor">That's the kind of thing that happens here.</p>
     <p>Join us for <strong>three transformational days</strong> in Phoenix — a curated experience with aligned people, world-class doctors and teachers, movement, science, ceremony, and soul. Designed for one purpose: to break you out of default patterns and step you into the inspired life you're actually here to live.</p>

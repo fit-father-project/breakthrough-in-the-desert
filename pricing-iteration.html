@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pricing Iteration — Breakthrough in the Desert</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..700;1,6..72,200..600&family=Spectral:wght@300;400&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#1b1916;--bone:#ebe3d4;--plaster:#ded0b8;--sand:#c9b696;
+  --ember:#a8502e;--ember-deep:#7a3920;--gold:#d8b87a;--gold-deep:#9c7a3a;
+  --bronze:#9c8254;--sage:#878a76;
+  --on-ink:#e9e0cf;--on-ink-dim:#a39a88;--on-ink-faint:#6f6757;
+  --on-bone:#1b1916;--on-bone-dim:#6b6253;--on-bone-faint:#9a937f;
+  --line-d:rgba(235,227,212,0.16);
+  --line-l:rgba(27,25,22,0.14);
+}
+html,body{background:var(--ink);color:var(--on-ink);overflow-x:hidden;}
+body{font-family:'Spectral',serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:99;opacity:0.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+img{display:block;max-width:100%;}
+.wrap{max-width:1280px;margin:0 auto;padding:0 2rem;}
+@media(max-width:680px){.wrap{padding:0 1.2rem;}}
+.label{font-family:'Schibsted Grotesk',sans-serif;font-size:0.7rem;font-weight:600;
+  letter-spacing:0.26em;text-transform:uppercase;}
+
+/* MASTHEAD */
+.masthead{padding:5rem 0 3rem;border-bottom:1px solid var(--line-d);}
+.kicker{color:var(--ember);margin-bottom:1.4rem;}
+.masthead h1{font-family:'Newsreader',serif;font-weight:300;
+  font-size:clamp(2.4rem,5vw,4rem);line-height:1.04;letter-spacing:-0.025em;
+  color:var(--bone);margin-bottom:1.2rem;}
+.masthead h1 em{font-style:italic;color:var(--ember);}
+.masthead .lede{color:var(--on-ink-dim);max-width:46rem;font-size:1.1rem;}
+
+/* ============================================================ */
+/*  PRICING SECTION — the actual section                          */
+/* ============================================================ */
+.pricing{
+  background:var(--bone);color:var(--on-bone);
+  padding:7rem 2rem;position:relative;
+}
+.pricing-wrap{max-width:74rem;margin:0 auto;text-align:center;}
+
+.pricing-eyebrow{
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.74rem;font-weight:600;
+  letter-spacing:0.35em;text-transform:uppercase;color:var(--ember);
+  margin-bottom:1.6rem;
+}
+.pricing-title{
+  font-family:'Newsreader',serif;font-weight:300;
+  font-size:clamp(2rem,4.4vw,3.2rem);line-height:1.1;letter-spacing:-0.02em;
+  color:var(--ink);margin-bottom:2rem;
+}
+.pricing-title em{font-style:italic;color:var(--ember);}
+
+/* THE REFRAME ANCHOR — appears BEFORE the price */
+.reframe{
+  font-family:'Newsreader',serif;font-style:italic;font-weight:300;
+  font-size:clamp(1.4rem,2.6vw,1.95rem);line-height:1.35;
+  color:var(--ember);max-width:38rem;margin:0 auto 1rem;
+  letter-spacing:-0.01em;
+}
+.reframe-meta{
+  font-family:'Spectral',serif;font-style:italic;font-size:1.05rem;color:var(--on-bone-dim);
+  margin-bottom:3rem;
+}
+.reframe-meta strong{color:var(--ink);font-style:normal;font-weight:600;}
+
+/* PRICING GRID */
+.tiers{
+  display:grid;grid-template-columns:1fr 1.18fr;gap:1.6rem;
+  align-items:start;margin-bottom:2.4rem;text-align:left;
+}
+@media(max-width:760px){.tiers{grid-template-columns:1fr;}}
+
+.tier{
+  position:relative;background:#fff;
+  padding:2.4rem 2.2rem;border:1px solid var(--line-l);
+  display:flex;flex-direction:column;
+  transition:transform .35s ease;
+}
+.tier.vip{
+  background:var(--ink);color:var(--on-ink);border-color:var(--ink);
+  padding:3rem 2.4rem;
+  box-shadow:0 36px 72px rgba(20,15,10,0.32),0 0 100px rgba(216,184,122,0.18);
+}
+.ribbon{
+  position:absolute;top:-0.85rem;left:50%;transform:translateX(-50%);
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.62rem;font-weight:700;
+  letter-spacing:0.2em;text-transform:uppercase;color:var(--ink);
+  background:linear-gradient(90deg,#e6c890,#d8b87a 50%,#b89758);
+  padding:0.5rem 1.2rem;white-space:nowrap;
+  box-shadow:0 4px 14px rgba(156,122,58,0.4);
+}
+
+.tier .t-label{
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.7rem;font-weight:700;
+  letter-spacing:0.28em;text-transform:uppercase;color:var(--on-bone-faint);
+  margin-bottom:0.9rem;
+}
+.tier.vip .t-label{color:var(--gold);}
+
+.t-price-row{display:flex;align-items:baseline;gap:0.9rem;margin-bottom:0.4rem;}
+.t-price{font-family:'Newsreader',serif;font-weight:300;
+  font-size:3.4rem;line-height:1;color:var(--ember);letter-spacing:-0.02em;}
+.tier.vip .t-price{color:var(--gold);font-size:4rem;}
+.t-strike{font-family:'Newsreader',serif;font-size:1.4rem;color:var(--on-bone-faint);
+  text-decoration:line-through;}
+.tier.vip .t-strike{color:rgba(235,227,212,0.45);}
+
+.t-pay{
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.78rem;font-weight:500;
+  color:var(--on-bone-dim);margin-bottom:0.4rem;letter-spacing:0.04em;
+}
+.tier.vip .t-pay{color:var(--on-ink-dim);}
+.t-pay b{color:var(--ink);font-weight:600;}
+.tier.vip .t-pay b{color:var(--gold);}
+
+.t-window{
+  font-family:'Spectral',serif;font-style:italic;font-size:0.95rem;
+  color:var(--on-bone-faint);margin-bottom:1.8rem;
+}
+.tier.vip .t-window{color:rgba(235,227,212,0.5);}
+
+.t-divider{height:1px;background:var(--line-l);margin:0 0 1.6rem;}
+.tier.vip .t-divider{background:rgba(235,227,212,0.14);}
+
+.t-summary{font-size:1.02rem;color:var(--on-bone-dim);line-height:1.55;margin-bottom:1.4rem;font-style:italic;}
+.tier.vip .t-summary{color:rgba(235,227,212,0.78);}
+
+.t-feats{list-style:none;margin-bottom:1.8rem;flex-grow:1;}
+.t-feats li{
+  position:relative;padding:0.55rem 0 0.55rem 1.6rem;font-size:0.96rem;
+  color:var(--on-bone-dim);line-height:1.5;
+}
+.t-feats li::before{
+  content:"";position:absolute;left:0;top:1rem;width:8px;height:1px;background:var(--ember);
+}
+.tier.vip .t-feats li{color:rgba(235,227,212,0.85);}
+.tier.vip .t-feats li::before{background:var(--gold);}
+.t-feats b{color:var(--ink);font-weight:600;}
+.tier.vip .t-feats b{color:var(--gold);font-weight:600;}
+
+/* Partner add-on inline */
+.t-partner{
+  display:flex;align-items:flex-start;gap:0.8rem;
+  padding:0.95rem 1.1rem;background:rgba(168,80,46,0.06);border-left:2px solid var(--ember);
+  margin-bottom:1.6rem;
+}
+.tier.vip .t-partner{background:rgba(216,184,122,0.08);border-left-color:var(--gold);}
+.t-partner-mark{font-family:'Newsreader',serif;font-size:1.2rem;color:var(--ember);line-height:1;font-style:italic;}
+.tier.vip .t-partner-mark{color:var(--gold);}
+.t-partner-text{font-size:0.86rem;color:var(--on-bone-dim);line-height:1.5;}
+.tier.vip .t-partner-text{color:rgba(235,227,212,0.8);}
+.t-partner-text b{color:var(--ink);font-weight:600;}
+.tier.vip .t-partner-text b{color:var(--gold);font-weight:600;}
+
+/* The CTA — keeps the Frosted Halo language but solid for clarity on cards */
+.t-cta{
+  position:relative;display:inline-flex;align-items:center;justify-content:center;gap:1rem;width:100%;
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.82rem;font-weight:700;
+  letter-spacing:0.22em;text-transform:uppercase;text-decoration:none;
+  padding:1.25rem 1.6rem;cursor:pointer;border:none;min-height:58px;overflow:hidden;isolation:isolate;
+  transition:transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s ease;
+}
+.tier .t-cta{color:#fff;
+  background:linear-gradient(180deg,#b85c3a 0%,#a8502e 50%,#8b3f24 100%);
+  box-shadow:inset 0 1px 0 rgba(255,210,170,0.32),0 14px 32px rgba(168,80,46,0.34),0 0 0 1px rgba(0,0,0,0.1) inset;}
+.tier.vip .t-cta{color:var(--ink);
+  background:linear-gradient(180deg,#e6c890 0%,#d8b87a 50%,#b89758 100%);
+  box-shadow:inset 0 1px 0 rgba(255,240,200,0.5),0 14px 36px rgba(156,122,58,0.42),0 0 0 1px rgba(0,0,0,0.1) inset,0 0 60px rgba(216,184,122,0.2);}
+.t-cta .arrow{display:inline-flex;align-items:center;justify-content:center;
+  width:28px;height:28px;border-radius:50%;
+  border:1px solid rgba(255,255,255,0.42);transition:transform .35s ease;}
+.tier.vip .t-cta .arrow{border-color:rgba(27,25,22,0.4);}
+.t-cta .arrow svg{width:13px;height:13px;color:inherit;transition:transform .35s ease;}
+.t-cta:hover{transform:translateY(-2px);}
+.t-cta:hover .arrow svg{transform:translateX(2px);}
+.tier .t-cta:hover{box-shadow:inset 0 1px 0 rgba(255,210,170,0.4),0 22px 46px rgba(168,80,46,0.5),0 0 0 1px rgba(0,0,0,0.1) inset;}
+.tier.vip .t-cta:hover{box-shadow:inset 0 1px 0 rgba(255,240,200,0.6),0 22px 48px rgba(156,122,58,0.55),0 0 0 1px rgba(0,0,0,0.1) inset,0 0 80px rgba(216,184,122,0.35);}
+
+/* Below the cards */
+.trust-line{
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.72rem;font-weight:500;
+  letter-spacing:0.16em;text-transform:uppercase;color:var(--on-bone-faint);
+  display:flex;justify-content:center;gap:1.8rem;flex-wrap:wrap;margin-bottom:3rem;
+}
+.trust-line span{display:inline-flex;align-items:center;gap:0.4rem;}
+.trust-line span::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;
+  background:var(--bronze);margin-right:0.4rem;}
+
+.closing-line{
+  font-family:'Newsreader',serif;font-style:italic;font-weight:400;
+  font-size:clamp(1.2rem,2.2vw,1.6rem);color:var(--ink);max-width:34rem;margin:0 auto;line-height:1.4;
+}
+.closing-line em{color:var(--ember);}
+
+/* MOBILE adjustments for pricing section */
+@media(max-width:640px){
+  .pricing{padding:4rem 1.4rem;}
+  .pricing-title{font-size:1.9rem;}
+  .reframe{font-size:1.25rem;line-height:1.35;}
+  .reframe-meta{font-size:0.95rem;margin-bottom:2.4rem;}
+  .tiers{gap:1.2rem;}
+  .tier{padding:1.8rem 1.5rem;}
+  .tier.vip{padding:2.4rem 1.5rem;}
+  .ribbon{font-size:0.56rem;letter-spacing:0.16em;padding:0.4rem 0.9rem;top:-0.7rem;}
+  .t-label{font-size:0.66rem;letter-spacing:0.22em;}
+  .t-price{font-size:2.8rem;}
+  .tier.vip .t-price{font-size:3.2rem;}
+  .t-strike{font-size:1.15rem;}
+  .t-pay{font-size:0.76rem;}
+  .t-window{font-size:0.9rem;margin-bottom:1.4rem;}
+  .t-summary{font-size:0.96rem;margin-bottom:1.2rem;}
+  .t-feats li{font-size:0.92rem;padding:0.5rem 0 0.5rem 1.4rem;}
+  .t-partner{padding:0.8rem 0.9rem;margin-bottom:1.3rem;}
+  .t-partner-text{font-size:0.82rem;}
+  .t-cta{font-size:0.78rem;padding:1.1rem 1.2rem;min-height:56px;}
+  .trust-line{font-size:0.68rem;gap:1rem;flex-direction:column;align-items:center;}
+  .closing-line{font-size:1.1rem;}
+  /* VIP card first on mobile */
+  .tier.vip{order:-1;}
+}
+
+/* ============================================================ */
+/*  PRESENTATION CHROME                                            */
+/* ============================================================ */
+.preview-frame{
+  border:1px solid var(--line-d);overflow:hidden;
+  box-shadow:0 40px 80px rgba(0,0,0,0.5);margin:2rem 0 3rem;
+}
+.preview-bar{
+  display:flex;align-items:center;gap:0.45rem;padding:0.7rem 1rem;
+  background:#1d1d25;border-bottom:1px solid var(--line-d);
+}
+.preview-bar i{width:10px;height:10px;border-radius:50%;display:block;}
+.preview-bar i:nth-child(1){background:#e0604f;}
+.preview-bar i:nth-child(2){background:#e3b34d;}
+.preview-bar i:nth-child(3){background:#5fb35f;}
+.preview-bar span{margin-left:0.6rem;font-family:'Schibsted Grotesk',sans-serif;
+  font-size:0.66rem;letter-spacing:0.06em;color:var(--on-ink-faint);}
+
+/* Mobile mockup */
+.mobile-grid{display:grid;grid-template-columns:auto 1fr;gap:2.4rem;align-items:start;margin-top:1rem;}
+@media(max-width:760px){.mobile-grid{grid-template-columns:1fr;}}
+.phone-frame{
+  position:relative;width:340px;height:720px;
+  background:#000;border-radius:36px;padding:10px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.5),inset 0 0 0 1px rgba(255,255,255,0.08);
+}
+.phone-frame .notch{position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:110px;height:24px;background:#000;border-radius:0 0 16px 16px;z-index:3;}
+.phone-frame .screen{
+  position:relative;width:100%;height:100%;border-radius:28px;overflow:hidden;
+  overflow-y:auto;background:var(--bone);
+}
+.phone-frame .screen .pricing{padding:3rem 1.4rem;}
+
+.notes{margin-top:1rem;}
+.notes h3{font-family:'Newsreader',serif;font-weight:400;font-size:1.5rem;color:var(--bone);margin-bottom:0.8rem;}
+.notes h3 em{font-style:italic;color:var(--gold);}
+.notes p{color:var(--on-ink-dim);font-size:0.96rem;line-height:1.65;margin-bottom:0.9rem;}
+.notes ul{list-style:none;}
+.notes li{padding:0.55rem 0 0.55rem 1.6rem;position:relative;color:var(--on-ink-dim);font-size:0.94rem;}
+.notes li::before{content:"";position:absolute;left:0;top:1rem;width:14px;height:1px;background:var(--ember);}
+.notes li b{color:var(--bone);font-weight:600;}
+
+/* Section pad */
+.sec{padding:5rem 0;border-top:1px solid var(--line-d);}
+.sec h2{font-family:'Newsreader',serif;font-weight:300;
+  font-size:clamp(1.9rem,3.5vw,2.7rem);line-height:1.08;color:var(--bone);margin-bottom:1rem;}
+.sec h2 em{font-style:italic;color:var(--ember);}
+.sec .label{color:var(--ember);margin-bottom:1rem;}
+.sec .lede{color:var(--on-ink-dim);max-width:46rem;font-size:1.05rem;}
+
+footer{padding:3rem 0;border-top:1px solid var(--line-d);text-align:center;}
+footer .label{color:var(--on-ink-faint);}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="label kicker">Pricing · Deep iteration</div>
+    <h1>The pricing section, <em>rebuilt.</em></h1>
+    <p class="lede">Six leverage points dialed in: a reframe anchor that primes the emotional state before the number lands, VIP visually elevated as the recommended choice, payment plan surfaced (not buried as fine print), inline partner add-on, a one-line trust band that kills three objections at once, and a closing emotional close. Plus a mobile flow built for the 40+ thumb.</p>
+  </div>
+</header>
+
+<!-- DESKTOP PREVIEW -->
+<section class="sec">
+  <div class="wrap">
+    <div class="label">01 · Desktop preview</div>
+    <h2>The section, <em>at desktop.</em></h2>
+
+    <div class="preview-frame">
+      <div class="preview-bar"><i></i><i></i><i></i><span>breakthroughinthedesert.com / pricing</span></div>
+      <div class="pricing">
+        <div class="pricing-wrap">
+          <div class="pricing-eyebrow">Reserve Your Spot</div>
+          <h2 class="pricing-title">Two ways to step through <em>the doorway.</em></h2>
+          <p class="reframe">"This isn't an expense. It's the gift you give your next chapter."</p>
+          <p class="reframe-meta">Early-bird pricing ends <strong>Sunday, June 21, 2026</strong> — Father's Day.</p>
+
+          <div class="tiers">
+
+            <!-- GA+ -->
+            <div class="tier">
+              <div class="t-label">GA+ Ticket</div>
+              <div class="t-price-row">
+                <span class="t-price">$845</span>
+                <span class="t-strike">$995</span>
+              </div>
+              <div class="t-pay">or <b>3 payments of $282</b></div>
+              <div class="t-window">Early-bird through Father's Day</div>
+              <div class="t-divider"></div>
+              <div class="t-summary">The full Breakthrough experience. Three days, all in.</div>
+              <ul class="t-feats">
+                <li>All three days of keynotes, workshops, and main-stage sessions</li>
+                <li>Every experiential breakout — workouts, breathwork, yoga, somatic</li>
+                <li>Curated vendor hall featuring leading-edge health brands</li>
+                <li>Three clean, high-quality connection lunches</li>
+                <li><b>2025 Live Event recordings</b> included</li>
+                <li>Sunrise hikes, cold plunge, and pool access</li>
+              </ul>
+              <div class="t-partner">
+                <span class="t-partner-mark">+</span>
+                <div class="t-partner-text"><b>Add a partner — $595</b><br>Full GA+ access for spouse, partner, kids 15+, or close friend.</div>
+              </div>
+              <a class="t-cta" href="#">Reserve GA+
+                <span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+              </a>
+            </div>
+
+            <!-- VIP -->
+            <div class="tier vip">
+              <div class="ribbon">Most attendees choose this</div>
+              <div class="t-label">VIP Ticket</div>
+              <div class="t-price-row">
+                <span class="t-price">$1,295</span>
+                <span class="t-strike">$1,495</span>
+              </div>
+              <div class="t-pay">or <b>3 payments of $432</b></div>
+              <div class="t-window">Early-bird through Father's Day</div>
+              <div class="t-divider"></div>
+              <div class="t-summary">Everything in GA+, plus front-row access to the speakers, the experience, and Dr. Anthony.</div>
+              <ul class="t-feats">
+                <li><b>Front-row priority seating</b> in all main stage sessions</li>
+                <li><b>VIP daily lunch</b> with Dr. Anthony, the speakers, and fellow VIPs</li>
+                <li><b>VIP-only Q&amp;A session</b> with Dr. Anthony</li>
+                <li><b>VIP lounge</b> with premium refreshments throughout</li>
+                <li><b>Priority access</b> to speakers between sessions</li>
+                <li><b>2025 AND 2026</b> Live Event recordings — yours to keep</li>
+                <li>All GA+ benefits included</li>
+              </ul>
+              <div class="t-partner">
+                <span class="t-partner-mark">+</span>
+                <div class="t-partner-text"><b>Add a VIP partner — $895</b><br>Full VIP access for spouse, partner, kids 15+, or close friend. VIP lunches included.</div>
+              </div>
+              <a class="t-cta" href="#">Reserve VIP
+                <span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+              </a>
+            </div>
+
+          </div>
+
+          <div class="trust-line">
+            <span>Tickets transferable through July 1</span>
+            <span>3-pay available at checkout</span>
+            <span>Non-refundable</span>
+          </div>
+
+          <p class="closing-line">Bring your partner. Breakthroughs are <em>deeper</em> when shared.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOBILE PREVIEW + NOTES -->
+<section class="sec">
+  <div class="wrap">
+    <div class="label">02 · Mobile preview (375px portrait)</div>
+    <h2>The section, <em>on a phone.</em></h2>
+
+    <div class="mobile-grid">
+      <!-- PHONE -->
+      <div class="phone-frame">
+        <div class="notch"></div>
+        <div class="screen">
+          <div class="pricing" style="text-align:center;padding:3rem 1.4rem;">
+            <div class="pricing-eyebrow">Reserve Your Spot</div>
+            <h2 class="pricing-title" style="font-size:1.8rem;">Two ways to step through <em>the doorway.</em></h2>
+            <p class="reframe" style="font-size:1.15rem;">"This isn't an expense. It's the gift you give your next chapter."</p>
+            <p class="reframe-meta" style="font-size:0.84rem;margin-bottom:2rem;">Early-bird ends <strong>Sun, June 21</strong></p>
+            <div class="tiers" style="grid-template-columns:1fr;gap:1.2rem;">
+              <div class="tier vip" style="order:-1;padding:2rem 1.4rem;">
+                <div class="ribbon" style="font-size:0.5rem;padding:0.35rem 0.8rem;top:-0.6rem;">Most chosen</div>
+                <div class="t-label" style="font-size:0.6rem;">VIP Ticket</div>
+                <div class="t-price-row"><span class="t-price" style="font-size:2.8rem;">$1,295</span><span class="t-strike" style="font-size:1rem;">$1,495</span></div>
+                <div class="t-pay" style="font-size:0.7rem;">or <b>3 × $432</b></div>
+                <div class="t-window" style="font-size:0.82rem;">Early-bird through Father's Day</div>
+                <div class="t-divider"></div>
+                <div class="t-summary" style="font-size:0.86rem;">Everything in GA+, plus front-row access to Dr. Anthony.</div>
+                <ul class="t-feats" style="margin-bottom:1.3rem;">
+                  <li style="font-size:0.82rem;"><b>Front-row priority seating</b></li>
+                  <li style="font-size:0.82rem;"><b>Daily VIP lunch with Dr. Anthony</b></li>
+                  <li style="font-size:0.82rem;"><b>VIP-only Q&amp;A session</b></li>
+                  <li style="font-size:0.82rem;"><b>VIP lounge access</b></li>
+                  <li style="font-size:0.82rem;"><b>2025 + 2026 recordings</b></li>
+                </ul>
+                <div class="t-partner" style="padding:0.7rem 0.85rem;margin-bottom:1.2rem;">
+                  <span class="t-partner-mark" style="font-size:1rem;">+</span>
+                  <div class="t-partner-text" style="font-size:0.74rem;"><b>Add VIP partner — $895</b></div>
+                </div>
+                <a class="t-cta" href="#" style="font-size:0.74rem;padding:1.1rem 1rem;min-height:54px;">Reserve VIP
+                  <span class="arrow" style="width:24px;height:24px;"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+                </a>
+              </div>
+              <div class="tier" style="padding:1.8rem 1.4rem;">
+                <div class="t-label" style="font-size:0.6rem;">GA+ Ticket</div>
+                <div class="t-price-row"><span class="t-price" style="font-size:2.6rem;">$845</span><span class="t-strike" style="font-size:1rem;">$995</span></div>
+                <div class="t-pay" style="font-size:0.7rem;">or <b>3 × $282</b></div>
+                <div class="t-window" style="font-size:0.82rem;">Early-bird through Father's Day</div>
+                <div class="t-divider"></div>
+                <div class="t-summary" style="font-size:0.86rem;">The full Breakthrough experience. Three days, all in.</div>
+                <ul class="t-feats" style="margin-bottom:1.3rem;">
+                  <li style="font-size:0.82rem;">All keynotes, workshops, breakouts</li>
+                  <li style="font-size:0.82rem;">Three connection lunches</li>
+                  <li style="font-size:0.82rem;">2025 Live Event recordings</li>
+                  <li style="font-size:0.82rem;">Sunrise hikes, cold plunge, pool</li>
+                </ul>
+                <div class="t-partner" style="padding:0.7rem 0.85rem;margin-bottom:1.2rem;">
+                  <span class="t-partner-mark" style="font-size:1rem;">+</span>
+                  <div class="t-partner-text" style="font-size:0.74rem;"><b>Add a partner — $595</b></div>
+                </div>
+                <a class="t-cta" href="#" style="font-size:0.74rem;padding:1.1rem 1rem;min-height:54px;">Reserve GA+
+                  <span class="arrow" style="width:24px;height:24px;"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+                </a>
+              </div>
+            </div>
+            <div class="trust-line" style="font-size:0.62rem;gap:0.6rem;flex-direction:column;align-items:center;margin-top:1.6rem;margin-bottom:1.4rem;">
+              <span>Transferable through July 1</span>
+              <span>3-pay at checkout</span>
+              <span>Non-refundable</span>
+            </div>
+            <p class="closing-line" style="font-size:1rem;">Bring your partner. Breakthroughs are <em>deeper</em> when shared.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- NOTES -->
+      <div class="notes">
+        <h3>What's actually <em>different</em></h3>
+        <p>Six concrete changes from the v2 pricing section, each chosen to move a specific lever for the 40+ buyer who's asking "is this worth it?"</p>
+        <ul>
+          <li><b>The reframe lands first.</b> "This isn't an expense. It's the gift you give your next chapter." sits in italic Newsreader directly above the cards — primes the emotional state before any dollar sign appears.</li>
+          <li><b>VIP visibly elevated.</b> 18% wider, lifted on real shadow (0 36px 72px ink + 0 0 100px gold halo), gold accent typography, ribbon. The eye lands on it first by intention.</li>
+          <li><b>Payment plan surfaced.</b> "or 3 payments of $432" sits directly under the price in Schibsted Grotesk, not buried as fine print. Many over-40 buyers will read the monthly number before the total.</li>
+          <li><b>Partner add-on inline.</b> Instead of a sub-card, a tinted inline strip with a ledger-style "+" mark. Reads as an optional add, not a separate decision.</li>
+          <li><b>Trust line kills three objections in one band.</b> "Transferable through July 1 · 3-pay at checkout · Non-refundable" — dots-separated row directly under the cards. Anticipates the "what if I can't go" friction.</li>
+          <li><b>Closing emotional line.</b> "Bring your partner. Breakthroughs are deeper when shared." Replaces the longer paragraph in v2. One italic Newsreader line, anchors the soul of the sell.</li>
+        </ul>
+        <h3>Mobile-specific <em>moves</em></h3>
+        <ul>
+          <li><b>VIP card stacks first on mobile.</b> Buyer sees the recommended option immediately, scrolls past for the lighter option.</li>
+          <li><b>Touch targets 54-58px tall.</b> Comfortable for thumbs at any age.</li>
+          <li><b>Pricing typography boosted</b> — body copy 0.82rem on mobile (was 0.76 in v2), partner add-on lighter padding to fit phone width without crowding.</li>
+          <li><b>Trust line stacks vertically</b> on phone so each item gets its own beat. No squinting at a row of small text.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DECISION -->
+<section class="sec">
+  <div class="wrap">
+    <div class="label">03 · Ship it</div>
+    <h2>Lock this design, or <em>iterate.</em></h2>
+    <p class="lede">If this is the direction, the next move is to commit it into the full page rebuild — alongside the C2 hero, the photo assignments for the other three, and whatever sections we fine-tune next. Or tell me what you'd push — softer ribbon, different reframe wording, lighter VIP, fewer features per tier, partner add-on as a checkbox rather than inline strip.</p>
+  </div>
+</section>
+
+<footer>
+  <span class="label">Breakthrough in the Desert · Pricing iteration v1</span>
+</footer>
+
+</body>
+</html>

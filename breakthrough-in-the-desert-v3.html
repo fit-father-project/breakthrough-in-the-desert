@@ -632,6 +632,15 @@ p:last-child { margin-bottom: 0; }
   gap: 20px;
   margin-bottom: 48px;
 }
+.glass-grid-6 {
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 1080px) {
+  .glass-grid-6 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 720px) {
+  .glass-grid-6 { grid-template-columns: 1fr; }
+}
 .glass-card {
   display: grid; grid-template-columns: 72px 1fr;
   gap: 18px; align-items: center;
@@ -1999,7 +2008,11 @@ p:last-child { margin-bottom: 0; }
       <div class="stat"><span class="sn">2025</span><span class="sl">A sold-out first year</span></div>
     </div>
 
-    <div class="glass-grid">
+    <div class="glass-grid glass-grid-6">
+      <div class="glass-card">
+        <div class="avatar" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/attendees/Thomas_S.webp')"></div>
+        <div class="copy">"If fear of the unknown was the main thing holding you back, be not concerned. They've got you covered."<span class="gn">Thomas Shields · 2025</span></div>
+      </div>
       <div class="glass-card">
         <div class="avatar" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/attendees/Geoff_R.webp')"></div>
         <div class="copy">"I came home with 15 pages of handwritten notes to process and integrate into my life."<span class="gn">Geoff Rothman · 2025</span></div>
@@ -2013,6 +2026,10 @@ p:last-child { margin-bottom: 0; }
         <div class="copy">"Tears were shed, hugs were given, minds and eyes were opened. If you can make it to a Live event, do it."<span class="gn">Mike Fairlie · 2025</span></div>
       </div>
       <div class="glass-card">
+        <div class="avatar" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/attendees/Erik_C.webp')"></div>
+        <div class="copy">"What an amazing, wonderful experience. This was soul changing. FFP works — I don't need to look anywhere else."<span class="gn">Erik Cochran · 2025</span></div>
+      </div>
+      <div class="glass-card">
         <div class="avatar" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/attendees/Bruce_B.webp')"></div>
         <div class="copy">"Donna and I got to do our first cold plunge together. What a chilling experience, pun intended."<span class="gn">Bruce Bowerman · 2025</span></div>
       </div>
@@ -2022,16 +2039,16 @@ p:last-child { margin-bottom: 0; }
       <div class="testimonials-wall-title">More from the room</div>
       <div class="tw-grid">
         <div class="tw-card">
-          <div class="tq">"This was not just an event — it was a life-changing experience. The team brought such innate kindness that everyone felt safe to be vulnerable. My heart has been touched forever."</div>
-          <div class="ta">Irma · 2025</div>
+          <div class="tq">"I don't people well. I felt this conference had a spot for us too. What a great group of folks."</div>
+          <div class="ta">Zebb Seabrook · 2025</div>
         </div>
         <div class="tw-card">
-          <div class="tq">"I knew this event would help me with my fitness. What I didn't expect was the tools to grow mentally and emotionally alongside it. My family sees the change."</div>
-          <div class="ta">Nick · 2025</div>
+          <div class="tq">"I know the FFP is your job, but I know that it's so much more than that as well. I see the change in myself — my family sees it, my friends have noticed how I relate to others."</div>
+          <div class="ta">Nick Tieken · 2025</div>
         </div>
         <div class="tw-card">
-          <div class="tq">"I came thinking I was here for the workouts. By Sunday I'd cried twice, hugged people I'd never met, and finally understood why I'd been so stuck. I'm 54 and I haven't felt this clear in decades."</div>
-          <div class="ta">Daniel · 2025</div>
+          <div class="tq">"I am where I am supposed to be at this moment by God's plan. Overcoming adversity is what propels us into our own greatness."</div>
+          <div class="ta">Ron Kietzman · 2025</div>
         </div>
       </div>
     </div>

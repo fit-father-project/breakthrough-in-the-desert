@@ -556,13 +556,31 @@ p:last-child { margin-bottom: 0; }
   background: var(--bone);
   border: 1px solid rgba(27, 25, 22, 0.10);
   border-radius: 4px;
-  padding: 40px 32px;
+  padding: 0 0 36px;
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+  display: flex; flex-direction: column;
 }
 .leave-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 48px rgba(27, 25, 22, 0.12);
+  box-shadow: 0 16px 48px rgba(27, 25, 22, 0.18);
+}
+.leave-photo {
+  width: 100%; aspect-ratio: 4/3;
+  background-size: cover; background-position: center;
+  margin-bottom: 24px;
+  position: relative;
+}
+.leave-photo::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(27,25,22,0.18) 100%);
+}
+.leave-card > .leave-num,
+.leave-card > .leave-word,
+.leave-card > .leave-body,
+.leave-card > .leave-outcome {
+  padding-left: 32px; padding-right: 32px;
 }
 .leave-icon {
   display: flex; justify-content: center; margin-bottom: 22px;
@@ -1009,9 +1027,9 @@ p:last-child { margin-bottom: 0; }
   background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.90) 100%);
 }
 .poster > * { position: relative; z-index: 2; }
-.poster.p1 { background-image: url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-amazon-walk.jpg'); }
-.poster.p2 { background-image: url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-meditating.jpg'); }
-.poster.p3 { background-image: url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-sunset-rock.jpg'); }
+.poster.p1 { background-image: url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-amazon-ceremony.jpg'); }
+.poster.p2 { background-image: url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-face-paint.jpg'); }
+.poster.p3 { background-image: url('https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/03-promise-hands-up.png'); }
 .poster .ptag {
   font-family: var(--label); font-size: 10px;
   letter-spacing: 0.32em; text-transform: uppercase;
@@ -1081,49 +1099,52 @@ p:last-child { margin-bottom: 0; }
   font-size: 24px; line-height: 1.3;
   color: var(--ink); margin-bottom: 28px;
 }
-.day-card .day-image {
-  margin: 24px 0;
-  border-radius: 4px; overflow: hidden;
+/* Schedule format (Day 1/2/3 agenda blocks) */
+.schedule {
+  margin-top: 28px;
+  display: flex; flex-direction: column;
+  gap: 0;
 }
-.day-card .day-image img { width: 100%; height: 320px; object-fit: cover; }
-.day-opener {
-  font-family: var(--display); font-style: italic;
-  font-size: 19px; line-height: 1.45;
-  color: var(--ember); margin: 24px 0 20px;
+.sch-item {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 22px;
+  padding: 20px 0;
+  border-top: 1px solid rgba(27, 25, 22, 0.10);
 }
-.day-body p {
-  font-family: var(--body); font-size: 16.5px;
-  line-height: 1.7; color: var(--ink-soft); margin-bottom: 18px;
+.sch-item:last-child { border-bottom: 1px solid rgba(27, 25, 22, 0.10); }
+.sch-time {
+  font-family: var(--label); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--ember); padding-top: 3px;
 }
-.day-body p em { color: var(--ink); }
-.day-body p strong { color: var(--ink); }
-.day-highlights {
-  margin-top: 28px; padding: 24px 28px;
-  background: var(--bone-soft);
-  border-left: 3px solid var(--ember);
+.sch-meat { display: flex; flex-direction: column; gap: 6px; }
+.sch-title {
+  font-family: var(--display); font-size: 22px; font-weight: 500;
+  color: var(--ink); letter-spacing: -0.005em; line-height: 1.15;
+}
+.sch-who {
+  font-family: var(--body); font-style: italic; font-size: 15px;
+  color: var(--ember); line-height: 1.4;
+}
+.sch-what {
+  font-family: var(--body); font-size: 15.5px; line-height: 1.6;
+  color: var(--ink-soft); margin-top: 4px;
+}
+.sch-callout {
+  margin-top: 10px; padding: 10px 14px;
+  background: rgba(168, 80, 46, 0.10);
+  border-left: 2px solid var(--ember);
+  font-family: var(--body); font-style: italic; font-size: 14px;
+  color: var(--ember);
   border-radius: 2px;
 }
-.day-highlights-title {
-  font-family: var(--label); font-size: 11px; font-weight: 600;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--ember); margin-bottom: 14px;
-}
-.day-highlights ul { list-style: none; }
-.day-highlights li {
-  font-family: var(--body); font-size: 15px; line-height: 1.55;
-  color: var(--ink-soft); margin-bottom: 10px;
-  padding-left: 16px; position: relative;
-}
-.day-highlights li::before {
-  content: '·'; position: absolute; left: 4px;
-  color: var(--ember); font-weight: 700;
-}
-.day-highlights li em { color: var(--ink); font-style: italic; }
-.jamil-endorsement {
-  display: block; margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(168, 80, 46, 0.2);
-  font-style: italic; color: var(--ember);
+@media (max-width: 640px) {
+  .sch-item { grid-template-columns: 1fr; gap: 8px; padding: 18px 0; }
+  .sch-time { padding-top: 0; }
+  .sch-title { font-size: 19px; }
+  .sch-who { font-size: 14px; }
+  .sch-what { font-size: 14.5px; }
 }
 
 /* ============ 10. VENUE ============ */
@@ -1251,7 +1272,7 @@ p:last-child { margin-bottom: 0; }
 
 /* ============ 11. PRICING ============ */
 .pricing-sec {
-  background-image: url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-stump-lake.jpg');
+  background-image: url('https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/10-gallery-coldplunge.png');
   background-size: cover;
   background-position: center;
   padding: 110px 32px;
@@ -1748,19 +1769,18 @@ p:last-child { margin-bottom: 0; }
 
 .darken-bg .day-card .day-label .day { color: var(--gold); }
 .darken-bg .day-card .day-tagline { color: var(--bone); }
-.darken-bg .day-card .day-opener { color: var(--gold); }
-.darken-bg .day-card p { color: rgba(235, 227, 212, 0.88); text-shadow: none; }
-.darken-bg .day-card p em,
-.darken-bg .day-card p strong { color: var(--bone); }
-.darken-bg .day-highlights {
-  background: rgba(0, 0, 0, 0.25);
+
+/* Schedule format on dark sections */
+.darken-bg .sch-item { border-top-color: rgba(235, 227, 212, 0.14); }
+.darken-bg .sch-item:last-child { border-bottom-color: rgba(235, 227, 212, 0.14); }
+.darken-bg .sch-time { color: var(--gold); }
+.darken-bg .sch-title { color: var(--bone); }
+.darken-bg .sch-who { color: var(--gold); }
+.darken-bg .sch-what { color: rgba(235, 227, 212, 0.88); }
+.darken-bg .sch-callout {
+  background: rgba(216, 184, 122, 0.10);
   border-left-color: var(--gold);
-}
-.darken-bg .day-highlights li { color: rgba(235, 227, 212, 0.86); }
-.darken-bg .day-highlights li em { color: var(--bone); }
-.darken-bg .jamil-endorsement {
   color: var(--gold);
-  border-top-color: rgba(216, 184, 122, 0.25);
 }
 
 .darken-bg .spk-card .spk-name { color: var(--bone); }
@@ -2362,27 +2382,21 @@ p:last-child { margin-bottom: 0; }
     <h2 class="section-title">Three things <em>money can't buy.</em></h2>
     <div class="leave-grid">
       <div class="leave-card">
-        <div class="leave-icon">
-          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 4-3 5-3 9a3 3 0 006 0c0-2-1-3-1-3 2 1 3 3 3 6a6 6 0 01-12 0c0-5 5-7 7-12z"/></svg>
-        </div>
+        <div class="leave-photo" style="background-image:url('https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/06-sunday-prayer-hands.png')"></div>
         <div class="leave-num">01</div>
         <div class="leave-word">Clarity</div>
         <div class="leave-body">A clear picture of the next chapter of your life — your health, relationships, purpose, and next adventures. No more vague longing. A real plan.</div>
         <div class="leave-outcome">A plan you're still following 90 days later.</div>
       </div>
       <div class="leave-card">
-        <div class="leave-icon">
-          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg>
-        </div>
+        <div class="leave-photo" style="background-image:url('https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/09-gallery-workout.png')"></div>
         <div class="leave-num">02</div>
         <div class="leave-word">Energy</div>
         <div class="leave-body">The health science, practices, and protocols to live with the peak vitality you were built for after 40 — taught by world-class doctors. Not theory. What works.</div>
         <div class="leave-outcome">Practices that hold when you're back in real life.</div>
       </div>
       <div class="leave-card">
-        <div class="leave-icon">
-          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9.5" r="3.4"/><circle cx="15" cy="9.5" r="3.4"/><path d="M3.5 19c1-3.2 3.6-4.4 5.5-4.4M20.5 19c-1-3.2-3.6-4.4-5.5-4.4"/></svg>
-        </div>
+        <div class="leave-photo" style="background-image:url('https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/11-gallery-love-friends.png')"></div>
         <div class="leave-num">03</div>
         <div class="leave-word">A Circle of Aligned Friends</div>
         <div class="leave-body">A community walking the same path of inspired living. Friendships rooted in trust, respect, and real connection that last long after the event ends. You'll never have to do this alone again.</div>
@@ -2625,69 +2639,165 @@ p:last-child { margin-bottom: 0; }
     <p class="agenda-intro-end">Here's the arc.</p>
 
     <div class="day-card">
-      <div class="day-label"><span class="day">Friday</span> · Awareness</div>
-      <div class="day-tagline">Wake up to where you are. See the patterns. Name what's been holding you back.</div>
-      <div class="day-opener">"What if you could see — clearly, for the first time in years — exactly what's been quietly draining your life?"</div>
-      <div class="day-body">
-        <p>Dr. Anthony will open the day with his keynote on <strong>Intentional Living</strong> — a framework for looking honestly at the dimensions of your life, the energy leaks quietly draining your vitality, and the patterns you've been running on autopilot for years.</p>
-        <p>Throughout the day, you'll move between the main stage and experiential movement breakouts — stretching, exercise, breathwork, hands-on workshops, and vendor hall conversations. The day closes with a special evening keynote, followed by an alcohol-free Kava happy hour — where the conversations get deep and real.</p>
-      </div>
-      <div class="day-highlights">
-        <div class="day-highlights-title">Friday Highlights</div>
-        <ul>
-          <li>Welcome &amp; Opening Keynote with Dr. Anthony: <em>Intentional Living</em></li>
-          <li>Experiential breakouts: workouts, breathwork, stretching, somatic practices</li>
-          <li>Afternoon Q&amp;A health panel featuring Caroline Alan and special guests</li>
-          <li>Curated vendor hall featuring leading-edge health and wellness brands</li>
-          <li>Connection lunch (clean food — no seed oils, no compromises)</li>
-          <li>Special evening keynote — speaker to be announced</li>
-          <li>Alcohol-free Kava happy hour to close the day</li>
-        </ul>
+      <div class="day-label"><span class="day">Friday</span> · Day One · Wake Up</div>
+      <div class="day-tagline">See what's really going on. Name what's been holding you back.</div>
+      <div class="schedule">
+        <div class="sch-item">
+          <div class="sch-time">Morning</div>
+          <div class="sch-meat">
+            <div class="sch-title">Welcome &amp; Opening Keynote</div>
+            <div class="sch-who">Dr. Anthony Balduzzi · "Intentional Living"</div>
+            <div class="sch-what">A simple way to look at your life honestly. What's draining your energy. What you've been doing on autopilot for years.</div>
+          </div>
+        </div>
+        <div class="sch-item">
+          <div class="sch-time">Late Morning</div>
+          <div class="sch-meat">
+            <div class="sch-title">Movement Breakouts</div>
+            <div class="sch-who">Workouts · Breathwork · Stretching</div>
+            <div class="sch-what">Pick what feels right. Move your body, then come back to the main room.</div>
+          </div>
+        </div>
+        <div class="sch-item">
+          <div class="sch-time">Lunch</div>
+          <div class="sch-meat">
+            <div class="sch-title">Connection Lunch</div>
+            <div class="sch-who">Real food. No seed oils. No compromises.</div>
+          </div>
+        </div>
+        <div class="sch-item">
+          <div class="sch-time">Afternoon</div>
+          <div class="sch-meat">
+            <div class="sch-title">Health Q&amp;A Panel</div>
+            <div class="sch-who">Caroline Alan + special guests</div>
+            <div class="sch-what">Bring your real questions. Get answers from doctors who don't read from slides.</div>
+          </div>
+        </div>
+        <div class="sch-item">
+          <div class="sch-time">Evening</div>
+          <div class="sch-meat">
+            <div class="sch-title">Special Evening Keynote</div>
+            <div class="sch-who">Speaker to be announced</div>
+          </div>
+        </div>
+        <div class="sch-item">
+          <div class="sch-time">Night</div>
+          <div class="sch-meat">
+            <div class="sch-title">Kava Happy Hour</div>
+            <div class="sch-who">Zero alcohol · Deep conversations</div>
+            <div class="sch-what">Where the night gets real and the new friendships start.</div>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="day-card">
-      <div class="day-label"><span class="day">Saturday</span> · Activation</div>
-      <div class="day-tagline">Wake up the body. Reconnect with what's alive in you. Step into vitality.</div>
-      <div class="day-body">
-        <p>The desert wakes up early. By 8am you're on a mat, breathing with 149 other people, the sun rising over South Mountain, your body opening for what's about to happen next.</p>
-        <p>You'll start with a 60-minute yoga and movement session led by <strong>John Salisbury</strong>. From there, <strong>Dr. Jamil Sayegh</strong> takes the main stage with his <em>Wake Up</em> keynote — a presence-driven, soul-level invitation to stop sleepwalking through your one life.</p>
-        <p>The afternoon brings two clinically powerful sessions: <strong>Dr. Amie Hornaman</strong> on thyroid, metabolism, and hidden hormonal drivers — followed by <strong>Dr. Philip Ovadia</strong> on heart health and the metabolic truths your cardiologist never told you.</p>
-        <p>Saturday evening is the moment many attendees remember most. <strong>Maraya Brown</strong> leads a soul-level keynote on intimacy and reclaiming the spark in long-term relationships — followed by a sunset pool party at the resort.</p>
-      </div>
-      <div class="day-highlights">
-        <div class="day-highlights-title">Saturday Highlights</div>
-        <ul>
-          <li>Sunrise yoga &amp; movement with John Salisbury</li>
-          <li><em>Wake Up</em> keynote with Dr. Jamil Sayegh</li>
-          <li>Somatic breathwork &amp; body reconnection session</li>
-          <li>Dr. Amie Hornaman: <em>Thyroid, Hormones &amp; the Hidden Drivers of Midlife Fatigue</em></li>
-          <li>Dr. Philip Ovadia: <em>Stay Off the Operating Table — Heart Health Myths Debunked</em></li>
-          <li>Maraya Brown evening keynote: <em>Reclaiming Aliveness &amp; the Spark</em></li>
-          <li>Sunset pool party at Arizona Grand Resort</li>
-        </ul>
+      <div class="day-label"><span class="day">Saturday</span> · Day Two · Come Alive</div>
+      <div class="day-tagline">Your body comes online. The room starts to feel like family.</div>
+      <div class="schedule">
+        <div class="sch-item">
+          <div class="sch-time">Sunrise</div>
+          <div class="sch-meat">
+            <div class="sch-title">Yoga &amp; Movement</div>
+            <div class="sch-who">John Salisbury · Modern Yoga Scottsdale</div>
+            <div class="sch-what">60 minutes on a mat with 149 other people. The sun coming up over South Mountain.</div>
+          </div>
+        </div>
+        <div class="sch-item">
+          <div class="sch-time">Morning</div>
+          <div class="sch-meat">
+            <div class="sch-title">"Wake Up" Keynote</div>
+            <div class="sch-who">Dr. Jamil Sayegh</div>
+            <div class="sch-what">A soul-level invitation to stop sleepwalking through your one life.</div>
+          </div>
+        </div>
+        <div class="sch-item">
+          <div class="sch-time">Late Morning</div>
+          <div class="sch-meat">
+            <div class="sch-title">Somatic Breathwork</div>
+            <div class="sch-who">Group session</div>
+            <div class="sch-what">Reconnect with the signals your body has been trying to send for years.</div>
+          </div>
+        </div>
+        <div class="sch-item">
+          <div class="sch-time">Early Afternoon</div>
+          <div class="sch-meat">
+            <div class="sch-title">Thyroid, Hormones &amp; Midlife Fatigue</div>
+            <div class="sch-who">Dr. Amie Hornaman · The Thyroid-Fixer</div>
+            <div class="sch-what">Why you feel tired but wired. What actually works.</div>
+          </div>
+        </div>
+        <div class="sch-item">
+          <div class="sch-time">Late Afternoon</div>
+          <div class="sch-meat">
+            <div class="sch-title">Heart Health Myths Debunked</div>
+            <div class="sch-who">Dr. Philip Ovadia · Cardiac Surgeon</div>
+            <div class="sch-what">What your cardiologist never told you. How to stay off his operating table.</div>
+          </div>
+        </div>
+        <div class="sch-item">
+          <div class="sch-time">Evening</div>
+          <div class="sch-meat">
+            <div class="sch-title">Reclaiming Aliveness &amp; the Spark</div>
+            <div class="sch-who">Maraya Brown · Women's Health Expert</div>
+            <div class="sch-what">The session most attendees remember years later. Intimacy. The spark that's gone missing.</div>
+          </div>
+        </div>
+        <div class="sch-item">
+          <div class="sch-time">Night</div>
+          <div class="sch-meat">
+            <div class="sch-title">Sunset Pool Party</div>
+            <div class="sch-who">Poolside at Arizona Grand Resort</div>
+            <div class="sch-what">Where the room becomes family.</div>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="day-card">
-      <div class="day-label"><span class="day">Sunday</span> · Integration</div>
-      <div class="day-tagline">Release what no longer serves you. Commit to your next chapter. Walk out changed.</div>
-      <div class="day-body">
-        <p>Something shifts on Sunday. People who arrived as strangers Friday are now eating breakfast together, sharing what cracked open the night before. The room feels different. <em>You</em> feel different.</p>
-        <p>The day opens with optional cold plunge and morning movement. Then comes a heart-opening cacao ceremony led by <strong>Luana Marzluff</strong> — a contemplative, sensory experience that creates the conditions for the integration work that follows.</p>
-        <p>Dr. Jamil returns mid-morning for a deep workshop on releasing the emotional patterns, limiting beliefs, and inherited stories that have quietly run your life. <span class="jamil-endorsement">Dr. Jamil's session has the potential to transform how you live for the rest of your life.</span></p>
-        <p>The weekend closes with Dr. Anthony on the main stage for a powerful final session — designed to help you commit to your next chapter and walk out the door already living it.</p>
-      </div>
-      <div class="day-highlights">
-        <div class="day-highlights-title">Sunday Highlights</div>
-        <ul>
-          <li>Optional sunrise cold plunge &amp; morning movement</li>
-          <li>Cacao ceremony with Luana Marzluff (KAKAO)</li>
-          <li>Integration workshop with Dr. Jamil Sayegh: <em>Releasing What's Been Holding You Back</em></li>
-          <li>Afternoon breakout sessions</li>
-          <li>Final connection lunch with the community</li>
-          <li>Closing keynote with Dr. Anthony: <em>Walking Through the Doorway</em></li>
-        </ul>
+      <div class="day-label"><span class="day">Sunday</span> · Day Three · Walk Through</div>
+      <div class="day-tagline">Let go of what's been holding you back. Walk out of the room different.</div>
+      <div class="schedule">
+        <div class="sch-item">
+          <div class="sch-time">Sunrise</div>
+          <div class="sch-meat">
+            <div class="sch-title">Cold Plunge &amp; Morning Movement</div>
+            <div class="sch-who">Optional</div>
+            <div class="sch-what">For the ones who want to start the day cracked open.</div>
+          </div>
+        </div>
+        <div class="sch-item">
+          <div class="sch-time">Morning</div>
+          <div class="sch-meat">
+            <div class="sch-title">Cacao Ceremony</div>
+            <div class="sch-who">Luana Marzluff · Founder of KAKAO</div>
+            <div class="sch-what">A clay cup of warm cacao. The whole room in a circle. The conditions for what comes next.</div>
+          </div>
+        </div>
+        <div class="sch-item">
+          <div class="sch-time">Late Morning</div>
+          <div class="sch-meat">
+            <div class="sch-title">Releasing What's Been Holding You Back</div>
+            <div class="sch-who">Dr. Jamil Sayegh · Integration Workshop</div>
+            <div class="sch-what">The deepest session of the weekend. Letting go of the patterns that have run your life.</div>
+            <div class="sch-callout">Attendees have called this the moment everything shifted.</div>
+          </div>
+        </div>
+        <div class="sch-item">
+          <div class="sch-time">Lunch</div>
+          <div class="sch-meat">
+            <div class="sch-title">Final Connection Lunch</div>
+            <div class="sch-who">With the people who are now your community</div>
+          </div>
+        </div>
+        <div class="sch-item">
+          <div class="sch-time">Afternoon</div>
+          <div class="sch-meat">
+            <div class="sch-title">Walking Through the Doorway</div>
+            <div class="sch-who">Closing Keynote · Dr. Anthony Balduzzi</div>
+            <div class="sch-what">You commit to your next chapter. Then you walk out the door already living it.</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

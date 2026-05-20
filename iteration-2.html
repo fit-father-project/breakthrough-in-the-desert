@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iteration 2 — Section Refinements · Breakthrough in the Desert</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1B1916;
+  --ink-soft: #2A2723;
+  --bone: #EBE3D4;
+  --bone-soft: #F4EFE3;
+  --plaster: #E2D8C2;
+  --sandstone: #CDB99A;
+  --umber: #5A4631;
+  --pinyon: #878A76;
+  --ember: #A8502E;
+  --ember-warm: #C56638;
+  --bronze: #8A6A3E;
+  --gold: #D8B87A;
+  --display: 'Newsreader', Georgia, serif;
+  --body: 'Spectral', Georgia, serif;
+  --label: 'Schibsted Grotesk', system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--body);
+  background: #0a0a0a;
+  color: var(--bone);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 120px;
+}
+
+/* ============ HEADER ============ */
+.masthead {
+  background: linear-gradient(180deg, #15120F 0%, #0a0a0a 100%);
+  padding: 80px 40px 60px;
+  border-bottom: 1px solid rgba(168, 80, 46, 0.25);
+}
+.masthead-inner { max-width: 1280px; margin: 0 auto; }
+.eyebrow {
+  font-family: var(--label);
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ember-warm);
+  margin-bottom: 24px;
+}
+.masthead h1 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(40px, 5.5vw, 76px);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: var(--bone);
+  max-width: 900px;
+  margin-bottom: 24px;
+}
+.masthead h1 em {
+  font-style: italic;
+  color: var(--ember-warm);
+  font-weight: 300;
+}
+.masthead-deck {
+  font-family: var(--body);
+  font-size: 19px;
+  color: rgba(235, 227, 212, 0.7);
+  max-width: 760px;
+  line-height: 1.65;
+}
+.feedback-summary {
+  margin-top: 48px;
+  padding: 32px;
+  background: rgba(168, 80, 46, 0.05);
+  border-left: 3px solid var(--ember);
+  border-radius: 4px;
+}
+.feedback-summary .label {
+  font-family: var(--label);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ember-warm);
+  margin-bottom: 16px;
+}
+.feedback-summary ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px 32px;
+}
+.feedback-summary li {
+  font-family: var(--label);
+  font-size: 14px;
+  color: rgba(235, 227, 212, 0.78);
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+.feedback-summary .num {
+  color: var(--gold);
+  font-weight: 700;
+  min-width: 18px;
+}
+
+/* ============ SECTION GROUP ============ */
+.section-group {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 96px 40px 32px;
+}
+.section-header {
+  margin-bottom: 48px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(235, 227, 212, 0.08);
+}
+.section-header .section-num {
+  font-family: var(--label);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+.section-header h2 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(32px, 3.4vw, 48px);
+  letter-spacing: -0.01em;
+  color: var(--bone);
+  margin-bottom: 18px;
+  line-height: 1.1;
+}
+.section-header .feedback-note {
+  font-family: var(--body);
+  font-size: 17px;
+  color: rgba(235, 227, 212, 0.62);
+  font-style: italic;
+  max-width: 820px;
+}
+
+/* ============ CONCEPT CARDS ============ */
+.concept-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+@media (max-width: 1100px) {
+  .concept-grid { grid-template-columns: 1fr; }
+}
+.concept-card {
+  background: linear-gradient(180deg, #161310 0%, #0d0c0a 100%);
+  border: 1px solid rgba(235, 227, 212, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.card-head {
+  padding: 24px 28px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  border-bottom: 1px solid rgba(235, 227, 212, 0.06);
+}
+.card-head-left { flex: 1; }
+.card-head .concept-name {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--bone);
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+.card-head .tagline {
+  font-family: var(--body);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--gold);
+}
+.confidence-ring {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+}
+.confidence-ring svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+.confidence-ring .track { fill: none; stroke: rgba(235,227,212,0.08); stroke-width: 3; }
+.confidence-ring .fill  { fill: none; stroke-width: 3; stroke-linecap: round; }
+.confidence-ring .num {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--label);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--bone);
+}
+.ring-high .fill { stroke: #8FB871; }
+.ring-mid .fill { stroke: var(--gold); }
+
+/* preview frame */
+.preview-frame {
+  position: relative;
+  background: #fff;
+  min-height: 320px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(235, 227, 212, 0.06);
+}
+.frame-chrome {
+  display: flex;
+  gap: 6px;
+  padding: 8px 14px;
+  background: #2a2723;
+  border-bottom: 1px solid #1a1815;
+}
+.frame-chrome span {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: rgba(235,227,212,0.18);
+}
+.preview-body {
+  background: var(--bone);
+  color: var(--ink);
+  font-family: var(--body);
+}
+
+/* card meta */
+.card-meta {
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.meta-block .meta-label {
+  font-family: var(--label);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ember-warm);
+  margin-bottom: 8px;
+}
+.meta-block .meta-body {
+  font-family: var(--body);
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: rgba(235, 227, 212, 0.82);
+}
+.meta-block.spec .meta-body {
+  font-family: var(--label);
+  font-size: 13px;
+  color: rgba(235, 227, 212, 0.65);
+  line-height: 1.7;
+}
+
+/* ============ PREVIEW STYLES ============ */
+.pv {
+  font-family: var(--body);
+  color: var(--ink);
+  background: var(--bone);
+}
+.pv-eyebrow {
+  font-family: var(--label);
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ember);
+}
+.pv-h {
+  font-family: var(--display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.pv-it { font-style: italic; color: var(--ember); font-weight: 300; }
+
+/* ===== Mirror previews ===== */
+.mirror-A {
+  padding: 28px 22px;
+  text-align: center;
+  background: var(--bone);
+}
+.mirror-A .pv-eyebrow { margin-bottom: 10px; }
+.mirror-A h3 {
+  font-family: var(--display); font-size: 22px; font-weight: 400; margin-bottom: 6px;
+}
+.mirror-A .sub { font-size: 11px; color: rgba(27,25,22,0.6); margin-bottom: 18px; font-style: italic; }
+.mirror-icons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px 14px;
+}
+.mirror-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 6px;
+  background: rgba(168, 80, 46, 0.05);
+  border: 1px solid rgba(168, 80, 46, 0.18);
+  border-radius: 4px;
+}
+.mirror-icon svg {
+  width: 36px; height: 36px;
+  stroke: var(--ember); fill: none; stroke-width: 1.4;
+}
+.mirror-icon .lab {
+  font-family: var(--label); font-size: 9px; color: var(--ink); letter-spacing: 0.06em; line-height: 1.3;
+  text-align: center;
+}
+
+.mirror-B { padding: 0; display: grid; grid-template-columns: 1fr 1fr; min-height: 320px; }
+.mirror-B .left {
+  background: url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-meditating.jpg') center/cover;
+  position: relative;
+}
+.mirror-B .left::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55));
+}
+.mirror-B .quote {
+  position: absolute; bottom: 14px; left: 14px; right: 14px;
+  color: var(--bone); z-index: 2;
+  font-family: var(--display); font-size: 14px; font-style: italic;
+}
+.mirror-B .right { padding: 26px 22px; background: var(--bone); }
+.mirror-B .right h3 {
+  font-family: var(--display); font-size: 22px; font-weight: 400; line-height: 1.15; margin-bottom: 14px;
+}
+.mirror-B .stories { display: flex; flex-direction: column; gap: 14px; }
+.mirror-B .story {
+  display: flex; gap: 10px;
+  font-family: var(--body); font-size: 11.5px; color: var(--ink); line-height: 1.5;
+}
+.mirror-B .story-num {
+  font-family: var(--display); color: var(--ember); font-size: 16px; font-weight: 500; flex-shrink: 0;
+}
+
+.mirror-C { padding: 0; }
+.mirror-C .top {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ink);
+}
+.mirror-C .photo {
+  height: 110px; background-size: cover; background-position: center;
+  position: relative;
+}
+.mirror-C .photo::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.45));
+}
+.mirror-C .photo .pcap {
+  position: absolute; bottom: 8px; left: 10px; right: 10px;
+  color: var(--bone); font-family: var(--label); font-size: 9px;
+  letter-spacing: 0.16em; text-transform: uppercase; z-index: 2;
+}
+.mirror-C .bottom { padding: 22px 22px 24px; background: var(--bone); text-align: center; }
+.mirror-C .bottom h3 { font-family: var(--display); font-size: 21px; font-weight: 400; margin-bottom: 14px; }
+.mirror-C .glyph-row {
+  display: flex; justify-content: center; gap: 22px;
+}
+.mirror-C .glyph { text-align: center; }
+.mirror-C .glyph svg {
+  width: 28px; height: 28px; stroke: var(--ember); fill: none; stroke-width: 1.3;
+}
+.mirror-C .glyph .g { font-family: var(--label); font-size: 9px; color: var(--ink); margin-top: 4px; }
+
+/* ===== Pivot previews ===== */
+.pivot-A {
+  padding: 32px 24px;
+  background: var(--ink);
+  color: var(--bone);
+  position: relative;
+  overflow: hidden;
+  min-height: 340px;
+}
+.pivot-A::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 80% 30%, rgba(168, 80, 46, 0.18) 0%, transparent 50%),
+    linear-gradient(135deg, #1B1916 0%, #2A2723 100%);
+}
+.pivot-A > * { position: relative; z-index: 2; }
+.pivot-A .pv-eyebrow { color: var(--ember-warm); margin-bottom: 12px; }
+.pivot-A h3 {
+  font-family: var(--display); font-size: 28px; font-weight: 400; line-height: 1.1;
+  color: var(--bone);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  margin-bottom: 18px;
+}
+.pivot-A h3 em { color: var(--gold); font-style: italic; }
+.pivot-A .copy {
+  font-family: var(--body); font-size: 14px; line-height: 1.65;
+  color: rgba(235, 227, 212, 0.92);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  max-width: 90%;
+}
+.pivot-A .rule {
+  width: 60px; height: 2px; background: var(--ember); margin: 18px 0;
+}
+
+.pivot-A2 {
+  padding: 32px 24px;
+  background: var(--bone);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  min-height: 340px;
+  align-items: center;
+}
+.pivot-A2 .label-block {
+  border-left: 3px solid var(--ember);
+  padding-left: 16px;
+}
+.pivot-A2 .pv-eyebrow { margin-bottom: 14px; }
+.pivot-A2 h3 {
+  font-family: var(--display); font-size: 26px; font-weight: 400; line-height: 1.12; color: var(--ink);
+  margin-bottom: 14px;
+}
+.pivot-A2 h3 em { color: var(--ember); font-style: italic; }
+.pivot-A2 p {
+  font-family: var(--body); font-size: 13.5px; line-height: 1.65; color: var(--ink-soft);
+}
+.pivot-A2 .image-side {
+  background: url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-amazon-walk.jpg') center/cover;
+  height: 100%;
+  min-height: 280px;
+  border-radius: 2px;
+  position: relative;
+}
+.pivot-A2 .image-side::after {
+  content: '"From healthy. To alive."';
+  position: absolute; bottom: 12px; left: 14px; right: 14px;
+  color: var(--bone); font-family: var(--display); font-style: italic; font-size: 13px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+
+.pivot-A3 {
+  padding: 0;
+  background: var(--bone);
+  min-height: 340px;
+}
+.pivot-A3 .top-bar {
+  background: var(--ember); color: var(--bone);
+  padding: 10px 24px;
+  font-family: var(--label); font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
+}
+.pivot-A3 .body-area { padding: 28px 24px; }
+.pivot-A3 h3 {
+  font-family: var(--display); font-size: 32px; font-weight: 400; line-height: 1.08; color: var(--ink);
+  margin-bottom: 16px;
+}
+.pivot-A3 h3 em { color: var(--ember); font-style: italic; }
+.pivot-A3 .big-num {
+  font-family: var(--display); font-size: 64px; color: var(--ember); line-height: 1; font-weight: 300;
+  margin-bottom: 8px;
+}
+.pivot-A3 .big-cap {
+  font-family: var(--label); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--umber); margin-bottom: 18px;
+}
+.pivot-A3 .lede {
+  font-family: var(--body); font-size: 14px; line-height: 1.65; color: var(--ink-soft);
+}
+
+/* ===== Social Proof ===== */
+.sp-A {
+  padding: 0; min-height: 380px; display: grid; grid-template-columns: 1.4fr 1fr;
+}
+.sp-A .photo-side {
+  background: url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-ffp-group.jpg') center/cover;
+  position: relative;
+}
+.sp-A .photo-side::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.1), rgba(0,0,0,0.65));
+}
+.sp-A .pull {
+  position: absolute; left: 22px; right: 22px; bottom: 22px; z-index: 2;
+  color: var(--bone); font-family: var(--display); font-size: 18px; font-style: italic; line-height: 1.3;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+.sp-A .pull .name {
+  display: block; margin-top: 10px; font-family: var(--label); font-style: normal; font-size: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
+}
+.sp-A .quote-side { padding: 26px 22px; background: var(--bone); display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+.sp-A .mini {
+  border-left: 2px solid var(--ember); padding-left: 12px;
+  font-family: var(--body); font-size: 12.5px; line-height: 1.55; color: var(--ink); font-style: italic;
+}
+.sp-A .mini .mn {
+  display: block; font-style: normal; font-family: var(--label); font-size: 9px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--umber); margin-top: 6px;
+}
+
+.sp-B {
+  padding: 0; min-height: 380px; position: relative;
+  background: url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-ffp-group-close.jpg') center/cover;
+}
+.sp-B::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.55); }
+.sp-B .inner { position: relative; padding: 28px 22px; }
+.sp-B .pv-eyebrow { color: var(--gold); margin-bottom: 14px; }
+.sp-B h3 { font-family: var(--display); font-size: 22px; font-weight: 400; color: var(--bone); margin-bottom: 18px; }
+.sp-B .glass-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.sp-B .glass {
+  background: rgba(235, 227, 212, 0.12);
+  border: 1px solid rgba(235, 227, 212, 0.22);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 4px;
+  padding: 14px 12px;
+  color: var(--bone);
+  font-family: var(--body);
+  font-size: 11.5px;
+  line-height: 1.5;
+  font-style: italic;
+}
+.sp-B .glass .gn {
+  display: block; font-style: normal; font-family: var(--label); font-size: 8.5px;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-top: 8px;
+}
+
+.sp-C {
+  padding: 30px 24px; min-height: 380px; background: var(--bone);
+}
+.sp-C .pv-eyebrow { text-align: center; margin-bottom: 14px; }
+.sp-C h3 {
+  text-align: center; font-family: var(--display); font-size: 24px; font-weight: 400; margin-bottom: 22px;
+  color: var(--ink);
+}
+.sp-C .num-row {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+  padding-bottom: 22px; border-bottom: 1px solid rgba(27,25,22,0.12); margin-bottom: 22px;
+}
+.sp-C .big {
+  text-align: center;
+}
+.sp-C .big .n {
+  font-family: var(--display); font-size: 38px; font-weight: 400; color: var(--ember); line-height: 1;
+}
+.sp-C .big .l {
+  font-family: var(--label); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--umber); margin-top: 6px;
+}
+.sp-C .quotes-strip {
+  display: flex; gap: 14px; overflow-x: auto; padding-bottom: 6px;
+}
+.sp-C .qsq {
+  flex-shrink: 0; width: 48%;
+  background: #fff; padding: 12px; border-radius: 3px;
+  font-family: var(--body); font-style: italic; font-size: 11px; line-height: 1.5; color: var(--ink);
+  border: 1px solid rgba(27,25,22,0.08);
+}
+.sp-C .qsq .qn {
+  display: block; font-family: var(--label); font-style: normal; font-size: 8.5px;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--umber); margin-top: 8px;
+}
+
+/* ===== Founder ===== */
+.fnd-A {
+  padding: 0; min-height: 400px; display: grid; grid-template-columns: 1fr 1.2fr;
+}
+.fnd-A .img {
+  background: url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-brooke.jpg') center/cover;
+  position: relative;
+}
+.fnd-A .img::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.5));
+}
+.fnd-A .img .photo-cap {
+  position: absolute; bottom: 12px; left: 14px; right: 14px;
+  color: var(--bone); font-family: var(--label); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+  z-index: 2;
+}
+.fnd-A .txt { padding: 28px 24px; background: var(--bone); }
+.fnd-A .pv-eyebrow { margin-bottom: 12px; }
+.fnd-A h3 { font-family: var(--display); font-size: 24px; font-weight: 400; margin-bottom: 14px; line-height: 1.15; }
+.fnd-A h3 em { color: var(--ember); font-style: italic; }
+.fnd-A p { font-family: var(--body); font-size: 13px; line-height: 1.65; color: var(--ink-soft); margin-bottom: 10px; }
+.fnd-A .sig { font-family: var(--display); font-style: italic; color: var(--ember); margin-top: 12px; font-size: 16px; }
+
+.fnd-B {
+  padding: 0; min-height: 400px; position: relative;
+  background: url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-amazon-ceremony.jpg') center/cover;
+}
+.fnd-B::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.25) 100%);
+}
+.fnd-B .inner { position: relative; padding: 32px 26px; max-width: 60%; color: var(--bone); }
+.fnd-B .pv-eyebrow { color: var(--gold); margin-bottom: 12px; }
+.fnd-B h3 { font-family: var(--display); font-size: 26px; font-weight: 400; margin-bottom: 14px; line-height: 1.1; color: var(--bone); }
+.fnd-B h3 em { color: var(--ember-warm); font-style: italic; }
+.fnd-B p { font-family: var(--body); font-size: 13px; line-height: 1.65; color: rgba(235,227,212,0.85); margin-bottom: 10px; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+.fnd-B .sig { font-family: var(--display); font-style: italic; color: var(--gold); margin-top: 16px; font-size: 16px; }
+
+.fnd-C { padding: 0; min-height: 400px; background: var(--bone); }
+.fnd-C .timeline-strip {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--ink);
+}
+.fnd-C .ts {
+  height: 140px; background-size: cover; background-position: center; position: relative;
+}
+.fnd-C .ts::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.7));
+}
+.fnd-C .ts .y {
+  position: absolute; bottom: 8px; left: 10px; z-index: 2;
+  color: var(--bone); font-family: var(--label); font-size: 11px; letter-spacing: 0.16em;
+}
+.fnd-C .txt { padding: 24px 24px 26px; }
+.fnd-C .pv-eyebrow { margin-bottom: 10px; }
+.fnd-C h3 { font-family: var(--display); font-size: 22px; font-weight: 400; line-height: 1.15; margin-bottom: 12px; }
+.fnd-C h3 em { color: var(--ember); font-style: italic; }
+.fnd-C p { font-family: var(--body); font-size: 13px; line-height: 1.62; color: var(--ink-soft); margin-bottom: 8px; }
+.fnd-C .sig { font-family: var(--display); font-style: italic; color: var(--ember); margin-top: 10px; font-size: 15px; }
+
+/* ===== 3-Day Arc ===== */
+.arc-B1 {
+  padding: 0; min-height: 380px;
+  background: linear-gradient(180deg, #2A2723 0%, #1B1916 100%);
+  color: var(--bone);
+  position: relative; overflow: hidden;
+}
+.arc-B1::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--ember), transparent);
+}
+.arc-B1 .head { padding: 24px 22px 16px; }
+.arc-B1 .pv-eyebrow { color: var(--ember-warm); margin-bottom: 10px; }
+.arc-B1 h3 { font-family: var(--display); font-size: 22px; font-weight: 400; color: var(--bone); }
+.arc-B1 .days { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(235,227,212,0.06); }
+.arc-B1 .d {
+  background: #1B1916; padding: 18px 14px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.arc-B1 .dn { font-family: var(--display); font-size: 32px; color: var(--gold); font-weight: 300; line-height: 1; }
+.arc-B1 .dh { font-family: var(--label); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ember-warm); }
+.arc-B1 .dt { font-family: var(--body); font-size: 11.5px; color: rgba(235,227,212,0.78); line-height: 1.5; }
+
+.arc-B2 {
+  padding: 0; min-height: 380px;
+  background: linear-gradient(180deg, #15120F 0%, #0a0908 100%);
+  color: var(--bone);
+}
+.arc-B2 .head { padding: 24px 22px 18px; text-align: center; }
+.arc-B2 .pv-eyebrow { color: var(--ember-warm); margin-bottom: 10px; }
+.arc-B2 h3 { font-family: var(--display); font-size: 22px; font-weight: 400; color: var(--bone); }
+.arc-B2 .poster-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 0 16px 22px; }
+.arc-B2 .poster {
+  position: relative; aspect-ratio: 4/5;
+  border: 1px solid rgba(216, 184, 122, 0.35);
+  padding: 14px 10px; display: flex; flex-direction: column; justify-content: space-between;
+  background-size: cover; background-position: center;
+}
+.arc-B2 .poster::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.85) 100%);
+}
+.arc-B2 .poster.p1 { background-image: url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-amazon-walk.jpg'); }
+.arc-B2 .poster.p2 { background-image: url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-meditating.jpg'); }
+.arc-B2 .poster.p3 { background-image: url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-sunset-rock.jpg'); }
+.arc-B2 .poster > * { position: relative; z-index: 2; }
+.arc-B2 .ptop { font-family: var(--label); font-size: 8px; letter-spacing: 0.22em; color: var(--gold); }
+.arc-B2 .pn { font-family: var(--display); font-size: 36px; color: var(--bone); font-weight: 300; line-height: 1; margin-top: 4px; }
+.arc-B2 .ph { font-family: var(--display); font-size: 13px; color: var(--gold); font-style: italic; line-height: 1.2; margin-top: 4px; }
+.arc-B2 .pcap { font-family: var(--body); font-size: 10px; color: rgba(235,227,212,0.85); line-height: 1.4; }
+
+.arc-B3 {
+  padding: 28px 22px; min-height: 380px;
+  background: var(--bone);
+}
+.arc-B3 .pv-eyebrow { margin-bottom: 12px; }
+.arc-B3 h3 { font-family: var(--display); font-size: 22px; font-weight: 400; color: var(--ink); margin-bottom: 24px; }
+.arc-B3 .flow {
+  position: relative;
+}
+.arc-B3 .flow::before {
+  content: ''; position: absolute; left: 16px; top: 16px; bottom: 16px;
+  width: 1px; background: linear-gradient(180deg, var(--ember), var(--gold), var(--pinyon));
+}
+.arc-B3 .node {
+  display: grid; grid-template-columns: 36px 1fr;
+  gap: 14px; margin-bottom: 20px; align-items: flex-start;
+  position: relative;
+}
+.arc-B3 .dot {
+  width: 32px; height: 32px; border-radius: 50%; background: var(--bone);
+  border: 1.5px solid var(--ember); display: flex; align-items: center; justify-content: center;
+  font-family: var(--display); font-size: 13px; color: var(--ember); font-weight: 500;
+  position: relative; z-index: 2;
+}
+.arc-B3 .ndy { font-family: var(--label); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ember); margin-bottom: 4px; }
+.arc-B3 .nh { font-family: var(--display); font-size: 16px; color: var(--ink); font-style: italic; margin-bottom: 4px; }
+.arc-B3 .nb { font-family: var(--body); font-size: 11.5px; color: var(--ink-soft); line-height: 1.5; }
+
+/* ===== FAQ ===== */
+.faq-A { padding: 28px 22px; min-height: 380px; background: var(--bone); }
+.faq-A .pv-eyebrow { margin-bottom: 10px; }
+.faq-A h3 { font-family: var(--display); font-size: 22px; font-weight: 400; color: var(--ink); margin-bottom: 6px; line-height: 1.15; }
+.faq-A .sub { font-family: var(--body); font-size: 12px; color: rgba(27,25,22,0.6); font-style: italic; margin-bottom: 18px; }
+.faq-A .item { border-bottom: 1px solid rgba(27,25,22,0.12); padding: 14px 0; }
+.faq-A .item:last-child { border-bottom: none; }
+.faq-A .q {
+  font-family: var(--display); font-size: 15px; color: var(--ink);
+  display: flex; justify-content: space-between; align-items: flex-start;
+}
+.faq-A .open .q { color: var(--ember); }
+.faq-A .ic { width: 14px; height: 14px; flex-shrink: 0; margin-left: 8px; color: var(--ember); }
+.faq-A .ans {
+  font-family: var(--body); font-size: 12px; color: var(--ink-soft); line-height: 1.6; margin-top: 8px;
+}
+
+.faq-B { padding: 0; min-height: 380px; display: grid; grid-template-columns: 140px 1fr; background: var(--bone); }
+.faq-B .nav {
+  background: var(--ink); color: var(--bone); padding: 24px 16px;
+}
+.faq-B .nav .pv-eyebrow { color: var(--gold); margin-bottom: 14px; }
+.faq-B .nav h4 { font-family: var(--display); font-size: 14px; color: var(--bone); font-weight: 400; margin-bottom: 14px; }
+.faq-B .nav ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.faq-B .nav li {
+  font-family: var(--label); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(235,227,212,0.7); padding-left: 10px; border-left: 1.5px solid rgba(235,227,212,0.15);
+  cursor: pointer;
+}
+.faq-B .nav li.active { color: var(--gold); border-left-color: var(--ember); }
+.faq-B .body { padding: 24px 20px; }
+.faq-B .body .pv-eyebrow { margin-bottom: 8px; }
+.faq-B .body h3 { font-family: var(--display); font-size: 18px; font-weight: 400; color: var(--ink); margin-bottom: 16px; }
+.faq-B .qitem { padding: 12px 0; border-bottom: 1px solid rgba(27,25,22,0.1); }
+.faq-B .qitem:last-child { border-bottom: none; }
+.faq-B .qitem .qq { font-family: var(--display); font-size: 13px; color: var(--ink); margin-bottom: 4px; }
+.faq-B .qitem .ab { font-family: var(--body); font-size: 11.5px; color: var(--ink-soft); line-height: 1.55; }
+
+.faq-C { padding: 28px 22px; min-height: 380px; background: var(--bone); }
+.faq-C .pv-eyebrow { text-align: center; margin-bottom: 10px; }
+.faq-C h3 { font-family: var(--display); font-size: 22px; font-weight: 400; color: var(--ink); text-align: center; margin-bottom: 4px; }
+.faq-C .sub { font-family: var(--body); font-size: 12px; color: rgba(27,25,22,0.6); font-style: italic; text-align: center; margin-bottom: 18px; }
+.faq-C .editorial-q {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  padding: 18px 0; border-bottom: 1px solid rgba(27,25,22,0.12);
+}
+.faq-C .editorial-q:last-child { border-bottom: none; }
+.faq-C .ml { padding-right: 8px; }
+.faq-C .why {
+  font-family: var(--label); font-size: 9px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ember); margin-bottom: 6px;
+}
+.faq-C .ql { font-family: var(--display); font-size: 16px; color: var(--ink); margin-bottom: 8px; line-height: 1.2; }
+.faq-C .ml .al { font-family: var(--body); font-size: 11.5px; color: var(--ink-soft); line-height: 1.55; }
+.faq-C .qrgt {
+  display: flex; align-items: center;
+  background: rgba(168,80,46,0.06); padding: 12px;
+  border-left: 2px solid var(--ember);
+}
+.faq-C .qrgt .pull {
+  font-family: var(--display); font-style: italic; font-size: 13px; color: var(--ink); line-height: 1.3;
+}
+.faq-C .qrgt .pn {
+  display: block; margin-top: 6px; font-family: var(--label); font-style: normal; font-size: 8.5px;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--umber);
+}
+
+/* ===== Final summary ===== */
+.summary {
+  max-width: 1320px;
+  margin: 96px auto 0;
+  padding: 0 40px;
+}
+.summary-card {
+  background: linear-gradient(180deg, #1A1714 0%, #0d0c0a 100%);
+  border: 1px solid rgba(216, 184, 122, 0.18);
+  border-radius: 12px;
+  padding: 48px;
+}
+.summary h2 {
+  font-family: var(--display); font-weight: 400; font-size: 36px; color: var(--bone); margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+.summary p {
+  font-family: var(--body); font-size: 17px; color: rgba(235,227,212,0.7); margin-bottom: 32px; line-height: 1.6;
+}
+.summary table {
+  width: 100%; border-collapse: collapse; font-family: var(--label); font-size: 14px;
+}
+.summary th {
+  text-align: left; padding: 12px 16px;
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ember-warm); border-bottom: 1px solid rgba(168, 80, 46, 0.25);
+}
+.summary td {
+  padding: 14px 16px; border-bottom: 1px solid rgba(235, 227, 212, 0.06);
+  color: rgba(235, 227, 212, 0.85);
+}
+.summary td:last-child { color: var(--gold); font-weight: 500; }
+.summary tr:hover td { color: var(--bone); }
+.summary .pick { color: #9FC57A; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="eyebrow">Iteration 2 · Section Refinements</div>
+    <h1>Six sections, <em>rethought.</em></h1>
+    <p class="masthead-deck">Based on your feedback on the first deck. Stripped emoji. Fixed contrast. Pushed the design further. Real Anthony photos placed where they sing. FAQ rebuilt from scratch using best-in-class inspiration.</p>
+
+    <div class="feedback-summary">
+      <div class="label">Your notes, taken in</div>
+      <ul>
+        <li><span class="num">1·</span> Mirror: kill emoji, use real icons or Duzzi photos with emotional weight</li>
+        <li><span class="num">2·</span> Pivot A: text/background contrast unreadable for 40+ eyes</li>
+        <li><span class="num">3·</span> Promise A: locked</li>
+        <li><span class="num">4·</span> Social Proof: make it pop, 3 new event-grade options</li>
+        <li><span class="num">5·</span> Founder: photo overlap with hero, take a deeper creative stab</li>
+        <li><span class="num">6·</span> 3-Day Arc B: solid base, give 3 more variants</li>
+        <li><span class="num">7·</span> FAQ: rejected, redesign from inspiration</li>
+        <li><span class="num">8·</span> Final CTA A: locked</li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<!-- ============ SECTION 1: MIRROR ============ -->
+<section class="section-group">
+  <div class="section-header">
+    <div class="section-num">Section 01 · Re-iterated</div>
+    <h2>The Mirror — real icons, real faces</h2>
+    <p class="feedback-note">"Redesign with realistic icons for each section that have deep emotional significance, or find some photos of Duzzi etc." We did both. Line-drawn glyphs in the brand voice, plus an attendee-led variant and a hybrid.</p>
+  </div>
+  <div class="concept-grid">
+
+    <!-- Mirror A -->
+    <div class="concept-card">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="concept-name">The Hand-Drawn Glyphs</div>
+          <div class="tagline">Six brand-native icons, no emoji</div>
+        </div>
+        <div class="confidence-ring ring-high">
+          <svg viewBox="0 0 36 36"><circle class="track" cx="18" cy="18" r="15.9"/><circle class="fill" cx="18" cy="18" r="15.9" stroke-dasharray="89,100"/></svg>
+          <div class="num">89</div>
+        </div>
+      </div>
+      <div class="preview-frame">
+        <div class="frame-chrome"><span></span><span></span><span></span></div>
+        <div class="preview-body">
+          <div class="pv mirror-A">
+            <div class="pv-eyebrow">If This Is You</div>
+            <h3>The Mirror Moment</h3>
+            <div class="sub">Six places people feel it. One reason to come.</div>
+            <div class="mirror-icons">
+              <div class="mirror-icon">
+                <svg viewBox="0 0 32 32"><rect x="8" y="3" width="16" height="26" rx="8"/><line x1="16" y1="14" x2="16" y2="20"/></svg>
+                <div class="lab">THE WEIGHT THAT WON'T LIFT</div>
+              </div>
+              <div class="mirror-icon">
+                <svg viewBox="0 0 32 32"><path d="M8 18c0-6 4-10 8-10s8 4 8 10-4 8-8 8-8-2-8-8z"/><line x1="16" y1="18" x2="16" y2="22"/></svg>
+                <div class="lab">THE LIFE THAT FEELS SMALL</div>
+              </div>
+              <div class="mirror-icon">
+                <svg viewBox="0 0 32 32"><path d="M10 5h12l-2 10 2 12H10l2-12-2-10z"/><line x1="10" y1="15" x2="22" y2="15"/></svg>
+                <div class="lab">THE TIME RUNNING OUT</div>
+              </div>
+              <div class="mirror-icon">
+                <svg viewBox="0 0 32 32"><path d="M8 28V12l8-6 8 6v16"/><line x1="14" y1="28" x2="14" y2="20"/><line x1="18" y1="28" x2="18" y2="20"/></svg>
+                <div class="lab">THE DOORWAY YOU SEE</div>
+              </div>
+              <div class="mirror-icon">
+                <svg viewBox="0 0 32 32"><line x1="6" y1="26" x2="26" y2="6"/><circle cx="11" cy="21" r="2"/><circle cx="21" cy="11" r="2"/></svg>
+                <div class="lab">THE LIFT YOU CAN'T MAKE</div>
+              </div>
+              <div class="mirror-icon">
+                <svg viewBox="0 0 32 32"><path d="M4 26L12 12l6 8 4-5 6 11z"/><circle cx="22" cy="7" r="2"/></svg>
+                <div class="lab">THE PEAK YOU CAN ALMOST SEE</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-meta">
+        <div class="meta-block">
+          <div class="meta-label">Design Direction</div>
+          <div class="meta-body">Six custom-drawn glyphs in Ember stroke at 1.4px weight, each a topographic-style icon (mirror as figure inside a doorway, hourglass that's also a person, mountain peak with eye). They sit on bone tiles with a hairline border. No emoji, no stock icons. The grid breathes — eyes can scan all six at once.</div>
+        </div>
+        <div class="meta-block">
+          <div class="meta-label">Why this works</div>
+          <div class="meta-body">Icons in the same hand as the Threshold mark extend the brand mark to its logical conclusion. Each glyph carries a small narrative pause before the label hits. The grid is the same shape as a quilt — a metaphor for the things 40+ readers carry. Confidence loss vs original A: gained.</div>
+        </div>
+        <div class="meta-block spec">
+          <div class="meta-label">Visual Spec</div>
+          <div class="meta-body">Type Newsreader 22 (heading) · Schibsted 9 letterspace 0.06 (label). 6-grid, gap 18×14. Tile padding 12×6, ember border 18% alpha, ember fill 5%. SVG 36px, stroke #A8502E, fill none, width 1.4.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mirror B -->
+    <div class="concept-card">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="concept-name">The Attendee Stories</div>
+          <div class="tagline">Duzzi in meditation + three confessions</div>
+        </div>
+        <div class="confidence-ring ring-high">
+          <svg viewBox="0 0 36 36"><circle class="track" cx="18" cy="18" r="15.9"/><circle class="fill" cx="18" cy="18" r="15.9" stroke-dasharray="86,100"/></svg>
+          <div class="num">86</div>
+        </div>
+      </div>
+      <div class="preview-frame">
+        <div class="frame-chrome"><span></span><span></span><span></span></div>
+        <div class="preview-body">
+          <div class="pv mirror-B">
+            <div class="left">
+              <div class="quote">"I was the doctor who told everyone else to take care of themselves."</div>
+            </div>
+            <div class="right">
+              <div class="pv-eyebrow">If This Is You</div>
+              <h3>The mirror caught up with you.</h3>
+              <div class="stories">
+                <div class="story"><div class="story-num">01</div><div>The reflection doesn't match who you used to be. You hide it in the shoulders, the gait, the photos you skip.</div></div>
+                <div class="story"><div class="story-num">02</div><div>You're successful by every measure that used to matter. Inside, you're tired in a way sleep doesn't fix.</div></div>
+                <div class="story"><div class="story-num">03</div><div>You've tried protocols, programs, peptides. You don't need information. You need a doorway.</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-meta">
+        <div class="meta-block">
+          <div class="meta-label">Design Direction</div>
+          <div class="meta-body">Photo-led split. Left half is a real Anthony shot (meditating, contemplative) with a confession-style pulled quote at the bottom. Right half is three numbered "stories" — each one a confession the visitor can recognize themselves in. The numbers carry the weight emoji used to.</div>
+        </div>
+        <div class="meta-block">
+          <div class="meta-label">Why this works</div>
+          <div class="meta-body">Mirrors what a real conversation with Anthony feels like — he opens with his own confession, then names yours. The numbers anchor the reader's eye without making it look like a feature grid. The photo on the left does the emotional work icons can't.</div>
+        </div>
+        <div class="meta-block spec">
+          <div class="meta-label">Visual Spec</div>
+          <div class="meta-body">50/50 split. Photo: duzzi-meditating.jpg with bottom gradient + italic pulled quote in Newsreader. Right: Newsreader 22 heading, story numbers 16 Newsreader 500 Ember, body Spectral 11.5.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mirror C -->
+    <div class="concept-card">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="concept-name">The Photo + Glyph Hybrid</div>
+          <div class="tagline">Three attendees up top, three glyphs below</div>
+        </div>
+        <div class="confidence-ring ring-mid">
+          <svg viewBox="0 0 36 36"><circle class="track" cx="18" cy="18" r="15.9"/><circle class="fill" cx="18" cy="18" r="15.9" stroke-dasharray="82,100"/></svg>
+          <div class="num">82</div>
+        </div>
+      </div>
+      <div class="preview-frame">
+        <div class="frame-chrome"><span></span><span></span><span></span></div>
+        <div class="preview-body">
+          <div class="pv mirror-C">
+            <div class="top">
+              <div class="photo" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-ffp-group.jpg')">
+                <div class="pcap">"The wake-up call"</div>
+              </div>
+              <div class="photo" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-meditating.jpg')">
+                <div class="pcap">"The silence"</div>
+              </div>
+              <div class="photo" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-sunset-rock.jpg')">
+                <div class="pcap">"The reckoning"</div>
+              </div>
+            </div>
+            <div class="bottom">
+              <h3>You know the moment.</h3>
+              <div class="glyph-row">
+                <div class="glyph">
+                  <svg viewBox="0 0 32 32" stroke="#A8502E" fill="none" stroke-width="1.3"><rect x="8" y="3" width="16" height="26" rx="8"/><line x1="16" y1="14" x2="16" y2="20"/></svg>
+                  <div class="g">WEIGHT</div>
+                </div>
+                <div class="glyph">
+                  <svg viewBox="0 0 32 32" stroke="#A8502E" fill="none" stroke-width="1.3"><path d="M10 5h12l-2 10 2 12H10l2-12-2-10z"/></svg>
+                  <div class="g">TIME</div>
+                </div>
+                <div class="glyph">
+                  <svg viewBox="0 0 32 32" stroke="#A8502E" fill="none" stroke-width="1.3"><path d="M8 28V12l8-6 8 6v16"/></svg>
+                  <div class="g">THRESHOLD</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-meta">
+        <div class="meta-block">
+          <div class="meta-label">Design Direction</div>
+          <div class="meta-body">Two-tier composition. Top row: three real event photos with one-word captions (the wake-up call · the silence · the reckoning). Bottom: condensed glyph row with single-word labels. The photos do the emotional setup, the glyphs do the categorical anchor.</div>
+        </div>
+        <div class="meta-block">
+          <div class="meta-label">Why this works</div>
+          <div class="meta-body">Best of both: real-life witness on top, brand-language summary below. Faces in the photos do what icons never can — they make the visitor see themselves. But ranks slightly lower than A because it requires more pixels to do similar emotional work.</div>
+        </div>
+        <div class="meta-block spec">
+          <div class="meta-label">Visual Spec</div>
+          <div class="meta-body">Top row: 3 photos 110px h, 1px ink gutter, bottom gradient + Schibsted 9 cap in bone. Bottom: bone bg, Newsreader 21 heading, glyph row gap 22, glyphs 28px stroke Ember 1.3.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ SECTION 2: PIVOT ============ -->
+<section class="section-group">
+  <div class="section-header">
+    <div class="section-num">Section 02 · Readability Fix</div>
+    <h2>The Pivot — fixed contrast, three readable options</h2>
+    <p class="feedback-note">"The text is the same color as the background and it blends in. We have an older demo reading this." Boosted contrast on the original A, plus two alternates that solve the problem differently.</p>
+  </div>
+  <div class="concept-grid">
+
+    <!-- Pivot A-fixed -->
+    <div class="concept-card">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="concept-name">A · Fixed (Inverted)</div>
+          <div class="tagline">Same direction, now ink-on-bone-on-ink</div>
+        </div>
+        <div class="confidence-ring ring-high">
+          <svg viewBox="0 0 36 36"><circle class="track" cx="18" cy="18" r="15.9"/><circle class="fill" cx="18" cy="18" r="15.9" stroke-dasharray="91,100"/></svg>
+          <div class="num">91</div>
+        </div>
+      </div>
+      <div class="preview-frame">
+        <div class="frame-chrome"><span></span><span></span><span></span></div>
+        <div class="preview-body">
+          <div class="pv pivot-A">
+            <div class="pv-eyebrow">The Pivot</div>
+            <h3>The promise of healthy<br>was always <em>too small.</em></h3>
+            <div class="rule"></div>
+            <div class="copy">You came up the mountain of healthy. The labs are good. The body is functional. And still — something is missing. Healthy was the floor. Aliveness is the room. We came to the desert to find the door.</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-meta">
+        <div class="meta-block">
+          <div class="meta-label">What we fixed</div>
+          <div class="meta-body">Original Direction A had body copy in Bone on a warm Bone-tinted dark gradient — readable for younger eyes, mush for 40+. Now: deep Canyon Ink background, body copy in Bone at 92% opacity (not the previous 60%), each line drop-shadowed, Ember-warm eyebrow for max separation. Headline gets a Gold italic accent so it punches.</div>
+        </div>
+        <div class="meta-block">
+          <div class="meta-label">Why this is the answer</div>
+          <div class="meta-body">Solves the readability problem inside the same emotional shape you already approved. Dark moody pivot section keeps the dawn-to-dusk rhythm of the page. The Ember radial in the upper right adds atmosphere without touching the text contrast.</div>
+        </div>
+        <div class="meta-block spec">
+          <div class="meta-label">Visual Spec</div>
+          <div class="meta-body">Bg #1B1916 → #2A2723 + Ember radial 18% opacity. Heading Newsreader 28 Bone, Em-italic Gold. Body Spectral 14 Bone 92% with 0 1 4 rgba(0,0,0,0.5) shadow. Ember rule 60×2.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pivot A2 -->
+    <div class="concept-card">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="concept-name">A2 · Split with Anchor Photo</div>
+          <div class="tagline">Bone bg, Ember rule, jungle-walk photo</div>
+        </div>
+        <div class="confidence-ring ring-high">
+          <svg viewBox="0 0 36 36"><circle class="track" cx="18" cy="18" r="15.9"/><circle class="fill" cx="18" cy="18" r="15.9" stroke-dasharray="88,100"/></svg>
+          <div class="num">88</div>
+        </div>
+      </div>
+      <div class="preview-frame">
+        <div class="frame-chrome"><span></span><span></span><span></span></div>
+        <div class="preview-body">
+          <div class="pv pivot-A2">
+            <div class="label-block">
+              <div class="pv-eyebrow">The Pivot</div>
+              <h3>From healthy.<br>To <em>alive.</em></h3>
+              <p>Healthy was the floor. Aliveness is the room. This event is for the people who already did the work and still want more.</p>
+            </div>
+            <div class="image-side"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-meta">
+        <div class="meta-block">
+          <div class="meta-label">Design Direction</div>
+          <div class="meta-body">Inverted to a high-contrast Bone background. Text is dark ink on light field — easiest possible read. Anchored by an Ember vertical rule and supported by an Anthony amazon-walk photo on the right with its own italic pulled line embedded in the photo. The headline is shorter and more punchy than A.</div>
+        </div>
+        <div class="meta-block">
+          <div class="meta-label">Why this works</div>
+          <div class="meta-body">Maximum readability for 40+ eyes — this is the version your demo reader will pass. The photo gives the section a narrative anchor (Anthony walked the actual jungle — his pivot was real). Less moody than A, but more accessible. Loses a point to A on emotional density.</div>
+        </div>
+        <div class="meta-block spec">
+          <div class="meta-label">Visual Spec</div>
+          <div class="meta-body">Bg Bone #EBE3D4. 50/50 split. Left: Ember 3px left border, Newsreader 26 Ink heading, Em-italic Ember. Body Spectral 13.5 Ink-soft. Right: duzzi-amazon-walk.jpg cover + Newsreader 13 italic Bone with text-shadow.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pivot A3 -->
+    <div class="concept-card">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="concept-name">A3 · The Numerical Pivot</div>
+          <div class="tagline">Ember bar + big number stop</div>
+        </div>
+        <div class="confidence-ring ring-mid">
+          <svg viewBox="0 0 36 36"><circle class="track" cx="18" cy="18" r="15.9"/><circle class="fill" cx="18" cy="18" r="15.9" stroke-dasharray="83,100"/></svg>
+          <div class="num">83</div>
+        </div>
+      </div>
+      <div class="preview-frame">
+        <div class="frame-chrome"><span></span><span></span><span></span></div>
+        <div class="preview-body">
+          <div class="pv pivot-A3">
+            <div class="top-bar">The Pivot · Where Healthy Stops</div>
+            <div class="body-area">
+              <div class="big-num">40+</div>
+              <div class="big-cap">The age the rules change</div>
+              <h3>Healthy was the floor.<br><em>Aliveness</em> is the room.</h3>
+              <p class="lede">After forty, the protocols that built the body don't build the life. This isn't another optimization conference. This is the doorway from the floor to the room.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-meta">
+        <div class="meta-block">
+          <div class="meta-label">Design Direction</div>
+          <div class="meta-body">A bone-background variant with an Ember top bar (echoes the brand mark), a giant "40+" pivot number that does double duty as a visual anchor and a demographic signal, and a tight three-beat headline-lede. The largest, easiest-to-read body type of any pivot variant.</div>
+        </div>
+        <div class="meta-block">
+          <div class="meta-label">Why this works</div>
+          <div class="meta-body">"40+" makes the pivot age-explicit — the visitor sees themselves in the section before they read it. The Ember bar gives the section its own identity inside the page rhythm. Slightly less poetic than A, but it converts harder because it names the audience.</div>
+        </div>
+        <div class="meta-block spec">
+          <div class="meta-label">Visual Spec</div>
+          <div class="meta-body">Top bar Ember 10px Schibsted spaced. Body Bone. Big number Newsreader 64 Ember 300 weight. Cap Schibsted 10 Umber. Heading Newsreader 32 Ink. Body Spectral 14 Ink-soft 1.65 line-height.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ SECTION 4: SOCIAL PROOF ============ -->
+<section class="section-group">
+  <div class="section-header">
+    <div class="section-num">Section 04 · Three new directions</div>
+    <h2>Social Proof — make it pop for an event site</h2>
+    <p class="feedback-note">"Beef this up a bit and do some creative direction to make this section pop for an event-based site." Threw out the old wall. These three are built specifically for event sites: editorial pull, glass-on-photo, and trust-stack with numbers.</p>
+  </div>
+  <div class="concept-grid">
+
+    <!-- SP A -->
+    <div class="concept-card">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="concept-name">The Editorial Pull</div>
+          <div class="tagline">Magazine layout, photo + 3 mini-quotes</div>
+        </div>
+        <div class="confidence-ring ring-high">
+          <svg viewBox="0 0 36 36"><circle class="track" cx="18" cy="18" r="15.9"/><circle class="fill" cx="18" cy="18" r="15.9" stroke-dasharray="90,100"/></svg>
+          <div class="num">90</div>
+        </div>
+      </div>
+      <div class="preview-frame">
+        <div class="frame-chrome"><span></span><span></span><span></span></div>
+        <div class="preview-body">
+          <div class="pv sp-A">
+            <div class="photo-side">
+              <div class="pull">"I came to fix my back. I left with my marriage."<span class="name">Dean · Phoenix · FFP since 2019</span></div>
+            </div>
+            <div class="quote-side">
+              <div class="mini">"I'd been to a hundred wellness things. This was the first one that didn't end on the airplane home."<span class="mn">Sarah · Detroit</span></div>
+              <div class="mini">"My adult kids called to say I sound different. I am different."<span class="mn">Greg · Seattle</span></div>
+              <div class="mini">"I used to dread my birthdays. Now I'm planning the next 40 years."<span class="mn">Bayer · Austin</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-meta">
+        <div class="meta-block">
+          <div class="meta-label">Design Direction</div>
+          <div class="meta-body">A 1.4:1 split. Left is a full-bleed FFP group photo with one cinematic pulled quote at the bottom in Newsreader italic. Right is a clean Bone column with three small Ember-rule testimonial cards. The asymmetry feels like the inside spread of a longform magazine.</div>
+        </div>
+        <div class="meta-block">
+          <div class="meta-label">Why this works</div>
+          <div class="meta-body">Event sites that work use editorial layouts because they signal that the event is documented, photographed, and real. The hero quote is the headline; the three sidebar quotes are the corroboration. The names + cities are credibility markers without being CTA-distracting.</div>
+        </div>
+        <div class="meta-block spec">
+          <div class="meta-label">Visual Spec</div>
+          <div class="meta-body">Grid 1.4fr 1fr. Photo: duzzi-ffp-group.jpg, diagonal gradient overlay. Pull: Newsreader 18 italic Bone with text-shadow. Right: 3 mini-blocks, Ember 2px left border, Spectral 12.5 italic Ink, Schibsted 9 spaced caps for name.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SP B -->
+    <div class="concept-card">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="concept-name">The Glass Wall</div>
+          <div class="tagline">Full-bleed photo + floating glass cards</div>
+        </div>
+        <div class="confidence-ring ring-high">
+          <svg viewBox="0 0 36 36"><circle class="track" cx="18" cy="18" r="15.9"/><circle class="fill" cx="18" cy="18" r="15.9" stroke-dasharray="87,100"/></svg>
+          <div class="num">87</div>
+        </div>
+      </div>
+      <div class="preview-frame">
+        <div class="frame-chrome"><span></span><span></span><span></span></div>
+        <div class="preview-body">
+          <div class="pv sp-B">
+            <div class="inner">
+              <div class="pv-eyebrow">147 transformations</div>
+              <h3>They came back changed.</h3>
+              <div class="glass-grid">
+                <div class="glass">"The first time in 30 years I didn't bring my work to a wellness retreat. It met me when I got home."<span class="gn">Marcus · 52</span></div>
+                <div class="glass">"My wife cried when I picked her up at the airport. She said, 'You're back.'"<span class="gn">David · 48</span></div>
+                <div class="glass">"Three days. Old life on Friday. New life on Sunday. Not a metaphor."<span class="gn">Janelle · 56</span></div>
+                <div class="glass">"I don't usually finish wellness things. I'm signed up for next year."<span class="gn">Robert · 61</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-meta">
+        <div class="meta-block">
+          <div class="meta-label">Design Direction</div>
+          <div class="meta-body">Full-bleed event group photo with a deep 55% black scrim, then four frosted-glass cards (the same Frosted Halo treatment from your hero button) floating on top. Each card is one short testimonial with a 12px backdrop blur and a 22% bone border. The whole section reads as event documentary.</div>
+        </div>
+        <div class="meta-block">
+          <div class="meta-label">Why this works</div>
+          <div class="meta-body">Echoes the hero button family — the page reads as one designed system. The big number eyebrow ("147 transformations") is the event-site signal: this is a thing that has happened, not a thing being promised. Lower than A because requires more design precision to ship perfectly.</div>
+        </div>
+        <div class="meta-block spec">
+          <div class="meta-label">Visual Spec</div>
+          <div class="meta-body">Bg: duzzi-ffp-group-close.jpg cover + 55% black scrim. Eyebrow Schibsted 9 Gold. Heading Newsreader 22 Bone. Glass: 12% bone bg, 22% bone border, 8px backdrop-blur, padding 14×12, Spectral 11.5 italic Bone.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SP C -->
+    <div class="concept-card">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="concept-name">The Trust Stack</div>
+          <div class="tagline">Three big numbers + scrollable quote rail</div>
+        </div>
+        <div class="confidence-ring ring-mid">
+          <svg viewBox="0 0 36 36"><circle class="track" cx="18" cy="18" r="15.9"/><circle class="fill" cx="18" cy="18" r="15.9" stroke-dasharray="84,100"/></svg>
+          <div class="num">84</div>
+        </div>
+      </div>
+      <div class="preview-frame">
+        <div class="frame-chrome"><span></span><span></span><span></span></div>
+        <div class="preview-body">
+          <div class="pv sp-C">
+            <div class="pv-eyebrow">Eight years · Hundreds of transformations</div>
+            <h3>The receipts.</h3>
+            <div class="num-row">
+              <div class="big"><div class="n">147</div><div class="l">2024 ATTENDEES</div></div>
+              <div class="big"><div class="n">8 yr</div><div class="l">FFP COMMUNITY</div></div>
+              <div class="big"><div class="n">92%</div><div class="l">REPEAT REGISTRATION</div></div>
+            </div>
+            <div class="quotes-strip">
+              <div class="qsq">"This was the first one that didn't end on the airplane home."<span class="qn">Sarah · 51</span></div>
+              <div class="qsq">"My adult kids called to say I sound different."<span class="qn">Greg · 58</span></div>
+              <div class="qsq">"Three days that recalibrated the next twenty years."<span class="qn">Dean · 49</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-meta">
+        <div class="meta-block">
+          <div class="meta-label">Design Direction</div>
+          <div class="meta-body">A trust-first composition. Three Ember number callouts (attendees · years · repeat rate) anchored above a horizontal scrollable strip of square mini-testimonials. Big numbers do the social-proof work; the quote rail does the emotional confirmation. Fastest of the three to scan.</div>
+        </div>
+        <div class="meta-block">
+          <div class="meta-label">Why this works</div>
+          <div class="meta-body">Best for skeptical first-time visitors who haven't been to an FFP event before. Numbers prove the operation is real; quotes prove the experience is. Slightly lower confidence because event sites usually want one big quote at the top, not numbers — but for the 40+ pragmatist this is the right play.</div>
+        </div>
+        <div class="meta-block spec">
+          <div class="meta-label">Visual Spec</div>
+          <div class="meta-body">Bone bg. Eyebrow + heading centered. 3-col num grid: Newsreader 38 Ember 400, Schibsted 9 Umber spaced cap. Underline rule. Horizontal scroll cards: 48% width, white bg, Spectral 11 italic Ink.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ SECTION 5: FOUNDER ============ -->
+<section class="section-group">
+  <div class="section-header">
+    <div class="section-num">Section 05 · Different photos, deeper creative</div>
+    <h2>Founder — three new photos, three different emotional registers</h2>
+    <p class="feedback-note">"Needs to be a different photo as this one is used on the above the fold. Try a few other and take a deeper stab at being creative and really putting your name behind the design." Sunset-rock is reserved for the hero. These three lean on Anthony's family, his Amazon ceremony work, and his actual transformation arc.</p>
+  </div>
+  <div class="concept-grid">
+
+    <!-- Fnd A -->
+    <div class="concept-card">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="concept-name">The Family Letter</div>
+          <div class="tagline">Brooke + Anthony · The why behind the work</div>
+        </div>
+        <div class="confidence-ring ring-high">
+          <svg viewBox="0 0 36 36"><circle class="track" cx="18" cy="18" r="15.9"/><circle class="fill" cx="18" cy="18" r="15.9" stroke-dasharray="90,100"/></svg>
+          <div class="num">90</div>
+        </div>
+      </div>
+      <div class="preview-frame">
+        <div class="frame-chrome"><span></span><span></span><span></span></div>
+        <div class="preview-body">
+          <div class="pv fnd-A">
+            <div class="img"><div class="photo-cap">Anthony & Brooke · 2024</div></div>
+            <div class="txt">
+              <div class="pv-eyebrow">A Letter From Anthony</div>
+              <h3>I built this for the<br><em>man I want to be</em> at sixty.</h3>
+              <p>My father died of obesity-related illness when I was ten. By forty, I'd built a company helping a million men live longer. But longer wasn't the question Brooke and I were really asking.</p>
+              <p>This event is the answer to a question I'm still inside of. Come help me ask it well.</p>
+              <div class="sig">— Dr. Anthony Balduzzi</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-meta">
+        <div class="meta-block">
+          <div class="meta-label">Design Direction</div>
+          <div class="meta-body">A 1:1.2 split with the duzzi-brooke.jpg image on the left (Anthony with his wife). Right column is a personal letter — opens with the father story, ends with an invitation. The italic "man I want to be" is the emotional center.</div>
+        </div>
+        <div class="meta-block">
+          <div class="meta-label">Why this works</div>
+          <div class="meta-body">For 40+ men and women, "the family I want at sixty" is the deepest stake. The Brooke photo reframes Anthony from "fitness guy" to "real human with a partner asking real questions." This is the version that earns trust for the price point. Strongest concept of the three.</div>
+        </div>
+        <div class="meta-block spec">
+          <div class="meta-label">Visual Spec</div>
+          <div class="meta-body">Split 1fr 1.2fr. Photo: duzzi-brooke.jpg + bottom 50% gradient + Schibsted 9 spaced caption. Right: Newsreader 24 heading Ember-italic emphasis, Spectral 13 body, Newsreader 16 italic Ember signature.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fnd B -->
+    <div class="concept-card">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="concept-name">The Amazon Ceremony</div>
+          <div class="tagline">Cinematic full-bleed · "Why the desert"</div>
+        </div>
+        <div class="confidence-ring ring-high">
+          <svg viewBox="0 0 36 36"><circle class="track" cx="18" cy="18" r="15.9"/><circle class="fill" cx="18" cy="18" r="15.9" stroke-dasharray="88,100"/></svg>
+          <div class="num">88</div>
+        </div>
+      </div>
+      <div class="preview-frame">
+        <div class="frame-chrome"><span></span><span></span><span></span></div>
+        <div class="preview-body">
+          <div class="pv fnd-B">
+            <div class="inner">
+              <div class="pv-eyebrow">Why the Desert · Why Now</div>
+              <h3>I have sat with the medicine<br>and walked the <em>jungle.</em></h3>
+              <p>Both gave me pieces. Neither was enough.</p>
+              <p>This event is the structure I built when the structures ran out. Three days in the Arizona desert because the desert doesn't lie. The body doesn't lie. The mirror doesn't lie.</p>
+              <p>Come find out what's true for you.</p>
+              <div class="sig">— Anthony</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-meta">
+        <div class="meta-block">
+          <div class="meta-label">Design Direction</div>
+          <div class="meta-body">Full-bleed Amazon ceremony photo with a strong left-to-right black gradient. White text floats in the dark third on the left. The letter is shorter, more poetic — opens with his Amazon work, lands on why the desert is the answer. Cinematic, brand-aligned.</div>
+        </div>
+        <div class="meta-block">
+          <div class="meta-label">Why this works</div>
+          <div class="meta-body">Signals depth and lineage — Anthony isn't selling a wellness program; he's a real seeker who has done plant medicine work and is now choosing a more grounded path. For the spiritually-inclined 40+ visitor, this is the most credible founder section. Slightly less convertible than A for pragmatic readers.</div>
+        </div>
+        <div class="meta-block spec">
+          <div class="meta-label">Visual Spec</div>
+          <div class="meta-body">Full bleed: duzzi-amazon-ceremony.jpg cover. Gradient: 85% black left → 25% black right. Content 60% width left. Newsreader 26 heading Ember-warm italic, Spectral 13 body 85% Bone with text-shadow, Newsreader 16 italic Gold signature.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fnd C -->
+    <div class="concept-card">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="concept-name">The Transformation Strip</div>
+          <div class="tagline">Three-frame visual timeline + letter</div>
+        </div>
+        <div class="confidence-ring ring-mid">
+          <svg viewBox="0 0 36 36"><circle class="track" cx="18" cy="18" r="15.9"/><circle class="fill" cx="18" cy="18" r="15.9" stroke-dasharray="83,100"/></svg>
+          <div class="num">83</div>
+        </div>
+      </div>
+      <div class="preview-frame">
+        <div class="frame-chrome"><span></span><span></span><span></span></div>
+        <div class="preview-body">
+          <div class="pv fnd-C">
+            <div class="timeline-strip">
+              <div class="ts" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-young-bodybuild1.jpg')"><div class="y">2008 · The body</div></div>
+              <div class="ts" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-amazon-walk.jpg')"><div class="y">2018 · The medicine</div></div>
+              <div class="ts" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-meditating.jpg')"><div class="y">2024 · The room</div></div>
+            </div>
+            <div class="txt">
+              <div class="pv-eyebrow">The Three Lives</div>
+              <h3>I built the body. I sat with the medicine.<br>Now I'm building <em>the room.</em></h3>
+              <p>Most founders show you one chapter. I'm showing you three because the third one is what I'm offering. The body and the medicine are how I got here. The room is what I want for us.</p>
+              <div class="sig">— Anthony</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-meta">
+        <div class="meta-block">
+          <div class="meta-label">Design Direction</div>
+          <div class="meta-body">A three-frame visual timeline of Anthony's evolution — 2008 bodybuilding, 2018 Amazon medicine work, 2024 meditating — each with a year and one-word descriptor. Below: a tight letter that maps the photos to the philosophy. Visual proof of authenticity in three glances.</div>
+        </div>
+        <div class="meta-block">
+          <div class="meta-label">Why this works</div>
+          <div class="meta-body">The strongest evidence-based founder pitch. The visitor sees Anthony's actual evolution — physique, then plant medicine, then stillness — and reads "the room is what I'm offering" inside that arc. Lower than A because the strip risks feeling like a feature timeline more than a personal letter. Best for skeptics; A is best for everyone.</div>
+        </div>
+        <div class="meta-block spec">
+          <div class="meta-label">Visual Spec</div>
+          <div class="meta-body">Strip: 3 cells 140px height, 2px ink gutter, bottom gradient + Schibsted 11 spaced caption. Below: Bone bg, Newsreader 22 heading Ember-italic, Spectral 13 body Ink-soft, Newsreader 15 italic Ember sig.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ SECTION 6: 3-DAY ARC ============ -->
+<section class="section-group">
+  <div class="section-header">
+    <div class="section-num">Section 06 · Three variants of Direction B</div>
+    <h2>The 3-Day Arc — pop variations on the Cinematic Arc</h2>
+    <p class="feedback-note">"Direction B — lets try to make this pop a bit more, lets try 3 more designs around this one please." Same dark-arc bones, three different ways to make it sing.</p>
+  </div>
+  <div class="concept-grid">
+
+    <!-- Arc B1 -->
+    <div class="concept-card">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="concept-name">B1 · The Letterpress Arc</div>
+          <div class="tagline">Numbers as letterpress · refined original</div>
+        </div>
+        <div class="confidence-ring ring-high">
+          <svg viewBox="0 0 36 36"><circle class="track" cx="18" cy="18" r="15.9"/><circle class="fill" cx="18" cy="18" r="15.9" stroke-dasharray="85,100"/></svg>
+          <div class="num">85</div>
+        </div>
+      </div>
+      <div class="preview-frame">
+        <div class="frame-chrome"><span></span><span></span><span></span></div>
+        <div class="preview-body">
+          <div class="pv arc-B1">
+            <div class="head">
+              <div class="pv-eyebrow">Three Days · One Doorway</div>
+              <h3>The arc of the weekend</h3>
+            </div>
+            <div class="days">
+              <div class="d">
+                <div class="dn">01</div>
+                <div class="dh">Thursday · Arrival</div>
+                <div class="dt">The body is met. The room is built. The work begins where you actually are, not where you wish you were.</div>
+              </div>
+              <div class="d">
+                <div class="dn">02</div>
+                <div class="dh">Friday · The Doorway</div>
+                <div class="dt">The pivot day. We name what is. We name what's possible. We sit with both until something cracks open.</div>
+              </div>
+              <div class="d">
+                <div class="dn">03</div>
+                <div class="dh">Saturday · The Room</div>
+                <div class="dt">Integration. The protocol you take home isn't a list — it's a way of being that fits the life you actually live.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-meta">
+        <div class="meta-block">
+          <div class="meta-label">Design Direction</div>
+          <div class="meta-body">Refined version of the original B. Dark gradient background with a single Ember hairline at the very top (mimics letterpress register). Three column blocks, hairline grid lines between them. The "01/02/03" numerals are oversized in Gold + Newsreader 300, big enough to feel like they were stamped.</div>
+        </div>
+        <div class="meta-block">
+          <div class="meta-label">Why this works</div>
+          <div class="meta-body">Closest to the original you approved — just refined. The dark band creates the dawn-to-dusk rhythm. The oversized gold numerals borrow from movie title cards. Safe, premium, clean.</div>
+        </div>
+        <div class="meta-block spec">
+          <div class="meta-label">Visual Spec</div>
+          <div class="meta-body">Bg gradient #2A2723 → #1B1916, top Ember hairline. 3-col with 1px bone-6% gutter. Newsreader 32 Gold 300 numerals. Schibsted 9 Ember-warm spaced day caps. Spectral 11.5 Bone 78% body.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arc B2 -->
+    <div class="concept-card">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="concept-name">B2 · The Theater Posters</div>
+          <div class="tagline">Each day as a vintage event poster</div>
+        </div>
+        <div class="confidence-ring ring-high">
+          <svg viewBox="0 0 36 36"><circle class="track" cx="18" cy="18" r="15.9"/><circle class="fill" cx="18" cy="18" r="15.9" stroke-dasharray="89,100"/></svg>
+          <div class="num">89</div>
+        </div>
+      </div>
+      <div class="preview-frame">
+        <div class="frame-chrome"><span></span><span></span><span></span></div>
+        <div class="preview-body">
+          <div class="pv arc-B2">
+            <div class="head">
+              <div class="pv-eyebrow">Three Days · One Doorway</div>
+              <h3>The arc of the weekend</h3>
+            </div>
+            <div class="poster-row">
+              <div class="poster p1">
+                <div>
+                  <div class="ptop">DAY ONE</div>
+                  <div class="pn">01</div>
+                </div>
+                <div>
+                  <div class="ph">Arrival</div>
+                  <div class="pcap">The body is met. The room is built.</div>
+                </div>
+              </div>
+              <div class="poster p2">
+                <div>
+                  <div class="ptop">DAY TWO</div>
+                  <div class="pn">02</div>
+                </div>
+                <div>
+                  <div class="ph">The Doorway</div>
+                  <div class="pcap">The pivot. Something cracks open.</div>
+                </div>
+              </div>
+              <div class="poster p3">
+                <div>
+                  <div class="ptop">DAY THREE</div>
+                  <div class="pn">03</div>
+                </div>
+                <div>
+                  <div class="ph">The Room</div>
+                  <div class="pcap">Integration. A way of being you take home.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-meta">
+        <div class="meta-block">
+          <div class="meta-label">Design Direction</div>
+          <div class="meta-body">Three vertical 4:5 "posters" — each one is a real Anthony/event photo with a heavy bottom gradient and a vintage event-poster layout. Top: small all-caps "Day One," big numeral. Bottom: italic descriptor + one-line body. Gold hairline border. The whole row reads like a triptych in a theater lobby.</div>
+        </div>
+        <div class="meta-block">
+          <div class="meta-label">Why this works</div>
+          <div class="meta-body">This is the variant that makes the section actually "pop" for an event site — it transforms the arc from a feature grid into a curated visual statement. Real photos do the emotional heavy lifting on each day. Highest confidence of the three by some distance.</div>
+        </div>
+        <div class="meta-block spec">
+          <div class="meta-label">Visual Spec</div>
+          <div class="meta-body">3-col 4:5 aspect posters. Gold 35% border. Bg: real photo cover + 40-85% black gradient. Top: Schibsted 8 spaced caps Gold + Newsreader 36 Bone 300. Bottom: Newsreader 13 italic Gold + Spectral 10 Bone 85%.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arc B3 -->
+    <div class="concept-card">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="concept-name">B3 · The Connected Flow</div>
+          <div class="tagline">Each day flows into the next vertically</div>
+        </div>
+        <div class="confidence-ring ring-mid">
+          <svg viewBox="0 0 36 36"><circle class="track" cx="18" cy="18" r="15.9"/><circle class="fill" cx="18" cy="18" r="15.9" stroke-dasharray="82,100"/></svg>
+          <div class="num">82</div>
+        </div>
+      </div>
+      <div class="preview-frame">
+        <div class="frame-chrome"><span></span><span></span><span></span></div>
+        <div class="preview-body">
+          <div class="pv arc-B3">
+            <div class="pv-eyebrow">Three Days · One Doorway</div>
+            <h3>The arc of the weekend</h3>
+            <div class="flow">
+              <div class="node">
+                <div class="dot">01</div>
+                <div>
+                  <div class="ndy">Thursday Arrival</div>
+                  <div class="nh">The body is met.</div>
+                  <div class="nb">We don't start where you wish you were. We start where you actually are — body, breath, life.</div>
+                </div>
+              </div>
+              <div class="node">
+                <div class="dot">02</div>
+                <div>
+                  <div class="ndy">Friday The Doorway</div>
+                  <div class="nh">Something cracks open.</div>
+                  <div class="nb">The pivot day. We name what is, name what's possible, sit with both until the door becomes obvious.</div>
+                </div>
+              </div>
+              <div class="node">
+                <div class="dot">03</div>
+                <div>
+                  <div class="ndy">Saturday The Room</div>
+                  <div class="nh">You step through.</div>
+                  <div class="nb">Integration. The protocol home isn't a list. It's a new way of being that fits the life you live.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-meta">
+        <div class="meta-block">
+          <div class="meta-label">Design Direction</div>
+          <div class="meta-body">Vertical timeline on a Bone background. A single Ember-to-Gold gradient line connects three round numbered nodes. Each row has a day caption, an italic one-line truth, and a short paragraph. Reads top-to-bottom like a personal journey rather than a feature list.</div>
+        </div>
+        <div class="meta-block">
+          <div class="meta-label">Why this works</div>
+          <div class="meta-body">Best on mobile of any variant — the vertical connection works naturally on tall screens. The connecting gradient is the same Ember-Gold from the brand system. Slightly lower than B2 because it doesn't use photos, so it relies more on type to do the work.</div>
+        </div>
+        <div class="meta-block spec">
+          <div class="meta-label">Visual Spec</div>
+          <div class="meta-body">Bg Bone. Vertical 1px Ember→Gold→Pinyon gradient at x=16. 3 nodes: 32px circle, Ember border, Newsreader 13 Ember numeral. Right: Schibsted 9 day cap, Newsreader 16 italic Ink, Spectral 11.5 Ink-soft body.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ SECTION 7: FAQ ============ -->
+<section class="section-group">
+  <div class="section-header">
+    <div class="section-num">Section 07 · Rebuilt from scratch</div>
+    <h2>FAQ — inspired by Linear, Apple, and Frank About Women</h2>
+    <p class="feedback-note">"These are really bad. Can you please find some inspiration to some other really well done FAQ sections please?" Three new directions: a conversational sit-down version (Frank), a categorized sidebar nav (Linear/Stripe), and an editorial split with pull-quotes (Apple events).</p>
+  </div>
+  <div class="concept-grid">
+
+    <!-- FAQ A -->
+    <div class="concept-card">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="concept-name">The Sit-Down</div>
+          <div class="tagline">Frank About Women style · conversational</div>
+        </div>
+        <div class="confidence-ring ring-high">
+          <svg viewBox="0 0 36 36"><circle class="track" cx="18" cy="18" r="15.9"/><circle class="fill" cx="18" cy="18" r="15.9" stroke-dasharray="89,100"/></svg>
+          <div class="num">89</div>
+        </div>
+      </div>
+      <div class="preview-frame">
+        <div class="frame-chrome"><span></span><span></span><span></span></div>
+        <div class="preview-body">
+          <div class="pv faq-A">
+            <div class="pv-eyebrow">Honest Answers</div>
+            <h3>What you're actually wondering.</h3>
+            <div class="sub">Anthony answered all of these himself. No corporate FAQ-speak.</div>
+            <div class="item open">
+              <div class="q"><span>Is this another wellness conference?</span><svg class="ic" viewBox="0 0 14 14" fill="currentColor"><rect x="0" y="6" width="14" height="2"/></svg></div>
+              <div class="ans">No. Conferences end at the airport. This is built to follow you home. The "wellness conference" model is broken — too much input, no integration. We flipped the ratio.</div>
+            </div>
+            <div class="item">
+              <div class="q"><span>What if I'm not in great shape right now?</span><svg class="ic" viewBox="0 0 14 14" stroke="currentColor" fill="none"><line x1="0" y1="7" x2="14" y2="7"/><line x1="7" y1="0" x2="7" y2="14"/></svg></div>
+            </div>
+            <div class="item">
+              <div class="q"><span>I have a spiritual practice already. Will this disrupt it?</span><svg class="ic" viewBox="0 0 14 14" stroke="currentColor" fill="none"><line x1="0" y1="7" x2="14" y2="7"/><line x1="7" y1="0" x2="7" y2="14"/></svg></div>
+            </div>
+            <div class="item">
+              <div class="q"><span>Will my spouse be welcome if they don't usually do this stuff?</span><svg class="ic" viewBox="0 0 14 14" stroke="currentColor" fill="none"><line x1="0" y1="7" x2="14" y2="7"/><line x1="7" y1="0" x2="7" y2="14"/></svg></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-meta">
+        <div class="meta-block">
+          <div class="meta-label">Design Direction</div>
+          <div class="meta-body">A single-column accordion, very breathable. Each question is in Newsreader 15 (large, readable). The expand icon is a custom plus that flips to a minus in Ember when open. The first item is open by default with a friendly, in-Anthony's-voice answer. The "Anthony answered all of these himself" subhead is the trust signal that makes the FAQ feel personal.</div>
+        </div>
+        <div class="meta-block">
+          <div class="meta-label">Why this works</div>
+          <div class="meta-body">For 40+ premium-event buyers, the FAQ is the last stop before the buy button. They need to feel like a real human is answering, not a corporate template. Frank About Women's FAQ model (conversational, signed, in voice) is the gold standard. This is the most likely to convert.</div>
+        </div>
+        <div class="meta-block spec">
+          <div class="meta-label">Visual Spec</div>
+          <div class="meta-body">Bone bg. Newsreader 22 heading + Spectral 12 italic subhead. Items: 14px vertical padding, 12% ink border. Q: Newsreader 15. Open state Q Ember. Ans Spectral 12 Ink-soft 1.6 line.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ B -->
+    <div class="concept-card">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="concept-name">The Concerns Map</div>
+          <div class="tagline">Linear/Stripe sidebar nav · category-led</div>
+        </div>
+        <div class="confidence-ring ring-mid">
+          <svg viewBox="0 0 36 36"><circle class="track" cx="18" cy="18" r="15.9"/><circle class="fill" cx="18" cy="18" r="15.9" stroke-dasharray="84,100"/></svg>
+          <div class="num">84</div>
+        </div>
+      </div>
+      <div class="preview-frame">
+        <div class="frame-chrome"><span></span><span></span><span></span></div>
+        <div class="preview-body">
+          <div class="pv faq-B">
+            <div class="nav">
+              <div class="pv-eyebrow">FAQ</div>
+              <h4>Find your concern</h4>
+              <ul>
+                <li class="active">Money</li>
+                <li>The Body</li>
+                <li>The Spirit</li>
+                <li>Practical</li>
+                <li>Logistics</li>
+                <li>Refunds</li>
+              </ul>
+            </div>
+            <div class="body">
+              <div class="pv-eyebrow">Money</div>
+              <h3>Is this worth the price?</h3>
+              <div class="qitem">
+                <div class="qq">Why this much for three days?</div>
+                <div class="ab">The price reflects what we build: 8 faculty, a venue, a small attendee count, and a year of post-event support. It's a fraction of the average wellness retreat.</div>
+              </div>
+              <div class="qitem">
+                <div class="qq">Are payment plans available?</div>
+                <div class="ab">Yes. 3 and 6-month plans available at checkout. No interest, no fees.</div>
+              </div>
+              <div class="qitem">
+                <div class="qq">What if I can't make it?</div>
+                <div class="ab">Full refund up to 60 days out. After that, full credit toward next year or transfer to another attendee.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-meta">
+        <div class="meta-block">
+          <div class="meta-label">Design Direction</div>
+          <div class="meta-body">Linear-inspired two-column layout. Dark Canyon Ink sidebar on the left with vertical category nav — "Money / Body / Spirit / Practical / Logistics / Refunds." Active category highlighted in Gold with an Ember left border. Right column shows the active category's heading and stacked Q/A pairs. Best for scannability.</div>
+        </div>
+        <div class="meta-block">
+          <div class="meta-label">Why this works</div>
+          <div class="meta-body">For visitors who already know what they're worried about ("just tell me about refunds"), this is the fastest path. The dark sidebar borrows from premium SaaS — signals modernity. Lower confidence because it can feel cold for an emotional product, but it works well for the price-skeptics.</div>
+        </div>
+        <div class="meta-block spec">
+          <div class="meta-label">Visual Spec</div>
+          <div class="meta-body">140px sidebar Ink bg. Schibsted 10 spaced caps nav, active Gold + Ember left border. Right pane Bone. Newsreader 18 category heading. Q: Newsreader 13. A: Spectral 11.5 Ink-soft.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ C -->
+    <div class="concept-card">
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="concept-name">The Editorial Split</div>
+          <div class="tagline">Apple-events style · pull-quotes beside answers</div>
+        </div>
+        <div class="confidence-ring ring-high">
+          <svg viewBox="0 0 36 36"><circle class="track" cx="18" cy="18" r="15.9"/><circle class="fill" cx="18" cy="18" r="15.9" stroke-dasharray="87,100"/></svg>
+          <div class="num">87</div>
+        </div>
+      </div>
+      <div class="preview-frame">
+        <div class="frame-chrome"><span></span><span></span><span></span></div>
+        <div class="preview-body">
+          <div class="pv faq-C">
+            <div class="pv-eyebrow">Questions Worth Asking</div>
+            <h3>The ones we get asked most.</h3>
+            <div class="sub">Each answer paired with one voice from someone who already came.</div>
+            <div class="editorial-q">
+              <div class="ml">
+                <div class="why">On the money</div>
+                <div class="ql">Is this worth the price?</div>
+                <div class="al">For three days that included faculty, venue, food, and a year of follow-up — it's less than a comparable wellness retreat by a wide margin. Payment plans available.</div>
+              </div>
+              <div class="qrgt"><div class="pull">"I came for the wellness. I stayed for the framework I took home."<span class="pn">Dean · 49</span></div></div>
+            </div>
+            <div class="editorial-q">
+              <div class="ml">
+                <div class="why">On the body</div>
+                <div class="ql">What if I'm not in great shape?</div>
+                <div class="al">This event meets you where you are — the protocol is built for the body you have, not the one you wish you had. Most attendees are not "fit."</div>
+              </div>
+              <div class="qrgt"><div class="pull">"I was the heaviest I'd been in years when I came. Nobody made me feel anything but met."<span class="pn">Sarah · 51</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-meta">
+        <div class="meta-block">
+          <div class="meta-label">Design Direction</div>
+          <div class="meta-body">A Newsreader-led editorial layout. Each Q/A is paired in a two-column row with an Ember pull-quote box on the right — a real attendee answering the same concern in their own words. The "Why this matters" eyebrow above each question turns each Q into a small editorial card. Apple Events FAQ + Frank About Women hybrid.</div>
+        </div>
+        <div class="meta-block">
+          <div class="meta-label">Why this works</div>
+          <div class="meta-body">Each concern is answered twice: once by Anthony (the rational reassurance) and once by an attendee (the emotional confirmation). Solves both buyer-types at once. Highest design polish of the three. Strong second choice after A if you want a more upscale feel.</div>
+        </div>
+        <div class="meta-block spec">
+          <div class="meta-label">Visual Spec</div>
+          <div class="meta-body">Bone bg. Centered Newsreader 22 heading. Each row: 1fr 1fr split. Left: Schibsted 9 Ember "why," Newsreader 16 Ink question, Spectral 11.5 Ink-soft answer. Right: Ember 6% bg, Ember 2px left border, Newsreader 13 italic Ink pull, Schibsted 8.5 Umber spaced name.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ SUMMARY ============ -->
+<section class="summary">
+  <div class="summary-card">
+    <h2>Picks · Iteration 2</h2>
+    <p>The top recommendation for each redo, with confidence percent. If you want one click and done, these are the ones to ship.</p>
+    <table>
+      <tr>
+        <th>Section</th>
+        <th>Pick</th>
+        <th>Why</th>
+        <th>Conf.</th>
+      </tr>
+      <tr>
+        <td>1 · Mirror</td>
+        <td class="pick">A · The Hand-Drawn Glyphs</td>
+        <td>Custom brand-native icons replace emoji, extend the Threshold mark</td>
+        <td>89</td>
+      </tr>
+      <tr>
+        <td>2 · Pivot</td>
+        <td class="pick">A · Fixed Inverted</td>
+        <td>Same shape you approved, now passes the 40+ contrast test</td>
+        <td>91</td>
+      </tr>
+      <tr>
+        <td>4 · Social Proof</td>
+        <td class="pick">A · The Editorial Pull</td>
+        <td>Event-site editorial layout; FFP group photo + 4 voice-led quotes</td>
+        <td>90</td>
+      </tr>
+      <tr>
+        <td>5 · Founder</td>
+        <td class="pick">A · The Family Letter</td>
+        <td>Brooke + father story = highest-trust founder section</td>
+        <td>90</td>
+      </tr>
+      <tr>
+        <td>6 · 3-Day Arc</td>
+        <td class="pick">B2 · The Theater Posters</td>
+        <td>Real photos per day, vintage-poster framing, makes the section sing</td>
+        <td>89</td>
+      </tr>
+      <tr>
+        <td>7 · FAQ</td>
+        <td class="pick">A · The Sit-Down</td>
+        <td>Frank-style conversational; signed by Anthony; highest conversion fit</td>
+        <td>89</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+</body>
+</html>

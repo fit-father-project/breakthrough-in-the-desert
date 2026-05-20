@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CTA Button — 3 Designs · Breakthrough in the Desert</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..700;1,6..72,200..600&family=Spectral:wght@300;400&family=Schibsted+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#1b1916;--bone:#ebe3d4;--ember:#a8502e;--ember-deep:#7a3920;
+  --gold:#d8b87a;--gold-deep:#9c7a3a;--bronze:#a87a48;
+  --on-ink:#e9e0cf;--on-ink-dim:#a39a88;--on-ink-faint:#6f6757;
+  --line-d:rgba(235,227,212,0.16);
+}
+html,body{background:var(--ink);color:var(--on-ink);overflow-x:hidden;}
+body{font-family:'Spectral',serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:99;opacity:0.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+img{display:block;max-width:100%;}
+.wrap{max-width:1280px;margin:0 auto;padding:0 2rem;}
+@media(max-width:680px){.wrap{padding:0 1.2rem;}}
+.label{font-family:'Schibsted Grotesk',sans-serif;font-size:0.68rem;font-weight:600;
+  letter-spacing:0.26em;text-transform:uppercase;}
+
+/* MASTHEAD */
+.masthead{padding:5rem 0 3rem;border-bottom:1px solid var(--line-d);}
+.kicker{color:var(--ember);margin-bottom:1.4rem;}
+.masthead h1{font-family:'Newsreader',serif;font-weight:300;
+  font-size:clamp(2.4rem,5vw,4rem);line-height:1.04;letter-spacing:-0.025em;
+  color:var(--bone);margin-bottom:1.2rem;}
+.masthead h1 em{font-style:italic;color:var(--ember);}
+.masthead .lede{color:var(--on-ink-dim);max-width:46rem;font-size:1.1rem;}
+
+/* CONCEPT CARDS */
+.concepts{padding:5rem 0;}
+.concept{
+  border:1px solid var(--line-d);background:linear-gradient(180deg,#161310,#0c0a08);
+  margin-bottom:3rem;overflow:hidden;
+}
+.concept-head{
+  padding:2.2rem 2.4rem 1.6rem;border-bottom:1px solid var(--line-d);
+  display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;flex-wrap:wrap;
+}
+.concept-num{font-family:'Schibsted Grotesk',sans-serif;font-size:0.62rem;font-weight:700;
+  letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;}
+.concept-name{font-family:'Newsreader',serif;font-weight:300;font-size:2rem;color:var(--bone);line-height:1.1;margin-bottom:0.4rem;}
+.concept-name em{font-style:italic;color:var(--ember);}
+.concept-tag{font-style:italic;color:var(--on-ink-dim);}
+.concept-rec{
+  align-self:flex-start;
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.6rem;font-weight:700;
+  letter-spacing:0.16em;text-transform:uppercase;
+  padding:0.4rem 0.9rem;border:1px solid var(--line-d);color:var(--bone);
+}
+.concept-rec.pick{background:var(--ember);color:#fff;border-color:var(--ember);}
+
+/* Button display row */
+.btn-row{padding:3.4rem 2.4rem 2.6rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem;
+  background:radial-gradient(60% 80% at 50% 50%,rgba(40,28,20,0.5),transparent 70%);}
+@media(max-width:760px){.btn-row{grid-template-columns:1fr;}}
+.btn-stage{
+  background:linear-gradient(135deg,#1f1a14,#0d0a07);
+  border:1px solid var(--line-d);
+  padding:3rem 2rem;display:flex;flex-direction:column;align-items:center;gap:1.2rem;
+  min-height:200px;justify-content:center;
+}
+.btn-stage .state{font-family:'Schibsted Grotesk',sans-serif;font-size:0.6rem;font-weight:600;
+  letter-spacing:0.2em;text-transform:uppercase;color:var(--on-ink-faint);margin-bottom:0.4rem;}
+
+/* In-context hero strip */
+.hero-strip{position:relative;height:280px;overflow:hidden;
+  background-image:url('https://guldanjamax.github.io/anthonybalduzzi/optimized/silhouette-wide.jpg');
+  background-size:cover;background-position:30% 50%;}
+.hero-strip::before{content:"";position:absolute;inset:0;
+  background:linear-gradient(95deg,rgba(10,7,12,0.7) 0%,rgba(10,7,12,0.45) 25%,rgba(10,7,12,0.1) 55%,rgba(10,7,12,0.0) 80%,rgba(10,7,12,0.35) 100%),
+    linear-gradient(180deg,rgba(10,7,12,0.35) 0%,rgba(10,7,12,0.0) 30%,rgba(10,7,12,0.0) 65%,rgba(10,7,12,0.55) 100%);}
+.hero-strip .content{position:relative;z-index:2;padding:1.8rem 2.4rem;height:100%;
+  display:flex;flex-direction:column;justify-content:flex-end;gap:1rem;}
+.hero-strip .h{font-family:'Newsreader',serif;font-weight:200;font-size:2.2rem;color:#fff;
+  line-height:0.96;text-shadow:0 4px 20px rgba(0,0,0,0.55);}
+.hero-strip .h em{font-style:italic;color:var(--gold);}
+.hero-strip .label.ctx{color:rgba(255,255,255,0.55);font-size:0.55rem;letter-spacing:0.18em;}
+
+/* Notes */
+.concept-notes{padding:2rem 2.4rem 2.4rem;display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;
+  border-top:1px solid var(--line-d);}
+@media(max-width:680px){.concept-notes{grid-template-columns:1fr;}}
+.concept-notes h4{font-family:'Schibsted Grotesk',sans-serif;font-size:0.62rem;font-weight:700;
+  letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;}
+.concept-notes p{color:var(--on-ink-dim);font-size:0.92rem;line-height:1.6;}
+.concept-notes .spec{font-family:'Schibsted Grotesk',sans-serif;font-size:0.78rem;
+  color:var(--on-ink-faint);line-height:1.7;}
+.concept-notes .spec b{color:var(--on-ink-dim);font-weight:600;}
+
+/* ============================================================ */
+/*  BUTTON CONCEPT A · ETCHED BRONZE                              */
+/* ============================================================ */
+.btn-bronze{
+  position:relative;display:inline-flex;align-items:center;gap:1rem;
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.78rem;font-weight:700;
+  letter-spacing:0.24em;text-transform:uppercase;color:#fff;text-decoration:none;
+  padding:1.3rem 2.5rem;cursor:pointer;border:none;overflow:hidden;
+  background:linear-gradient(135deg,#a87a48 0%,#8c5e30 50%,#6e4a26 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,230,180,0.5),
+    inset 0 -1px 0 rgba(0,0,0,0.45),
+    inset 0 0 0 1px rgba(220,180,100,0.25),
+    0 14px 36px rgba(80,50,20,0.5),
+    0 0 0 1px rgba(0,0,0,0.4),
+    0 0 48px rgba(168,122,72,0.25);
+  text-shadow:0 1px 0 rgba(0,0,0,0.4);
+  transition:transform .35s ease, box-shadow .35s ease;
+}
+.btn-bronze::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.7 0 0 0 0 0.55 0 0 0 0 0.3 0 0 0 0.18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode:overlay;}
+.btn-bronze .ctxt{position:relative;z-index:1;}
+.btn-bronze .arrow{position:relative;z-index:1;display:inline-flex;align-items:center;gap:0.15rem;}
+.btn-bronze .arrow svg{width:18px;height:14px;color:#fff;transition:transform .35s ease;}
+.btn-bronze:hover{transform:translateY(-2px);
+  box-shadow:inset 0 1px 0 rgba(255,230,180,0.6),inset 0 -1px 0 rgba(0,0,0,0.45),
+    inset 0 0 0 1px rgba(240,200,130,0.45),
+    0 20px 46px rgba(80,50,20,0.6),0 0 0 1px rgba(0,0,0,0.4),
+    0 0 64px rgba(216,184,122,0.4);}
+.btn-bronze:hover .arrow svg{transform:translateX(3px);}
+
+/* ============================================================ */
+/*  BUTTON CONCEPT B · FROSTED HALO                               */
+/* ============================================================ */
+.btn-frost{
+  position:relative;display:inline-flex;align-items:center;gap:1rem;
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.78rem;font-weight:600;
+  letter-spacing:0.24em;text-transform:uppercase;color:#fff;text-decoration:none;
+  padding:1.3rem 2.6rem;cursor:pointer;border:1px solid rgba(255,255,255,0.32);
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(16px) saturate(140%);
+  -webkit-backdrop-filter:blur(16px) saturate(140%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.25),
+    inset 0 -1px 0 rgba(0,0,0,0.2),
+    0 12px 36px rgba(0,0,0,0.4);
+  transition:all .4s cubic-bezier(.4,0,.2,1);
+  overflow:hidden;
+}
+.btn-frost::before{content:"";position:absolute;inset:-30%;pointer-events:none;z-index:0;
+  background:radial-gradient(50% 50% at 50% 100%,rgba(216,184,122,0.5),transparent 70%);
+  animation:frostPulse 4s ease-in-out infinite alternate;}
+@keyframes frostPulse{
+  0%{opacity:0.55;transform:translateY(20%) scale(0.9);}
+  100%{opacity:1;transform:translateY(0%) scale(1.1);}
+}
+.btn-frost .ctxt{position:relative;z-index:1;}
+.btn-frost .arrow{position:relative;z-index:1;display:inline-flex;align-items:center;
+  justify-content:center;width:28px;height:28px;border-radius:50%;
+  background:rgba(216,184,122,0.18);border:1px solid rgba(216,184,122,0.5);
+  transition:all .35s ease;}
+.btn-frost .arrow svg{width:13px;height:13px;color:var(--gold);transition:transform .35s ease;}
+.btn-frost:hover{background:rgba(255,255,255,0.14);border-color:rgba(216,184,122,0.7);
+  transform:translateY(-2px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.32),inset 0 -1px 0 rgba(0,0,0,0.2),
+    0 18px 46px rgba(0,0,0,0.5),0 0 64px rgba(216,184,122,0.4);}
+.btn-frost:hover .arrow{background:var(--gold);border-color:var(--gold);}
+.btn-frost:hover .arrow svg{color:var(--ink);transform:translateX(2px);}
+
+/* ============================================================ */
+/*  BUTTON CONCEPT C · CARVED OUTLINE                             */
+/* ============================================================ */
+.btn-carved{
+  position:relative;display:inline-flex;align-items:center;gap:1.2rem;
+  font-family:'Schibsted Grotesk',sans-serif;font-size:0.78rem;font-weight:600;
+  letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);text-decoration:none;
+  padding:1.4rem 2.8rem;cursor:pointer;border:1px solid var(--gold);
+  background:transparent;
+  transition:color .4s ease, background .4s ease, border-color .4s ease, transform .35s ease;
+  overflow:hidden;isolation:isolate;
+}
+/* Second border offset outward for the "carved" double-line look */
+.btn-carved::before{content:"";position:absolute;inset:-6px;pointer-events:none;
+  border:1px solid rgba(216,184,122,0.32);transition:inset .4s ease, opacity .4s ease;}
+/* Ember fill that grows from left on hover */
+.btn-carved::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(90deg,var(--ember) 0%,#8b3f24 100%);
+  transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.6,0,.2,1);}
+.btn-carved .ctxt{position:relative;z-index:1;}
+.btn-carved .arrow{position:relative;z-index:1;display:inline-flex;align-items:center;}
+.btn-carved .arrow svg{width:22px;height:14px;color:currentColor;transition:transform .35s ease;}
+.btn-carved:hover{color:#fff;border-color:transparent;transform:translateY(-2px);}
+.btn-carved:hover::before{inset:-3px;opacity:0;}
+.btn-carved:hover::after{transform:scaleX(1);}
+.btn-carved:hover .arrow svg{transform:translateX(4px);}
+
+/* ============================================================ */
+/*  Hover preview — show what hover looks like without hovering   */
+/* ============================================================ */
+.btn-bronze.is-hover{transform:translateY(-2px);
+  box-shadow:inset 0 1px 0 rgba(255,230,180,0.6),inset 0 -1px 0 rgba(0,0,0,0.45),
+    inset 0 0 0 1px rgba(240,200,130,0.45),
+    0 20px 46px rgba(80,50,20,0.6),0 0 0 1px rgba(0,0,0,0.4),
+    0 0 64px rgba(216,184,122,0.4);}
+.btn-bronze.is-hover .arrow svg{transform:translateX(3px);}
+.btn-frost.is-hover{background:rgba(255,255,255,0.14);border-color:rgba(216,184,122,0.7);
+  transform:translateY(-2px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.32),inset 0 -1px 0 rgba(0,0,0,0.2),
+    0 18px 46px rgba(0,0,0,0.5),0 0 64px rgba(216,184,122,0.4);}
+.btn-frost.is-hover .arrow{background:var(--gold);border-color:var(--gold);}
+.btn-frost.is-hover .arrow svg{color:var(--ink);transform:translateX(2px);}
+.btn-carved.is-hover{color:#fff;border-color:transparent;transform:translateY(-2px);}
+.btn-carved.is-hover::before{inset:-3px;opacity:0;}
+.btn-carved.is-hover::after{transform:scaleX(1);}
+.btn-carved.is-hover .arrow svg{transform:translateX(4px);}
+
+footer{padding:3rem 0;border-top:1px solid var(--line-d);text-align:center;}
+footer .label{color:var(--on-ink-faint);}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="label kicker">CTA Button · 3 designs</div>
+    <h1>Three new <em>button</em> directions.</h1>
+    <p class="lede">Each rendered at rest, in its forced hover state, and embedded in an actual hero strip so you can see how it lands against the desert photography. Same copy, same role: the primary call-to-action. Pick one and I'll wire it into every hero plus the rebuild.</p>
+  </div>
+</header>
+
+<section class="concepts">
+  <div class="wrap">
+
+<!-- ============== CONCEPT A · ETCHED BRONZE ============== -->
+<article class="concept">
+  <div class="concept-head">
+    <div>
+      <div class="concept-num">Direction A</div>
+      <div class="concept-name">Etched <em>Bronze</em></div>
+      <div class="concept-tag">Aged metallic plaque. Heavy, tactile, permanent.</div>
+    </div>
+    <span class="concept-rec pick">↑ Recommended for the brand</span>
+  </div>
+  <div class="btn-row">
+    <div class="btn-stage">
+      <div class="state">At rest</div>
+      <a class="btn-bronze" href="#"><span class="ctxt">Reserve Your Spot</span>
+        <span class="arrow"><svg viewBox="0 0 20 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h15M12 2l5 5-5 5"/></svg></span></a>
+    </div>
+    <div class="btn-stage">
+      <div class="state">Hover state (forced)</div>
+      <a class="btn-bronze is-hover" href="#"><span class="ctxt">Reserve Your Spot</span>
+        <span class="arrow"><svg viewBox="0 0 20 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h15M12 2l5 5-5 5"/></svg></span></a>
+    </div>
+  </div>
+  <div class="hero-strip">
+    <div class="content">
+      <span class="label ctx">In hero context</span>
+      <div class="h">Breakthrough <em>in the</em> Desert</div>
+      <div><a class="btn-bronze" href="#"><span class="ctxt">Reserve Your Spot</span>
+        <span class="arrow"><svg viewBox="0 0 20 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h15M12 2l5 5-5 5"/></svg></span></a></div>
+    </div>
+  </div>
+  <div class="concept-notes">
+    <div>
+      <h4>Strategic rationale</h4>
+      <p>Bronze reads as carved, ceremonial, and old — the same register the brand thesis wants. Heavy drop shadow + inner highlight gives real depth so the button looks pressed into the page rather than painted on. Subtle SVG noise overlay adds a tactile aged-metal feel. The text is embossed (1px shadow) for that "stamped into metal" effect. Hover deepens the warm halo around it.</p>
+    </div>
+    <div>
+      <h4>Visual spec</h4>
+      <p class="spec"><b>BG:</b> linear-gradient 135deg #a87a48 → #8c5e30 → #6e4a26 (aged bronze)<br>
+      <b>Inner highlight:</b> top 1px rgba(255,230,180,.5), bottom 1px rgba(0,0,0,.45)<br>
+      <b>Shadow:</b> 0 14px 36px rgba(80,50,20,.5) + 0 0 48px rgba(168,122,72,.25)<br>
+      <b>Texture:</b> SVG fractal noise overlay at 18% opacity, blend-mode overlay<br>
+      <b>Text:</b> Schibsted Grotesk 700, 0.24em tracking, embossed shadow<br>
+      <b>Hover:</b> lift 2px + intensified gold halo + arrow nudge</p>
+    </div>
+  </div>
+</article>
+
+<!-- ============== CONCEPT B · FROSTED HALO ============== -->
+<article class="concept">
+  <div class="concept-head">
+    <div>
+      <div class="concept-num">Direction B</div>
+      <div class="concept-name">Frosted <em>Halo</em></div>
+      <div class="concept-tag">Glassmorphism with a breathing warm halo behind it.</div>
+    </div>
+    <span class="concept-rec">Modern alternative</span>
+  </div>
+  <div class="btn-row">
+    <div class="btn-stage">
+      <div class="state">At rest</div>
+      <a class="btn-frost" href="#"><span class="ctxt">Reserve Your Spot</span>
+        <span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+    </div>
+    <div class="btn-stage">
+      <div class="state">Hover state (forced)</div>
+      <a class="btn-frost is-hover" href="#"><span class="ctxt">Reserve Your Spot</span>
+        <span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+    </div>
+  </div>
+  <div class="hero-strip">
+    <div class="content">
+      <span class="label ctx">In hero context</span>
+      <div class="h">Breakthrough <em>in the</em> Desert</div>
+      <div><a class="btn-frost" href="#"><span class="ctxt">Reserve Your Spot</span>
+        <span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></div>
+    </div>
+  </div>
+  <div class="concept-notes">
+    <div>
+      <h4>Strategic rationale</h4>
+      <p>The button is a sheet of frosted glass floating over the photo, with a soft warm halo pulsing behind it. Lets the imagery breathe through the button rather than blocking it. Modern, premium, and the slow pulsing halo creates a low-key "this is alive" cue without being needy. The arrow ring inverts on hover from gold-on-glass to ink-on-gold — a quiet but distinctive flip.</p>
+    </div>
+    <div>
+      <h4>Visual spec</h4>
+      <p class="spec"><b>BG:</b> rgba(255,255,255,.08) + backdrop-filter blur(16px) saturate(140%)<br>
+      <b>Border:</b> 1px solid rgba(255,255,255,.32)<br>
+      <b>Halo:</b> radial gradient warm gold behind button, animates 4s pulse<br>
+      <b>Inner highlight:</b> top 1px rgba(255,255,255,.25)<br>
+      <b>Arrow:</b> circular gold-outlined ring; inverts to filled gold on hover<br>
+      <b>Hover:</b> bg lifts to .14 opacity, border to gold, arrow filled, ink-color arrow icon</p>
+    </div>
+  </div>
+</article>
+
+<!-- ============== CONCEPT C · CARVED OUTLINE ============== -->
+<article class="concept">
+  <div class="concept-head">
+    <div>
+      <div class="concept-num">Direction C</div>
+      <div class="concept-name">Carved <em>Outline</em></div>
+      <div class="concept-tag">Letterpress double-rule. Editorial restraint, dramatic hover fill.</div>
+    </div>
+    <span class="concept-rec">Most editorial</span>
+  </div>
+  <div class="btn-row">
+    <div class="btn-stage">
+      <div class="state">At rest</div>
+      <a class="btn-carved" href="#"><span class="ctxt">Reserve Your Spot</span>
+        <span class="arrow"><svg viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h19M15 2l6 5-6 5"/></svg></span></a>
+    </div>
+    <div class="btn-stage">
+      <div class="state">Hover state (forced)</div>
+      <a class="btn-carved is-hover" href="#"><span class="ctxt">Reserve Your Spot</span>
+        <span class="arrow"><svg viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h19M15 2l6 5-6 5"/></svg></span></a>
+    </div>
+  </div>
+  <div class="hero-strip">
+    <div class="content">
+      <span class="label ctx">In hero context</span>
+      <div class="h">Breakthrough <em>in the</em> Desert</div>
+      <div><a class="btn-carved" href="#"><span class="ctxt">Reserve Your Spot</span>
+        <span class="arrow"><svg viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h19M15 2l6 5-6 5"/></svg></span></a></div>
+    </div>
+  </div>
+  <div class="concept-notes">
+    <div>
+      <h4>Strategic rationale</h4>
+      <p>The most restrained option. Just a thin gold outline with a faint second outline offset 6px outward — the "carved" doubled border, like a letterpress card or museum signage. The text and arrow sit in gold inside transparent space. On hover the inner rectangle fills ember from left to right and the text flips to white. The most editorial choice — quiet at rest, dramatic on interaction.</p>
+    </div>
+    <div>
+      <h4>Visual spec</h4>
+      <p class="spec"><b>BG:</b> transparent at rest, fills ember on hover from left<br>
+      <b>Border:</b> 1px solid gold (inner), 1px solid gold at 32% opacity offset -6px (outer)<br>
+      <b>Text:</b> Schibsted Grotesk 600, 0.3em tracking, gold at rest / white on hover<br>
+      <b>Arrow:</b> long thin chevron, matches text color<br>
+      <b>Hover:</b> ember sweep fills L→R over 500ms, outer rule collapses to inner, text turns white, arrow shifts right 4px</p>
+    </div>
+  </div>
+</article>
+
+  </div>
+</section>
+
+<!-- DECISION -->
+<section style="padding:5rem 0;border-top:1px solid var(--line-d);">
+  <div class="wrap">
+    <div class="label" style="color:var(--ember);margin-bottom:1rem;">The call</div>
+    <h2 style="font-family:'Newsreader',serif;font-weight:300;font-size:clamp(1.9rem,3.5vw,2.7rem);color:var(--bone);margin-bottom:1rem;">If it were <em style="font-style:italic;color:var(--ember);">my pick</em>.</h2>
+    <p class="lede" style="color:var(--on-ink-dim);max-width:46rem;font-size:1.05rem;">Direction A · Etched Bronze. It carries the most brand weight — bronze and gold are the brand's metallic register, the carved tactile feel matches the "sacred" framing, and the embossed text reads as a thing that was stamped into existence rather than designed yesterday. Frosted Halo is the close runner-up if you want a more contemporary "Apple-keynote" register. Carved Outline is the move only if the page leans hard editorial and the button needs to disappear at rest.</p>
+    <p class="lede" style="color:var(--on-ink-dim);max-width:46rem;font-size:1.05rem;margin-top:1rem;">Tell me A, B, or C and I'll apply it to all four heroes and the eventual page rebuild. Or call out a mash-up — e.g. "Bronze body, Frosted arrow ring" — and I'll cook it.</p>
+  </div>
+</section>
+
+<footer>
+  <span class="label">Breakthrough in the Desert · Button design v1</span>
+</footer>
+
+</body>
+</html>

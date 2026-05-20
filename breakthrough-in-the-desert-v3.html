@@ -446,7 +446,9 @@ p:last-child { margin-bottom: 0; }
 
 /* ============ 3. PROMISE ============ */
 .promise-sec {
-  background: var(--bone);
+  background-image: url('https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/08-final-cta-full-group.png');
+  background-size: cover;
+  background-position: center;
   padding: 120px 32px;
   position: relative;
 }
@@ -489,7 +491,11 @@ p:last-child { margin-bottom: 0; }
 }
 
 /* ============ 4. LEAVE WITH (3 Cards) ============ */
-.leave-sec { background: var(--bone-soft); border-top: 1px solid rgba(27, 25, 22, 0.08); }
+.leave-sec {
+  background-image: url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-water.jpg');
+  background-size: cover;
+  background-position: center;
+}
 .leave-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -772,8 +778,9 @@ p:last-child { margin-bottom: 0; }
 
 /* ============ 7. SPEAKERS ============ */
 .speakers-sec {
-  background: var(--bone);
-  border-top: 1px solid rgba(27, 25, 22, 0.08);
+  background-image: url('https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/04-friday-stage-view.png');
+  background-size: cover;
+  background-position: center;
 }
 .speakers-intro {
   text-align: center; max-width: 720px; margin: 0 auto 56px;
@@ -981,7 +988,10 @@ p:last-child { margin-bottom: 0; }
 
 /* ============ 9. AGENDA (Day Cards Detail) ============ */
 .agenda-sec {
-  background: var(--bone-soft);
+  background-image: url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-stump-lake.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   padding: 110px 32px;
 }
 .agenda-intro {
@@ -1115,7 +1125,9 @@ p:last-child { margin-bottom: 0; }
 }
 .venue-plate h2 em { font-style: italic; color: var(--gold); font-weight: 300; }
 .venue-body {
-  background: var(--bone);
+  background-image: url('https://guldanjamax.github.io/anthonybalduzzi/optimized/venue-evening-1920.jpg');
+  background-size: cover;
+  background-position: center;
   padding: 80px 32px 100px;
 }
 .venue-location {
@@ -1180,7 +1192,9 @@ p:last-child { margin-bottom: 0; }
 
 /* ============ 11. PRICING ============ */
 .pricing-sec {
-  background: linear-gradient(180deg, var(--bone) 0%, var(--bone-soft) 100%);
+  background-image: url('https://guldanjamax.github.io/anthonybalduzzi/photos-web/duzzi-sunset-rock.jpg');
+  background-size: cover;
+  background-position: center;
   padding: 110px 32px;
 }
 .pricing-deadline {
@@ -1612,6 +1626,193 @@ p:last-child { margin-bottom: 0; }
   opacity: 0.06;
 }
 
+/* ============ DARKEN-BG OVERRIDES ============
+   Applied to sections that get full-bleed photo backgrounds.
+   Inverts text colors and converts cards to frosted glass.
+   ============================================================ */
+.darken-bg {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+.darken-bg::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.85) 100%);
+  z-index: 1;
+}
+.darken-bg > * { position: relative; z-index: 2; }
+
+/* Headings & body text inversion */
+.darken-bg .section-title,
+.darken-bg .promise-title,
+.darken-bg h2, .darken-bg h3, .darken-bg h4 {
+  color: var(--bone);
+  text-shadow: 0 2px 14px rgba(0,0,0,0.5);
+}
+.darken-bg .section-title em,
+.darken-bg .promise-title em,
+.darken-bg h2 em, .darken-bg h3 em {
+  color: var(--gold);
+}
+.darken-bg p {
+  color: rgba(235, 227, 212, 0.92);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+.darken-bg p em { color: var(--bone); }
+.darken-bg p strong { color: var(--bone); }
+.darken-bg .eyebrow,
+.darken-bg [class$="-eyebrow"]:not(.faq-eyebrow):not(.founder-eyebrow):not(.arc-eyebrow):not(.social-eyebrow):not(.pivot-eyebrow):not(.vp-eyebrow) {
+  color: var(--ember-warm);
+}
+
+/* Cards become frosted glass */
+.darken-bg .leave-card,
+.darken-bg .day-card,
+.darken-bg .spk-card,
+.darken-bg .lead-speaker,
+.darken-bg .venue-august {
+  background: rgba(27, 25, 22, 0.65);
+  border: 1px solid rgba(216, 184, 122, 0.20);
+  backdrop-filter: blur(14px) saturate(115%);
+  -webkit-backdrop-filter: blur(14px) saturate(115%);
+}
+.darken-bg .leave-card .leave-num { color: var(--gold); }
+.darken-bg .leave-card .leave-word { color: var(--gold); }
+.darken-bg .leave-card .leave-body { color: rgba(235, 227, 212, 0.88); }
+.darken-bg .leave-card .leave-outcome {
+  color: var(--gold);
+  border-top-color: rgba(216, 184, 122, 0.22);
+}
+.darken-bg .leave-card .leave-icon svg { stroke: var(--gold); }
+
+.darken-bg .day-card .day-label .day { color: var(--gold); }
+.darken-bg .day-card .day-tagline { color: var(--bone); }
+.darken-bg .day-card .day-opener { color: var(--gold); }
+.darken-bg .day-card p { color: rgba(235, 227, 212, 0.88); text-shadow: none; }
+.darken-bg .day-card p em,
+.darken-bg .day-card p strong { color: var(--bone); }
+.darken-bg .day-highlights {
+  background: rgba(0, 0, 0, 0.25);
+  border-left-color: var(--gold);
+}
+.darken-bg .day-highlights li { color: rgba(235, 227, 212, 0.86); }
+.darken-bg .day-highlights li em { color: var(--bone); }
+.darken-bg .jamil-endorsement {
+  color: var(--gold);
+  border-top-color: rgba(216, 184, 122, 0.25);
+}
+
+.darken-bg .spk-card .spk-name { color: var(--bone); }
+.darken-bg .spk-card .spk-title { color: var(--gold); }
+.darken-bg .spk-card .spk-hook { color: rgba(235, 227, 212, 0.85); }
+.darken-bg .spk-card .spk-toggle { color: var(--ember-warm); }
+.darken-bg .spk-card .spk-bio {
+  color: rgba(235, 227, 212, 0.82);
+  border-top-color: rgba(216, 184, 122, 0.18);
+}
+.darken-bg .spk-card .spk-bio .endorse {
+  color: var(--gold);
+  border-top-color: rgba(216, 184, 122, 0.22);
+}
+.darken-bg .spk-card .more-block {
+  background: rgba(216, 184, 122, 0.08);
+}
+.darken-bg .spk-card .more-block span { color: var(--gold); }
+.darken-bg .lead-speaker .ls-name { color: var(--bone); }
+.darken-bg .lead-speaker .ls-title { color: var(--gold); }
+.darken-bg .lead-speaker .ls-bio { color: rgba(235, 227, 212, 0.85); }
+.darken-bg .lead-speaker .ls-tag { color: var(--ember-warm); }
+.darken-bg .speakers-intro,
+.darken-bg .agenda-intro {
+  color: rgba(235, 227, 212, 0.88);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+.darken-bg .agenda-intro-end { color: var(--gold); }
+.darken-bg .speakers-tba .main { color: var(--gold); }
+.darken-bg .speakers-tba .sub { color: rgba(235, 227, 212, 0.75); }
+
+/* Venue body */
+.darken-bg .venue-location { color: var(--gold); }
+.darken-bg .venue-features-title { color: var(--bone); }
+.darken-bg .venue-feature .vf-mark { color: var(--gold); }
+.darken-bg .venue-feature strong { color: var(--bone); }
+.darken-bg .venue-feature span { color: rgba(235, 227, 212, 0.85); }
+.darken-bg .venue-august h3 { color: var(--bone); }
+.darken-bg .venue-august p { color: rgba(235, 227, 212, 0.88); text-shadow: none; }
+.darken-bg .venue-august p.closer { color: var(--gold); }
+
+/* Pricing */
+.darken-bg .pricing-deadline {
+  color: var(--gold);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+.darken-bg .pricing-deadline strong { color: var(--bone); }
+.darken-bg .pricing-scarcity { color: var(--ember-warm); }
+.darken-bg .pricing-scarcity .dot { background: var(--ember-warm); }
+.darken-bg .tier-card:not(.vip) {
+  background: rgba(27, 25, 22, 0.62);
+  border: 1px solid rgba(216, 184, 122, 0.22);
+  backdrop-filter: blur(14px) saturate(115%);
+  -webkit-backdrop-filter: blur(14px) saturate(115%);
+}
+.darken-bg .tier-card:not(.vip) .tier-label { color: var(--gold); }
+.darken-bg .tier-card:not(.vip) .price-current { color: var(--bone); }
+.darken-bg .tier-card:not(.vip) .price-strike { color: rgba(216, 184, 122, 0.65); }
+.darken-bg .tier-card:not(.vip) .tier-tagline { color: var(--gold); }
+.darken-bg .tier-card:not(.vip) .tier-summary { color: rgba(235, 227, 212, 0.85); }
+.darken-bg .tier-card:not(.vip) .tier-features {
+  border-bottom-color: rgba(235, 227, 212, 0.15);
+}
+.darken-bg .tier-card:not(.vip) .tier-features li {
+  color: rgba(235, 227, 212, 0.88);
+}
+.darken-bg .tier-card:not(.vip) .tier-features li::before { background: var(--gold); }
+.darken-bg .tier-card:not(.vip) .tier-features li strong { color: var(--bone); }
+.darken-bg .tier-card:not(.vip) .tier-partner {
+  background: rgba(216, 184, 122, 0.10);
+}
+.darken-bg .tier-card:not(.vip) .tier-partner strong { color: var(--gold); }
+.darken-bg .tier-card:not(.vip) .tier-partner small { color: rgba(235, 227, 212, 0.78); }
+.darken-bg .tier-card:not(.vip) .tier-pay { color: rgba(216, 184, 122, 0.7); }
+.darken-bg .pricing-worth h3 { color: var(--bone); }
+.darken-bg .pricing-worth p { color: rgba(235, 227, 212, 0.88); }
+.darken-bg .pricing-worth .gift-line { color: var(--gold); }
+
+/* Glass button conversion — for all .btn-ember, .tier-cta on dark sections */
+.darken-bg .btn-ember,
+.darken-bg .tier-cta {
+  background: rgba(235, 227, 212, 0.10);
+  border: 1px solid rgba(235, 227, 212, 0.40);
+  color: var(--bone);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.25), inset 0 1px 0 rgba(235, 227, 212, 0.1);
+}
+.darken-bg .btn-ember:hover,
+.darken-bg .tier-cta:hover {
+  background: rgba(235, 227, 212, 0.18);
+  border-color: rgba(216, 184, 122, 0.65);
+}
+/* VIP tier-cta stays gold solid for emphasis on the recommended tier */
+.darken-bg .tier-card.vip .tier-cta {
+  background: var(--gold);
+  border: 1px solid var(--gold);
+  color: var(--ink);
+  backdrop-filter: none;
+}
+.darken-bg .tier-card.vip .tier-cta:hover {
+  background: var(--gold-soft);
+  border-color: var(--gold-soft);
+}
+
+/* Promise section: photo within photo treatment */
+.darken-bg .promise-image {
+  box-shadow: 0 12px 60px rgba(0, 0, 0, 0.5);
+}
+.darken-bg .promise-content p.anchor { color: var(--gold); }
+
 /* ============ ANIMATION ============ */
 .fade-in {
   opacity: 0;
@@ -1727,7 +1928,7 @@ p:last-child { margin-bottom: 0; }
 </section>
 
 <!-- ===== 3. PROMISE ===== -->
-<section class="promise-sec mineral-bg">
+<section class="promise-sec darken-bg">
   <div class="promise-content">
     <div class="eyebrow">The Promise</div>
     <h2 class="promise-title">Breakthrough in the Desert is where you reconnect with your <em>most inspired</em> self and life.</h2>
@@ -1742,7 +1943,7 @@ p:last-child { margin-bottom: 0; }
 </section>
 
 <!-- ===== 4. LEAVE WITH ===== -->
-<section class="leave-sec mineral-bg">
+<section class="leave-sec darken-bg">
   <div class="container-wide">
     <div class="eyebrow">You'll Leave With</div>
     <h2 class="section-title">Three things <em>money can't buy.</em></h2>
@@ -1862,7 +2063,7 @@ p:last-child { margin-bottom: 0; }
 </section>
 
 <!-- ===== 7. SPEAKERS ===== -->
-<section class="speakers-sec mineral-bg">
+<section class="speakers-sec darken-bg">
   <div class="container-xwide">
     <div class="eyebrow">The Faculty</div>
     <h2 class="section-title">The people <em>in the room</em> with you.</h2>
@@ -1995,7 +2196,7 @@ p:last-child { margin-bottom: 0; }
 </section>
 
 <!-- ===== 9. AGENDA DETAIL ===== -->
-<section class="agenda-sec mineral-bg" id="agenda">
+<section class="agenda-sec darken-bg" id="agenda">
   <div class="container-wide">
     <div class="eyebrow">The Full Agenda</div>
     <h2 class="section-title">Three days. One journey. <em>A different you.</em></h2>
@@ -2079,7 +2280,7 @@ p:last-child { margin-bottom: 0; }
       <h2>Where <em>breakthrough</em> happens.</h2>
     </div>
   </div>
-  <div class="venue-body mineral-bg">
+  <div class="venue-body darken-bg">
     <div class="venue-location">Arizona Grand Resort · Phoenix, Arizona</div>
     <p>The desert has been a place of transformation for as long as humans have existed. Jesus. Moses. The Buddha. Indigenous vision quests. Sufi mystics. There's a reason the great traditions all sent their seekers into the desert when something inside them needed to break open.</p>
     <p>You'll spend three days in that same landscape — not roughing it, but rooted in it. The Arizona Grand Resort sits against South Mountain, the largest municipal park in the country, with miles of sunrise hiking trails just steps from the door. The venue is 10 minutes from Phoenix Sky Harbor and a short drive from Sedona and the red rock country if you want to extend your trip.</p>
@@ -2106,7 +2307,7 @@ p:last-child { margin-bottom: 0; }
 </section>
 
 <!-- ===== 11. PRICING ===== -->
-<section class="pricing-sec mineral-bg" id="pricing">
+<section class="pricing-sec darken-bg" id="pricing">
   <div class="container-wide">
     <div class="eyebrow">Reserve Your Spot</div>
     <h2 class="section-title">Two ways to step through <em>the doorway.</em></h2>

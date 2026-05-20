@@ -1576,6 +1576,38 @@ p:last-child { margin-bottom: 0; }
 .footer a:hover { color: var(--gold-soft); }
 .footer p { margin-bottom: 8px; font-size: 13px; }
 
+/* ============ MINERAL TEXTURE SYSTEM ============ */
+/* Apply via class .mineral-bg on any section with a bone-family background.
+   Adds: subtle topographic contour pattern + fine grain + warm corner radial. */
+.mineral-bg { position: relative; overflow: hidden; }
+.mineral-bg > * { position: relative; z-index: 2; }
+.mineral-bg::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  opacity: 0.55;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><g fill='none' stroke='%23A8502E' stroke-width='0.6'><path d='M-40,100 Q80,40 200,100 T440,100'/><path d='M-40,200 Q80,140 200,200 T440,200'/><path d='M-40,300 Q80,240 200,300 T440,300'/><path d='M50,-40 Q90,80 50,200 T50,440'/><path d='M150,-40 Q190,80 150,200 T150,440'/><path d='M250,-40 Q290,80 250,200 T250,440'/><path d='M350,-40 Q390,80 350,200 T350,440'/></g></svg>");
+  background-size: 380px 380px;
+  background-repeat: repeat;
+  mix-blend-mode: multiply;
+  opacity: 0.10;
+}
+.mineral-bg::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 88% 6%, rgba(168, 80, 46, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 4% 96%, rgba(135, 138, 122, 0.08) 0%, transparent 60%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.27 0 0 0 0 0.19 0 0 0 0.45 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+  background-size: cover, cover, 160px 160px;
+  mix-blend-mode: multiply;
+  opacity: 0.45;
+}
+/* Darker mineral variant for the dark ARC section */
+.mineral-bg-dark::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><g fill='none' stroke='%23D8B87A' stroke-width='0.6'><path d='M-40,100 Q80,40 200,100 T440,100'/><path d='M-40,200 Q80,140 200,200 T440,200'/><path d='M-40,300 Q80,240 200,300 T440,300'/><path d='M50,-40 Q90,80 50,200 T50,440'/><path d='M150,-40 Q190,80 150,200 T150,440'/><path d='M250,-40 Q290,80 250,200 T250,440'/></g></svg>");
+  background-size: 380px 380px;
+  opacity: 0.06;
+}
+
 /* ============ ANIMATION ============ */
 .fade-in {
   opacity: 0;
@@ -1691,7 +1723,7 @@ p:last-child { margin-bottom: 0; }
 </section>
 
 <!-- ===== 3. PROMISE ===== -->
-<section class="promise-sec">
+<section class="promise-sec mineral-bg">
   <div class="promise-content">
     <div class="eyebrow">The Promise</div>
     <h2 class="promise-title">Breakthrough in the Desert is where you reconnect with your <em>most inspired</em> self and life.</h2>
@@ -1706,7 +1738,7 @@ p:last-child { margin-bottom: 0; }
 </section>
 
 <!-- ===== 4. LEAVE WITH ===== -->
-<section class="leave-sec">
+<section class="leave-sec mineral-bg">
   <div class="container-wide">
     <div class="eyebrow">You'll Leave With</div>
     <h2 class="section-title">Three things <em>money can't buy.</em></h2>
@@ -1826,7 +1858,7 @@ p:last-child { margin-bottom: 0; }
 </section>
 
 <!-- ===== 7. SPEAKERS ===== -->
-<section class="speakers-sec">
+<section class="speakers-sec mineral-bg">
   <div class="container-xwide">
     <div class="eyebrow">The Faculty</div>
     <h2 class="section-title">The people <em>in the room</em> with you.</h2>
@@ -1959,7 +1991,7 @@ p:last-child { margin-bottom: 0; }
 </section>
 
 <!-- ===== 9. AGENDA DETAIL ===== -->
-<section class="agenda-sec" id="agenda">
+<section class="agenda-sec mineral-bg" id="agenda">
   <div class="container-wide">
     <div class="eyebrow">The Full Agenda</div>
     <h2 class="section-title">Three days. One journey. <em>A different you.</em></h2>
@@ -2043,7 +2075,7 @@ p:last-child { margin-bottom: 0; }
       <h2>Where <em>breakthrough</em> happens.</h2>
     </div>
   </div>
-  <div class="venue-body">
+  <div class="venue-body mineral-bg">
     <div class="venue-location">Arizona Grand Resort · Phoenix, Arizona</div>
     <p>The desert has been a place of transformation for as long as humans have existed. Jesus. Moses. The Buddha. Indigenous vision quests. Sufi mystics. There's a reason the great traditions all sent their seekers into the desert when something inside them needed to break open.</p>
     <p>You'll spend three days in that same landscape — not roughing it, but rooted in it. The Arizona Grand Resort sits against South Mountain, the largest municipal park in the country, with miles of sunrise hiking trails just steps from the door. The venue is 10 minutes from Phoenix Sky Harbor and a short drive from Sedona and the red rock country if you want to extend your trip.</p>
@@ -2070,7 +2102,7 @@ p:last-child { margin-bottom: 0; }
 </section>
 
 <!-- ===== 11. PRICING ===== -->
-<section class="pricing-sec" id="pricing">
+<section class="pricing-sec mineral-bg" id="pricing">
   <div class="container-wide">
     <div class="eyebrow">Reserve Your Spot</div>
     <h2 class="section-title">Two ways to step through <em>the doorway.</em></h2>

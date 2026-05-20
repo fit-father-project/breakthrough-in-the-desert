@@ -115,24 +115,51 @@ img{display:block;max-width:100%;}
   text-align:right;line-height:1.5;text-shadow:0 1px 8px rgba(0,0,0,0.6);}
 
 /* === HERO 1 · DIEHL VIOLET DUSK === */
-#hero1 .hero-bg{background-image:url('https://guldanjamax.github.io/anthonybalduzzi/stock/diehl-violet-dusk.jpg?v=5k');
+#hero1 .hero-bg{
+  background-image:url('https://guldanjamax.github.io/anthonybalduzzi/stock/diehl-violet-dusk.jpg?v=5k');
+  background-image:image-set(
+    url('https://guldanjamax.github.io/anthonybalduzzi/optimized/diehl.avif') type('image/avif'),
+    url('https://guldanjamax.github.io/anthonybalduzzi/optimized/diehl.webp') type('image/webp'),
+    url('https://guldanjamax.github.io/anthonybalduzzi/stock/diehl-violet-dusk.jpg?v=5k') type('image/jpeg'));
   background-position:50% 56%;animation:driftA 22s ease-in-out infinite alternate;}
+@media (max-width:900px){#hero1 .hero-bg{background-image:image-set(
+  url('https://guldanjamax.github.io/anthonybalduzzi/optimized/diehl-1920.avif') type('image/avif'),
+  url('https://guldanjamax.github.io/anthonybalduzzi/optimized/diehl-1920.webp') type('image/webp'),
+  url('https://guldanjamax.github.io/anthonybalduzzi/stock/diehl-violet-dusk.jpg?v=5k') type('image/jpeg'));}}
 @keyframes driftA{0%{transform:scale(1.04) translate(0%,0%);}100%{transform:scale(1.14) translate(-3%,-1.4%);}}
 #hero1 .hero-glow{background:radial-gradient(60% 55% at 76% 38%,rgba(255,170,90,0.5),transparent 65%);
   animation:glowA 9s ease-in-out infinite alternate;}
 @keyframes glowA{0%{opacity:0.55;transform:translateY(0) scale(1);}100%{opacity:1;transform:translateY(-1.8%) scale(1.05);}}
 
 /* === HERO 2 · BEE WIDE VISTA === */
-#hero2 .hero-bg{background-image:url('https://guldanjamax.github.io/anthonybalduzzi/stock/bee-wide-vista.jpg?v=5k');
+#hero2 .hero-bg{
+  background-image:url('https://guldanjamax.github.io/anthonybalduzzi/stock/bee-wide-vista.jpg?v=5k');
+  background-image:image-set(
+    url('https://guldanjamax.github.io/anthonybalduzzi/optimized/bee.avif') type('image/avif'),
+    url('https://guldanjamax.github.io/anthonybalduzzi/optimized/bee.webp') type('image/webp'),
+    url('https://guldanjamax.github.io/anthonybalduzzi/stock/bee-wide-vista.jpg?v=5k') type('image/jpeg'));
   background-position:50% 60%;animation:driftB 26s ease-in-out infinite alternate;}
+@media (max-width:900px){#hero2 .hero-bg{background-image:image-set(
+  url('https://guldanjamax.github.io/anthonybalduzzi/optimized/bee-1920.avif') type('image/avif'),
+  url('https://guldanjamax.github.io/anthonybalduzzi/optimized/bee-1920.webp') type('image/webp'),
+  url('https://guldanjamax.github.io/anthonybalduzzi/stock/bee-wide-vista.jpg?v=5k') type('image/jpeg'));}}
 @keyframes driftB{0%{transform:scale(1.1) translate(1.6%,0.6%);}100%{transform:scale(1.02) translate(-1.6%,-0.8%);}}
 #hero2 .hero-glow{background:radial-gradient(70% 60% at 50% 38%,rgba(255,210,140,0.36),transparent 65%);
   animation:glowB 12s ease-in-out infinite alternate;}
 @keyframes glowB{0%{opacity:0.7;transform:translateY(0);}100%{opacity:1;transform:translateY(-1%);}}
 
 /* === HERO 3 · ANTHONY SILHOUETTE (NEW TOP PICK) === */
-#hero3 .hero-bg{background-image:url('https://guldanjamax.github.io/anthonybalduzzi/optimized/duzzi-silhouette-4k.jpg');
+#hero3 .hero-bg{
+  background-image:url('https://guldanjamax.github.io/anthonybalduzzi/optimized/duzzi-silhouette-4k.jpg');
+  background-image:image-set(
+    url('https://guldanjamax.github.io/anthonybalduzzi/optimized/silhouette.avif') type('image/avif'),
+    url('https://guldanjamax.github.io/anthonybalduzzi/optimized/silhouette.webp') type('image/webp'),
+    url('https://guldanjamax.github.io/anthonybalduzzi/optimized/duzzi-silhouette-4k.jpg') type('image/jpeg'));
   background-position:60% 55%;animation:driftC 28s ease-in-out infinite alternate;}
+@media (max-width:900px){#hero3 .hero-bg{background-image:image-set(
+  url('https://guldanjamax.github.io/anthonybalduzzi/optimized/silhouette-1920.avif') type('image/avif'),
+  url('https://guldanjamax.github.io/anthonybalduzzi/optimized/silhouette-1920.webp') type('image/webp'),
+  url('https://guldanjamax.github.io/anthonybalduzzi/optimized/duzzi-silhouette-4k.jpg') type('image/jpeg'));}}
 @keyframes driftC{0%{transform:scale(1.04) translate(0%,0%);}100%{transform:scale(1.10) translate(-2%,-1.2%);}}
 #hero3 .hero-glow{background:radial-gradient(75% 55% at 50% 60%,rgba(255,160,140,0.3),transparent 60%);
   animation:glowC 11s ease-in-out infinite alternate;}
@@ -149,8 +176,17 @@ img{display:block;max-width:100%;}
     linear-gradient(180deg,rgba(10,7,12,0.45) 0%,rgba(10,7,12,0.0) 22%,rgba(10,7,12,0.0) 65%,rgba(10,7,12,0.55) 100%);}
 
 /* === HERO 4 · ANTHONY ON SUNSET ROCK === */
-#hero4 .hero-bg{background-image:url('https://guldanjamax.github.io/anthonybalduzzi/optimized/duzzi-sunset-rock-4k.jpg');
+#hero4 .hero-bg{
+  background-image:url('https://guldanjamax.github.io/anthonybalduzzi/optimized/duzzi-sunset-rock-4k.jpg');
+  background-image:image-set(
+    url('https://guldanjamax.github.io/anthonybalduzzi/optimized/sunset-rock.avif') type('image/avif'),
+    url('https://guldanjamax.github.io/anthonybalduzzi/optimized/sunset-rock.webp') type('image/webp'),
+    url('https://guldanjamax.github.io/anthonybalduzzi/optimized/duzzi-sunset-rock-4k.jpg') type('image/jpeg'));
   background-position:50% 45%;animation:driftD 30s ease-in-out infinite alternate;}
+@media (max-width:900px){#hero4 .hero-bg{background-image:image-set(
+  url('https://guldanjamax.github.io/anthonybalduzzi/optimized/sunset-rock-1920.avif') type('image/avif'),
+  url('https://guldanjamax.github.io/anthonybalduzzi/optimized/sunset-rock-1920.webp') type('image/webp'),
+  url('https://guldanjamax.github.io/anthonybalduzzi/optimized/duzzi-sunset-rock-4k.jpg') type('image/jpeg'));}}
 @keyframes driftD{0%{transform:scale(1.06) translate(0.4%,0.2%);}100%{transform:scale(1.1) translate(-1.4%,-1%);}}
 #hero4 .hero-glow{background:radial-gradient(60% 50% at 40% 30%,rgba(255,180,110,0.32),transparent 60%);
   animation:glowD 13s ease-in-out infinite alternate;}

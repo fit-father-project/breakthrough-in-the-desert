@@ -917,6 +917,49 @@ p:last-child { margin-bottom: 0; }
   font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
   color: var(--gold);
 }
+/* Couples Spotlight (above the wall) */
+.couples-spotlight { margin-bottom: 48px; }
+.cs-eyebrow {
+  font-family: var(--label); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--gold); text-align: center; margin-bottom: 20px;
+}
+.cs-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+}
+.cs-card {
+  background: rgba(235, 227, 212, 0.08);
+  border: 1px solid rgba(216, 184, 122, 0.30);
+  backdrop-filter: blur(14px) saturate(115%);
+  -webkit-backdrop-filter: blur(14px) saturate(115%);
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 0;
+}
+.cs-card picture, .cs-card img {
+  display: block; width: 100%; height: auto;
+}
+.cs-card figcaption {
+  padding: 22px 26px 24px;
+}
+.cs-card blockquote {
+  font-family: var(--body); font-size: 15.5px; line-height: 1.55;
+  color: var(--bone); font-style: italic; margin: 0 0 14px;
+}
+.cs-card cite {
+  font-family: var(--label); font-size: 10.5px; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); font-style: normal;
+}
+@media (max-width: 880px) {
+  .cs-grid { grid-template-columns: 1fr; }
+}
+
+/* Expand tw-grid to handle more cards */
+.tw-grid { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 880px) { .tw-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .tw-grid { grid-template-columns: 1fr; } }
+
 .testimonials-wall { margin-top: 16px; }
 .testimonials-wall-title {
   text-align: center; margin-bottom: 32px;
@@ -2611,30 +2654,57 @@ p:last-child { margin-bottom: 0; }
       <div class="stat"><span class="sn">2025</span><span class="sl">A sold-out first year</span></div>
     </div>
 
+    <!-- Couples Spotlight -->
+    <div class="couples-spotlight">
+      <div class="cs-eyebrow">Couples come back together</div>
+      <div class="cs-grid">
+        <figure class="cs-card">
+          <picture>
+            <source type="image/webp" srcset="https://guldanjamax.github.io/anthonybalduzzi/attendees/couple-brian-renee.webp">
+            <img src="https://guldanjamax.github.io/anthonybalduzzi/attendees/couple-brian-renee.jpg" alt="Brian and Renee Davis holding a Stronger Together sign at the 2025 event." loading="lazy" />
+          </picture>
+          <figcaption>
+            <blockquote>"There's been a whole new layer of mindset growth for us since being at Live. Identifying limiting beliefs has put us on a whole new trajectory. We walked away with more tools and friends than we knew were possible."</blockquote>
+            <cite>Brian &amp; Renee Davis · 2025</cite>
+          </figcaption>
+        </figure>
+        <figure class="cs-card">
+          <picture>
+            <source type="image/webp" srcset="https://guldanjamax.github.io/anthonybalduzzi/attendees/couple-bruce-donna.webp">
+            <img src="https://guldanjamax.github.io/anthonybalduzzi/attendees/couple-bruce-donna.jpg" alt="Bruce and Donna Bowerman in a studio portrait." loading="lazy" />
+          </picture>
+          <figcaption>
+            <blockquote>"Donna and I had an amazing weekend — great speakers, great food, and we did our first cold plunge together. A wonderful, mind-changing experience. If you ever get a chance to attend a Live event, do what you can to get there."</blockquote>
+            <cite>Bruce &amp; Donna Bowerman · 2025</cite>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+
     <div class="glass-grid glass-grid-6">
       <div class="glass-card">
-        <div class="avatar" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/attendees/Thomas_S.webp')"></div>
-        <div class="copy">"If fear of the unknown was the main thing holding you back, be not concerned. They've got you covered."<span class="gn">Thomas Shields · 2025</span></div>
-      </div>
-      <div class="glass-card">
         <div class="avatar" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/attendees/Geoff_R.webp')"></div>
-        <div class="copy">"I came home with 15 pages of handwritten notes to process and integrate into my life."<span class="gn">Geoff Rothman · 2025</span></div>
+        <div class="copy">"FFFM Live25 was insane — 15 pages of handwritten notes to integrate into my life. The friendships you forge here will carry you through all the ups and downs of life."<span class="gn">Geoff Rothmann · 2025</span></div>
       </div>
       <div class="glass-card">
         <div class="avatar" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/attendees/Christopher_T.webp')"></div>
-        <div class="copy">"In our weakest moments, the strongest version of ourselves is waiting to be born. This weekend confirmed it."<span class="gn">Christopher Thatcher · 2025</span></div>
+        <div class="copy">"We can't become a stronger version of ourselves until we're at our weakest — and able to reshape ourselves into the version we want to be."<span class="gn">Christopher Thatcher · 2025</span></div>
       </div>
       <div class="glass-card">
-        <div class="avatar" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/attendees/Mike_F.webp')"></div>
-        <div class="copy">"Tears were shed, hugs were given, minds and eyes were opened. If you can make it to a Live event, do it."<span class="gn">Mike Fairlie · 2025</span></div>
+        <div class="avatar" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/attendees/Mike_F_v2.webp')"></div>
+        <div class="copy">"Tears were shed, hugs were given, minds and eyes were opened. I'm an introvert — this was a big deal for me, well out of my comfort zone. I'm so glad I went."<span class="gn">Mike Fairlie · 2025</span></div>
       </div>
       <div class="glass-card">
         <div class="avatar" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/attendees/Erik_C.webp')"></div>
-        <div class="copy">"What an amazing, wonderful experience. This was soul changing. FFP works — I don't need to look anywhere else."<span class="gn">Erik Cochran · 2025</span></div>
+        <div class="copy">"I'd been looking for quick answers — that's the BS that got me to my max weight. This conference came exactly when I was open to listen. FFP works. Soul-changing."<span class="gn">Erik Cochran · 2025</span></div>
       </div>
       <div class="glass-card">
-        <div class="avatar" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/attendees/Bruce_B.webp')"></div>
-        <div class="copy">"Donna and I got to do our first cold plunge together. What a chilling experience, pun intended."<span class="gn">Bruce Bowerman · 2025</span></div>
+        <div class="avatar" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/attendees/Thomas_S_v2.webp')"></div>
+        <div class="copy">"If fear of the unknown was the main thing holding you back, be not concerned. They've got you covered."<span class="gn">Thomas Shields · 2025</span></div>
+      </div>
+      <div class="glass-card">
+        <div class="avatar" style="background-image:url('https://guldanjamax.github.io/anthonybalduzzi/attendees/Ron_K.webp')"></div>
+        <div class="copy">"Overcoming adversity is what propels us into our own greatness — whatever that greatness is to you. A truly amazing weekend."<span class="gn">Ron Kietzman · 2025</span></div>
       </div>
     </div>
 
@@ -2642,16 +2712,28 @@ p:last-child { margin-bottom: 0; }
       <div class="testimonials-wall-title">More from the room</div>
       <div class="tw-grid">
         <div class="tw-card">
+          <div class="tq">"It's hard to describe what it's like to spend 3 days with several hundred like-minded people — you just don't find that in other places. You've got to do it."</div>
+          <div class="ta">Matt Jagst · 2025</div>
+        </div>
+        <div class="tw-card">
+          <div class="tq">"Another extraordinary Fit Father bucket-list experience. Everything I learned, and all the time I got with every single person here, was well worth it. My family, my tribe continues to grow."</div>
+          <div class="ta">Jim Dickerell · 2025</div>
+        </div>
+        <div class="tw-card">
+          <div class="tq">"I came to FFP for physical fitness. What I didn't expect was the tools to grow mentally and emotionally too. I see it, my family sees it, my friends have noticed the change."</div>
+          <div class="ta">Nick Tieken · 2025</div>
+        </div>
+        <div class="tw-card">
+          <div class="tq">"I came with my wife, and it has been an amazing event. The team has outdone themselves — great speakers, great events, and a chance to meet the FFP and FMP brothers and sisters in person."</div>
+          <div class="ta">Scott Southern · 2025</div>
+        </div>
+        <div class="tw-card">
           <div class="tq">"I don't people well. I felt this conference had a spot for us too. What a great group of folks."</div>
           <div class="ta">Zebb Seabrook · 2025</div>
         </div>
         <div class="tw-card">
-          <div class="tq">"I know the FFP is your job, but I know that it's so much more than that as well. I see the change in myself — my family sees it, my friends have noticed how I relate to others."</div>
-          <div class="ta">Nick Tieken · 2025</div>
-        </div>
-        <div class="tw-card">
-          <div class="tq">"I am where I am supposed to be at this moment by God's plan. Overcoming adversity is what propels us into our own greatness."</div>
-          <div class="ta">Ron Kietzman · 2025</div>
+          <div class="tq">"FFP Live event was monumental. It was amazing to meet and share stories with other fit fathers in person. I now have voices to go along with the avatars in the app."</div>
+          <div class="ta">Brian Davis · 2025</div>
         </div>
       </div>
     </div>

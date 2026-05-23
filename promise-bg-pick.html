@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Promise background — pick one</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="favicon-32x32.png" type="image/png" sizes="32x32" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bone: #ebE3d4;
+    --gold: #d8b87a;
+    --ember: #a8502e;
+    --ink: #0a0908;
+    --display: 'Cormorant Garamond', serif;
+    --label: 'Inter', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--ink); color: var(--bone);
+    font-family: var(--label); font-weight: 400;
+    min-height: 100vh; padding: 60px 32px;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 48px; }
+  h1 {
+    font-family: var(--display); font-weight: 300;
+    font-size: clamp(34px, 4.8vw, 54px); line-height: 1.05;
+    letter-spacing: -0.02em; margin-bottom: 14px;
+  }
+  h1 em { color: var(--gold); font-style: italic; }
+  .sub {
+    font-size: 16px; line-height: 1.55;
+    color: rgba(235,227,212,0.75); max-width: 720px; margin: 0 auto;
+  }
+  .grid {
+    display: grid; gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  .card {
+    background: rgba(235,227,212,0.04);
+    border: 1px solid rgba(235,227,212,0.12);
+    border-radius: 4px; overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    display: flex; flex-direction: column;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(216, 184, 122, 0.45);
+    box-shadow: 0 18px 56px rgba(0,0,0,0.5);
+  }
+  .preview {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background-size: cover; background-position: center;
+    border-bottom: 1px solid rgba(235,227,212,0.08);
+  }
+  .p-charcoal { background-color: #0a0908; background-image: none; }
+  .p-sandstone { background-image: url('optimized/sandstone-strata.jpg'); }
+  .p-darken { background-image: url('optimized/promise-community-1920.webp'); }
+  .p-darken::after {
+    content: ''; position: absolute; inset: 0;
+    background: rgba(10,9,8,0.72);
+  }
+  .p-vista { background-image: url('stock/seidl-saguaro-np-sunrise.jpg'); background-position: center 45%; }
+
+  /* Mini frosted card preview overlay */
+  .preview .mock {
+    position: absolute; inset: 18px;
+    background: rgba(27, 25, 22, 0.72);
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    border: 1px solid rgba(216, 184, 122, 0.22);
+    border-radius: 4px;
+    padding: 14px 16px;
+    display: flex; flex-direction: column; justify-content: center;
+    color: var(--bone);
+    z-index: 2;
+  }
+  .mock .m-eye { font-size: 7px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--ember); margin-bottom: 5px; text-align: center; }
+  .mock .m-title { font-family: var(--display); font-size: 14px; line-height: 1.1; text-align: center; margin-bottom: 6px; }
+  .mock .m-title em { font-style: italic; color: var(--gold); }
+  .mock .m-body { font-size: 7.5px; line-height: 1.45; color: rgba(235,227,212,0.85); margin-bottom: 5px; }
+  .mock .m-anchor { font-family: var(--display); font-style: italic; font-size: 9.5px; color: var(--gold); text-align: center; line-height: 1.3; padding: 5px 0; border-top: 1px solid rgba(216,184,122,0.25); border-bottom: 1px solid rgba(216,184,122,0.25); margin: 4px 0; }
+  .mock .m-closer { font-size: 7px; line-height: 1.4; color: rgba(235,227,212,0.78); }
+
+  .body { padding: 22px 22px 24px; flex: 1; display: flex; flex-direction: column; }
+  .title { font-family: var(--display); font-weight: 400; font-size: 22px; line-height: 1.15; margin-bottom: 8px; }
+  .desc { font-size: 13.5px; line-height: 1.55; color: rgba(235,227,212,0.75); flex: 1; margin-bottom: 16px; }
+  .actions { display: flex; gap: 10px; }
+  .btn {
+    flex: 1; text-align: center;
+    font-family: var(--label); font-size: 11px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--bone); text-decoration: none;
+    padding: 11px 14px;
+    border: 1px solid rgba(216,184,122,0.55);
+    background: rgba(216,184,122,0.12);
+    border-radius: 2px;
+    transition: all 0.25s ease;
+  }
+  .btn:hover { background: rgba(216,184,122,0.25); }
+  footer { margin-top: 48px; text-align: center; font-size: 13px; color: rgba(235,227,212,0.45); }
+  footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Promise background <em>— pick one</em></h1>
+    <p class="sub">You loved the original layout (frosted card on a desert background) but felt the community-photo background was too busy. Same exact layout and copy across all four — only the background image changes.</p>
+  </header>
+
+  <div class="grid">
+
+    <article class="card">
+      <div class="preview p-charcoal">
+        <div class="mock">
+          <div class="m-eye">THE PROMISE</div>
+          <div class="m-title">Breakthrough in the Desert is where you make the <em>jump forward</em>.</div>
+          <div class="m-body">You come here to do the work...</div>
+          <div class="m-anchor">A clear 90-day plan. A real breakthrough. A tribe of 150.</div>
+          <div class="m-closer">This is what happens when the right people...</div>
+        </div>
+      </div>
+      <div class="body">
+        <h2 class="title">Charcoal (no photo)</h2>
+        <p class="desc"><strong>Pure dark background, no image at all.</strong> Most copy-focused. The frosted card sits on solid charcoal that matches the rest of the page palette. Quietest, most letter-like. Risk: breaks the pattern of photo-backed sections.</p>
+        <div class="actions"><a href="promise-bg-charcoal.html" class="btn">View full →</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="preview p-sandstone">
+        <div class="mock">
+          <div class="m-eye">THE PROMISE</div>
+          <div class="m-title">Breakthrough in the Desert is where you make the <em>jump forward</em>.</div>
+          <div class="m-body">You come here to do the work...</div>
+          <div class="m-anchor">A clear 90-day plan. A real breakthrough. A tribe of 150.</div>
+          <div class="m-closer">This is what happens when the right people...</div>
+        </div>
+      </div>
+      <div class="body">
+        <h2 class="title">Sandstone texture</h2>
+        <p class="desc"><strong>Abstract red-rock strata texture, no scene.</strong> Atmospheric without being a literal photo. Reads as "desert" but doesn't compete for attention. Warm palette stays. My recommended pick.</p>
+        <div class="actions"><a href="promise-bg-sandstone.html" class="btn">View full →</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="preview p-darken">
+        <div class="mock">
+          <div class="m-eye">THE PROMISE</div>
+          <div class="m-title">Breakthrough in the Desert is where you make the <em>jump forward</em>.</div>
+          <div class="m-body">You come here to do the work...</div>
+          <div class="m-anchor">A clear 90-day plan. A real breakthrough. A tribe of 150.</div>
+          <div class="m-closer">This is what happens when the right people...</div>
+        </div>
+      </div>
+      <div class="body">
+        <h2 class="title">Community photo, much darker</h2>
+        <p class="desc"><strong>Same community photo, with a 72% black overlay on top.</strong> Photo is still there but barely visible — just enough to feel a hint of human energy. Most conservative change. Best if you want to keep the photo's spirit without the distraction.</p>
+        <div class="actions"><a href="promise-bg-darken.html" class="btn">View full →</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="preview p-vista">
+        <div class="mock">
+          <div class="m-eye">THE PROMISE</div>
+          <div class="m-title">Breakthrough in the Desert is where you make the <em>jump forward</em>.</div>
+          <div class="m-body">You come here to do the work...</div>
+          <div class="m-anchor">A clear 90-day plan. A real breakthrough. A tribe of 150.</div>
+          <div class="m-closer">This is what happens when the right people...</div>
+        </div>
+      </div>
+      <div class="body">
+        <h2 class="title">Quiet desert vista (Saguaro sunrise)</h2>
+        <p class="desc"><strong>A different desert landscape — Saguaro NP at sunrise, no people.</strong> Same warm palette as the hero. Calmer than the community photo. Visually consistent with the rest of the page's photo treatment.</p>
+        <div class="actions"><a href="promise-bg-vista.html" class="btn">View full →</a></div>
+      </div>
+    </article>
+
+  </div>
+
+  <footer>
+    All four use the exact same layout and copy. Only the background differs. Test on phone + desktop, then tell me your pick.
+  </footer>
+
+</div>
+</body>
+</html>

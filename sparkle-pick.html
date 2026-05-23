@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pixie-dust sparkles — pick one</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="favicon-32x32.png" type="image/png" sizes="32x32" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bone: #ebE3d4;
+    --gold: #d8b87a;
+    --ember: #a8502e;
+    --ink: #0a0908;
+    --display: 'Cormorant Garamond', serif;
+    --label: 'Inter', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--ink); color: var(--bone);
+    font-family: var(--label); font-weight: 400;
+    min-height: 100vh; padding: 60px 32px;
+  }
+  .wrap { max-width: 1280px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 40px; }
+  h1 {
+    font-family: var(--display); font-weight: 300;
+    font-size: clamp(34px, 4.8vw, 54px); line-height: 1.05;
+    letter-spacing: -0.02em; margin-bottom: 14px;
+  }
+  h1 em { color: var(--gold); font-style: italic; }
+  .sub {
+    font-size: 16px; line-height: 1.55;
+    color: rgba(235,227,212,0.75); max-width: 720px; margin: 0 auto;
+  }
+  .grid {
+    display: grid; gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    margin-top: 8px;
+  }
+  .card {
+    background: rgba(235,227,212,0.04);
+    border: 1px solid rgba(235,227,212,0.12);
+    border-radius: 4px; overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    display: flex; flex-direction: column;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(216, 184, 122, 0.45);
+    box-shadow: 0 18px 56px rgba(0,0,0,0.5);
+  }
+  .preview {
+    position: relative;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    background: var(--ink);
+    border-bottom: 1px solid rgba(235,227,212,0.08);
+  }
+  .preview .bg {
+    position: absolute; inset: 0;
+    background: url('optimized/bee-1920.webp') center/cover;
+    /* No animation — image is fully still */
+  }
+  .preview .sp-layer {
+    position: absolute; inset: 0; z-index: 2;
+    pointer-events: none; overflow: hidden;
+  }
+  .preview .vignette {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse at 50% 50%, rgba(10,9,8,0.40) 0%, rgba(10,9,8,0.10) 50%, rgba(10,9,8,0.50) 100%),
+      linear-gradient(180deg, rgba(10,9,8,0.45) 0%, rgba(10,9,8,0.18) 35%, rgba(10,9,8,0.15) 55%, rgba(10,9,8,0.80) 100%);
+    z-index: 3;
+  }
+  .preview .stack {
+    position: absolute; inset: 0; z-index: 4;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; color: var(--bone);
+    padding: 16px;
+  }
+  .stack .presents {
+    font-family: var(--label); font-size: 8px;
+    color: var(--gold); letter-spacing: 0.26em;
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .stack .ttl {
+    font-family: var(--display); font-weight: 300;
+    font-size: 30px; line-height: 0.92; letter-spacing: -0.02em;
+  }
+  .stack .ttl em { font-style: italic; color: var(--gold); display: block; font-size: 26px; margin-top: 2px; }
+  .stack .meta {
+    margin-top: 8px; font-size: 8.5px;
+    letter-spacing: 0.14em; color: var(--gold);
+  }
+
+  /* === Sparkle particle styles (mirror full-page CSS) === */
+  .sp {
+    position: absolute; border-radius: 50%;
+    will-change: opacity, transform;
+  }
+  /* Fireflies */
+  .firefly {
+    background: radial-gradient(circle, rgba(255, 235, 175, 1) 0%, rgba(255, 215, 130, 0.55) 45%, transparent 75%);
+    box-shadow: 0 0 6px rgba(255, 215, 130, 0.5);
+    animation: pTwinkle var(--dur, 5s) ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
+  }
+  @keyframes pTwinkle {
+    0%, 100% { opacity: 0; transform: scale(0.35); }
+    50%      { opacity: var(--peak, 0.7); transform: scale(1); }
+  }
+  /* Dust */
+  .dust {
+    background: radial-gradient(circle, rgba(255, 240, 210, 1) 0%, rgba(255, 230, 180, 0.4) 50%, transparent 75%);
+    box-shadow: 0 0 4px rgba(255, 230, 180, 0.4);
+    animation: pDust var(--dur, 18s) linear infinite;
+    animation-delay: var(--delay, 0s);
+  }
+  @keyframes pDust {
+    0%   { transform: translate(0, 0) scale(0.6); opacity: 0; }
+    10%  { opacity: var(--peak, 0.5); }
+    90%  { opacity: var(--peak, 0.5); }
+    100% { transform: translate(var(--drift-x, 2vw), var(--drift-y, -100%)) scale(0.7); opacity: 0; }
+  }
+  /* Glints */
+  .glint {
+    background: radial-gradient(circle, rgba(255, 250, 230, 1) 0%, rgba(255, 220, 150, 0.7) 30%, transparent 70%);
+    box-shadow: 0 0 14px rgba(255, 220, 150, 0.55), 0 0 4px rgba(255, 250, 230, 0.9);
+    animation: pGlint var(--dur, 6s) ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
+  }
+  @keyframes pGlint {
+    0%, 85%, 100% { opacity: 0; transform: scale(0.3); }
+    88%, 92%      { opacity: var(--peak, 0.9); transform: scale(1.15); }
+    90%           { opacity: var(--peak, 0.9); transform: scale(1.3); }
+  }
+
+  .body { padding: 22px 22px 24px; flex: 1; display: flex; flex-direction: column; }
+  .title { font-family: var(--display); font-weight: 400; font-size: 22px; line-height: 1.15; margin-bottom: 8px; }
+  .desc { font-size: 13.5px; line-height: 1.55; color: rgba(235,227,212,0.72); flex: 1; margin-bottom: 16px; }
+  .actions { display: flex; gap: 10px; }
+  .btn {
+    flex: 1; text-align: center;
+    font-family: var(--label); font-size: 11px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--bone); text-decoration: none;
+    padding: 11px 14px;
+    border: 1px solid rgba(216,184,122,0.55);
+    background: rgba(216,184,122,0.12);
+    border-radius: 2px;
+    transition: all 0.25s ease;
+  }
+  .btn:hover { background: rgba(216,184,122,0.25); }
+  footer { margin-top: 48px; text-align: center; font-size: 13px; color: rgba(235,227,212,0.45); }
+  footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Pixie-dust sparkles <em>— pick one</em></h1>
+    <p class="sub">Image stays completely still. The only motion is subtle points of light in the air — like dust catching sunlight, or fireflies. Four flavors of the same idea at varying density and rhythm.</p>
+  </header>
+
+  <div class="grid">
+
+    <article class="card">
+      <div class="preview">
+        <div class="bg"></div>
+        <div class="sp-layer" id="layer-fireflies"></div>
+        <div class="vignette"></div>
+        <div class="stack">
+          <div class="presents">FIT FATHER + FIT MOTHER PRESENT</div>
+          <div class="ttl">Breakthrough<em>in the Desert</em></div>
+          <div class="meta">Aug 7–9 · From $845</div>
+        </div>
+      </div>
+      <div class="body">
+        <h2 class="title">1. Fireflies</h2>
+        <p class="desc">~22 soft warm points of light suspended in the air, each fading in and out at its own rhythm. Mostly stationary — they twinkle in place. Most "fireflies at golden hour."</p>
+        <div class="actions"><a href="sparkle-fireflies.html" class="btn">View full →</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="preview">
+        <div class="bg"></div>
+        <div class="sp-layer" id="layer-dust"></div>
+        <div class="vignette"></div>
+        <div class="stack">
+          <div class="presents">FIT FATHER + FIT MOTHER PRESENT</div>
+          <div class="ttl">Breakthrough<em>in the Desert</em></div>
+          <div class="meta">Aug 7–9 · From $845</div>
+        </div>
+      </div>
+      <div class="body">
+        <h2 class="title">2. Dust motes</h2>
+        <p class="desc">~48 tiny particles drift slowly upward across the frame while twinkling. Most "sun catching dust in the desert air." More motion than fireflies, but each particle is smaller.</p>
+        <div class="actions"><a href="sparkle-dust.html" class="btn">View full →</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="preview">
+        <div class="bg"></div>
+        <div class="sp-layer" id="layer-glints"></div>
+        <div class="vignette"></div>
+        <div class="stack">
+          <div class="presents">FIT FATHER + FIT MOTHER PRESENT</div>
+          <div class="ttl">Breakthrough<em>in the Desert</em></div>
+          <div class="meta">Aug 7–9 · From $845</div>
+        </div>
+      </div>
+      <div class="body">
+        <h2 class="title">3. Crystal glints</h2>
+        <p class="desc">~14 larger, brighter pops of light flicker on and off sharply — like sun catching glass or crystal facets. Fewer particles, more dramatic each. Most "magical."</p>
+        <div class="actions"><a href="sparkle-glints.html" class="btn">View full →</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="preview">
+        <div class="bg"></div>
+        <div class="sp-layer" id="layer-mystic"></div>
+        <div class="vignette"></div>
+        <div class="stack">
+          <div class="presents">FIT FATHER + FIT MOTHER PRESENT</div>
+          <div class="ttl">Breakthrough<em>in the Desert</em></div>
+          <div class="meta">Aug 7–9 · From $845</div>
+        </div>
+      </div>
+      <div class="body">
+        <h2 class="title">4. Mystic mix</h2>
+        <p class="desc">All three layered together — 18 fireflies + 22 drifting dust motes + 6 sharper glints. The most full and ethereal of the bunch. Risk: could feel busy. Reward: most depth.</p>
+        <div class="actions"><a href="sparkle-mystic.html" class="btn">View full →</a></div>
+      </div>
+    </article>
+
+  </div>
+
+  <footer>
+    Image is completely still in all four — only the lights move. Test on phone + desktop. Tell me your pick (or "denser fireflies but fewer glints" etc).
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  function spawn(layerId, kind, count, opts) {
+    const c = document.getElementById(layerId);
+    if (!c) return;
+    for (let i = 0; i < count; i++) {
+      const s = document.createElement('span');
+      s.className = 'sp ' + kind;
+      const size = opts.sizeMin + Math.random() * (opts.sizeMax - opts.sizeMin);
+      s.style.width = size + 'px';
+      s.style.height = size + 'px';
+      s.style.left = Math.random() * 100 + '%';
+      s.style.top = (opts.topMin + Math.random() * opts.topRange) + '%';
+      const dur = opts.durMin + Math.random() * (opts.durMax - opts.durMin);
+      s.style.setProperty('--dur', dur.toFixed(2) + 's');
+      s.style.setProperty('--delay', (Math.random() * -dur).toFixed(2) + 's');
+      s.style.setProperty('--peak', (opts.peakMin + Math.random() * (opts.peakMax - opts.peakMin)).toFixed(2));
+      if (kind === 'dust') {
+        s.style.setProperty('--drift-x', (Math.random() * 6 - 3).toFixed(1) + 'vw');
+        s.style.setProperty('--drift-y', (-60 - Math.random() * 50).toFixed(1) + '%');
+      }
+      c.appendChild(s);
+    }
+  }
+
+  // Fireflies preview
+  spawn('layer-fireflies', 'firefly', 14, { sizeMin: 1.6, sizeMax: 3.6, topMin: 5, topRange: 80, durMin: 3.5, durMax: 7, peakMin: 0.5, peakMax: 0.8 });
+
+  // Dust preview — shorter cycles so motion is visible in small frame
+  spawn('layer-dust', 'dust', 30, { sizeMin: 0.9, sizeMax: 2.2, topMin: 40, topRange: 70, durMin: 8, durMax: 14, peakMin: 0.4, peakMax: 0.7 });
+
+  // Glints preview
+  spawn('layer-glints', 'glint', 10, { sizeMin: 2.3, sizeMax: 4.5, topMin: 10, topRange: 70, durMin: 4, durMax: 8, peakMin: 0.75, peakMax: 1.0 });
+
+  // Mystic preview — all three
+  spawn('layer-mystic', 'firefly', 12, { sizeMin: 1.6, sizeMax: 3.4, topMin: 5, topRange: 80, durMin: 3.5, durMax: 7, peakMin: 0.4, peakMax: 0.75 });
+  spawn('layer-mystic', 'dust', 14, { sizeMin: 0.9, sizeMax: 2, topMin: 40, topRange: 70, durMin: 9, durMax: 14, peakMin: 0.3, peakMax: 0.55 });
+  spawn('layer-mystic', 'glint', 4, { sizeMin: 2.5, sizeMax: 4, topMin: 10, topRange: 70, durMin: 5, durMax: 9, peakMin: 0.75, peakMax: 1.0 });
+})();
+</script>
+</body>
+</html>

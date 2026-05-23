@@ -206,6 +206,37 @@ body {
   .idea { padding: 22px; }
 }
 
+
+/* Headline block on funny ideas */
+.headlines {
+  margin-top: 10px;
+  padding: 14px 16px;
+  background: rgba(168, 80, 46, 0.10);
+  border-left: 2px solid var(--ember-warm);
+  border-radius: 2px;
+}
+.headlines .h-tag {
+  font-family: var(--label); font-size: 9px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ember-warm); margin-bottom: 8px;
+}
+.headlines .h-primary {
+  font-family: var(--display); font-style: italic;
+  font-size: 17px; color: var(--gold);
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+.headlines .h-alt {
+  font-family: var(--body); font-style: italic;
+  font-size: 13.5px; color: rgba(235, 227, 212, 0.65);
+  line-height: 1.4;
+}
+.headlines .h-alt::before {
+  content: 'or: '; color: rgba(216, 184, 122, 0.55);
+  font-style: normal; font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+}
+
 /* ===== Top 5 picks block ===== */
 .picks {
   max-width: 1320px; margin: 64px auto 0;
@@ -429,138 +460,253 @@ body {
       <div class="id-num">№ 18</div>
       <h3>Anthony as the <em>Statue of David</em></h3>
       <p>Sculpted marble, classic contrapposto pose. Caption: "Aliveness has been waiting since 1504."</p>
+      <div class="headlines">
+        <div class="h-tag">Headline</div>
+        <div class="h-primary">"Aliveness has been waiting since 1504."</div>
+        <div class="h-alt">"Some men chisel themselves. Others get chiseled."</div>
+      </div>
       <div class="footer"><span>MUSEUM ENERGY</span><span></span></div>
     </div>
     <div class="idea">
       <div class="id-num">№ 19</div>
       <h3>Anthony as <em>Yoda</em></h3>
       <p>Green, ears, robe, walking stick. "Become alive, you must." Email subject line writes itself.</p>
+      <div class="headlines">
+        <div class="h-tag">Headline</div>
+        <div class="h-primary">"Become alive, you must."</div>
+        <div class="h-alt">"Do or do not — there is no coasting."</div>
+      </div>
       <div class="footer"><span>EMAIL DOPAMINE</span><span class="pick">TOP 5</span></div>
     </div>
     <div class="idea">
       <div class="id-num">№ 20</div>
       <h3>Riding a <em>saguaro</em></h3>
       <p>Anthony astride a giant cactus like a horse. Dust trail behind. Western desert. Physically impossible. Cinematically perfect.</p>
+      <div class="headlines">
+        <div class="h-tag">Headline</div>
+        <div class="h-primary">"Some men ride horses. Real men ride cacti."</div>
+        <div class="h-alt">"Giddyup, doorway."</div>
+      </div>
       <div class="footer"><span>POSTER CANDIDATE</span><span></span></div>
     </div>
     <div class="idea">
       <div class="id-num">№ 21</div>
       <h3>Anthony as <em>Forrest Gump</em></h3>
       <p>Mid cross-country run. Bench scene. The works. "I just felt like running, Brooke."</p>
+      <div class="headlines">
+        <div class="h-tag">Headline</div>
+        <div class="h-primary">"I just felt like running, Brooke."</div>
+        <div class="h-alt">"Stupid is as stagnant does."</div>
+      </div>
       <div class="footer"><span>EMAIL PARODY</span><span></span></div>
     </div>
     <div class="idea">
       <div class="id-num">№ 22</div>
       <h3>Parting <em>the Red Sea</em></h3>
       <p>But it's the Sonoran Desert. Charlton Heston staff. Mountains pulled apart. "Let my fit fathers go."</p>
+      <div class="headlines">
+        <div class="h-tag">Headline</div>
+        <div class="h-primary">"Let my fit fathers go."</div>
+        <div class="h-alt">"And on the third day, he split the canyon."</div>
+      </div>
       <div class="footer"><span>FFP COMMUNITY MEME</span><span class="pick">TOP 5</span></div>
     </div>
     <div class="idea">
       <div class="id-num">№ 23</div>
       <h3>Most Interesting Man <em>in the World</em></h3>
       <p>Dos Equis ad parody. "I don't always go to wellness retreats. But when I do, I host them."</p>
+      <div class="headlines">
+        <div class="h-tag">Headline</div>
+        <div class="h-primary">"I don't always go to wellness retreats. But when I do, I host them."</div>
+        <div class="h-alt">"Stay aliive, my friends."</div>
+      </div>
       <div class="footer"><span>EMAIL CAMPAIGN</span><span></span></div>
     </div>
     <div class="idea">
       <div class="id-num">№ 24</div>
       <h3>Surfing <em>in the desert</em></h3>
       <p>Surfboard, big wave made of sand, full wetsuit. Caption: "The breakthrough is wherever you find the wave."</p>
+      <div class="headlines">
+        <div class="h-tag">Headline</div>
+        <div class="h-primary">"The breakthrough is wherever you find the wave."</div>
+        <div class="h-alt">"Hang ten, fit fathers."</div>
+      </div>
       <div class="footer"><span>SOCIAL POST</span><span></span></div>
     </div>
     <div class="idea">
       <div class="id-num">№ 25</div>
       <h3>TED Talk to <em>a roomful of saguaros</em></h3>
       <p>Literally cacti in chairs taking notes. Audience reaction shots. The desert is paying close attention.</p>
+      <div class="headlines">
+        <div class="h-tag">Headline</div>
+        <div class="h-primary">"The cacti were taking notes too."</div>
+        <div class="h-alt">"Some audiences are just naturally rooted."</div>
+      </div>
       <div class="footer"><span>ABSURDIST</span><span></span></div>
     </div>
     <div class="idea">
       <div class="id-num">№ 26</div>
       <h3>Anthony as <em>Conan</em></h3>
       <p>Fur, broadsword, dramatic sky. "What is best in life, fit father?"</p>
+      <div class="headlines">
+        <div class="h-tag">Headline</div>
+        <div class="h-primary">"What is best in life, fit father? To crush stagnation."</div>
+        <div class="h-alt">"By Crom, the doorway shall be opened."</div>
+      </div>
       <div class="footer"><span>POWER FANTASY</span><span></span></div>
     </div>
     <div class="idea">
       <div class="id-num">№ 27</div>
       <h3>Anthony as the <em>Karate Kid</em></h3>
       <p>Crane kick on a Sedona red rock at sunset. "Wax on. Aliveness on."</p>
+      <div class="headlines">
+        <div class="h-tag">Headline</div>
+        <div class="h-primary">"Wax on. Aliveness on."</div>
+        <div class="h-alt">"Sweep the leg of stagnation."</div>
+      </div>
       <div class="footer"><span>NOSTALGIA HIT</span><span></span></div>
     </div>
     <div class="idea">
       <div class="id-num">№ 28</div>
       <h3>Renaissance <em>fresco</em></h3>
       <p>The Last Supper but it's Anthony + the 8 faculty around a long Sonoran table. Cacti and red rocks behind. Solemn.</p>
+      <div class="headlines">
+        <div class="h-tag">Headline</div>
+        <div class="h-primary">"Eight faculty. One Anthony. No seed oils."</div>
+        <div class="h-alt">"The last supper before the new chapter."</div>
+      </div>
       <div class="footer"><span>FACULTY SECTION</span><span></span></div>
     </div>
     <div class="idea">
       <div class="id-num">№ 29</div>
       <h3>Fighting <em>a bear</em></h3>
       <p>Black-and-white wilderness photo. Caption: "DUZZI WRESTLES A BEAR FOR YOUR CHAPTER 2." Lost-newspaper-clipping energy.</p>
+      <div class="headlines">
+        <div class="h-tag">Headline</div>
+        <div class="h-primary">"DUZZI WRESTLES BEAR FOR YOUR CHAPTER 2."</div>
+        <div class="h-alt">"The bear did not survive the breakthrough."</div>
+      </div>
       <div class="footer"><span>EMAIL HOOK</span><span></span></div>
     </div>
     <div class="idea">
       <div class="id-num">№ 30</div>
       <h3>Anthony as <em>the Lorax</em></h3>
       <p>For the fit fathers, he speaks. Yellow mustache. Stump. The Sonoran instead of Truffula trees.</p>
+      <div class="headlines">
+        <div class="h-tag">Headline</div>
+        <div class="h-primary">"I speak for the fit fathers, for they have things to say."</div>
+        <div class="h-alt">"Unless someone like you cares — nothing changes. Not one lot."</div>
+      </div>
       <div class="footer"><span>POSTCARD ASSET</span><span></span></div>
     </div>
     <div class="idea">
       <div class="id-num">№ 31</div>
       <h3>Floating <em>cross-legged</em></h3>
       <p>Anthony 10 feet off the ground in lotus pose. Above the Arizona Grand lazy river. Meditation level: maxed out.</p>
+      <div class="headlines">
+        <div class="h-tag">Headline</div>
+        <div class="h-primary">"Some men meditate. He just floats."</div>
+        <div class="h-alt">"When your chakras pay rent."</div>
+      </div>
       <div class="footer"><span>SOCIAL TEASE</span><span></span></div>
     </div>
     <div class="idea">
       <div class="id-num">№ 32</div>
       <h3>The Sonoran <em>Sasquatch</em></h3>
       <p>Blurry, half-hidden, hunting fast-food culture. Bigfoot meets transformation coach. Cryptid-but-helpful.</p>
+      <div class="headlines">
+        <div class="h-tag">Headline</div>
+        <div class="h-primary">"Cryptid. Coach. Same guy."</div>
+        <div class="h-alt">"Missing: stagnation. Last seen near a fit father."</div>
+      </div>
       <div class="footer"><span>MEME CHAIN</span><span></span></div>
     </div>
     <div class="idea">
       <div class="id-num">№ 33</div>
       <h3>Anthony as the <em>Marlboro Man</em></h3>
       <p>But he's quit smoking and is offering you a kale smoothie. Vintage cowboy poster. Quietly perfect.</p>
+      <div class="headlines">
+        <div class="h-tag">Headline</div>
+        <div class="h-primary">"He quit smoking. He drinks now... kale."</div>
+        <div class="h-alt">"Cowboy up. Kale down."</div>
+      </div>
       <div class="footer"><span>VINTAGE AD</span><span></span></div>
     </div>
     <div class="idea">
       <div class="id-num">№ 34</div>
       <h3>Patron saint of <em>midlife</em></h3>
       <p>Gold-leaf halo. Byzantine icon style. Hangs in a cathedral. "Patron Saint of the Back-Half-of-Life."</p>
+      <div class="headlines">
+        <div class="h-tag">Headline</div>
+        <div class="h-primary">"Patron Saint of the Back-Half-of-Life."</div>
+        <div class="h-alt">"Blessed are the breakthrough, for theirs is chapter 2."</div>
+      </div>
       <div class="footer"><span>REGISTRATION SWAG</span><span class="pick">TOP 5</span></div>
     </div>
     <div class="idea">
       <div class="id-num">№ 35</div>
       <h3>Every Renaissance painting <em>at once</em></h3>
       <p>Mona Lisa, Sistine Chapel ceiling, Birth of Venus. Anthony's been there the whole time. The DaVinci was him.</p>
+      <div class="headlines">
+        <div class="h-tag">Headline</div>
+        <div class="h-primary">"He's been there the whole time."</div>
+        <div class="h-alt">"The smile in the Mona Lisa was his."</div>
+      </div>
       <div class="footer"><span>EMAIL GIF SEQUENCE</span><span></span></div>
     </div>
     <div class="idea">
       <div class="id-num">№ 36</div>
       <h3>Studio Ghibli <em>style</em></h3>
       <p>Hand-drawn anime. Soft watercolor. Riding a giant bee through the Sonoran at sunset. Spirited Away meets Fit Father.</p>
+      <div class="headlines">
+        <div class="h-tag">Headline</div>
+        <div class="h-primary">"Spirited Away, but to the Sonoran Desert."</div>
+        <div class="h-alt">"The bee is the doorway."</div>
+      </div>
       <div class="footer"><span>CHILDREN'S BOOK ASSET</span><span></span></div>
     </div>
     <div class="idea">
       <div class="id-num">№ 37</div>
       <h3>1950s <em>Coca-Cola Santa</em></h3>
       <p>Norman Rockwell era. "Have a Coke, then go change your life." Classic American kitsch.</p>
+      <div class="headlines">
+        <div class="h-tag">Headline</div>
+        <div class="h-primary">"Have a Coke, then go change your life."</div>
+        <div class="h-alt">"It's the real thing — and so is your aliveness."</div>
+      </div>
       <div class="footer"><span>HOLIDAY CAMPAIGN</span><span></span></div>
     </div>
     <div class="idea">
       <div class="id-num">№ 38</div>
       <h3>Burger King mascot <em>but fit</em></h3>
       <p>Crown made of broccoli. Throne is a kettlebell. Reigns over the kingdom of midlife wellness.</p>
+      <div class="headlines">
+        <div class="h-tag">Headline</div>
+        <div class="h-primary">"Have it your way — but seasonal and organic."</div>
+        <div class="h-alt">"King of midlife. Crown of broccoli."</div>
+      </div>
       <div class="footer"><span>VIRAL POTENTIAL</span><span></span></div>
     </div>
     <div class="idea">
       <div class="id-num">№ 39</div>
       <h3>Anthony as a <em>Pokémon trainer</em></h3>
       <p>Releasing a Pokéball that contains your former self. "Go, Stagnation! I choose you!" — and then defeats it.</p>
+      <div class="headlines">
+        <div class="h-tag">Headline</div>
+        <div class="h-primary">"Go, Stagnation! I choose you!"</div>
+        <div class="h-alt">"Anthony's CP is over 9000."</div>
+      </div>
       <div class="footer"><span>EMAIL HOOK</span><span></span></div>
     </div>
     <div class="idea">
       <div class="id-num">№ 40</div>
       <h3>The <em>DUZZIVERSE</em></h3>
       <p>Split-screen of Anthony in 12 wildly different professions simultaneously. Cosmic "you contain multitudes" energy. The final boss of LoRA generations.</p>
+      <div class="headlines">
+        <div class="h-tag">Headline</div>
+        <div class="h-primary">"He contains multitudes. Twelve, to be exact."</div>
+        <div class="h-alt">"Every version of him was the doorway."</div>
+      </div>
       <div class="footer"><span>MULTIVERSE FINALE</span><span></span></div>
     </div>
   </div>

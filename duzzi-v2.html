@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DUZZI v2 LoRA · Likeness Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Spectral:wght@400&family=Schibsted+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1B1916; --bone:#EBE3D4; --ember:#A8502E; --ember-warm:#C56638; --gold:#D8B87A;
+  --display:'Newsreader',Georgia,serif; --body:'Spectral',Georgia,serif; --label:'Schibsted Grotesk',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--body);background:#0a0a0a;color:var(--bone);line-height:1.6;padding-bottom:120px;}
+
+.mast{background:linear-gradient(180deg,#15120F 0%,#0a0a0a 100%);padding:80px 40px 60px;border-bottom:1px solid rgba(168,80,46,0.25);}
+.mast-inner{max-width:1280px;margin:0 auto;}
+.eyebrow{font-family:var(--label);font-size:12px;letter-spacing:0.24em;text-transform:uppercase;color:var(--ember-warm);margin-bottom:24px;}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(40px,5vw,68px);line-height:1.04;letter-spacing:-0.02em;color:var(--bone);margin-bottom:22px;max-width:900px;}
+h1 em{font-style:italic;color:var(--gold);font-weight:300;}
+.deck{font-family:var(--body);font-size:18px;color:rgba(235,227,212,0.72);max-width:760px;line-height:1.65;}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:36px;padding-top:32px;border-top:1px solid rgba(216,184,122,0.18);}
+.stat .n{font-family:var(--display);font-size:38px;font-weight:300;color:var(--gold);line-height:1;}
+.stat .l{font-family:var(--label);font-size:10px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:rgba(235,227,212,0.6);margin-top:8px;}
+
+.section{max-width:1320px;margin:0 auto;padding:80px 40px 32px;}
+.section-head{margin-bottom:32px;padding-bottom:22px;border-bottom:1px solid rgba(235,227,212,0.08);}
+.section-head .n{font-family:var(--label);font-size:11px;letter-spacing:0.26em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.section-head h2{font-family:var(--display);font-weight:400;font-size:clamp(28px,3vw,42px);letter-spacing:-0.01em;color:var(--bone);}
+.section-head h2 em{font-style:italic;color:var(--ember-warm);}
+
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+.card{background:linear-gradient(180deg,#161310 0%,#0d0c0a 100%);border:1px solid rgba(216,184,122,0.18);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;}
+.card .img-wrap{background:#0a0a0a;}
+.card .img-wrap img{width:100%;height:auto;display:block;}
+.card .meat{padding:22px 26px;display:flex;flex-direction:column;gap:8px;}
+.card .num{font-family:var(--label);font-size:10px;font-weight:700;letter-spacing:0.22em;color:var(--ember-warm);}
+.card .title{font-family:var(--display);font-size:22px;font-weight:500;color:var(--bone);}
+.card .title em{font-style:italic;color:var(--gold);}
+.card .note{font-family:var(--body);font-size:14.5px;color:rgba(235,227,212,0.75);font-style:italic;line-height:1.55;}
+
+@media (max-width:900px){.grid{grid-template-columns:1fr;}.mast{padding:60px 22px 44px;}.section{padding:60px 22px;}.stats{grid-template-columns:repeat(2,1fr);}}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="mast-inner">
+    <div class="eyebrow">DUZZI v2 LoRA · Likeness Test</div>
+    <h1>The face is back. <em>Try not to laugh.</em></h1>
+    <p class="deck">v2 trained on 19 candid photos instead of the polished 21. Dropped the studio-branded shots, added family + baby + jungle + recovery. Rank bumped to 48, steps to 2000. Result: way more Anthony, way less gigachad. 5 serious test renders for the live page. 5 funny for the campaign.</p>
+
+    <div class="stats">
+      <div class="stat"><div class="n">19</div><div class="l">Training photos (was 21)</div></div>
+      <div class="stat"><div class="n">48</div><div class="l">LoRA rank (was 32)</div></div>
+      <div class="stat"><div class="n">2000</div><div class="l">Steps (was 1500)</div></div>
+      <div class="stat"><div class="n">24 min</div><div class="l">Retrain time · $5</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="section-head">
+    <div class="n">Serious · for the live page</div>
+    <h2>What goes <em>on the site.</em></h2>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="img-wrap"><img src="https://guldanjamax.github.io/anthonybalduzzi/duzzi-v2/serious-1-hero.jpg" alt="Anthony walking through Sedona vista" /></div>
+      <div class="meat">
+        <div class="num">№ 01 · Hero variant</div>
+        <div class="title">Anthony in the <em>Sedona vista</em></div>
+        <div class="note">Casual tee, real body, walking through Sonoran red rocks. Could be the new hero replacing the no-Anthony Diehl shot.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="img-wrap"><img src="https://guldanjamax.github.io/anthonybalduzzi/duzzi-v2/serious-2-headshot.jpg" alt="Anthony portrait" /></div>
+      <div class="meat">
+        <div class="num">№ 02 · Intro / Welcome</div>
+        <div class="title">"Hi. I'm Anthony. <em>Glad you're here.</em>"</div>
+        <div class="note">Direct-to-camera portrait, flannel shirt, real smile lines. Goes above the Mirror section.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="img-wrap"><img src="https://guldanjamax.github.io/anthonybalduzzi/duzzi-v2/serious-3-venue.jpg" alt="Anthony walking up Arizona Grand entrance" /></div>
+      <div class="meat">
+        <div class="num">№ 03 · Venue shot</div>
+        <div class="title">Walking into <em>the resort</em></div>
+        <div class="note">Casual venue arrival, palm trees at dusk. Slots into the Venue body section.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="img-wrap"><img src="https://guldanjamax.github.io/anthonybalduzzi/duzzi-v2/serious-4-stage.jpg" alt="Anthony on event stage" /></div>
+      <div class="meat">
+        <div class="num">№ 04 · Stage / Faculty</div>
+        <div class="title">On stage <em>with the room</em></div>
+        <div class="note">Headset mic, audience visible. For Promise or Speakers section. Big confidence shot.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="img-wrap"><img src="https://guldanjamax.github.io/anthonybalduzzi/duzzi-v2/serious-5-couple.jpg" alt="Anthony and Brooke" /></div>
+      <div class="meat">
+        <div class="num">№ 05 · Couple shot</div>
+        <div class="title">With <em>Brooke</em></div>
+        <div class="note">For the Founder section. Sedona at golden hour. Note: Brooke is a guess by the model — she's not in the training set.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div class="n">Funny · campaign drops</div>
+    <h2>The <em>DUZZIVERSE</em> begins.</h2>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="img-wrap"><img src="https://guldanjamax.github.io/anthonybalduzzi/duzzi-v2/funny-3-mostint.jpg" alt="Anthony as Most Interesting Man" /></div>
+      <div class="meat">
+        <div class="num">№ 06 · Funny</div>
+        <div class="title">The <em>Most Interesting Fit Father</em> in the World</div>
+        <div class="note">"I don't always go to wellness retreats. But when I do, I host them." Future-Anthony at 50, navy blazer, gold drink. Email subject gold.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="img-wrap"><img src="https://guldanjamax.github.io/anthonybalduzzi/duzzi-v2/funny-5-marlboro.jpg" alt="Anthony as Marlboro Man with kale smoothie" /></div>
+      <div class="meat">
+        <div class="num">№ 07 · Funny</div>
+        <div class="title">Marlboro Man · <em>kale edition</em></div>
+        <div class="note">"He quit smoking. He drinks now... kale." Cowboy hat, leather jacket, green smoothie, Sedona sunset. Perfect.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="img-wrap"><img src="https://guldanjamax.github.io/anthonybalduzzi/duzzi-v2/funny-2-redsea.jpg" alt="Anthony parting the Sonoran sea" /></div>
+      <div class="meat">
+        <div class="num">№ 08 · Funny</div>
+        <div class="title">Parting <em>the Sonoran Sea</em></div>
+        <div class="note">"Let my fit fathers go." Robed Anthony with wooden staff, Sedona red rocks behind. Biblical.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="img-wrap"><img src="https://guldanjamax.github.io/anthonybalduzzi/duzzi-v2/funny-4-saint.jpg" alt="Anthony as patron saint" /></div>
+      <div class="meat">
+        <div class="num">№ 09 · Funny</div>
+        <div class="title">Patron Saint of <em>the back-half-of-life</em></div>
+        <div class="note">Gold leaf halo, ornate Byzantine icon, hands in blessing. Could be a registration-packet gift print.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="img-wrap"><img src="https://guldanjamax.github.io/anthonybalduzzi/duzzi-v2/funny-1-yoda.jpg" alt="Anthony as Yoda" /></div>
+      <div class="meat">
+        <div class="num">№ 10 · Funny</div>
+        <div class="title">DUZZI as <em>Yoda</em></div>
+        <div class="note">"Become alive, you must." Green skin, Anthony's facial structure preserved. Email subject writes itself.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

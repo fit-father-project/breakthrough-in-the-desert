@@ -2674,6 +2674,200 @@ p:last-child { margin-bottom: 0; }
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ============ HERO V2 (centered, FFP/FMP present) ============ */
+.hero-v2 .hero-content {
+  margin: auto !important;
+  padding: 24px 48px;
+  max-width: 1180px;
+  text-align: center;
+  width: 100%;
+  z-index: 4 !important;
+}
+.hero-v2 .hero-util { z-index: 4 !important; }
+.hero-v2 .hero-presents {
+  font-family: var(--label);
+  font-size: clamp(11px, 1.05vw, 14px);
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 28px;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.65);
+}
+.hero-v2 .hero-presents .plus {
+  margin: 0 0.4em;
+  color: rgba(216, 184, 122, 0.65);
+  font-weight: 400;
+}
+.hero-v2 .hero-title {
+  font-size: clamp(58px, 9.2vw, 134px) !important;
+  line-height: 0.92 !important;
+  letter-spacing: -0.035em !important;
+  margin-bottom: 26px !important;
+  max-width: 100%;
+}
+.hero-v2 .hero-title em {
+  display: block;
+  margin-top: 0.04em;
+  font-size: 0.82em;
+}
+.hero-v2 .hero-question {
+  max-width: 30em !important;
+  margin: 0 auto 30px !important;
+  font-size: clamp(18px, 1.95vw, 23px) !important;
+  line-height: 1.45 !important;
+  font-style: normal !important;
+}
+.hero-v2 .hero-meta { justify-content: center; }
+.hero-v2 .hero-ctas { justify-content: center; }
+.hero-v2::after {
+  z-index: 3 !important;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(10,9,8,0.42) 0%, rgba(10,9,8,0.14) 50%, rgba(10,9,8,0.52) 100%),
+    linear-gradient(180deg, rgba(10,9,8,0.55) 0%, rgba(10,9,8,0.22) 35%, rgba(10,9,8,0.18) 55%, rgba(10,9,8,0.82) 100%) !important;
+}
+
+/* Countdown bar: inline seats variants */
+.countdown-bar .sep {
+  display: inline-block; margin: 0 12px;
+  color: rgba(216, 184, 122, 0.4);
+}
+.countdown-bar .seat-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(216, 184, 122, 0.16);
+  border: 1px solid rgba(216, 184, 122, 0.55);
+  color: var(--gold);
+  font-weight: 600; font-size: 11.5px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 999px;
+}
+.countdown-bar .seat-pill .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--ember); display: inline-block;
+  box-shadow: 0 0 8px var(--ember);
+}
+
+/* Variant: bronze stamp in upper-right of hero */
+.seat-stamp {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center;
+  width: 116px; height: 116px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(216, 184, 122, 0.95), rgba(168, 80, 46, 0.85) 70%);
+  border: 2px solid rgba(235, 227, 212, 0.4);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.45), inset 0 -3px 8px rgba(0,0,0,0.25), inset 0 2px 6px rgba(255,240,210,0.4);
+  color: rgba(27, 25, 22, 0.92);
+  font-family: var(--label);
+  text-transform: uppercase; letter-spacing: 0.16em;
+  font-size: 9.5px; font-weight: 700; line-height: 1.1;
+  transform: rotate(-6deg);
+  text-align: center;
+}
+.seat-stamp .num {
+  font-family: var(--display); font-style: italic; font-weight: 500;
+  font-size: 38px; letter-spacing: -0.02em;
+  margin: 2px 0;
+  color: rgba(27, 25, 22, 0.95);
+}
+
+/* Variant: inline with meta line */
+.hero-meta .seats-meta {
+  color: var(--bone); font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+/* Variant: caption below CTA */
+.seats-caption {
+  margin-top: 14px;
+  font-family: var(--label); font-size: 12px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(235, 227, 212, 0.75);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+.seats-caption strong {
+  color: var(--gold); font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .hero-v2 .hero-content { padding: 32px 22px 60px; }
+  .hero-v2 .hero-title { font-size: clamp(44px, 13vw, 88px) !important; }
+  .hero-v2 .hero-presents { margin-bottom: 18px; font-size: 10.5px; letter-spacing: 0.26em; }
+  .hero-v2 .hero-question { font-size: 17px !important; }
+  .seat-stamp { width: 92px; height: 92px; font-size: 8px; }
+  .seat-stamp .num { font-size: 30px; }
+  .countdown-bar .sep { margin: 0 8px; }
+  .countdown-bar .seat-pill { font-size: 10.5px; padding: 3px 8px; letter-spacing: 0.14em; }
+}
+
+
+/* === Hero image stays completely still — no scale, no pan === */
+.hero-img {
+  animation: none !important;
+  transform: none !important;
+}
+
+.sparkles {
+  position: absolute; inset: 0; z-index: 2;
+  pointer-events: none; overflow: hidden;
+}
+.sparkles .sp {
+  position: absolute;
+  border-radius: 50%;
+  will-change: opacity, transform;
+}
+
+/* Mystic mix — three particle types layered: soft fireflies + drifting dust + a few bright glints */
+.sparkles .sp.firefly {
+  background: radial-gradient(circle, rgba(255, 235, 175, 1) 0%, rgba(255, 215, 130, 0.5) 45%, transparent 75%);
+  box-shadow: 0 0 6px rgba(255, 215, 130, 0.5);
+  animation: spTwinkle var(--dur, 5s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+.sparkles .sp.dust {
+  background: radial-gradient(circle, rgba(255, 240, 210, 1) 0%, rgba(255, 230, 180, 0.4) 50%, transparent 75%);
+  box-shadow: 0 0 4px rgba(255, 230, 180, 0.4);
+  animation: spDustDrift var(--dur, 18s) linear infinite;
+  animation-delay: var(--delay, 0s);
+}
+.sparkles .sp.glint {
+  background: radial-gradient(circle, rgba(255, 250, 230, 1) 0%, rgba(255, 220, 150, 0.7) 30%, transparent 70%);
+  box-shadow: 0 0 14px rgba(255, 220, 150, 0.55), 0 0 4px rgba(255, 250, 230, 0.9);
+  animation: spGlint var(--dur, 7s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+@keyframes spTwinkle {
+  0%, 100% { opacity: 0; transform: scale(0.35); }
+  50%      { opacity: var(--peak, 0.65); transform: scale(1); }
+}
+@keyframes spDustDrift {
+  0%   { transform: translate(0, 0) scale(0.6); opacity: 0; }
+  10%  { opacity: var(--peak, 0.45); }
+  90%  { opacity: var(--peak, 0.45); }
+  100% { transform: translate(var(--drift-x, 2vw), var(--drift-y, -15vh)) scale(0.7); opacity: 0; }
+}
+@keyframes spGlint {
+  0%, 85%, 100% { opacity: 0; transform: scale(0.3); }
+  88%, 92%      { opacity: var(--peak, 0.85); transform: scale(1.15); }
+  90%           { opacity: var(--peak, 0.85); transform: scale(1.3); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sparkles { display: none !important; }
+}
+
+/* Mobile: center the stacked event meta (date / venue / price) and the single CTA */
+@media (max-width: 600px) {
+  .hero-v2 .hero-meta {
+    align-items: center !important;
+    text-align: center;
+  }
+  .hero-v2 .hero-meta > span { width: 100%; }
+  .hero-v2 .hero-ctas {
+    justify-content: center !important;
+    align-items: center;
+  }
+}
 </style>
 </head>
 <body>
@@ -2686,41 +2880,44 @@ p:last-child { margin-bottom: 0; }
 
 <!-- ===== COUNTDOWN BAR ===== -->
 <div class="countdown-bar">
+  <strong>Limited to 150 seats</strong>
+  <span class="sep">·</span>
   <strong>Early-bird ends:</strong>
   <span id="countdown">Sunday, June 21, 2026 (Father's Day)</span>
 </div>
 
 <!-- ===== HERO ===== -->
 <main id="main-content">
-<section class="hero" aria-labelledby="hero-title">
+<section class="hero hero-v2 hero-variant-b" aria-labelledby="hero-title">
   <picture>
-    <source srcset="optimized/diehl.avif" type="image/avif" media="(min-width: 1100px)">
-    <source srcset="optimized/diehl.webp" type="image/webp" media="(min-width: 1100px)">
-    <source srcset="optimized/diehl-1920.avif" type="image/avif" media="(min-width: 720px)">
-    <source srcset="optimized/diehl-1920.webp" type="image/webp" media="(min-width: 720px)">
-    <source srcset="optimized/diehl-mobile.avif" type="image/avif">
-    <source srcset="optimized/diehl-mobile.webp" type="image/webp">
-    <img class="hero-img" src="optimized/diehl-mobile.jpg" alt="A vast Arizona desert vista at sunrise, mountains and saguaros silhouetted against amber light." fetchpriority="high">
+    <source srcset="optimized/bee.avif" type="image/avif" media="(min-width: 1100px)">
+    <source srcset="optimized/bee.webp" type="image/webp" media="(min-width: 1100px)">
+    <source srcset="optimized/bee-1920.avif" type="image/avif" media="(min-width: 720px)">
+    <source srcset="optimized/bee-1920.webp" type="image/webp" media="(min-width: 720px)">
+    <source srcset="optimized/bee-mobile.avif" type="image/avif">
+    <source srcset="optimized/bee-mobile.webp" type="image/webp">
+    <img class="hero-img" src="optimized/bee-mobile.jpg" alt="Wide Arizona mountain vista at sunrise, layered ridges against warm amber sky." fetchpriority="high">
   </picture>
+  <div class="sparkles" aria-hidden="true"></div>
 
-  <div class="hero-util">
-    <div class="seats">Limited to 150 seats</div>
-  </div>
+  <div class="hero-util"></div>
 
   <div class="hero-content">
-    <h1 class="hero-title" id="hero-title">Breakthrough<em>in the desert.</em></h1>
-    <p class="hero-question">For the adults 40+ who are quietly done coasting — and ready to step into the most inspired chapter of their life.</p>
+    <div class="hero-presents">Fit Father <span class="plus">+</span> Fit Mother Present</div>
+    <h1 class="hero-title" id="hero-title">Breakthrough<em>in the Desert</em></h1>
+    <p class="hero-question">For adults 40+ — three days to break through what's been holding you back, and step into your most fit, alive, clear, and connected years ahead.</p>
     <div class="hero-meta">
       <span>Aug 7–9, 2026</span>
       <span class="sep">·</span>
       <span>Arizona Grand Resort, Phoenix</span>
       <span class="sep">·</span>
       <span>From <span class="price">$845</span></span>
+      
     </div>
     <div class="hero-ctas">
       <a href="#pricing" class="btn-halo">Reserve Your Spot <span class="arrow">→</span></a>
-      <a href="#agenda" class="btn-ghost">See the Arc</a>
     </div>
+    
   </div>
 </section>
 
@@ -3544,6 +3741,58 @@ window.addEventListener('scroll', () => {
   if (window.scrollY > window.innerHeight * 0.95) sticky.classList.add('show');
   else sticky.classList.remove('show');
 }, { passive: true });
+</script>
+
+
+<script>
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const container = document.querySelector('.sparkles');
+  if (!container) return;
+  // Layer 1: 18 fireflies (twinkle, still)
+for (let i = 0; i < 18; i++) {
+  const s = document.createElement('span');
+  s.className = 'sp firefly';
+  const size = 1.6 + Math.random() * 2;
+  s.style.width = size + 'px'; s.style.height = size + 'px';
+  s.style.left = Math.random() * 100 + '%';
+  s.style.top = (5 + Math.random() * 80) + '%';
+  s.style.setProperty('--dur', (3.5 + Math.random() * 4).toFixed(2) + 's');
+  s.style.setProperty('--delay', (Math.random() * -7).toFixed(2) + 's');
+  s.style.setProperty('--peak', (0.4 + Math.random() * 0.35).toFixed(2));
+  container.appendChild(s);
+}
+// Layer 2: 22 dust motes (drift)
+for (let i = 0; i < 22; i++) {
+  const s = document.createElement('span');
+  s.className = 'sp dust';
+  const size = 0.8 + Math.random() * 1.4;
+  s.style.width = size + 'px'; s.style.height = size + 'px';
+  s.style.left = Math.random() * 100 + '%';
+  s.style.top = (40 + Math.random() * 70) + '%';
+  const dur = 16 + Math.random() * 10;
+  s.style.setProperty('--dur', dur.toFixed(2) + 's');
+  s.style.setProperty('--delay', (Math.random() * -dur).toFixed(2) + 's');
+  s.style.setProperty('--peak', (0.3 + Math.random() * 0.3).toFixed(2));
+  s.style.setProperty('--drift-x', (Math.random() * 8 - 4).toFixed(1) + 'vw');
+  s.style.setProperty('--drift-y', (-60 - Math.random() * 50).toFixed(1) + 'vh');
+  container.appendChild(s);
+}
+// Layer 3: 6 glints (sharp flickers)
+for (let i = 0; i < 6; i++) {
+  const s = document.createElement('span');
+  s.className = 'sp glint';
+  const size = 2.5 + Math.random() * 2;
+  s.style.width = size + 'px'; s.style.height = size + 'px';
+  s.style.left = Math.random() * 100 + '%';
+  s.style.top = (10 + Math.random() * 70) + '%';
+  const dur = 5 + Math.random() * 5;
+  s.style.setProperty('--dur', dur.toFixed(2) + 's');
+  s.style.setProperty('--delay', (Math.random() * -dur).toFixed(2) + 's');
+  s.style.setProperty('--peak', (0.75 + Math.random() * 0.25).toFixed(2));
+  container.appendChild(s);
+}
+})();
 </script>
 
 </body>

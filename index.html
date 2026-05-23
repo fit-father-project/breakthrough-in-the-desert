@@ -2897,6 +2897,19 @@ p:last-child { margin-bottom: 0; }
     background: #0a0908;
   }
 }
+
+/* Promise section: heavier dim overlay on community photo so copy stays the focus */
+.promise-sec::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(10, 9, 8, 0.72);
+  pointer-events: none;
+  z-index: 1;
+}
+.promise-content {
+  position: relative;
+  z-index: 2;
+}
 </style>
 </head>
 <body>

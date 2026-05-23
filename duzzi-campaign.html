@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The DUZZIVERSE · Marketing Campaign Launch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Spectral:ital,wght@0,300;0,400;0,500;1,400&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1B1916; --ink-soft:#2A2723; --bone:#EBE3D4; --bone-soft:#F4EFE3;
+  --plaster:#E2D8C2; --sandstone:#CDB99A; --umber:#5A4631; --pinyon:#878A76;
+  --ember:#A8502E; --ember-warm:#C56638; --bronze:#8A6A3E; --gold:#D8B87A; --gold-soft:#E8CC93;
+  --display:'Newsreader',Georgia,serif; --body:'Spectral',Georgia,serif; --label:'Schibsted Grotesk',system-ui,sans-serif;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:var(--body); background:#0a0a0a; color:var(--bone); line-height:1.6; padding-bottom:120px; }
+
+/* Hero */
+.hero {
+  background: linear-gradient(180deg, #15120F 0%, #0a0a0a 100%);
+  padding: 100px 40px 70px;
+  border-bottom: 1px solid rgba(168, 80, 46, 0.25);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 75% 30%, rgba(168, 80, 46, 0.14) 0%, transparent 55%),
+    radial-gradient(ellipse at 15% 80%, rgba(216, 184, 122, 0.08) 0%, transparent 55%);
+}
+.hero-inner { max-width: 1280px; margin: 0 auto; position: relative; }
+.eyebrow {
+  font-family: var(--label); font-size: 12px; letter-spacing: 0.26em;
+  text-transform: uppercase; color: var(--ember-warm); margin-bottom: 24px;
+}
+.hero h1 {
+  font-family: var(--display); font-weight: 300;
+  font-size: clamp(48px, 7vw, 88px); line-height: 0.98;
+  letter-spacing: -0.025em; color: var(--bone);
+  margin-bottom: 22px; max-width: 1000px;
+}
+.hero h1 em { font-style: italic; color: var(--gold); font-weight: 300; }
+.hero-deck {
+  font-family: var(--display); font-style: italic;
+  font-size: clamp(20px, 2.2vw, 26px);
+  color: rgba(235, 227, 212, 0.75); max-width: 820px; line-height: 1.45;
+}
+
+/* Campaign overview */
+.campaign-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 22px; margin-top: 48px;
+  padding-top: 40px; border-top: 1px solid rgba(216, 184, 122, 0.18);
+}
+.stat .n {
+  font-family: var(--display); font-size: 44px; font-weight: 300;
+  color: var(--gold); line-height: 1; letter-spacing: -0.02em;
+}
+.stat .l {
+  font-family: var(--label); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(235, 227, 212, 0.62); margin-top: 8px;
+}
+
+/* Strategy block */
+.strategy {
+  max-width: 1280px; margin: 0 auto;
+  padding: 84px 40px 32px;
+}
+.strategy-head { margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid rgba(235, 227, 212, 0.08); }
+.strategy-head .num { font-family: var(--label); font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.strategy-head h2 { font-family: var(--display); font-weight: 400; font-size: clamp(32px, 3.4vw, 44px); letter-spacing: -0.015em; color: var(--bone); margin-bottom: 12px; }
+.strategy-head h2 em { font-style: italic; color: var(--ember-warm); }
+.strategy-head p { font-family: var(--body); font-size: 17px; color: rgba(235, 227, 212, 0.7); max-width: 820px; font-style: italic; }
+
+.calendar {
+  display: grid; grid-template-columns: 120px 1fr 1fr; gap: 14px;
+  margin-top: 30px;
+}
+.cal-row {
+  display: contents;
+}
+.cal-week, .cal-img, .cal-copy {
+  padding: 14px 18px; background: rgba(27, 25, 22, 0.45);
+  border: 1px solid rgba(235, 227, 212, 0.07); border-radius: 4px;
+}
+.cal-week {
+  font-family: var(--label); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold);
+}
+.cal-img { font-family: var(--body); font-style: italic; font-size: 14px; color: rgba(235,227,212,0.85); }
+.cal-copy { font-family: var(--display); font-style: italic; font-size: 15px; color: var(--bone); line-height: 1.35; }
+
+/* Image gallery */
+.section {
+  max-width: 1320px; margin: 0 auto;
+  padding: 80px 40px 32px;
+}
+.section-head { margin-bottom: 40px; padding-bottom: 22px; border-bottom: 1px solid rgba(235, 227, 212, 0.08); }
+.section-head .num { font-family: var(--label); font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+.section-head h2 { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 3.2vw, 42px); letter-spacing: -0.015em; color: var(--bone); margin-bottom: 12px; }
+.section-head h2 em { font-style: italic; color: var(--ember-warm); font-weight: 300; }
+.section-head p { font-family: var(--body); font-size: 17px; color: rgba(235, 227, 212, 0.62); font-style: italic; max-width: 820px; }
+
+.grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+}
+.card {
+  background: linear-gradient(180deg, #161310 0%, #0d0c0a 100%);
+  border: 1px solid rgba(216, 184, 122, 0.18);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(216, 184, 122, 0.5);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.4);
+}
+.card .img-wrap {
+  width: 100%; aspect-ratio: 4/3;
+  background: #0a0a0a;
+  overflow: hidden; position: relative;
+}
+.card .img-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block;
+}
+.card .img-pending {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(216, 184, 122, 0.45);
+  font-family: var(--label); font-size: 11px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+}
+.card .meat {
+  padding: 22px 24px 24px;
+  display: flex; flex-direction: column; gap: 12px; flex: 1;
+}
+.card .id-num {
+  font-family: var(--label); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.22em; color: var(--ember-warm);
+}
+.card .title {
+  font-family: var(--display); font-size: 19px; font-weight: 500;
+  color: var(--bone); letter-spacing: -0.005em; line-height: 1.2;
+}
+.card .title em { font-style: italic; color: var(--gold); }
+.headline {
+  margin-top: 4px; padding: 14px 16px;
+  background: rgba(168, 80, 46, 0.10);
+  border-left: 2px solid var(--ember-warm);
+  border-radius: 2px;
+}
+.headline .h-tag {
+  font-family: var(--label); font-size: 9px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ember-warm); margin-bottom: 6px;
+}
+.headline .h-main {
+  font-family: var(--display); font-style: italic;
+  font-size: 17px; color: var(--gold);
+  line-height: 1.25; margin-bottom: 6px;
+}
+.subject-line {
+  margin-top: 4px;
+  padding: 10px 14px;
+  background: rgba(216, 184, 122, 0.06);
+  border-radius: 2px;
+}
+.subject-line .sl-tag {
+  display: block;
+  font-family: var(--label); font-size: 9px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(216, 184, 122, 0.7); margin-bottom: 4px;
+}
+.subject-line .sl-text {
+  font-family: var(--body); font-size: 14px;
+  color: var(--bone); line-height: 1.4;
+}
+.card .footer {
+  margin-top: auto; padding-top: 12px;
+  border-top: 1px solid rgba(235, 227, 212, 0.06);
+  font-family: var(--label); font-size: 9.5px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(216, 184, 122, 0.6);
+}
+
+@media (max-width: 1100px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 720px) {
+  .grid { grid-template-columns: 1fr; }
+  .hero { padding: 56px 22px 44px; }
+  .strategy, .section { padding: 56px 22px 28px; }
+  .calendar { grid-template-columns: 1fr; gap: 8px; }
+  .campaign-stats { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">The DUZZIVERSE · Marketing Campaign</div>
+    <h1>One LoRA. Thirty Anthonys. <em>Six months of dopamine.</em></h1>
+    <p class="hero-deck">A drip campaign of weekly absurd-but-on-brand DUZZI images leading up to Breakthrough in the Desert 2026. Every email lands like a meme but ends with "Reserve Your Spot." The FFP community shares them. New audiences discover Anthony through the laughter. Everyone wakes up Sunday morning wondering what cosmic plane Duzzi will appear in this week.</p>
+
+    <div class="campaign-stats">
+      <div class="stat"><div class="n">30</div><div class="l">Generated images</div></div>
+      <div class="stat"><div class="n">~$1.20</div><div class="l">Total LoRA cost</div></div>
+      <div class="stat"><div class="n">23</div><div class="l">Weekly drip weeks</div></div>
+      <div class="stat"><div class="n">7</div><div class="l">Site enhancements</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ STRATEGY ============ -->
+<section class="strategy">
+  <div class="strategy-head">
+    <div class="num">Campaign Strategy · Drip Calendar</div>
+    <h2>The <em>DUZZIVERSE</em> rollout.</h2>
+    <p>23 weeks. One DUZZI per Sunday morning. Each lands as both an email and a social post. As the event approaches (mid-June → August), cadence accelerates and intensity escalates. Final week before doors open: the DUZZIVERSE multi-panel.</p>
+  </div>
+
+  <div class="calendar">
+    <div class="cal-row"><div class="cal-week">Week 1 · March</div><div class="cal-img">Statue of David</div><div class="cal-copy">"Aliveness has been waiting since 1504."</div></div>
+    <div class="cal-row"><div class="cal-week">Week 2</div><div class="cal-img">Yoda</div><div class="cal-copy">"Become alive, you must."</div></div>
+    <div class="cal-row"><div class="cal-week">Week 3</div><div class="cal-img">Conan</div><div class="cal-copy">"By Crom, the doorway shall be opened."</div></div>
+    <div class="cal-row"><div class="cal-week">Week 4</div><div class="cal-img">Karate Kid</div><div class="cal-copy">"Wax on. Aliveness on."</div></div>
+    <div class="cal-row"><div class="cal-week">Week 5 · April</div><div class="cal-img">Forrest Gump</div><div class="cal-copy">"I just felt like running, Brooke."</div></div>
+    <div class="cal-row"><div class="cal-week">Week 6</div><div class="cal-img">Most Interesting Man</div><div class="cal-copy">"I don't always go to wellness retreats. But when I do, I host them."</div></div>
+    <div class="cal-row"><div class="cal-week">Week 7</div><div class="cal-img">Saguaro Horse</div><div class="cal-copy">"Some men ride horses. Real men ride cacti."</div></div>
+    <div class="cal-row"><div class="cal-week">Week 8</div><div class="cal-img">Pokemon Trainer</div><div class="cal-copy">"Go, Stagnation! I choose you!"</div></div>
+    <div class="cal-row"><div class="cal-week">Week 9 · May</div><div class="cal-img">Marlboro Man + Kale</div><div class="cal-copy">"Cowboy up. Kale down."</div></div>
+    <div class="cal-row"><div class="cal-week">Week 10</div><div class="cal-img">Lorax</div><div class="cal-copy">"I speak for the fit fathers."</div></div>
+    <div class="cal-row"><div class="cal-week">Week 11</div><div class="cal-img">Burger King + Broccoli</div><div class="cal-copy">"Crown of broccoli. Throne of kettlebells."</div></div>
+    <div class="cal-row"><div class="cal-week">Week 12</div><div class="cal-img">Surfing the Desert</div><div class="cal-copy">"The breakthrough is wherever you find the wave."</div></div>
+    <div class="cal-row"><div class="cal-week">Week 13 · June</div><div class="cal-img">TED Talk to Cacti</div><div class="cal-copy">"The cacti were taking notes too."</div></div>
+    <div class="cal-row"><div class="cal-week">Week 14</div><div class="cal-img">Sasquatch</div><div class="cal-copy">"Cryptid. Coach. Same guy."</div></div>
+    <div class="cal-row"><div class="cal-week">Week 15</div><div class="cal-img">Mona Lisa</div><div class="cal-copy">"The smile was his."</div></div>
+    <div class="cal-row"><div class="cal-week">Week 16</div><div class="cal-img">Floating Meditation</div><div class="cal-copy">"When your chakras pay rent."</div></div>
+    <div class="cal-row"><div class="cal-week">Week 17 · July</div><div class="cal-img">Bear Wrestler</div><div class="cal-copy">"DUZZI wrestles bear for your Chapter 2."</div></div>
+    <div class="cal-row"><div class="cal-week">Week 18</div><div class="cal-img">Studio Ghibli</div><div class="cal-copy">"Spirited Away — to the Sonoran Desert."</div></div>
+    <div class="cal-row"><div class="cal-week">Week 19</div><div class="cal-img">Coca-Cola Santa</div><div class="cal-copy">"Have a Coke. Then change your life."</div></div>
+    <div class="cal-row"><div class="cal-week">Week 20</div><div class="cal-img">Patron Saint</div><div class="cal-copy">"Patron Saint of the Back-Half-of-Life."</div></div>
+    <div class="cal-row"><div class="cal-week">Week 21 · 1 week out</div><div class="cal-img">Last Supper Faculty</div><div class="cal-copy">"Eight faculty. One Anthony. No seed oils."</div></div>
+    <div class="cal-row"><div class="cal-week">Week 22 · 3 days out</div><div class="cal-img">Parting the Red Sea</div><div class="cal-copy">"Let my fit fathers go."</div></div>
+    <div class="cal-row"><div class="cal-week">Week 23 · Event Day</div><div class="cal-img">DUZZIVERSE Finale</div><div class="cal-copy">"He contains multitudes. Twelve, to be exact."</div></div>
+  </div>
+</section>
+
+<!-- ============ SITE ENHANCEMENTS ============ -->
+<section class="section">
+  <div class="section-head">
+    <div class="num">Site Enhancements · 7 images</div>
+    <h2>What goes on the <em>live page.</em></h2>
+    <p>These slot directly into existing sections of breakthrough-in-the-desert-v3. Goes live as soon as the generations finish.</p>
+  </div>
+  <div class="grid" id="site-grid">
+    <!-- populated below -->
+  </div>
+</section>
+
+<!-- ============ FUNNY CAMPAIGN ============ -->
+<section class="section">
+  <div class="section-head">
+    <div class="num">The DUZZIVERSE · 23 funny drops</div>
+    <h2>Each one ships <em>as an email + a post.</em></h2>
+    <p>Every image has a headline (for the social caption / poster) and a subject line (for the email). Reserve Your Spot CTA stays consistent in the email body.</p>
+  </div>
+  <div class="grid" id="funny-grid">
+    <!-- populated below -->
+  </div>
+</section>
+
+<script>
+const BASE = 'https://guldanjamax.github.io/anthonybalduzzi/duzzi/';
+
+const SITE = [
+  { id: 'site-hero',    n: '01', title: 'Hero alt · <em>Anthony in the Diehl vista</em>', headline: 'Founder is here. On the ground. In this place.', subject: 'See you in the desert. (Yes, that\'s actually me.)', tag: 'Replaces hero on click-through' },
+  { id: 'site-intro',   n: '02', title: '<em>The intro</em> · "I\'ll meet you here"',  headline: 'Hi. I\'m Anthony. I\'m glad you\'re here.', subject: 'Hi. I\'m Anthony.', tag: 'Above the Mirror section' },
+  { id: 'site-clarity', n: '03', title: 'Leave With · <em>Clarity</em>',   headline: 'A plan you\'re still following 90 days later.', subject: 'What you\'ll bring home (besides the t-shirt)', tag: 'Leave With card 1' },
+  { id: 'site-energy',  n: '04', title: 'Leave With · <em>Energy</em>',    headline: 'Practices that hold when you\'re back in real life.', subject: 'Energy you didn\'t have at 25', tag: 'Leave With card 2' },
+  { id: 'site-friends', n: '05', title: 'Leave With · <em>The Circle</em>', headline: 'Group threads you check daily. Friends you fly to see.', subject: 'The friends you didn\'t know you were missing', tag: 'Leave With card 3' },
+  { id: 'site-pivot',   n: '06', title: '<em>Pivot</em> · on-brand desert', headline: 'The version of you is on the other side of a doorway.', subject: 'You\'re not at the end. You\'re at the beginning.', tag: 'Pivot section' },
+  { id: 'site-yoga',    n: '07', title: 'Day 2 · <em>Sunrise yoga</em>',   headline: 'The body comes back online.', subject: 'Saturday morning. Mat. Mountain. Movement.', tag: '3-Day Arc Day 2 poster' },
+];
+
+const FUNNY = [
+  { id: 'funny-18-david',       n: '08', title: 'Statue of <em>David</em>',              headline: 'Aliveness has been waiting since 1504.',                            subject: 'Some men chisel themselves. Others get chiseled.' },
+  { id: 'funny-19-yoda',        n: '09', title: 'Anthony as <em>Yoda</em>',              headline: 'Become alive, you must.',                                           subject: 'Do or do not — there is no coasting.' },
+  { id: 'funny-20-saguaro',     n: '10', title: 'Riding a <em>saguaro</em>',             headline: 'Some men ride horses. Real men ride cacti.',                        subject: 'Giddyup, doorway.' },
+  { id: 'funny-21-forrest',     n: '11', title: '<em>Forrest Gump</em> run',             headline: 'I just felt like running, Brooke.',                                 subject: 'Run, Anthony. RUN.' },
+  { id: 'funny-22-redsea',      n: '12', title: 'Parting the <em>Red Sea</em>',          headline: 'Let my fit fathers go.',                                            subject: 'And on the third day, he split the canyon.' },
+  { id: 'funny-23-interesting', n: '13', title: 'Most Interesting <em>Man</em>',          headline: 'I don\'t always go to wellness retreats. But when I do, I host them.', subject: 'Stay aliive, my friends.' },
+  { id: 'funny-24-surf',        n: '14', title: 'Surfing <em>the desert</em>',           headline: 'The breakthrough is wherever you find the wave.',                   subject: 'Hang ten, fit fathers.' },
+  { id: 'funny-25-tedcacti',    n: '15', title: 'TED Talk to <em>saguaros</em>',         headline: 'The cacti were taking notes too.',                                  subject: 'Even the desert showed up to listen.' },
+  { id: 'funny-26-conan',       n: '16', title: 'Anthony as <em>Conan</em>',             headline: 'What is best in life, fit father? To crush stagnation.',            subject: 'By Crom, the doorway shall be opened.' },
+  { id: 'funny-27-karate',      n: '17', title: '<em>Karate Kid</em> crane kick',        headline: 'Wax on. Aliveness on.',                                             subject: 'Sweep the leg of stagnation.' },
+  { id: 'funny-28-supper',      n: '18', title: 'Last Supper · <em>Faculty</em>',        headline: 'Eight faculty. One Anthony. No seed oils.',                         subject: 'The last supper before the new chapter.' },
+  { id: 'funny-29-bear',        n: '19', title: 'Fighting <em>a bear</em>',              headline: 'DUZZI wrestles bear for your Chapter 2.',                           subject: 'The bear did not survive the breakthrough.' },
+  { id: 'funny-30-lorax',       n: '20', title: 'Anthony as <em>the Lorax</em>',         headline: 'I speak for the fit fathers, for they have things to say.',          subject: 'Unless someone like you cares — nothing changes.' },
+  { id: 'funny-31-float',       n: '21', title: '<em>Floating</em> cross-legged',         headline: 'Some men meditate. He just floats.',                                subject: 'When your chakras pay rent.' },
+  { id: 'funny-32-sasquatch',   n: '22', title: 'Sonoran <em>Sasquatch</em>',             headline: 'Cryptid. Coach. Same guy.',                                         subject: 'Missing: stagnation. Last seen near a fit father.' },
+  { id: 'funny-33-marlboro',    n: '23', title: '<em>Marlboro Man</em> with kale',        headline: 'He quit smoking. He drinks now... kale.',                           subject: 'Cowboy up. Kale down.' },
+  { id: 'funny-34-saint',       n: '24', title: 'Patron Saint of <em>midlife</em>',      headline: 'Patron Saint of the Back-Half-of-Life.',                             subject: 'Blessed are the breakthrough, for theirs is chapter 2.' },
+  { id: 'funny-35-mona',        n: '25', title: '<em>Mona Lisa</em>',                    headline: 'He\'s been there the whole time.',                                  subject: 'The smile in the Mona Lisa was his.' },
+  { id: 'funny-36-ghibli',      n: '26', title: '<em>Ghibli</em> watercolor',            headline: 'Spirited Away, but to the Sonoran Desert.',                          subject: 'The bee is the doorway.' },
+  { id: 'funny-37-santa',       n: '27', title: 'Coca-Cola <em>Santa</em>',              headline: 'Have a Coke, then go change your life.',                             subject: 'It\'s the real thing — and so is your aliveness.' },
+  { id: 'funny-38-burgerking',  n: '28', title: 'King of <em>broccoli</em>',             headline: 'Have it your way — but seasonal and organic.',                       subject: 'King of midlife. Crown of broccoli.' },
+  { id: 'funny-39-pokemon',     n: '29', title: '<em>Pokemon</em> Trainer',              headline: 'Go, Stagnation! I choose you!',                                      subject: 'Anthony\'s CP is over 9000.' },
+  { id: 'funny-40-multi',       n: '30', title: 'The <em>DUZZIVERSE</em>',               headline: 'He contains multitudes. Twelve, to be exact.',                       subject: 'Every version of him was the doorway.' },
+];
+
+function render(target, items, tagDefault) {
+  const grid = document.getElementById(target);
+  for (const it of items) {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="img-wrap">
+        <img src="${BASE}${it.id}.jpg" alt="${it.title.replace(/<[^>]+>/g,'')}" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\\'img-pending\\'>generating...</div>';" />
+      </div>
+      <div class="meat">
+        <div class="id-num">№ ${it.n}</div>
+        <div class="title">${it.title}</div>
+        <div class="headline">
+          <div class="h-tag">Headline</div>
+          <div class="h-main">"${it.headline}"</div>
+        </div>
+        <div class="subject-line">
+          <span class="sl-tag">Email subject</span>
+          <span class="sl-text">${it.subject}</span>
+        </div>
+        <div class="footer">${it.tag || tagDefault}</div>
+      </div>
+    `;
+    grid.appendChild(card);
+  }
+}
+
+render('site-grid', SITE, '');
+render('funny-grid', FUNNY, 'Weekly drop · email + social');
+</script>
+
+</body>
+</html>

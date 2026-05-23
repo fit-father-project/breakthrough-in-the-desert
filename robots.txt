@@ -23,21 +23,21 @@ Sitemap: sitemap.xml
 # AI / LLM crawlers — explicit allow for visible content
 User-agent: GPTBot
 Allow: /breakthrough-in-the-desert-v3.html
-Allow: /breakthrough-in-the-desert.html
+Allow: /
 Allow: /privacy.html
 Allow: /terms.html
 Allow: /health-disclaimer.html
 
 User-agent: ClaudeBot
 Allow: /breakthrough-in-the-desert-v3.html
-Allow: /breakthrough-in-the-desert.html
+Allow: /
 Allow: /privacy.html
 Allow: /terms.html
 Allow: /health-disclaimer.html
 
 User-agent: PerplexityBot
 Allow: /breakthrough-in-the-desert-v3.html
-Allow: /breakthrough-in-the-desert.html
+Allow: /
 
 User-agent: Google-Extended
 Allow: /

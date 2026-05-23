@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Seats treatment — pick one</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="favicon-32x32.png" type="image/png" sizes="32x32" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bone: #ebE3d4;
+    --gold: #d8b87a;
+    --ember: #a8502e;
+    --ink: #0a0908;
+    --display: 'Cormorant Garamond', serif;
+    --label: 'Inter', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--ink); color: var(--bone);
+    font-family: var(--label); font-weight: 400;
+    min-height: 100vh; padding: 60px 32px;
+  }
+  .wrap { max-width: 1280px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 48px; }
+  h1 {
+    font-family: var(--display); font-weight: 300;
+    font-size: clamp(34px, 4.8vw, 54px); line-height: 1.05;
+    letter-spacing: -0.02em; margin-bottom: 14px;
+  }
+  h1 em { color: var(--gold); font-style: italic; }
+  .sub {
+    font-size: 16px; line-height: 1.55;
+    color: rgba(235,227,212,0.75); max-width: 680px; margin: 0 auto;
+  }
+  .grid {
+    display: grid; gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    margin-top: 8px;
+  }
+  .card {
+    background: rgba(235,227,212,0.04);
+    border: 1px solid rgba(235,227,212,0.12);
+    border-radius: 4px; overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    display: flex; flex-direction: column;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(216, 184, 122, 0.45);
+    box-shadow: 0 18px 56px rgba(0,0,0,0.5);
+  }
+  .preview {
+    background: var(--ink);
+    border-bottom: 1px solid rgba(235,227,212,0.08);
+    padding: 0; position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+  }
+  /* mini countdown-bar mock */
+  .mini-bar {
+    position: absolute; top: 0; left: 0; right: 0;
+    background: rgba(27, 25, 22, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(216, 184, 122, 0.2);
+    color: var(--bone);
+    font-family: var(--label); font-size: 9px;
+    letter-spacing: 0.04em; text-align: center;
+    padding: 6px 8px; z-index: 5;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .mini-bar strong { color: var(--gold); font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; margin-right: 4px; }
+  .mini-bar .sep { color: rgba(216, 184, 122, 0.4); margin: 0 6px; }
+  .mini-bar .pill {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: rgba(216, 184, 122, 0.18);
+    border: 1px solid rgba(216, 184, 122, 0.55);
+    color: var(--gold); font-weight: 600;
+    font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 2px 6px; border-radius: 999px;
+  }
+  .mini-bar .pill .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--ember); display: inline-block; }
+  /* mini hero mock */
+  .mini-hero {
+    position: absolute; inset: 22px 0 0 0;
+    background: url('optimized/bee-1920.webp') center/cover;
+  }
+  .mini-hero::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(10,9,8,0.45), rgba(10,9,8,0.78));
+  }
+  .mini-stack {
+    position: absolute; inset: 22px 12px 12px 12px; z-index: 4;
+    color: var(--bone); text-align: center;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    font-family: var(--label);
+  }
+  .mini-presents { font-size: 7px; letter-spacing: 0.26em; color: var(--gold); margin-bottom: 6px; text-transform: uppercase; }
+  .mini-title { font-family: var(--display); font-weight: 300; font-size: 22px; line-height: 1.0; margin-bottom: 6px; }
+  .mini-title em { color: var(--gold); font-style: italic; display: block; font-size: 18px; }
+  .mini-meta { font-size: 7.5px; letter-spacing: 0.14em; color: var(--gold); margin-top: 4px; }
+  .mini-meta .sep { color: rgba(216,184,122,0.4); margin: 0 4px; }
+  .mini-meta .seats-meta { color: var(--bone); font-weight: 700; }
+  .mini-cta-block { margin-top: 4px; display: inline-flex; flex-direction: column; align-items: center; gap: 3px; }
+  .mini-cta { font-size: 8px; padding: 4px 10px; border: 1px solid rgba(235,227,212,0.4); color: var(--bone); letter-spacing: 0.14em; text-transform: uppercase; }
+  .mini-caption { font-size: 7px; letter-spacing: 0.14em; color: rgba(235,227,212,0.75); text-transform: uppercase; }
+  .mini-caption strong { color: var(--gold); }
+  /* stamp variant */
+  .mini-stamp {
+    position: absolute; top: 30px; right: 14px; z-index: 5;
+    width: 50px; height: 50px; border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(216, 184, 122, 0.95), rgba(168, 80, 46, 0.85) 70%);
+    border: 2px solid rgba(235, 227, 212, 0.4);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.45), inset 0 -1.5px 4px rgba(0,0,0,0.25), inset 0 1.5px 4px rgba(255,240,210,0.4);
+    color: rgba(27, 25, 22, 0.95);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-family: var(--label); font-size: 5px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.1;
+    transform: rotate(-6deg);
+  }
+  .mini-stamp .num { font-family: var(--display); font-style: italic; font-weight: 500; font-size: 18px; }
+
+  .body { padding: 22px 22px 24px; flex: 1; display: flex; flex-direction: column; }
+  .title {
+    font-family: var(--display); font-weight: 400;
+    font-size: 22px; line-height: 1.15; margin-bottom: 8px;
+  }
+  .desc { font-size: 13.5px; line-height: 1.55; color: rgba(235,227,212,0.72); flex: 1; margin-bottom: 16px; }
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn {
+    flex: 1; min-width: 110px; text-align: center;
+    font-family: var(--label); font-size: 11px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--bone); text-decoration: none;
+    padding: 11px 14px;
+    border: 1px solid rgba(216,184,122,0.55);
+    background: rgba(216,184,122,0.12);
+    border-radius: 2px;
+    transition: all 0.25s ease;
+  }
+  .btn:hover {
+    background: rgba(216,184,122,0.25);
+  }
+  footer {
+    margin-top: 48px; text-align: center;
+    font-size: 13px; color: rgba(235,227,212,0.45);
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>"Limited to 150 seats" <em>— pick a treatment</em></h1>
+    <p class="sub">All five share the winning hero-B layout (Bee mountain vista, centered, "Fit Father + Fit Mother Present", new promise). Only the seats element differs. Mini previews here, then click into the full page to feel it at real size.</p>
+  </header>
+
+  <div class="grid">
+
+    <article class="card">
+      <div class="preview">
+        <div class="mini-bar"><strong>Limited to 150 seats</strong><span class="sep">·</span><strong>Early-bird:</strong> ends Jun 21</div>
+        <div class="mini-hero"></div>
+        <div class="mini-stack">
+          <div class="mini-presents">FIT FATHER + FIT MOTHER PRESENT</div>
+          <div class="mini-title">Breakthrough<em>in the Desert</em></div>
+          <div class="mini-meta">Aug 7–9 <span class="sep">·</span> From $845</div>
+        </div>
+      </div>
+      <div class="body">
+        <h2 class="title">1. Inline header bar</h2>
+        <p class="desc">Your simple option. Seats text sits in the sticky countdown bar, to the left of "Early-bird ends". Single line, no extra visual element. Reads as a stat, not a sticker.</p>
+        <div class="actions"><a href="seat-inline.html" class="btn">View full →</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="preview">
+        <div class="mini-bar"><span class="pill"><span class="dot"></span>Only 150 seats</span><span class="sep">·</span><strong>Early-bird:</strong> ends Jun 21</div>
+        <div class="mini-hero"></div>
+        <div class="mini-stack">
+          <div class="mini-presents">FIT FATHER + FIT MOTHER PRESENT</div>
+          <div class="mini-title">Breakthrough<em>in the Desert</em></div>
+          <div class="mini-meta">Aug 7–9 <span class="sep">·</span> From $845</div>
+        </div>
+      </div>
+      <div class="body">
+        <h2 class="title">2. Pill badge in bar</h2>
+        <p class="desc">Same bar, but the seats info is a gold-outlined pill with a glowing ember dot. Reads as a distinct status chip. More visually weighted than inline text.</p>
+        <div class="actions"><a href="seat-pill.html" class="btn">View full →</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="preview">
+        <div class="mini-bar"><strong>Early-bird:</strong> ends Jun 21</div>
+        <div class="mini-hero"></div>
+        <div class="mini-stamp"><span>Only</span><span class="num">150</span><span>seats</span></div>
+        <div class="mini-stack">
+          <div class="mini-presents">FIT FATHER + FIT MOTHER PRESENT</div>
+          <div class="mini-title">Breakthrough<em>in the Desert</em></div>
+          <div class="mini-meta">Aug 7–9 <span class="sep">·</span> From $845</div>
+        </div>
+      </div>
+      <div class="body">
+        <h2 class="title">3. Bronze stamp medallion</h2>
+        <p class="desc">A circular bronze "Only / 150 / seats" stamp sits in the hero's upper-right, tilted slightly like a wax seal. Premium, exclusive, scannable from the first glance.</p>
+        <div class="actions"><a href="seat-stamp.html" class="btn">View full →</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="preview">
+        <div class="mini-bar"><strong>Early-bird:</strong> ends Jun 21</div>
+        <div class="mini-hero"></div>
+        <div class="mini-stack">
+          <div class="mini-presents">FIT FATHER + FIT MOTHER PRESENT</div>
+          <div class="mini-title">Breakthrough<em>in the Desert</em></div>
+          <div class="mini-meta">Aug 7–9 <span class="sep">·</span> $845 <span class="sep">·</span> <span class="seats-meta">150 seats only</span></div>
+        </div>
+      </div>
+      <div class="body">
+        <h2 class="title">4. Inline with event meta</h2>
+        <p class="desc">Seats info joins the existing date / venue / price line as another stat. Single horizontal stream. Calmest treatment — feels like part of the event facts, not a sales push.</p>
+        <div class="actions"><a href="seat-meta.html" class="btn">View full →</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="preview">
+        <div class="mini-bar"><strong>Early-bird:</strong> ends Jun 21</div>
+        <div class="mini-hero"></div>
+        <div class="mini-stack">
+          <div class="mini-presents">FIT FATHER + FIT MOTHER PRESENT</div>
+          <div class="mini-title">Breakthrough<em>in the Desert</em></div>
+          <div class="mini-meta">Aug 7–9 <span class="sep">·</span> From $845</div>
+          <div class="mini-cta-block">
+            <span class="mini-cta">Reserve Your Spot</span>
+            <span class="mini-caption">Only 150 seats — <strong>still open</strong></span>
+          </div>
+        </div>
+      </div>
+      <div class="body">
+        <h2 class="title">5. Caption under CTA</h2>
+        <p class="desc">Small caps line directly under "Reserve Your Spot" — places the scarcity exactly where the buying decision happens. Lighter touch in the hero, but heavy weight at the moment of action.</p>
+        <div class="actions"><a href="seat-cta.html" class="btn">View full →</a></div>
+      </div>
+    </article>
+
+  </div>
+
+  <footer>
+    Test on phone + desktop. Once you pick, I'll promote the winning seat treatment to the canonical <a href="/">event.fitfatherproject.com/</a> and clean up the test pages.
+  </footer>
+
+</div>
+</body>
+</html>

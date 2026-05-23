@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DUZZI LoRA · 40 Ideas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Spectral:ital,wght@0,300;0,400;0,500;1,400&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1B1916; --ink-soft:#2A2723; --bone:#EBE3D4; --bone-soft:#F4EFE3;
+  --plaster:#E2D8C2; --sandstone:#CDB99A; --umber:#5A4631; --pinyon:#878A76;
+  --ember:#A8502E; --ember-warm:#C56638; --bronze:#8A6A3E; --gold:#D8B87A; --gold-soft:#E8CC93;
+  --display:'Newsreader',Georgia,serif; --body:'Spectral',Georgia,serif; --label:'Schibsted Grotesk',system-ui,sans-serif;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+  font-family: var(--body);
+  background: #0a0a0a;
+  color: var(--bone);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 120px;
+}
+
+/* ===== Masthead ===== */
+.mast {
+  background: linear-gradient(180deg, #15120F 0%, #0a0a0a 100%);
+  padding: 90px 40px 60px;
+  border-bottom: 1px solid rgba(168, 80, 46, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+.mast::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(168, 80, 46, 0.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 10% 90%, rgba(216, 184, 122, 0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+.mast-inner { max-width: 1280px; margin: 0 auto; position: relative; }
+.mast .eyebrow {
+  font-family: var(--label); font-size: 12px; letter-spacing: 0.24em;
+  text-transform: uppercase; color: var(--ember-warm); margin-bottom: 24px;
+}
+.mast h1 {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(40px, 5.5vw, 72px); line-height: 1.04;
+  letter-spacing: -0.02em; color: var(--bone);
+  max-width: 900px; margin-bottom: 22px;
+}
+.mast h1 em { font-style: italic; color: var(--gold); font-weight: 300; }
+.mast-deck {
+  font-family: var(--body); font-size: 19px;
+  color: rgba(235, 227, 212, 0.72); max-width: 760px; line-height: 1.65;
+}
+
+/* Training status badge */
+.status {
+  margin-top: 36px;
+  padding: 18px 24px;
+  background: rgba(216, 184, 122, 0.08);
+  border-left: 3px solid var(--gold);
+  border-radius: 4px;
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+}
+.status .pulse {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--label); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold);
+}
+.status .pulse::before {
+  content: ''; width: 8px; height: 8px;
+  border-radius: 50%; background: var(--gold);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+.status-done { background: rgba(159, 197, 122, 0.06); border-left-color: #9FC57A; }
+.pulse-done { color: #9FC57A !important; }
+.pulse-done::before { background: #9FC57A !important; animation: none !important; }
+
+/* Proof block */
+.proof { margin-top: 28px; padding-top: 28px; border-top: 1px solid rgba(216, 184, 122, 0.18); }
+.proof-label {
+  font-family: var(--label); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--ember-warm); margin-bottom: 18px;
+}
+.proof-grid { display: grid; grid-template-columns: 340px 1fr; gap: 28px; align-items: start; }
+.proof-grid img {
+  width: 100%; aspect-ratio: 1; object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid rgba(216, 184, 122, 0.28);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+}
+.proof-prompt {
+  font-family: var(--body); font-size: 15px; font-style: italic;
+  line-height: 1.55; color: rgba(235, 227, 212, 0.78);
+  padding: 16px 20px;
+  background: rgba(27, 25, 22, 0.5);
+  border-left: 2px solid var(--gold);
+  border-radius: 2px;
+  margin-bottom: 20px;
+}
+.proof-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 24px; }
+.proof-stats > div { display: flex; flex-direction: column; gap: 4px; }
+.proof-stats span {
+  font-family: var(--label); font-size: 10px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: rgba(216, 184, 122, 0.65);
+}
+.proof-stats strong {
+  font-family: var(--display); font-size: 22px; font-weight: 400;
+  color: var(--bone); font-style: italic;
+}
+@media (max-width: 720px) {
+  .proof-grid { grid-template-columns: 1fr; }
+}
+.status .meta {
+  font-family: var(--body); font-size: 15px; color: rgba(235, 227, 212, 0.85);
+}
+.status .meta strong { color: var(--bone); }
+
+/* ===== Tiers ===== */
+.tier {
+  max-width: 1320px; margin: 0 auto;
+  padding: 84px 40px 40px;
+}
+.tier-head {
+  margin-bottom: 36px; padding-bottom: 22px;
+  border-bottom: 1px solid rgba(235, 227, 212, 0.08);
+}
+.tier-head .num {
+  font-family: var(--label); font-size: 11px; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+}
+.tier-head h2 {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(32px, 3.4vw, 48px); line-height: 1.08;
+  letter-spacing: -0.015em; color: var(--bone); margin-bottom: 12px;
+}
+.tier-head h2 em { font-style: italic; color: var(--ember-warm); font-weight: 300; }
+.tier-head .blurb {
+  font-family: var(--body); font-size: 17px; color: rgba(235, 227, 212, 0.65);
+  font-style: italic; max-width: 760px;
+}
+
+.grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+}
+.idea {
+  background: linear-gradient(180deg, #161310 0%, #0d0c0a 100%);
+  border: 1px solid rgba(235, 227, 212, 0.08);
+  border-radius: 8px;
+  padding: 26px 26px 24px;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  display: flex; flex-direction: column; gap: 12px;
+  position: relative;
+}
+.idea:hover {
+  transform: translateY(-3px);
+  border-color: rgba(216, 184, 122, 0.35);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+}
+.idea .id-num {
+  font-family: var(--label); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.22em; color: var(--ember-warm);
+}
+.idea h3 {
+  font-family: var(--display); font-size: 21px; font-weight: 500;
+  color: var(--bone); letter-spacing: -0.01em; line-height: 1.18;
+}
+.idea h3 em { font-style: italic; color: var(--gold); }
+.idea p {
+  font-family: var(--body); font-size: 15px; line-height: 1.55;
+  color: rgba(235, 227, 212, 0.80);
+}
+.idea .footer {
+  margin-top: auto; padding-top: 14px;
+  border-top: 1px solid rgba(235, 227, 212, 0.06);
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--label); font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: rgba(216, 184, 122, 0.65);
+}
+.idea .pick {
+  color: #9FC57A; font-weight: 700;
+}
+
+/* Tier 3 (funny) gets a slightly different treatment */
+.tier-funny .idea {
+  background: linear-gradient(180deg, #1a1612 0%, #0c0a08 100%);
+  border-color: rgba(168, 80, 46, 0.18);
+}
+.tier-funny .idea:hover { border-color: var(--ember-warm); }
+.tier-funny .id-num { color: var(--gold); }
+.tier-funny .idea h3 em { color: var(--ember-warm); }
+
+@media (max-width: 1100px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 720px) {
+  .grid { grid-template-columns: 1fr; }
+  .mast { padding: 60px 22px 44px; }
+  .tier { padding: 60px 22px 32px; }
+  .idea { padding: 22px; }
+}
+
+/* ===== Top 5 picks block ===== */
+.picks {
+  max-width: 1320px; margin: 64px auto 0;
+  padding: 0 40px;
+}
+.picks-inner {
+  background: linear-gradient(180deg, #1A1714 0%, #0d0c0a 100%);
+  border: 1px solid rgba(216, 184, 122, 0.22);
+  border-radius: 12px;
+  padding: 48px;
+}
+.picks h2 {
+  font-family: var(--display); font-weight: 400; font-size: 36px;
+  color: var(--bone); margin-bottom: 14px;
+}
+.picks h2 em { font-style: italic; color: var(--gold); }
+.picks p {
+  font-family: var(--body); font-size: 17px;
+  color: rgba(235, 227, 212, 0.7); margin-bottom: 32px;
+}
+.picks ol { list-style: none; counter-reset: pick; }
+.picks li {
+  counter-increment: pick;
+  display: grid; grid-template-columns: 50px 1fr;
+  gap: 18px; padding: 16px 0;
+  border-bottom: 1px solid rgba(235, 227, 212, 0.06);
+}
+.picks li::before {
+  content: counter(pick);
+  font-family: var(--display); font-size: 28px; font-weight: 300;
+  color: var(--gold); line-height: 1;
+}
+.picks li:last-child { border-bottom: none; }
+.picks li .name {
+  font-family: var(--display); font-size: 18px; font-weight: 500;
+  color: var(--bone); margin-bottom: 4px;
+}
+.picks li .why {
+  font-family: var(--body); font-size: 15px;
+  color: rgba(235, 227, 212, 0.78);
+}
+
+/* Footer */
+.foot {
+  max-width: 1320px; margin: 80px auto 0;
+  padding: 36px 40px;
+  text-align: center;
+}
+.foot p {
+  font-family: var(--label); font-size: 11px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(216, 184, 122, 0.55);
+}
+</style>
+</head>
+<body>
+
+<!-- ============ MASTHEAD ============ -->
+<header class="mast">
+  <div class="mast-inner">
+    <div class="eyebrow">DUZZI LoRA · 40 Ideas</div>
+    <h1>What we'll do with a <em>synthetic Anthony.</em></h1>
+    <p class="mast-deck">Trained on 21 of his real photos. Trigger word: <strong style="color:var(--gold);">DUZZI</strong>. After training, we can generate Anthony in any setting, any era, any costume — for marketing, for socials, for the inside-joke email that goes viral in the FFP community.</p>
+
+    <div class="status status-done">
+      <span class="pulse pulse-done">LoRA Trained · 18 min</span>
+      <span class="meta">Replicate · <strong>guldanjamax/anthony-balduzzi-lora</strong> · rank 32 · 1500 steps · ready to generate</span>
+    </div>
+
+    <div class="proof">
+      <div class="proof-label">First test generation</div>
+      <div class="proof-grid">
+        <img src="https://guldanjamax.github.io/anthonybalduzzi/lora/duzzi-test1.jpg" alt="Synthetic photo of Dr. Anthony Balduzzi in the Sonoran desert at golden hour, generated by the new LoRA." />
+        <div class="proof-meta">
+          <div class="proof-prompt">"portrait of DUZZI man with short hair and trimmed beard, standing in the Sonoran desert at golden hour, photorealistic, cinematic lighting, natural skin, confident calm expression, looking at camera"</div>
+          <div class="proof-stats">
+            <div><span>Likeness</span><strong>~90%</strong></div>
+            <div><span>Time to generate</span><strong>~22 sec</strong></div>
+            <div><span>Cost per image</span><strong>~$0.04</strong></div>
+            <div><span>Resolution</span><strong>1024×1024</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ TIER 1: BRAND ============ -->
+<section class="tier">
+  <div class="tier-head">
+    <div class="num">Tier 1 · On-brand</div>
+    <h2>Premium, <em>ship-able</em> ideas for the live page.</h2>
+    <p class="blurb">Things we can plug into the existing v3 page or use in the launch email sequence the day the LoRA's ready.</p>
+  </div>
+  <div class="grid">
+    <div class="idea">
+      <div class="id-num">№ 01</div>
+      <h3>Anthony at the <em>Arizona Grand Resort</em></h3>
+      <p>Synthetic venue photos — Anthony walking the lobby, by the lazy river, on the South Mountain trail at sunrise. Solves the gap of "we need real AGR photos" without scheduling a shoot.</p>
+      <div class="footer"><span>FILLS A REAL GAP</span><span class="pick">TOP 5</span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 02</div>
+      <h3>The Council <em>assembled</em></h3>
+      <p>Anthony with each of the 8 faculty in matched-lighting environmental portraits. Drops directly into the Faculty section, replacing the headshots-on-a-grid with a unified mood.</p>
+      <div class="footer"><span>FACULTY SECTION REBUILD</span><span class="pick">TOP 5</span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 03</div>
+      <h3>A photo for every <em>Agenda block</em></h3>
+      <p>Anthony at the Day 1 podium, sunrise yoga mat for Day 2, leading the cacao ceremony Day 3, hugging at the airport on departure. The schedule becomes a photo essay.</p>
+      <div class="footer"><span>AGENDA UPGRADE</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 04</div>
+      <h3>A custom Anthony <em>per section</em></h3>
+      <p>Mirror (looking into an actual mirror). Pivot (mid-stride through a doorway). Founder (writing in a journal at dawn). Each section gets a personalized hero shot.</p>
+      <div class="footer"><span>HEAVY LIFT, BIG PAYOFF</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 05</div>
+      <h3>The <em>after</em> photo series</h3>
+      <p>Anthony 30 days from now, 90 days, 1 year — subtle aging-up. "What happens AFTER Breakthrough." Makes the timeline tangible. Powerful for the email follow-up sequence.</p>
+      <div class="footer"><span>EMAIL CAMPAIGN</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 06</div>
+      <h3>Vintage <em>portraits</em></h3>
+      <p>Black-and-white wet-plate. 1970s polaroid. 1950s magazine ad. For the "timeless wisdom" angle on the Founder section — Anthony as a man out of time.</p>
+      <div class="footer"><span>FOUNDER SECTION VARIANT</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 07</div>
+      <h3>Speaker <em>fight posters</em></h3>
+      <p>Anthony plus each of the 8 faculty in stylized "boxing match" promo cards. Individually shareable, drives event awareness as the speakers post their own.</p>
+      <div class="footer"><span>SOCIAL ASSETS</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 08</div>
+      <h3>Email sequence <em>moods</em></h3>
+      <p>Different Anthony for each email in the campaign — curious / fired up / contemplative / in-the-desert / signing off. The campaign feels like he wrote each one personally.</p>
+      <div class="footer"><span>NURTURE FLOW</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 09</div>
+      <h3>Behind <em>the doorway</em></h3>
+      <p>Anthony emerging from a literal stone doorway carved in red Sedona rock. The brand mark becomes literal imagery. Could be the new hero.</p>
+      <div class="footer"><span>POTENTIAL NEW HERO</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 10</div>
+      <h3>Anthony on <em>magazine covers</em></h3>
+      <p>Time · Forbes · Outside · Men's Health. Fake but tasteful spread. "As featured in your imagination" treatment for the press kit page. Authority via mockup.</p>
+      <div class="footer"><span>PRESS KIT</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 11</div>
+      <h3>The <em>greeter</em></h3>
+      <p>Handshake at the airport pickup. Smile at the resort front desk. Open arms at the conference hall entrance. Anthony welcoming you. For the post-purchase confirmation email sequence.</p>
+      <div class="footer"><span>POST-PURCHASE FLOW</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 12</div>
+      <h3>Before / <em>after</em> contrast</h3>
+      <p>Anthony slumped on a couch with fast food. Then NEXT frame: full vitality. The Mirror section in a single before/after diptych.</p>
+      <div class="footer"><span>MIRROR SECTION</span><span></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIER 2: COOL ============ -->
+<section class="tier">
+  <div class="tier-head">
+    <div class="num">Tier 2 · Cool but more designed</div>
+    <h2>Stylized treatments for <em>premium touchpoints.</em></h2>
+    <p class="blurb">Need more art direction but pay off in branding and conversion when done right.</p>
+  </div>
+  <div class="grid">
+    <div class="idea">
+      <div class="id-num">№ 13</div>
+      <h3>Threshold <em>guardian</em></h3>
+      <p>Line-art illustration of Anthony at a doorway. Becomes the favicon, the app icon, the brand mark. A small line drawing that scales everywhere.</p>
+      <div class="footer"><span>BRAND ICONOGRAPHY</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 14</div>
+      <h3>Oil <em>painting</em></h3>
+      <p>Renaissance portrait. Hangs in his hypothetical office. Authority signal — the kind of image clients want to see when they're spending $1,295.</p>
+      <div class="footer"><span>FOUNDER AUTHORITY</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 15</div>
+      <h3>Anthony with <em>the audience</em></h3>
+      <p>POV shot from the back of the room. Anthony on stage. 150 attendees in front of him. Sells "the room" feeling without us needing 2025 event photos.</p>
+      <div class="footer"><span>AGENDA HERO</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 16</div>
+      <h3>At a desert <em>crossroads</em></h3>
+      <p>Anthony with a literal compass, two paths diverging in the Sonoran. Symbolic asset for the email campaign about choosing.</p>
+      <div class="footer"><span>METAPHOR SHOT</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 17</div>
+      <h3>1980s self-help <em>book cover</em></h3>
+      <p>Vintage drop-shadow typography. Faded photo. "TRANSFORM AFTER 40" treatment. Tongue-in-cheek but Anthony's community will love it.</p>
+      <div class="footer"><span>FUN BRAND ASSET</span><span></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIER 3: OFF-THE-WALL ============ -->
+<section class="tier tier-funny">
+  <div class="tier-head">
+    <div class="num">Tier 3 · Off-the-wall</div>
+    <h2>The <em>laugh-out-loud</em> bucket.</h2>
+    <p class="blurb">For the email campaign that goes viral in the FFP community. For the post-event surprise. For the inside joke that becomes the meme.</p>
+  </div>
+  <div class="grid">
+    <div class="idea">
+      <div class="id-num">№ 18</div>
+      <h3>Anthony as the <em>Statue of David</em></h3>
+      <p>Sculpted marble, classic contrapposto pose. Caption: "Aliveness has been waiting since 1504."</p>
+      <div class="footer"><span>MUSEUM ENERGY</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 19</div>
+      <h3>Anthony as <em>Yoda</em></h3>
+      <p>Green, ears, robe, walking stick. "Become alive, you must." Email subject line writes itself.</p>
+      <div class="footer"><span>EMAIL DOPAMINE</span><span class="pick">TOP 5</span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 20</div>
+      <h3>Riding a <em>saguaro</em></h3>
+      <p>Anthony astride a giant cactus like a horse. Dust trail behind. Western desert. Physically impossible. Cinematically perfect.</p>
+      <div class="footer"><span>POSTER CANDIDATE</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 21</div>
+      <h3>Anthony as <em>Forrest Gump</em></h3>
+      <p>Mid cross-country run. Bench scene. The works. "I just felt like running, Brooke."</p>
+      <div class="footer"><span>EMAIL PARODY</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 22</div>
+      <h3>Parting <em>the Red Sea</em></h3>
+      <p>But it's the Sonoran Desert. Charlton Heston staff. Mountains pulled apart. "Let my fit fathers go."</p>
+      <div class="footer"><span>FFP COMMUNITY MEME</span><span class="pick">TOP 5</span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 23</div>
+      <h3>Most Interesting Man <em>in the World</em></h3>
+      <p>Dos Equis ad parody. "I don't always go to wellness retreats. But when I do, I host them."</p>
+      <div class="footer"><span>EMAIL CAMPAIGN</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 24</div>
+      <h3>Surfing <em>in the desert</em></h3>
+      <p>Surfboard, big wave made of sand, full wetsuit. Caption: "The breakthrough is wherever you find the wave."</p>
+      <div class="footer"><span>SOCIAL POST</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 25</div>
+      <h3>TED Talk to <em>a roomful of saguaros</em></h3>
+      <p>Literally cacti in chairs taking notes. Audience reaction shots. The desert is paying close attention.</p>
+      <div class="footer"><span>ABSURDIST</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 26</div>
+      <h3>Anthony as <em>Conan</em></h3>
+      <p>Fur, broadsword, dramatic sky. "What is best in life, fit father?"</p>
+      <div class="footer"><span>POWER FANTASY</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 27</div>
+      <h3>Anthony as the <em>Karate Kid</em></h3>
+      <p>Crane kick on a Sedona red rock at sunset. "Wax on. Aliveness on."</p>
+      <div class="footer"><span>NOSTALGIA HIT</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 28</div>
+      <h3>Renaissance <em>fresco</em></h3>
+      <p>The Last Supper but it's Anthony + the 8 faculty around a long Sonoran table. Cacti and red rocks behind. Solemn.</p>
+      <div class="footer"><span>FACULTY SECTION</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 29</div>
+      <h3>Fighting <em>a bear</em></h3>
+      <p>Black-and-white wilderness photo. Caption: "DUZZI WRESTLES A BEAR FOR YOUR CHAPTER 2." Lost-newspaper-clipping energy.</p>
+      <div class="footer"><span>EMAIL HOOK</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 30</div>
+      <h3>Anthony as <em>the Lorax</em></h3>
+      <p>For the fit fathers, he speaks. Yellow mustache. Stump. The Sonoran instead of Truffula trees.</p>
+      <div class="footer"><span>POSTCARD ASSET</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 31</div>
+      <h3>Floating <em>cross-legged</em></h3>
+      <p>Anthony 10 feet off the ground in lotus pose. Above the Arizona Grand lazy river. Meditation level: maxed out.</p>
+      <div class="footer"><span>SOCIAL TEASE</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 32</div>
+      <h3>The Sonoran <em>Sasquatch</em></h3>
+      <p>Blurry, half-hidden, hunting fast-food culture. Bigfoot meets transformation coach. Cryptid-but-helpful.</p>
+      <div class="footer"><span>MEME CHAIN</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 33</div>
+      <h3>Anthony as the <em>Marlboro Man</em></h3>
+      <p>But he's quit smoking and is offering you a kale smoothie. Vintage cowboy poster. Quietly perfect.</p>
+      <div class="footer"><span>VINTAGE AD</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 34</div>
+      <h3>Patron saint of <em>midlife</em></h3>
+      <p>Gold-leaf halo. Byzantine icon style. Hangs in a cathedral. "Patron Saint of the Back-Half-of-Life."</p>
+      <div class="footer"><span>REGISTRATION SWAG</span><span class="pick">TOP 5</span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 35</div>
+      <h3>Every Renaissance painting <em>at once</em></h3>
+      <p>Mona Lisa, Sistine Chapel ceiling, Birth of Venus. Anthony's been there the whole time. The DaVinci was him.</p>
+      <div class="footer"><span>EMAIL GIF SEQUENCE</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 36</div>
+      <h3>Studio Ghibli <em>style</em></h3>
+      <p>Hand-drawn anime. Soft watercolor. Riding a giant bee through the Sonoran at sunset. Spirited Away meets Fit Father.</p>
+      <div class="footer"><span>CHILDREN'S BOOK ASSET</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 37</div>
+      <h3>1950s <em>Coca-Cola Santa</em></h3>
+      <p>Norman Rockwell era. "Have a Coke, then go change your life." Classic American kitsch.</p>
+      <div class="footer"><span>HOLIDAY CAMPAIGN</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 38</div>
+      <h3>Burger King mascot <em>but fit</em></h3>
+      <p>Crown made of broccoli. Throne is a kettlebell. Reigns over the kingdom of midlife wellness.</p>
+      <div class="footer"><span>VIRAL POTENTIAL</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 39</div>
+      <h3>Anthony as a <em>Pokémon trainer</em></h3>
+      <p>Releasing a Pokéball that contains your former self. "Go, Stagnation! I choose you!" — and then defeats it.</p>
+      <div class="footer"><span>EMAIL HOOK</span><span></span></div>
+    </div>
+    <div class="idea">
+      <div class="id-num">№ 40</div>
+      <h3>The <em>DUZZIVERSE</em></h3>
+      <p>Split-screen of Anthony in 12 wildly different professions simultaneously. Cosmic "you contain multitudes" energy. The final boss of LoRA generations.</p>
+      <div class="footer"><span>MULTIVERSE FINALE</span><span></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOP 5 PICKS ============ -->
+<section class="picks">
+  <div class="picks-inner">
+    <h2>If you only do <em>five</em>...</h2>
+    <p>Ordered by impact. We can pump these out the day the LoRA training finishes.</p>
+    <ol>
+      <li>
+        <div>
+          <div class="name">№ 01 · Anthony at the Arizona Grand Resort</div>
+          <div class="why">Fills a real content gap (we still need real AGR photos). Most useful, ships into the live page same day.</div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <div class="name">№ 02 · The Council Assembled</div>
+          <div class="why">Faculty section goes from headshots to MOOD. Highest sales impact of the bunch.</div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <div class="name">№ 22 · Parting the Red Sea (Sonoran Desert)</div>
+          <div class="why">Funniest brand-coherent meme. Anthony will laugh, share with the FFP community, organic reach.</div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <div class="name">№ 19 · Anthony as Yoda</div>
+          <div class="why">Peak email-newsletter dopamine. "Become alive, you must." subject line is the whole pitch.</div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <div class="name">№ 34 · Patron Saint of Midlife</div>
+          <div class="why">Print as an actual gold-leaf icon. Ship one to every attendee in the registration packet. Becomes a keepsake.</div>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<footer class="foot">
+  <p>Training in progress · poll the model URL when done · then generate</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hero animations — pick one</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="favicon-32x32.png" type="image/png" sizes="32x32" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bone: #ebE3d4;
+    --gold: #d8b87a;
+    --ember: #a8502e;
+    --ink: #0a0908;
+    --display: 'Cormorant Garamond', serif;
+    --label: 'Inter', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--ink); color: var(--bone);
+    font-family: var(--label); font-weight: 400;
+    min-height: 100vh; padding: 60px 32px;
+  }
+  .wrap { max-width: 1280px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 48px; }
+  h1 {
+    font-family: var(--display); font-weight: 300;
+    font-size: clamp(34px, 4.8vw, 54px); line-height: 1.05;
+    letter-spacing: -0.02em; margin-bottom: 14px;
+  }
+  h1 em { color: var(--gold); font-style: italic; }
+  .sub {
+    font-size: 16px; line-height: 1.55;
+    color: rgba(235,227,212,0.75); max-width: 720px; margin: 0 auto;
+  }
+  .hint {
+    margin-top: 18px; font-size: 13px; color: rgba(235,227,212,0.55);
+    letter-spacing: 0.04em;
+  }
+  .hint kbd {
+    font-family: var(--label); font-size: 12px;
+    background: rgba(216,184,122,0.12); color: var(--gold);
+    padding: 2px 7px; border-radius: 3px;
+    border: 1px solid rgba(216,184,122,0.32);
+  }
+  .grid {
+    display: grid; gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin-top: 8px;
+  }
+  .card {
+    background: rgba(235,227,212,0.04);
+    border: 1px solid rgba(235,227,212,0.12);
+    border-radius: 4px; overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    display: flex; flex-direction: column;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(216, 184, 122, 0.45);
+    box-shadow: 0 18px 56px rgba(0,0,0,0.5);
+  }
+  .preview {
+    position: relative;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    background: var(--ink);
+    border-bottom: 1px solid rgba(235,227,212,0.08);
+  }
+  .preview .bg {
+    position: absolute; inset: 0;
+    background: url('optimized/bee-1920.webp') center/cover;
+    transform-origin: 55% 45%;
+  }
+  .preview .vignette {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse at 50% 50%, rgba(10,9,8,0.40) 0%, rgba(10,9,8,0.10) 50%, rgba(10,9,8,0.50) 100%),
+      linear-gradient(180deg, rgba(10,9,8,0.45) 0%, rgba(10,9,8,0.18) 35%, rgba(10,9,8,0.15) 55%, rgba(10,9,8,0.80) 100%);
+    z-index: 3;
+  }
+  .preview .stack {
+    position: absolute; inset: 0; z-index: 4;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; color: var(--bone);
+    padding: 16px;
+  }
+  .stack .presents {
+    font-family: var(--label); font-size: 8px;
+    color: var(--gold); letter-spacing: 0.26em;
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .stack .ttl {
+    font-family: var(--display); font-weight: 300;
+    font-size: 32px; line-height: 0.92; letter-spacing: -0.02em;
+  }
+  .stack .ttl em { font-style: italic; color: var(--gold); display: block; font-size: 28px; margin-top: 2px; }
+  .stack .meta {
+    margin-top: 8px; font-size: 8.5px;
+    letter-spacing: 0.14em; color: var(--gold);
+  }
+
+  /* === Mini animation: Ken Burns === */
+  .anim-kenburns .bg { animation: miniKenBurns 14s ease-in-out infinite alternate; }
+  @keyframes miniKenBurns {
+    0%   { transform: scale(1.0)  translate(0%, 0%); }
+    100% { transform: scale(1.10) translate(-2.5%, -1.5%); }
+  }
+
+  /* === Mini animation: Cinematic intro === */
+  .anim-cinematic .bg { animation: miniEntrance 2.6s cubic-bezier(0.16,1,0.3,1) both, miniDrift 14s ease-in-out 2.6s infinite alternate; }
+  @keyframes miniEntrance {
+    0%   { transform: scale(1.18); filter: blur(8px) brightness(0.45); }
+    60%  { filter: blur(1.5px) brightness(0.85); }
+    100% { transform: scale(1.0);  filter: blur(0) brightness(1); }
+  }
+  @keyframes miniDrift {
+    from { transform: scale(1.0); }
+    to   { transform: scale(1.06); }
+  }
+  .anim-cinematic .stack > * {
+    opacity: 0; transform: translateY(14px);
+    animation: miniTextRise 0.9s cubic-bezier(0.16,1,0.3,1) both;
+  }
+  .anim-cinematic .presents { animation-delay: 1.4s; }
+  .anim-cinematic .ttl      { animation-delay: 1.7s; }
+  .anim-cinematic .meta     { animation-delay: 2.2s; }
+  @keyframes miniTextRise { to { opacity: 1; transform: translateY(0); } }
+
+  /* === Mini animation: Shimmer === */
+  .anim-shimmer .bg { animation: miniDrift 14s ease-in-out infinite alternate; }
+  .anim-shimmer .shimmer {
+    position: absolute; inset: 0; z-index: 2; pointer-events: none;
+    background:
+      radial-gradient(ellipse at 55% 22%, rgba(216, 184, 122, 0.6) 0%, transparent 55%),
+      radial-gradient(ellipse at 35% 30%, rgba(168, 80, 46, 0.30) 0%, transparent 50%);
+    mix-blend-mode: soft-light;
+    animation: miniShimmer 7s ease-in-out infinite alternate;
+  }
+  @keyframes miniShimmer {
+    0%   { opacity: 0.45; transform: translateX(-3%) scale(1.02); }
+    100% { opacity: 1.0;  transform: translateX(3%)  scale(1.05); }
+  }
+
+  /* === Mini animation: Light beam === */
+  .anim-lightbeam .bg { animation: miniDrift 14s ease-in-out infinite alternate; }
+  .anim-lightbeam .beam {
+    position: absolute; top: -50%; left: -30%;
+    width: 35%; height: 200%; z-index: 2; pointer-events: none;
+    background: linear-gradient(105deg,
+      transparent 0%,
+      rgba(255, 235, 195, 0.05) 30%,
+      rgba(255, 235, 195, 0.28) 50%,
+      rgba(255, 235, 195, 0.05) 70%,
+      transparent 100%);
+    transform: rotate(15deg);
+    mix-blend-mode: screen;
+    animation: miniBeam 4.5s cubic-bezier(0.16,1,0.3,1) 0.6s infinite;
+  }
+  @keyframes miniBeam {
+    0%   { left: -40%; opacity: 0; }
+    15%  { opacity: 1; }
+    85%  { opacity: 1; }
+    100% { left: 140%; opacity: 0; }
+  }
+
+  /* === Mini animation: Combo === */
+  .anim-combo .bg { animation: miniEntrance 2.6s cubic-bezier(0.16,1,0.3,1) both, miniKenBurns 14s ease-in-out 2.6s infinite alternate; }
+  .anim-combo .shimmer {
+    position: absolute; inset: 0; z-index: 2; pointer-events: none;
+    background:
+      radial-gradient(ellipse at 55% 22%, rgba(216, 184, 122, 0.5) 0%, transparent 55%),
+      radial-gradient(ellipse at 35% 30%, rgba(168, 80, 46, 0.25) 0%, transparent 50%);
+    mix-blend-mode: soft-light;
+    opacity: 0;
+    animation: miniComboShimmerIn 1.6s ease-out 1.5s both, miniShimmer 7s ease-in-out 3.1s infinite alternate;
+  }
+  @keyframes miniComboShimmerIn { to { opacity: 1; } }
+  .anim-combo .stack > * {
+    opacity: 0; transform: translateY(14px);
+    animation: miniTextRise 0.9s cubic-bezier(0.16,1,0.3,1) both;
+  }
+  .anim-combo .presents { animation-delay: 1.4s; }
+  .anim-combo .ttl      { animation-delay: 1.7s; }
+  .anim-combo .meta     { animation-delay: 2.2s; }
+
+  .body { padding: 22px 22px 24px; flex: 1; display: flex; flex-direction: column; }
+  .title { font-family: var(--display); font-weight: 400; font-size: 22px; line-height: 1.15; margin-bottom: 8px; }
+  .desc { font-size: 13.5px; line-height: 1.55; color: rgba(235,227,212,0.72); flex: 1; margin-bottom: 16px; }
+  .actions { display: flex; gap: 10px; }
+  .btn {
+    flex: 1; text-align: center;
+    font-family: var(--label); font-size: 11px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--bone); text-decoration: none;
+    padding: 11px 14px;
+    border: 1px solid rgba(216,184,122,0.55);
+    background: rgba(216,184,122,0.12);
+    border-radius: 2px;
+    transition: all 0.25s ease;
+  }
+  .btn:hover { background: rgba(216,184,122,0.25); }
+  .replay {
+    position: absolute; top: 10px; right: 10px; z-index: 5;
+    font-size: 10px; padding: 6px 10px;
+    background: rgba(27,25,22,0.7); color: var(--bone);
+    border: 1px solid rgba(216,184,122,0.3); border-radius: 2px;
+    letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600;
+    cursor: pointer; backdrop-filter: blur(8px);
+  }
+  .replay:hover { border-color: var(--gold); color: var(--gold); }
+  footer { margin-top: 48px; text-align: center; font-size: 13px; color: rgba(235,227,212,0.45); }
+  footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Hero animations <em>— pick one</em></h1>
+    <p class="sub">Each preview is the actual animation running live in miniature. Watch them all for 5-10 seconds to get the full effect, then click into the full page to feel it at hero size on phone or desktop. All use the locked-in Bee vista hero + inline seats header.</p>
+    <p class="hint">Some animations only play once on load (Light beam, Cinematic, Combo). Click <kbd>↻ Replay</kbd> on any card to restart the animation here. The full pages always replay on reload.</p>
+  </header>
+
+  <div class="grid">
+
+    <article class="card">
+      <div class="preview anim-kenburns" data-anim>
+        <button class="replay" onclick="this.parentElement.classList.remove('anim-kenburns'); void this.parentElement.offsetWidth; this.parentElement.classList.add('anim-kenburns');">↻ Replay</button>
+        <div class="bg"></div>
+        <div class="vignette"></div>
+        <div class="stack">
+          <div class="presents">FIT FATHER + FIT MOTHER PRESENT</div>
+          <div class="ttl">Breakthrough<em>in the Desert</em></div>
+          <div class="meta">Aug 7–9 · From $845</div>
+        </div>
+      </div>
+      <div class="body">
+        <h2 class="title">1. Ken Burns dolly</h2>
+        <p class="desc">Perpetual slow cinematic pan + zoom across the image. Subtle, never stops, never wow-pops — just feels constantly alive. Most "documentary film" of the bunch.</p>
+        <div class="actions"><a href="anim-kenburns.html" class="btn">View full →</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="preview anim-cinematic" data-anim>
+        <button class="replay" onclick="this.parentElement.classList.remove('anim-cinematic'); void this.parentElement.offsetWidth; this.parentElement.classList.add('anim-cinematic');">↻ Replay</button>
+        <div class="bg"></div>
+        <div class="vignette"></div>
+        <div class="stack">
+          <div class="presents">FIT FATHER + FIT MOTHER PRESENT</div>
+          <div class="ttl">Breakthrough<em>in the Desert</em></div>
+          <div class="meta">Aug 7–9 · From $845</div>
+        </div>
+      </div>
+      <div class="body">
+        <h2 class="title">2. Cinematic intro reveal</h2>
+        <p class="desc">Page-load entrance — image starts darkened and blurred, focuses sharp over ~2.5s as it zooms back, then text rises into place line-by-line. Maximum wow on first arrival. Settles into subtle drift.</p>
+        <div class="actions"><a href="anim-cinematic.html" class="btn">View full →</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="preview anim-shimmer" data-anim>
+        <button class="replay" onclick="this.parentElement.classList.remove('anim-shimmer'); void this.parentElement.offsetWidth; this.parentElement.classList.add('anim-shimmer');">↻ Replay</button>
+        <div class="bg"></div>
+        <div class="shimmer"></div>
+        <div class="vignette"></div>
+        <div class="stack">
+          <div class="presents">FIT FATHER + FIT MOTHER PRESENT</div>
+          <div class="ttl">Breakthrough<em>in the Desert</em></div>
+          <div class="meta">Aug 7–9 · From $845</div>
+        </div>
+      </div>
+      <div class="body">
+        <h2 class="title">3. Atmospheric sky shimmer</h2>
+        <p class="desc">Warm color glow in the sky region breathes in and out continuously, like a sunrise that's still developing. Adds depth without geometry change. Most "magic hour."</p>
+        <div class="actions"><a href="anim-shimmer.html" class="btn">View full →</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="preview anim-lightbeam" data-anim>
+        <button class="replay" onclick="this.parentElement.classList.remove('anim-lightbeam'); void this.parentElement.offsetWidth; this.parentElement.classList.add('anim-lightbeam');">↻ Replay</button>
+        <div class="bg"></div>
+        <div class="beam"></div>
+        <div class="vignette"></div>
+        <div class="stack">
+          <div class="presents">FIT FATHER + FIT MOTHER PRESENT</div>
+          <div class="ttl">Breakthrough<em>in the Desert</em></div>
+          <div class="meta">Aug 7–9 · From $845</div>
+        </div>
+      </div>
+      <div class="body">
+        <h2 class="title">4. Light beam sweep</h2>
+        <p class="desc">A soft diagonal beam of dawn light passes across the image once on load. Feels like sunrise breaking through. One-time impact — doesn't repeat unless they refresh.</p>
+        <div class="actions"><a href="anim-lightbeam.html" class="btn">View full →</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="preview anim-combo" data-anim>
+        <button class="replay" onclick="this.parentElement.classList.remove('anim-combo'); void this.parentElement.offsetWidth; this.parentElement.classList.add('anim-combo');">↻ Replay</button>
+        <div class="bg"></div>
+        <div class="shimmer"></div>
+        <div class="vignette"></div>
+        <div class="stack">
+          <div class="presents">FIT FATHER + FIT MOTHER PRESENT</div>
+          <div class="ttl">Breakthrough<em>in the Desert</em></div>
+          <div class="meta">Aug 7–9 · From $845</div>
+        </div>
+      </div>
+      <div class="body">
+        <h2 class="title">5. Combo — all layered</h2>
+        <p class="desc">Everything at once: cinematic entrance + Ken Burns idle + sky shimmer fading in once image settles + text rise. Most ambitious. Could feel premium or could feel busy — that's why it's here to test.</p>
+        <div class="actions"><a href="anim-combo.html" class="btn">View full →</a></div>
+      </div>
+    </article>
+
+  </div>
+
+  <footer>
+    Tested with <code>prefers-reduced-motion</code> — visitors who turn motion off in their OS see the static image with no animation, no flickering. Test full pages on phone + desktop, then tell me your pick (or mix elements).
+  </footer>
+
+</div>
+</body>
+</html>

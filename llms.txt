@@ -62,9 +62,9 @@ Tickets are non-refundable but fully transferable up to July 1, 2026. Transfer t
 
 ## Page Variants Live
 
-- Main: https://guldanjamax.github.io/anthonybalduzzi/breakthrough-in-the-desert-v3.html
-- Diehl hero: https://guldanjamax.github.io/anthonybalduzzi/breakthrough-in-the-desert-v3-diehl.html
-- Sunset-rock hero: https://guldanjamax.github.io/anthonybalduzzi/breakthrough-in-the-desert-v3-sunset.html
+- Main: breakthrough-in-the-desert-v3.html
+- Diehl hero: breakthrough-in-the-desert-v3-diehl.html
+- Sunset-rock hero: breakthrough-in-the-desert-v3-sunset.html
 
 ## Tagline
 

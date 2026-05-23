@@ -18,7 +18,7 @@ Disallow: /_outpaint/
 Disallow: /outpaint-tmp/
 
 # Sitemap
-Sitemap: https://guldanjamax.github.io/anthonybalduzzi/sitemap.xml
+Sitemap: sitemap.xml
 
 # AI / LLM crawlers — explicit allow for visible content
 User-agent: GPTBot

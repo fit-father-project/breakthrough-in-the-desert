@@ -5,7 +5,7 @@ Hey Duzzi — this is the working document for your event landing page. James an
 ## The live page
 
 **Main URL to share and review:**
-https://guldanjamax.github.io/anthonybalduzzi/breakthrough-in-the-desert.html
+breakthrough-in-the-desert.html
 
 That's the canonical link. The Diehl hero you picked is in place. Open on mobile and desktop — both are fully designed.
 
@@ -39,9 +39,9 @@ That's the canonical link. The Diehl hero you picked is in place. Open on mobile
 
 ## Variants live for comparison
 
-- Bee hero: https://guldanjamax.github.io/anthonybalduzzi/breakthrough-in-the-desert-v3.html
+- Bee hero: breakthrough-in-the-desert-v3.html
 - Diehl hero (CURRENT WINNER): canonical URL above
-- Sunset rock hero: https://guldanjamax.github.io/anthonybalduzzi/breakthrough-in-the-desert-v3-sunset.html
+- Sunset rock hero: breakthrough-in-the-desert-v3-sunset.html
 
 ## DUZZI LoRA — your synthetic content engine
 
@@ -52,16 +52,16 @@ We trained a custom AI model on 19 of your photos. Trigger word: `DUZZI`.
 - **Cost per image:** ~$0.04 on Replicate. Takes 22 seconds.
 
 **Existing campaign asset library:**
-- https://guldanjamax.github.io/anthonybalduzzi/duzzi-campaign.html (30 image campaign launcher, weekly drip calendar)
-- https://guldanjamax.github.io/anthonybalduzzi/duzzi-v2.html (10 test renders showing v2 likeness improvement)
-- https://guldanjamax.github.io/anthonybalduzzi/duzzi-lora-ideas.html (40 idea catalog with headlines for each funny one)
+- duzzi-campaign.html (30 image campaign launcher, weekly drip calendar)
+- duzzi-v2.html (10 test renders showing v2 likeness improvement)
+- duzzi-lora-ideas.html (40 idea catalog with headlines for each funny one)
 
 **Honest note on likeness:** Your LoRA is at about 90% likeness. James/Juliet/Re's LoRAs are 95%+ because they were trained on single-shoot photo sessions. Your training set spans 2017-2026 in many different lighting conditions, which averages out into a slightly-off "averaged" you. The fix: spend 30 minutes shooting 20 tight headshots in one session, then we retrain to 95%. Until then, use synthetic images only where face detail matters less (stylized art, silhouettes, mid-distance shots).
 
 ## Faculty section iterations
 
 We built 6 design directions for the Faculty section (3 with regular headshots, 3 with Photoroom-removed-background composites):
-https://guldanjamax.github.io/anthonybalduzzi/faculty-iterations-v2.html
+faculty-iterations-v2.html
 
 Top picks:
 1. Sandstone Pillars (90% conf) — red-rock backdrop with frosted ink pillar cards

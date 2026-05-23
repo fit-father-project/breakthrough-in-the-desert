@@ -2,36 +2,36 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://fitfatherproject.com/live-event-2026/</loc>
+    <loc>https://event.fitfatherproject.com/</loc>
     <lastmod>2026-05-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://guldanjamax.github.io/anthonybalduzzi/og-image.jpg</image:loc>
+      <image:loc>og-image.jpg</image:loc>
       <image:title>Breakthrough in the Desert · August 7-9, 2026</image:title>
       <image:caption>Dr. Anthony Balduzzi in meditation on a red Sedona rock at sunset.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://guldanjamax.github.io/anthonybalduzzi/breakthrough-in-the-desert-v3.html</loc>
+    <loc>breakthrough-in-the-desert-v3.html</loc>
     <lastmod>2026-05-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://guldanjamax.github.io/anthonybalduzzi/privacy.html</loc>
+    <loc>privacy.html</loc>
     <lastmod>2026-05-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://guldanjamax.github.io/anthonybalduzzi/terms.html</loc>
+    <loc>terms.html</loc>
     <lastmod>2026-05-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://guldanjamax.github.io/anthonybalduzzi/health-disclaimer.html</loc>
+    <loc>health-disclaimer.html</loc>
     <lastmod>2026-05-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>

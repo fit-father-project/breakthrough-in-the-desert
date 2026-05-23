@@ -2910,6 +2910,34 @@ p:last-child { margin-bottom: 0; }
   position: relative;
   z-index: 2;
 }
+
+/* Promise headline: brand name on top, tagline below */
+.promise-brand {
+  display: block;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(22px, 5.4vw, 58px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--bone);
+  margin-bottom: 14px;
+  text-shadow: 0 2px 14px rgba(0,0,0,0.5);
+}
+.promise-tagline {
+  display: block;
+  font-family: var(--display);
+  font-weight: 300;
+  font-style: normal;
+  font-size: clamp(17px, 2.1vw, 24px);
+  line-height: 1.35;
+  color: rgba(235, 227, 212, 0.95);
+  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+}
+.promise-tagline em {
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 400;
+}
 </style>
 </head>
 <body>
@@ -2990,7 +3018,10 @@ p:last-child { margin-bottom: 0; }
 <section class="promise-sec">
   <div class="promise-content">
     <div class="eyebrow" style="color: var(--ember-warm);">The Promise</div>
-    <h2 class="promise-title">Breakthrough in the Desert is where you make the <em>jump forward</em> you can't make alone.</h2>
+    <h2 class="promise-title">
+      <span class="promise-brand">Breakthrough in the Desert</span>
+      <span class="promise-tagline">is where you make the <em>jump forward</em> you can't make alone.</span>
+    </h2>
     <p>You come here to do the work that won't happen in normal life, because normal life never makes the space. Three days inside a focused container, evaluating your life honestly: your health, your relationships, your time, your purpose. You'll gain the clarity that brings back the energy and inspiration you haven't felt in years.</p>
     <p class="anchor">You'll leave with a clear 90-day plan in your hand. A real breakthrough on something that's been stuck for years. And a tribe of 150 humans who get exactly what you're doing, because they're doing it too.</p>
     <p class="closer">This is what happens when the right people, the right teachers, and the right strategies converge at exactly the right moment in your life. That's what creates the immense jump forward you can't do on your own.</p>

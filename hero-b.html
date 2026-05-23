@@ -2675,14 +2675,16 @@ p:last-child { margin-bottom: 0; }
   transform: translateY(0);
 }
 
-/* ============ HERO V2 (variant pages — centered, FFP/FMP presents) ============ */
+/* ============ HERO V2 (variant pages — centered, FFP/FMP presents, optional DUZZI layer) ============ */
 .hero-v2 .hero-content {
   margin: auto !important;
   padding: 24px 48px;
   max-width: 1180px;
   text-align: center;
   width: 100%;
+  z-index: 4 !important;
 }
+.hero-v2 .hero-util { z-index: 4 !important; }
 .hero-v2 .hero-presents {
   font-family: var(--label);
   font-size: clamp(11px, 1.05vw, 14px);
@@ -2720,20 +2722,41 @@ p:last-child { margin-bottom: 0; }
 .hero-v2 .hero-meta { justify-content: center; }
 .hero-v2 .hero-ctas { justify-content: center; }
 .hero-v2::after {
+  z-index: 3 !important;
   background:
     radial-gradient(ellipse at 50% 50%, rgba(10,9,8,0.42) 0%, rgba(10,9,8,0.14) 50%, rgba(10,9,8,0.52) 100%),
     linear-gradient(180deg, rgba(10,9,8,0.55) 0%, rgba(10,9,8,0.22) 35%, rgba(10,9,8,0.18) 55%, rgba(10,9,8,0.82) 100%) !important;
 }
-/* Variant A: shift Diehl crop so center "middle finger" saguaro moves off-axis */
+
+/* Subtle DUZZI silhouette layer (variants A + B) */
+.hero-duzzi {
+  position: absolute; inset: 0;
+  z-index: 2; pointer-events: none;
+  overflow: hidden;
+}
+.hero-duzzi img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.38;
+  mix-blend-mode: multiply;
+  filter: contrast(1.05);
+}
+.hero-variant-a .hero-duzzi img { object-position: 88% center; }
+.hero-variant-b .hero-duzzi img { object-position: 12% center; }
+
+/* Image positioning per variant */
 .hero-variant-a .hero-img { object-position: 78% center; }
 .hero-variant-b .hero-img { object-position: center; }
-.hero-variant-c .hero-img { object-position: center; }
+.hero-variant-c .hero-img { object-position: center 35%; }
 
 @media (max-width: 768px) {
   .hero-v2 .hero-content { padding: 32px 22px 60px; }
   .hero-v2 .hero-title { font-size: clamp(44px, 13vw, 88px) !important; }
   .hero-v2 .hero-presents { margin-bottom: 18px; font-size: 10.5px; letter-spacing: 0.26em; }
   .hero-v2 .hero-question { font-size: 17px !important; }
+  .hero-duzzi img { opacity: 0.3; }
+  .hero-variant-a .hero-duzzi img,
+  .hero-variant-b .hero-duzzi img { object-position: center; }
 }
 </style>
 </head>
@@ -2763,6 +2786,16 @@ p:last-child { margin-bottom: 0; }
     <source srcset="optimized/bee-mobile.webp" type="image/webp">
     <img class="hero-img" src="optimized/bee-mobile.jpg" alt="Wide Arizona mountain vista at sunrise, layered ridges against warm amber sky." fetchpriority="high">
   </picture>
+
+  <div class="hero-duzzi" aria-hidden="true">
+    <picture>
+      <source srcset="optimized/silhouette-1920.avif" type="image/avif" media="(min-width: 720px)">
+      <source srcset="optimized/silhouette-1920.webp" type="image/webp" media="(min-width: 720px)">
+      <source srcset="optimized/silhouette-mobile.avif" type="image/avif">
+      <source srcset="optimized/silhouette-mobile.webp" type="image/webp">
+      <img src="optimized/silhouette-mobile.jpg" alt="">
+    </picture>
+  </div>
 
   <div class="hero-util">
     <div class="seats">Limited to 150 seats</div>

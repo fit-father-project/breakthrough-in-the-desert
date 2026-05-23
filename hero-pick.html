@@ -63,7 +63,14 @@
   }
   .thumb-a { background-image: url('optimized/diehl-1920.webp'); background-position: 78% center; }
   .thumb-b { background-image: url('optimized/bee-1920.webp'); }
-  .thumb-c { background-image: url('optimized/desert-twilight.webp'); }
+  .thumb-c { background-image: url('optimized/sunset-rock-1920.webp'); background-position: center 35%; }
+  .thumb-duzzi {
+    position: absolute; inset: 0; z-index: 1;
+    background-size: cover; opacity: 0.32; mix-blend-mode: multiply;
+    background-image: url('optimized/silhouette-1920.webp');
+  }
+  .thumb-a .thumb-duzzi { background-position: 88% center; }
+  .thumb-b .thumb-duzzi { background-position: 12% center; }
   .badge {
     position: absolute; top: 14px; left: 14px; z-index: 2;
     font-family: var(--label); font-size: 11px; font-weight: 700;
@@ -114,16 +121,16 @@
 
   <header>
     <h1>Hero variants <em>— pick one</em></h1>
-    <p class="sub">All three share the new centered layout, the "FIT FATHER + FIT MOTHER PRESENT" line, and the refined promise. Only the desert image and crop differ. Click into each, then tell me which one (or which mix of elements) lands.</p>
+    <p class="sub">All three share the new centered layout, the "FIT FATHER + FIT MOTHER PRESENT" line, and the refined promise. A and B layer a subtle DUZZI silhouette behind the landscape; C puts you directly in the photo. Click into each, then tell me which one (or which mix of elements) lands.</p>
   </header>
 
   <div class="grid">
 
     <article class="card">
-      <div class="thumb thumb-a"><span class="badge">Variant A</span></div>
+      <div class="thumb thumb-a"><span class="thumb-duzzi"></span><span class="badge">Variant A</span></div>
       <div class="body">
-        <h2 class="title">Diehl, shifted crop</h2>
-        <p class="desc"><strong>Same desert photo you love</strong>, repositioned so the middle saguaro moves off-center. Palette matches the rest of the page. Headline sits in the cleaner space.</p>
+        <h2 class="title">Diehl + subtle DUZZI</h2>
+        <p class="desc"><strong>Same warm desert photo you love</strong>, repositioned so the middle saguaro moves off-center. A faint DUZZI silhouette ghosts in from the right edge — present but not loud.</p>
         <div class="actions">
           <a href="hero-a.html" class="btn primary">View full page →</a>
         </div>
@@ -131,10 +138,10 @@
     </article>
 
     <article class="card">
-      <div class="thumb thumb-b"><span class="badge">Variant B</span></div>
+      <div class="thumb thumb-b"><span class="thumb-duzzi"></span><span class="badge">Variant B</span></div>
       <div class="body">
-        <h2 class="title">Bee wide vista</h2>
-        <p class="desc"><strong>Mountain horizon, no saguaros.</strong> Wider negative space, same warm palette. Headline reads cleanly across the full canvas.</p>
+        <h2 class="title">Bee vista + subtle DUZZI</h2>
+        <p class="desc"><strong>Mountain horizon, no saguaros.</strong> Wider negative space, same warm palette. DUZZI silhouette ghosts in from the left edge for a sense of presence.</p>
         <div class="actions">
           <a href="hero-b.html" class="btn primary">View full page →</a>
         </div>
@@ -144,8 +151,8 @@
     <article class="card">
       <div class="thumb thumb-c"><span class="badge">Variant C</span></div>
       <div class="body">
-        <h2 class="title">Desert twilight</h2>
-        <p class="desc"><strong>Cooler blue + amber afterglow.</strong> Different mood than the sunrise variants — more contemplative. May or may not match the rest of the page palette.</p>
+        <h2 class="title">Sunset rock — DUZZI as subject</h2>
+        <p class="desc"><strong>Warm Sedona red rock at golden hour.</strong> You ARE the photo — contemplative, looking out at the desert. Same palette family as A and B but visually it's the most personal of the three.</p>
         <div class="actions">
           <a href="hero-c.html" class="btn primary">View full page →</a>
         </div>

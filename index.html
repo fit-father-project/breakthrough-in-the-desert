@@ -2868,6 +2868,35 @@ p:last-child { margin-bottom: 0; }
     align-items: center;
   }
 }
+
+/* Founder section: mobile photo treatment (show Anthony + Brooke clearly at top, charcoal bg behind text) */
+.founder-mobile-img { display: none; }
+
+@media (max-width: 880px) {
+  .founder-sec {
+    background-image: none !important;
+    background-color: #0a0908;
+    min-height: 0 !important;
+  }
+  .founder-sec::before { display: none !important; }
+  .founder-mobile-img {
+    display: block;
+    width: 100%;
+    margin: 0;
+    background: #0a0908;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center center;
+  }
+  .founder-inner { padding-top: 36px !important; }
+  .founder-sec h2 { padding-top: 0 !important; }
+  .founder-sec .photo-cap {
+    position: static !important;
+    padding: 14px 24px 4px;
+    text-align: right;
+    background: #0a0908;
+  }
+}
 </style>
 </head>
 <body>
@@ -2923,6 +2952,7 @@ p:last-child { margin-bottom: 0; }
 
 <!-- ===== 1. FOUNDER LETTER (moved up from former section 6) ===== -->
 <section class="founder-sec">
+  <img class="founder-mobile-img" src="photos-web/duzzi-brooke.jpg" alt="Dr. Anthony Balduzzi with his daughter Brooke">
   <div class="founder-inner">
     <div class="founder-content">
       <div class="founder-eyebrow">A Letter From the Founder</div>

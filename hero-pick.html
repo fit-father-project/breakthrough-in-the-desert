@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hero variants — Breakthrough in the Desert</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="favicon-32x32.png" type="image/png" sizes="32x32" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bone: #ebE3d4;
+    --gold: #d8b87a;
+    --ember: #a8502e;
+    --ink: #0a0908;
+    --display: 'Cormorant Garamond', serif;
+    --label: 'Inter', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--ink); color: var(--bone);
+    font-family: var(--label); font-weight: 400;
+    min-height: 100vh; padding: 60px 32px;
+  }
+  .wrap { max-width: 1280px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 56px; }
+  h1 {
+    font-family: var(--display); font-weight: 300;
+    font-size: clamp(36px, 5vw, 58px); line-height: 1.05;
+    letter-spacing: -0.02em; margin-bottom: 14px;
+  }
+  h1 em { color: var(--gold); font-style: italic; }
+  .sub {
+    font-size: 16px; line-height: 1.55;
+    color: rgba(235,227,212,0.75); max-width: 600px; margin: 0 auto;
+  }
+  .grid {
+    display: grid; gap: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  }
+  .card {
+    background: rgba(235,227,212,0.04);
+    border: 1px solid rgba(235,227,212,0.12);
+    border-radius: 4px; overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    display: flex; flex-direction: column;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(216, 184, 122, 0.45);
+    box-shadow: 0 18px 56px rgba(0,0,0,0.5);
+  }
+  .thumb {
+    aspect-ratio: 16/10;
+    background-size: cover; background-position: center;
+    position: relative;
+  }
+  .thumb::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(10,9,8,0.15) 0%, rgba(10,9,8,0.55) 100%);
+  }
+  .thumb-a { background-image: url('optimized/diehl-1920.webp'); background-position: 78% center; }
+  .thumb-b { background-image: url('optimized/bee-1920.webp'); }
+  .thumb-c { background-image: url('optimized/desert-twilight.webp'); }
+  .badge {
+    position: absolute; top: 14px; left: 14px; z-index: 2;
+    font-family: var(--label); font-size: 11px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold);
+    background: rgba(10,9,8,0.7); border: 1px solid rgba(216,184,122,0.45);
+    padding: 6px 12px; border-radius: 2px;
+    backdrop-filter: blur(8px);
+  }
+  .body { padding: 22px 24px 26px; flex: 1; display: flex; flex-direction: column; }
+  .title {
+    font-family: var(--display); font-weight: 400;
+    font-size: 24px; line-height: 1.15; margin-bottom: 10px;
+  }
+  .desc { font-size: 14px; line-height: 1.55; color: rgba(235,227,212,0.72); flex: 1; margin-bottom: 18px; }
+  .desc strong { color: var(--bone); font-weight: 600; }
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    flex: 1; min-width: 130px; text-align: center;
+    font-family: var(--label); font-size: 12px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--bone); text-decoration: none;
+    padding: 13px 16px;
+    border: 1px solid rgba(235,227,212,0.32);
+    border-radius: 2px;
+    transition: all 0.25s ease;
+  }
+  .btn:hover {
+    border-color: var(--gold); color: var(--gold);
+    background: rgba(216,184,122,0.08);
+  }
+  .btn.primary {
+    background: rgba(216,184,122,0.15); border-color: rgba(216,184,122,0.55);
+  }
+  .btn.primary:hover {
+    background: rgba(216,184,122,0.25); color: var(--bone);
+  }
+  footer {
+    margin-top: 64px; text-align: center;
+    font-size: 13px; color: rgba(235,227,212,0.45);
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Hero variants <em>— pick one</em></h1>
+    <p class="sub">All three share the new centered layout, the "FIT FATHER + FIT MOTHER PRESENT" line, and the refined promise. Only the desert image and crop differ. Click into each, then tell me which one (or which mix of elements) lands.</p>
+  </header>
+
+  <div class="grid">
+
+    <article class="card">
+      <div class="thumb thumb-a"><span class="badge">Variant A</span></div>
+      <div class="body">
+        <h2 class="title">Diehl, shifted crop</h2>
+        <p class="desc"><strong>Same desert photo you love</strong>, repositioned so the middle saguaro moves off-center. Palette matches the rest of the page. Headline sits in the cleaner space.</p>
+        <div class="actions">
+          <a href="hero-a.html" class="btn primary">View full page →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="thumb thumb-b"><span class="badge">Variant B</span></div>
+      <div class="body">
+        <h2 class="title">Bee wide vista</h2>
+        <p class="desc"><strong>Mountain horizon, no saguaros.</strong> Wider negative space, same warm palette. Headline reads cleanly across the full canvas.</p>
+        <div class="actions">
+          <a href="hero-b.html" class="btn primary">View full page →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="thumb thumb-c"><span class="badge">Variant C</span></div>
+      <div class="body">
+        <h2 class="title">Desert twilight</h2>
+        <p class="desc"><strong>Cooler blue + amber afterglow.</strong> Different mood than the sunrise variants — more contemplative. May or may not match the rest of the page palette.</p>
+        <div class="actions">
+          <a href="hero-c.html" class="btn primary">View full page →</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <footer>
+    Current production hero is the original Diehl at <a href="/">event.fitfatherproject.com/</a> — none of these are live yet. Once you pick, I'll promote it.
+  </footer>
+
+</div>
+</body>
+</html>

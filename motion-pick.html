@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>More motion options — pick one</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="favicon-32x32.png" type="image/png" sizes="32x32" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bone: #ebE3d4;
+    --gold: #d8b87a;
+    --ember: #a8502e;
+    --ink: #0a0908;
+    --display: 'Cormorant Garamond', serif;
+    --label: 'Inter', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--ink); color: var(--bone);
+    font-family: var(--label); font-weight: 400;
+    min-height: 100vh; padding: 60px 32px;
+  }
+  .wrap { max-width: 1280px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 40px; }
+  h1 {
+    font-family: var(--display); font-weight: 300;
+    font-size: clamp(34px, 4.8vw, 54px); line-height: 1.05;
+    letter-spacing: -0.02em; margin-bottom: 14px;
+  }
+  h1 em { color: var(--gold); font-style: italic; }
+  .sub {
+    font-size: 16px; line-height: 1.55;
+    color: rgba(235,227,212,0.75); max-width: 720px; margin: 0 auto;
+  }
+  .breathe-link {
+    display: inline-block; margin-top: 16px;
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); text-decoration: none;
+    border: 1px solid rgba(216,184,122,0.4); padding: 8px 14px;
+    border-radius: 2px; transition: all 0.25s ease;
+  }
+  .breathe-link:hover { background: rgba(216,184,122,0.12); }
+  .grid {
+    display: grid; gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin-top: 8px;
+  }
+  .card {
+    background: rgba(235,227,212,0.04);
+    border: 1px solid rgba(235,227,212,0.12);
+    border-radius: 4px; overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    display: flex; flex-direction: column;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(216, 184, 122, 0.45);
+    box-shadow: 0 18px 56px rgba(0,0,0,0.5);
+  }
+  .preview {
+    position: relative;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    background: var(--ink);
+    border-bottom: 1px solid rgba(235,227,212,0.08);
+  }
+  .preview .bg {
+    position: absolute; inset: 0;
+    background: url('optimized/bee-1920.webp') center/cover;
+    transform-origin: 55% 45%;
+  }
+  .preview .vignette {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse at 50% 50%, rgba(10,9,8,0.40) 0%, rgba(10,9,8,0.10) 50%, rgba(10,9,8,0.50) 100%),
+      linear-gradient(180deg, rgba(10,9,8,0.45) 0%, rgba(10,9,8,0.18) 35%, rgba(10,9,8,0.15) 55%, rgba(10,9,8,0.80) 100%);
+    z-index: 3;
+  }
+  .preview .stack {
+    position: absolute; inset: 0; z-index: 4;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; color: var(--bone);
+    padding: 16px;
+  }
+  .stack .presents {
+    font-family: var(--label); font-size: 8px;
+    color: var(--gold); letter-spacing: 0.26em;
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .stack .ttl {
+    font-family: var(--display); font-weight: 300;
+    font-size: 30px; line-height: 0.92; letter-spacing: -0.02em;
+  }
+  .stack .ttl em { font-style: italic; color: var(--gold); display: block; font-size: 26px; margin-top: 2px; }
+  .stack .meta {
+    margin-top: 8px; font-size: 8.5px;
+    letter-spacing: 0.14em; color: var(--gold);
+  }
+
+  /* === Pan === */
+  .m-pan .bg { animation: panMini 10s ease-in-out infinite alternate; }
+  @keyframes panMini {
+    from { transform: scale(1.10) translateX(-2.5%); }
+    to   { transform: scale(1.10) translateX(2.5%); }
+  }
+
+  /* === Cursor parallax === */
+  .m-cursor .bg { transform: scale(1.08); transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+  .m-cursor::after {
+    content: 'Move your cursor over this preview';
+    position: absolute; bottom: 10px; left: 50%;
+    transform: translateX(-50%); z-index: 5;
+    font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--gold); background: rgba(27,25,22,0.8); backdrop-filter: blur(8px);
+    border: 1px solid rgba(216,184,122,0.3); border-radius: 2px;
+    padding: 5px 10px;
+  }
+
+  /* === Particles === */
+  .m-particles .bg { animation: subtleDrift 18s ease-in-out infinite alternate; }
+  @keyframes subtleDrift { from { transform: scale(1.0); } to { transform: scale(1.06); } }
+  .m-particles .particles {
+    position: absolute; inset: 0; z-index: 2;
+    pointer-events: none; overflow: hidden;
+  }
+  .m-particles .particle {
+    position: absolute;
+    background: rgba(255, 240, 210, 1);
+    border-radius: 50%;
+    box-shadow: 0 0 4px rgba(255, 240, 210, 0.7);
+    animation: pFloat linear infinite;
+  }
+  @keyframes pFloat {
+    0%   { transform: translateY(0); opacity: 0; }
+    14%  { opacity: var(--p-op, 0.55); }
+    86%  { opacity: var(--p-op, 0.55); }
+    100% { transform: translateY(-180%) translateX(var(--p-x, 8%)); opacity: 0; }
+  }
+
+  /* === Time-of-day grade === */
+  .m-grade .bg { animation: gradeMini 12s ease-in-out infinite alternate; }
+  @keyframes gradeMini {
+    0%   { filter: saturate(0.9)  brightness(0.85) hue-rotate(-8deg) contrast(1.05); transform: scale(1.05); }
+    50%  { filter: saturate(1.25) brightness(1.10) hue-rotate(0deg)  contrast(1.0);  transform: scale(1.05); }
+    100% { filter: saturate(1.05) brightness(0.95) hue-rotate(6deg)  contrast(1.05); transform: scale(1.05); }
+  }
+
+  .body { padding: 22px 22px 24px; flex: 1; display: flex; flex-direction: column; }
+  .title { font-family: var(--display); font-weight: 400; font-size: 22px; line-height: 1.15; margin-bottom: 8px; }
+  .desc { font-size: 13.5px; line-height: 1.55; color: rgba(235,227,212,0.72); flex: 1; margin-bottom: 16px; }
+  .actions { display: flex; gap: 10px; }
+  .btn {
+    flex: 1; text-align: center;
+    font-family: var(--label); font-size: 11px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--bone); text-decoration: none;
+    padding: 11px 14px;
+    border: 1px solid rgba(216,184,122,0.55);
+    background: rgba(216,184,122,0.12);
+    border-radius: 2px;
+    transition: all 0.25s ease;
+  }
+  .btn:hover { background: rgba(216,184,122,0.25); }
+  footer { margin-top: 48px; text-align: center; font-size: 13px; color: rgba(235,227,212,0.45); }
+  footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>More motion options <em>— pick one</em></h1>
+    <p class="sub">Four <strong>non-zoom</strong> motion approaches — different mechanics than the breathe variants. Lateral pan, cursor parallax, atmospheric particles, time-of-day color grade.</p>
+    <a href="breathe-pick.html" class="breathe-link">← Back to the breathe options</a>
+  </header>
+
+  <div class="grid">
+
+    <article class="card">
+      <div class="preview m-pan">
+        <div class="bg"></div>
+        <div class="vignette"></div>
+        <div class="stack">
+          <div class="presents">FIT FATHER + FIT MOTHER PRESENT</div>
+          <div class="ttl">Breakthrough<em>in the Desert</em></div>
+          <div class="meta">Aug 7–9 · From $845</div>
+        </div>
+      </div>
+      <div class="body">
+        <h2 class="title">1. Steadicam pan</h2>
+        <p class="desc">The image slowly drifts horizontally — left, then right — like a slow-motion Steadicam tracking shot. <strong>Lateral motion, no zoom.</strong> Most "Terrence Malick film" of the bunch.</p>
+        <div class="actions"><a href="motion-pan.html" class="btn">View full →</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="preview m-cursor" id="cursor-preview">
+        <div class="bg" id="cursor-bg"></div>
+        <div class="vignette"></div>
+        <div class="stack">
+          <div class="presents">FIT FATHER + FIT MOTHER PRESENT</div>
+          <div class="ttl">Breakthrough<em>in the Desert</em></div>
+          <div class="meta">Aug 7–9 · From $845</div>
+        </div>
+      </div>
+      <div class="body">
+        <h2 class="title">2. Cursor parallax</h2>
+        <p class="desc">The image responds to mouse movement — tilts subtly toward where you look. Most <strong>premium / interactive</strong>. On touch devices, uses gyroscope. Best wow factor for desktop visitors.</p>
+        <div class="actions"><a href="motion-cursor.html" class="btn">View full →</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="preview m-particles">
+        <div class="bg"></div>
+        <div class="particles" id="particles-mini"></div>
+        <div class="vignette"></div>
+        <div class="stack">
+          <div class="presents">FIT FATHER + FIT MOTHER PRESENT</div>
+          <div class="ttl">Breakthrough<em>in the Desert</em></div>
+          <div class="meta">Aug 7–9 · From $845</div>
+        </div>
+      </div>
+      <div class="body">
+        <h2 class="title">3. Floating dust motes</h2>
+        <p class="desc">The desert is <strong>still</strong>, but the air is alive — soft motes of light slowly drift upward through the frame. Atmospheric depth without competing with the photography.</p>
+        <div class="actions"><a href="motion-particles.html" class="btn">View full →</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="preview m-grade">
+        <div class="bg"></div>
+        <div class="vignette"></div>
+        <div class="stack">
+          <div class="presents">FIT FATHER + FIT MOTHER PRESENT</div>
+          <div class="ttl">Breakthrough<em>in the Desert</em></div>
+          <div class="meta">Aug 7–9 · From $845</div>
+        </div>
+      </div>
+      <div class="body">
+        <h2 class="title">4. Time-of-day grade</h2>
+        <p class="desc">The image holds still — but the <strong>light shifts</strong>. Saturation, brightness, and hue cycle subtly, so the desert feels like it's slowly moving through dawn → golden hour → dawn. Light moves, not geometry.</p>
+        <div class="actions"><a href="motion-grade.html" class="btn">View full →</a></div>
+      </div>
+    </article>
+
+  </div>
+
+  <footer>
+    Test on phone + desktop, then tell me your pick — or mix elements ("pan motion at strong breathe speed"). All respect <code>prefers-reduced-motion</code>.
+  </footer>
+
+</div>
+
+<script>
+// Cursor parallax mini preview — only inside the card, not page-wide
+(function(){
+  const card = document.getElementById('cursor-preview');
+  const bg = document.getElementById('cursor-bg');
+  if (!card || !bg || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let raf = null;
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => {
+      bg.style.transform = `scale(1.08) translate(${-x * 2.2}%, ${-y * 2.2}%)`;
+    });
+  }, { passive: true });
+  card.addEventListener('mouseleave', () => {
+    bg.style.transform = 'scale(1.08)';
+  });
+})();
+
+// Particles mini preview
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const container = document.getElementById('particles-mini');
+  if (!container) return;
+  const count = 18;
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement('span');
+    p.className = 'particle';
+    const size = 1 + Math.random() * 2;
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.bottom = (-5 + Math.random() * 30) + '%';
+    p.style.animationDuration = (8 + Math.random() * 10) + 's';
+    p.style.animationDelay = (Math.random() * -15) + 's';
+    p.style.setProperty('--p-op', (0.3 + Math.random() * 0.6).toFixed(2));
+    p.style.setProperty('--p-x', (Math.random() * 14 - 7).toFixed(1) + '%');
+    container.appendChild(p);
+  }
+})();
+</script>
+</body>
+</html>

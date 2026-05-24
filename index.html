@@ -1129,7 +1129,8 @@ p:last-child { margin-bottom: 0; }
   background: var(--bone-soft);
   border: 1px solid rgba(27, 25, 22, 0.08);
   border-radius: 6px;
-  padding: 26px 22px;
+  overflow: hidden;            /* image bleeds to card border; clip via radius */
+  padding: 0 0 26px 0;         /* no top/side padding — image is flush */
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -1138,14 +1139,22 @@ p:last-child { margin-bottom: 0; }
   box-shadow: 0 12px 32px rgba(27, 25, 22, 0.10);
 }
 .spk-card img {
-  width: 100%; aspect-ratio: 1; border-radius: 4px;
+  width: 100%; aspect-ratio: 1;
+  display: block;
+  border-radius: 0;            /* flush to card edges (card has overflow:hidden) */
   object-fit: cover; margin-bottom: 22px;
 }
+/* Text children get the inner horizontal padding so the image can be edge-to-edge */
+.spk-card .spk-name,
+.spk-card .spk-title,
+.spk-card .spk-hook,
+.spk-card .spk-toggle,
+.spk-card .spk-bio { margin-left: 22px; margin-right: 22px; }
 .spk-card .spk-name {
   font-family: var(--display); font-size: 19px;
   font-weight: 500; color: var(--ink); margin-bottom: 4px;
   letter-spacing: -0.01em;
-  padding-top: 14px;
+  padding-top: 0;              /* gap supplied by image margin-bottom */
   position: relative;
 }
 .spk-card .spk-name::before {
@@ -3235,8 +3244,8 @@ p:last-child { margin-bottom: 0; }
     </div>
 
     <div class="speakers-tba">
-      <div class="main">More speakers and special guests to be announced.</div>
-      <div class="sub">Additional faculty confirmed through our partners and event sponsors.</div>
+      <div class="main">More speakers and special guests to be announced soon.</div>
+      <div class="sub">Check back on this page for additional faculty confirmed through our partners and event sponsors.</div>
     </div>
   </div>
 </section>

@@ -2911,6 +2911,15 @@ p:last-child { margin-bottom: 0; }
   z-index: 2;
 }
 
+/* Voices cap: quiet 3-card row right before the Final CTA */
+.social-sec.voices-cap {
+  background-image: none !important;
+  background-color: var(--ink);
+  min-height: 0;
+}
+.social-sec.voices-cap::before { display: none; }
+.social-sec.voices-cap .social-inner { padding: 70px 40px; }
+
 /* Social proof section: simplified 2-stat band + 3-col grid for "More from the room" */
 .stat-band.stat-band-2 {
   grid-template-columns: repeat(2, 1fr);
@@ -3071,11 +3080,6 @@ p:last-child { margin-bottom: 0; }
       <p class="social-deck">Real attendees. Real impact. Real connection.</p>
     </div>
 
-    <div class="stat-band stat-band-2">
-      <div class="stat"><span class="sn">150</span><span class="sl">Seats in the room</span></div>
-      <div class="stat"><span class="sn">2025</span><span class="sl">Sold-out first year</span></div>
-    </div>
-
     <!-- Featured voices (2 big cards) -->
     <div class="couples-spotlight">
       <div class="cs-grid">
@@ -3129,19 +3133,6 @@ p:last-child { margin-bottom: 0; }
       <div class="glass-card">
         <div class="avatar" style="background-image:url('attendees/Thomas_S.webp')"></div>
         <div class="copy">"If fear of the unknown was the main thing holding you back, be not concerned. They've got you covered."<span class="gn">Thomas Shields</span></div>
-      </div>
-      <!-- Row 3 -->
-      <div class="glass-card">
-        <div class="avatar" style="background-image:url('attendees/Erik_C.webp')"></div>
-        <div class="copy">"I'd been looking for quick answers — that's the BS that got me to my max weight. This conference came exactly when I was open to listen. FFP works. Soul-changing."<span class="gn">Erik Cochran</span></div>
-      </div>
-      <div class="glass-card">
-        <div class="avatar" style="background-image:url('attendees/Ron_K.webp')"></div>
-        <div class="copy">"Overcoming adversity is what propels us into our own greatness — whatever that greatness is to you. A truly amazing weekend."<span class="gn">Ron Kietzman</span></div>
-      </div>
-      <div class="glass-card">
-        <div class="avatar" style="background-image:url('attendees/Zebb_S.webp')"></div>
-        <div class="copy">"I don't people well. I felt this conference had a spot for us too. What a great group of folks."<span class="gn">Zebb Seabrook</span></div>
       </div>
     </div>
 
@@ -3653,6 +3644,26 @@ p:last-child { margin-bottom: 0; }
     <div class="faq-contact">
       <h3>Still have questions?</h3>
       <p>Email <a href="mailto:support@fitfatherproject.com">support@fitfatherproject.com</a> or text <a href="sms:602-999-0004">602-999-0004</a>. Our team will help you decide if Breakthrough is the right next step.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Voices cap: 3 more testimonials right before the Final CTA ===== -->
+<section class="social-sec voices-cap">
+  <div class="social-inner">
+    <div class="glass-grid glass-grid-6">
+      <div class="glass-card">
+        <div class="avatar" style="background-image:url('attendees/Erik_C.webp')"></div>
+        <div class="copy">"I'd been looking for quick answers — that's the BS that got me to my max weight. This conference came exactly when I was open to listen. FFP works. Soul-changing."<span class="gn">Erik Cochran</span></div>
+      </div>
+      <div class="glass-card">
+        <div class="avatar" style="background-image:url('attendees/Ron_K.webp')"></div>
+        <div class="copy">"Overcoming adversity is what propels us into our own greatness — whatever that greatness is to you. A truly amazing weekend."<span class="gn">Ron Kietzman</span></div>
+      </div>
+      <div class="glass-card">
+        <div class="avatar" style="background-image:url('attendees/Zebb_S.webp')"></div>
+        <div class="copy">"I don't people well. I felt this conference had a spot for us too. What a great group of folks."<span class="gn">Zebb Seabrook</span></div>
+      </div>
     </div>
   </div>
 </section>

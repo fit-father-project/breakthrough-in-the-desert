@@ -147,7 +147,7 @@
       "name": "Dr. Anthony Balduzzi",
       "jobTitle": "Founder, The Fit Father Project &amp; The Fit Mother Project",
       "description": "Naturopathic physician and founder of one of the world's largest health communities for parents over 40, serving over 70,000 members across 100+ countries.",
-      "image": "https://event.fitfatherproject.com/photos-web/duzzi-hero-portrait-vibrant.jpg",
+      "image": "https://event.fitfatherproject.com/photos-web/duzzi-hero-portrait-master.jpg",
       "sameAs": [
         "https://www.fitfatherproject.com",
         "https://www.fitmotherproject.com",
@@ -1138,13 +1138,21 @@ p:last-child { margin-bottom: 0; }
   box-shadow: 0 12px 32px rgba(27, 25, 22, 0.10);
 }
 .spk-card img {
-  width: 100%; aspect-ratio: 1; border-radius: 50%;
-  object-fit: cover; margin-bottom: 18px;
+  width: 100%; aspect-ratio: 1; border-radius: 4px;
+  object-fit: cover; margin-bottom: 22px;
 }
 .spk-card .spk-name {
   font-family: var(--display); font-size: 19px;
   font-weight: 500; color: var(--ink); margin-bottom: 4px;
   letter-spacing: -0.01em;
+  padding-top: 14px;
+  position: relative;
+}
+.spk-card .spk-name::before {
+  content: ""; display: block;
+  width: 32px; height: 1px;
+  background: var(--ember);
+  margin-bottom: 12px;
 }
 .spk-card .spk-title {
   font-family: var(--body); font-style: italic;
@@ -1175,10 +1183,10 @@ p:last-child { margin-bottom: 0; }
 }
 .spk-card.open .spk-bio { display: block; }
 .spk-card .more-block {
-  width: 100%; aspect-ratio: 1; border-radius: 50%;
+  width: 100%; aspect-ratio: 1; border-radius: 4px;
   background: linear-gradient(135deg, var(--plaster), var(--bone-soft));
   display: flex; align-items: center; justify-content: center;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
 }
 .spk-card .more-block span {
   font-family: var(--display); font-style: italic;
@@ -3151,7 +3159,7 @@ p:last-child { margin-bottom: 0; }
     <p class="speakers-intro">At Breakthrough, you'll meet &amp; learn from a curated circle of doctors, healers, and teachers — each one brought here because they deeply practice and embody what they teach and will help you unlock your next level of health, insight, and energy.</p>
 
     <div class="lead-speaker fade-in">
-      <img src="photos-web/duzzi-hero-portrait-vibrant.jpg" alt="Dr. Anthony Balduzzi, host and founder, in the Arizona desert." loading="lazy" />
+      <img src="photos-web/duzzi-hero-portrait-master.jpg" alt="Dr. Anthony Balduzzi, host and founder, in the Arizona desert." loading="lazy" />
       <div>
         <div class="ls-tag">Your Host</div>
         <div class="ls-name">Dr. Anthony Balduzzi</div>
@@ -3170,7 +3178,7 @@ p:last-child { margin-bottom: 0; }
         <div class="spk-bio">Known globally as The Thyroid-Fixer, Dr. Amie is one of the most trusted voices in metabolism and hormone optimization for people over 40. At Breakthrough, she reveals why so many people over 40 feel "tired but wired," how thyroid and hormone dysfunction silently sabotage your weight and energy, and the exact natural protocols that actually work.</div>
       </div>
       <div class="spk-card">
-        <img src="speakers/sayegh.jpg" alt="Dr. Jamil Sayegh" loading="lazy" />
+        <img src="speakers/sayegh.webp" alt="Dr. Jamil Sayegh" loading="lazy" />
         <div class="spk-name">Dr. Jamil Sayegh</div>
         <div class="spk-title">Naturopathic Physician &amp; Transformation Coach</div>
         <div class="spk-hook">Two of the most powerful sessions of the weekend.</div>
@@ -3178,7 +3186,7 @@ p:last-child { margin-bottom: 0; }
         <div class="spk-bio">Dr. Jamil is a naturopathic physician and transformation coach who blends clinical medicine with spiritual wisdom, somatic awareness, and inner work. At Breakthrough, he leads two of the most powerful sessions of the weekend — a <em>Wake Up</em> keynote on deepening presence, and a deep workshop on releasing the limiting beliefs holding you back.<span class="endorse">Dr. Jamil's sessions alone will be worth the entire investment in coming.</span></div>
       </div>
       <div class="spk-card">
-        <img src="speakers/maraya.png" alt="Maraya Brown" loading="lazy" />
+        <img src="speakers/maraya.webp" alt="Maraya Brown" loading="lazy" />
         <div class="spk-name">Maraya Brown</div>
         <div class="spk-title">CNM, MSN · Functional Women's Health Expert</div>
         <div class="spk-hook">Reigniting the spark that's gone missing in long marriages.</div>
@@ -3186,7 +3194,7 @@ p:last-child { margin-bottom: 0; }
         <div class="spk-bio">Maraya is a Yale-trained Certified Nurse Midwife who has built her practice around women's energy, hormones, libido, and the lived experience of being turned on by your own life. Featured in Forbes and Harper's Bazaar. At Breakthrough, she leads a Saturday evening keynote on reigniting the spark in long-term relationships.</div>
       </div>
       <div class="spk-card">
-        <img src="speakers/ovadia.png" alt="Dr. Philip Ovadia" loading="lazy" />
+        <img src="speakers/ovadia.webp" alt="Dr. Philip Ovadia" loading="lazy" />
         <div class="spk-name">Dr. Philip Ovadia</div>
         <div class="spk-title">Board-Certified Cardiac Surgeon</div>
         <div class="spk-hook">The metabolic truths your cardiologist never told you.</div>
@@ -3194,7 +3202,7 @@ p:last-child { margin-bottom: 0; }
         <div class="spk-bio">After performing thousands of open-heart surgeries, Dr. Ovadia made a discovery that changed his career: most of the patients on his table didn't have to be there. A former morbidly obese heart surgeon who lost over 100 pounds by fixing his own metabolic health, he's now on a mission to keep people <em>off</em> his operating table.</div>
       </div>
       <div class="spk-card">
-        <img src="speakers/alan.png" alt="Caroline Alan" loading="lazy" />
+        <img src="speakers/alan.webp" alt="Caroline Alan" loading="lazy" />
         <div class="spk-name">Caroline Alan</div>
         <div class="spk-title">"The Mineral Geek" · CEO, BEAM Minerals</div>
         <div class="spk-hook">The hidden driver behind midlife fatigue and brain fog.</div>
@@ -3202,7 +3210,7 @@ p:last-child { margin-bottom: 0; }
         <div class="spk-bio">Up to 90% of Americans are deficient in at least one essential mineral. Caroline is one of the world's leading voices on mineral replenishment, co-founder of BEAM Minerals, and author of <em>The Mineral Reset</em>. At Breakthrough, she shows you why mineral depletion drives midlife fatigue, sleep issues, and brain fog.</div>
       </div>
       <div class="spk-card">
-        <img src="speakers/marzluff.jpg" alt="Luana Marzluff" loading="lazy" />
+        <img src="speakers/marzluff.webp" alt="Luana Marzluff" loading="lazy" />
         <div class="spk-name">Luana Marzluff</div>
         <div class="spk-title">Founder, KAKAO Ceremonial Cacao</div>
         <div class="spk-hook">Sunday's heart-opening cacao ceremony.</div>
@@ -3218,16 +3226,17 @@ p:last-child { margin-bottom: 0; }
         <div class="spk-bio">John is the owner and head teacher at Modern Yoga in Scottsdale, one of Arizona's most respected yoga communities. With over 25 years of teaching, he blends authentic tradition with a modern, accessible approach. On Saturday morning, he leads the community through a powerful 60-minute yoga and movement session.</div>
       </div>
       <div class="spk-card">
-        <div class="more-block"><span>&amp; more</span></div>
-        <div class="spk-name">More to be announced</div>
-        <div class="spk-title">Doctors, healers &amp; special guests</div>
-        <div class="spk-hook">Additional faculty confirmed through our partners and sponsors.</div>
+        <img src="speakers/flaherty.webp" alt="Jim Flaherty" loading="lazy" />
+        <div class="spk-name">Jim Flaherty</div>
+        <div class="spk-title">Special Guest · 87 years young</div>
+        <div class="spk-hook">A living example of what's possible in your next chapter.</div>
+        <!-- TODO: Anthony to provide Jim Flaherty's bio + framing for his Breakthrough role -->
       </div>
     </div>
 
     <div class="speakers-tba">
       <div class="main">More speakers and special guests to be announced.</div>
-      <div class="sub">Confirmed lineup includes additional contributors through partners and select event sponsors.</div>
+      <div class="sub">Additional faculty confirmed through our partners and event sponsors.</div>
     </div>
   </div>
 </section>

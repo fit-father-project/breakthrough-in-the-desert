@@ -2911,9 +2911,11 @@ p:last-child { margin-bottom: 0; }
   z-index: 2;
 }
 
-/* Promise headline: brand name on top, tagline below */
+/* Promise headline: brand name on top, tagline below — both explicitly centered */
+.promise-title { text-align: center; }
 .promise-brand {
   display: block;
+  text-align: center;
   font-family: var(--display);
   font-weight: 500;
   font-size: clamp(22px, 5.4vw, 58px);
@@ -2925,6 +2927,7 @@ p:last-child { margin-bottom: 0; }
 }
 .promise-tagline {
   display: block;
+  text-align: center;
   font-family: var(--display);
   font-weight: 300;
   font-style: normal;

@@ -1453,13 +1453,15 @@ p:last-child { margin-bottom: 0; }
   .sch-what { font-size: 14.5px; }
 }
 
-/* ============ 10. VENUE ============ */
+/* ============ 10. VENUE (rebuilt 2026-05-24) ============ */
 .venue-sec { padding: 0; }
+
+/* HERO PLATE — bottom-only gradient so the lazy-river photo pops in full color */
 .venue-plate {
   position: relative;
-  min-height: 540px;
+  min-height: 560px;
   background:
-    linear-gradient(180deg, rgba(27,25,22,0.35) 0%, rgba(27,25,22,0.85) 100%),
+    linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%),
     image-set(
       url('optimized/venue-agr.avif') type('image/avif'),
       url('optimized/venue-agr.webp') type('image/webp'),
@@ -1467,12 +1469,12 @@ p:last-child { margin-bottom: 0; }
     );
   background-size: cover; background-position: center;
   display: flex; align-items: flex-end;
-  padding: 0 40px 60px;
+  padding: 0 40px 64px;
 }
 @media (max-width: 1100px) {
   .venue-plate {
     background:
-      linear-gradient(180deg, rgba(27,25,22,0.35) 0%, rgba(27,25,22,0.85) 100%),
+      linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%),
       image-set(
         url('optimized/venue-agr-1920.avif') type('image/avif'),
         url('optimized/venue-agr-1920.webp') type('image/webp'),
@@ -1483,15 +1485,17 @@ p:last-child { margin-bottom: 0; }
 }
 @media (max-width: 720px) {
   .venue-plate {
-    min-height: 420px;
+    min-height: 460px;
+    /* Slightly more bottom overlay on mobile for text contrast */
     background:
-      linear-gradient(180deg, rgba(27,25,22,0.4) 0%, rgba(27,25,22,0.9) 100%),
+      linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,0.70) 100%),
       image-set(
         url('optimized/venue-agr-mobile.avif') type('image/avif'),
         url('optimized/venue-agr-mobile.webp') type('image/webp'),
         url('optimized/venue-agr-mobile.jpg') type('image/jpeg')
       );
     background-size: cover; background-position: center;
+    padding: 0 24px 40px;
   }
 }
 .vp-cap {
@@ -1501,57 +1505,102 @@ p:last-child { margin-bottom: 0; }
   font-family: var(--label); font-size: 12px;
   letter-spacing: 0.28em; text-transform: uppercase;
   color: var(--gold); margin-bottom: 16px;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
 }
 .venue-plate h2 {
   font-family: var(--display); font-weight: 400;
-  font-size: clamp(40px, 5.5vw, 72px);
-  line-height: 1.0; letter-spacing: -0.02em;
+  font-size: clamp(36px, 5vw, 68px);
+  line-height: 1.05; letter-spacing: -0.02em;
   color: var(--bone);
-  text-shadow: 0 2px 18px rgba(0,0,0,0.5);
+  /* Strong shadow so the headline reads cleanly over the lighter overlay */
+  text-shadow: 0 2px 24px rgba(0,0,0,0.85), 0 1px 4px rgba(0,0,0,0.7);
 }
 .venue-plate h2 em { font-style: italic; color: var(--gold); font-weight: 300; }
+
+/* BODY: dark theme, no background image (image lives in the strip below) */
 .venue-body {
-  background-image: url('optimized/venue-evening-1920.jpg');
-  background-size: cover;
-  background-position: center;
   padding: 80px 32px 100px;
 }
-.venue-location {
-  font-family: var(--display); font-style: italic;
-  font-size: 24px; color: var(--ember);
-  text-align: center; margin-bottom: 36px;
+
+/* Three short location lines */
+.venue-location-lines {
+  text-align: center; max-width: 720px; margin: 0 auto 56px;
 }
-.venue-body p {
+.venue-location-lines p {
   font-family: var(--body); font-size: 18px;
-  line-height: 1.72; color: var(--ink-soft);
-  max-width: 760px; margin: 0 auto 20px;
+  line-height: 1.55; color: var(--ink-soft);
+  margin: 0 auto 14px;
 }
-.venue-features-title {
-  font-family: var(--display); font-weight: 400;
-  font-size: 32px; color: var(--ink);
-  text-align: center; margin: 60px 0 32px;
+.venue-location-lines .venue-promise {
+  font-family: var(--display); font-style: italic;
+  font-size: 26px; line-height: 1.3;
+  color: var(--ember); margin-top: 22px;
 }
+
+/* Photo strip — edge-to-edge break out of body padding */
+.venue-photo-strip-wrap {
+  margin: 0 -32px 70px;
+}
+.venue-photo-strip {
+  width: 100%; height: 380px;
+  background-image: image-set(
+    url('optimized/venue-evening.avif') type('image/avif'),
+    url('optimized/venue-evening.webp') type('image/webp'),
+    url('optimized/venue-evening.jpg') type('image/jpeg')
+  );
+  background-size: cover; background-position: center;
+}
+
+/* 8-card amenity grid: 4-col desktop, 2-col tablet, 1-col mobile */
 .venue-features {
-  display: grid; grid-template-columns: repeat(2, 1fr);
-  gap: 28px 40px; max-width: 1080px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 20px; max-width: 1280px; margin: 0 auto;
 }
 .venue-feature {
-  display: grid; grid-template-columns: auto 1fr;
-  gap: 18px; align-items: flex-start;
+  background: var(--bone-soft);
+  border: 1px solid rgba(27, 25, 22, 0.08);
+  border-radius: 6px;
+  padding: 22px 20px 24px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
-.venue-feature .vf-mark {
-  font-family: var(--display); font-size: 22px;
-  color: var(--ember); line-height: 1;
+.venue-feature:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(27, 25, 22, 0.10);
 }
 .venue-feature strong {
-  display: block; font-family: var(--display);
-  font-size: 18px; color: var(--ink); margin-bottom: 4px;
-  font-weight: 500;
+  display: block; position: relative;
+  font-family: var(--display); font-weight: 500;
+  font-size: 16.5px; line-height: 1.3;
+  color: var(--ink); margin-bottom: 8px;
+  padding-top: 14px;
+}
+.venue-feature strong::before {
+  content: ""; display: block;
+  width: 28px; height: 1px;
+  background: var(--ember);
+  margin-bottom: 12px;
 }
 .venue-feature span {
   display: block; font-family: var(--body);
-  font-size: 15px; line-height: 1.55; color: var(--ink-soft);
+  font-size: 13.5px; line-height: 1.5;
+  color: var(--ink-soft);
 }
+
+@media (max-width: 960px) {
+  .venue-features { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .venue-photo-strip { height: 280px; }
+}
+@media (max-width: 540px) {
+  .venue-features { grid-template-columns: 1fr; }
+  .venue-photo-strip-wrap { margin: 0 -24px 50px; }
+  .venue-photo-strip { height: 220px; }
+  .venue-body { padding: 56px 24px 70px; }
+  .venue-location-lines { margin-bottom: 40px; }
+  .venue-location-lines p { font-size: 16.5px; }
+  .venue-location-lines .venue-promise { font-size: 22px; }
+}
+
+/* DEAD: .venue-august no longer in HTML; rule kept as no-op selector for safety */
 .venue-august {
   max-width: 760px; margin: 56px auto 0;
   padding: 32px 36px;
@@ -1572,9 +1621,9 @@ p:last-child { margin-bottom: 0; }
   font-family: var(--display); font-style: italic;
   color: var(--ember); margin-top: 8px;
 }
-@media (max-width: 768px) {
-  .venue-features { grid-template-columns: 1fr; }
-}
+/* Deleted old 768px .venue-features { grid-template-columns: 1fr } rule
+   which was overriding the new 960px 2-col breakpoint. New responsive
+   tiers (4/2/1) are defined inline with the .venue-features ruleset above. */
 
 /* ============ 11. PRICING ============ */
 .pricing-sec {
@@ -3428,36 +3477,34 @@ p:last-child { margin-bottom: 0; }
   </div>
 </section>
 
-<!-- ===== 10. VENUE (Agenda Detail section retired 2026-05-24; content migrated into per-day expand inside Structure cards above) ===== -->
+<!-- ===== 10. VENUE (rebuilt 2026-05-24: image-forward, paragraphs pared down to 3 lines, 8-card amenity grid) ===== -->
 <section class="venue-sec">
   <div class="venue-plate">
     <div class="vp-cap">
-      <div class="vp-eyebrow">The Venue</div>
-      <h2>Where <em>breakthrough</em> happens.</h2>
+      <div class="vp-eyebrow">The Venue · Phoenix, Arizona</div>
+      <h2>Arizona Grand Resort.<br><em>Where breakthrough happens.</em></h2>
     </div>
   </div>
   <div class="venue-body darken-bg">
-    <div class="venue-location">Arizona Grand Resort · Phoenix, Arizona</div>
-    <p>The desert has been a place of transformation for as long as humans have existed. Jesus. Moses. The Buddha. Indigenous vision quests. Sufi mystics. There's a reason the great traditions all sent their seekers into the desert when something inside them needed to break open.</p>
-    <p>You'll spend three days in that same landscape — not roughing it, but rooted in it. The Arizona Grand Resort sits against South Mountain, the largest municipal park in the country, with miles of sunrise hiking trails just steps from the door. The venue is 10 minutes from Phoenix Sky Harbor and a short drive from Sedona and the red rock country if you want to extend your trip.</p>
-    <p>This is your wellness vacation, your retreat, and your breakthrough — all in one place.</p>
-
-    <h3 class="venue-features-title">What's waiting for you</h3>
-    <div class="venue-features">
-      <div class="venue-feature"><span class="vf-mark">·</span><div><strong>All-Suite Accommodations</strong><span>Every room is a full suite, designed for rest and recovery. Discounted Breakthrough rate of approximately $150/night for attendees.</span></div></div>
-      <div class="venue-feature"><span class="vf-mark">·</span><div><strong>7-Acre Oasis Water Park</strong><span>Lazy river, slides, spa pools. Bring the family. Make it the vacation they remember.</span></div></div>
-      <div class="venue-feature"><span class="vf-mark">·</span><div><strong>20,000 sq ft Fitness Center &amp; Luxury Spa</strong><span>Train, recover, decompress. Available throughout your stay.</span></div></div>
-      <div class="venue-feature"><span class="vf-mark">·</span><div><strong>Sunrise Trails at South Mountain</strong><span>Optional guided morning hikes for those who want to start the day in the desert sun.</span></div></div>
-      <div class="venue-feature"><span class="vf-mark">·</span><div><strong>18-Hole Championship Golf Course</strong><span>For the early arrivers and the post-event extenders.</span></div></div>
-      <div class="venue-feature"><span class="vf-mark">·</span><div><strong>Curated Healthy Cuisine</strong><span>Every meal provided is real food: clean protein, vegetables, no seed oils, no compromises.</span></div></div>
-      <div class="venue-feature"><span class="vf-mark">·</span><div><strong>Family-Friendly</strong><span>Bring your spouse, your kids, your whole family. Conference sessions are reserved for ages 15+; the rest of the property is paradise for everyone.</span></div></div>
-      <div class="venue-feature"><span class="vf-mark">·</span><div><strong>10 Minutes from Sky Harbor</strong><span>Phoenix's international airport is a short ride away, with a side trip to Sedona well within reach.</span></div></div>
+    <div class="venue-location-lines">
+      <p>The Arizona Grand sits against South Mountain, the largest municipal park in the country, with sunrise hiking trails just steps from your room.</p>
+      <p>10 minutes from Phoenix Sky Harbor. A couple hours from Sedona's red rocks.</p>
+      <p class="venue-promise">Your wellness vacation, your retreat, and your breakthrough. All in one place.</p>
     </div>
 
-    <div class="venue-august">
-      <h3>About the desert in August</h3>
-      <p>Yes, it's hot. It's also dry — which most people find dramatically more comfortable than the humidity they're used to. Outside of optional sunrise hikes (stunning at 6am when the desert is cool), every minute of the event experience happens inside an air-conditioned venue. And when you're not in session, the 7-acre water park and lazy river make 105° feel like a gift, not a problem.</p>
-      <p class="closer">The desert in August is part of the magic. Embrace it.</p>
+    <div class="venue-photo-strip-wrap">
+      <div class="venue-photo-strip" role="img" aria-label="Arizona Grand Resort lit up at evening, palm trees and glowing pavilion"></div>
+    </div>
+
+    <div class="venue-features">
+      <div class="venue-feature"><strong>All-Suite Accommodations</strong><span>Every room is a full suite. Discounted rate ~$150/night for attendees.</span></div>
+      <div class="venue-feature"><strong>7-Acre Oasis Water Park</strong><span>Lazy river, slides, spa pools, palm-shaded lounging.</span></div>
+      <div class="venue-feature"><strong>Fitness Center &amp; Luxury Spa</strong><span>20,000 sq ft, available throughout your stay.</span></div>
+      <div class="venue-feature"><strong>Sunrise Trails at South Mountain</strong><span>Hiking just steps from the resort door.</span></div>
+      <div class="venue-feature"><strong>Curated Healthy Cuisine</strong><span>Real food, clean protein, no seed oils.</span></div>
+      <div class="venue-feature"><strong>18-Hole Championship Golf</strong><span>For early arrivers and extended-stay days.</span></div>
+      <div class="venue-feature"><strong>Family-Friendly Resort</strong><span>Bring the whole crew. Paradise for everyone.</span></div>
+      <div class="venue-feature"><strong>10 Minutes from Sky Harbor</strong><span>Short ride from Phoenix's international airport.</span></div>
     </div>
   </div>
 </section>

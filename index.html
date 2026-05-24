@@ -1257,7 +1257,7 @@ p:last-child { margin-bottom: 0; }
   padding: 30px 26px;
   display: flex; flex-direction: column; justify-content: space-between;
   overflow: hidden;
-  transition: transform 0.4s, border-color 0.4s;
+  transition: transform 0.4s, border-color 0.4s, aspect-ratio 0.4s;
 }
 .poster:hover {
   transform: translateY(-4px);
@@ -1268,6 +1268,58 @@ p:last-child { margin-bottom: 0; }
   background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.90) 100%);
 }
 .poster > * { position: relative; z-index: 2; }
+
+/* OPEN state: drop the aspect-ratio so the card grows tall to fit the schedule */
+.poster.open { aspect-ratio: auto; }
+.poster.open:hover { transform: none; }
+
+/* Schedule expand UI */
+.poster-toggle {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(216, 184, 122, 0.32);
+  font-family: var(--label); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.20em; text-transform: uppercase;
+  color: var(--gold);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.poster-toggle:hover { color: var(--ember-warm); }
+.poster-schedule {
+  display: none;
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(216, 184, 122, 0.22);
+}
+.poster.open .poster-schedule { display: block; }
+.ps-item {
+  display: flex; gap: 16px;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(216, 184, 122, 0.10);
+}
+.ps-item:last-child { border-bottom: none; }
+.ps-time {
+  flex: 0 0 108px;
+  font-family: var(--label); font-size: 10px;
+  letter-spacing: 0.20em; text-transform: uppercase;
+  color: var(--gold);
+  padding-top: 3px;
+}
+.ps-meat { flex: 1; }
+.ps-title {
+  font-family: var(--body); font-size: 14px; font-weight: 600;
+  color: var(--bone); margin-bottom: 3px; line-height: 1.35;
+}
+.ps-who {
+  font-family: var(--body); font-style: italic;
+  font-size: 12.5px; color: rgba(235, 227, 212, 0.70);
+  line-height: 1.4;
+}
+@media (max-width: 540px) {
+  .ps-time { flex-basis: 88px; font-size: 9.5px; }
+  .ps-title { font-size: 13.5px; }
+  .ps-who { font-size: 12px; }
+}
 /* Per Anthony 2026-05-24: Day 1 = Sedona speaking close-up (welcoming Awareness),
    Day 2 = hands-up image moved from former Day 3 (Vitality fits high-energy),
    Day 3 = prayer hands moved from Leave With > Clarity (Integration). */
@@ -3257,44 +3309,74 @@ p:last-child { margin-bottom: 0; }
 <!-- ===== 8. STRUCTURE OF THE WEEKEND (moved above Leave With per Anthony 2026-05-24) ===== -->
 <section class="arc-sec">
   <div class="arc-head">
-    <div class="arc-eyebrow">Three Days · One Breakthrough · The Rest of Your Life</div>
+    <div class="arc-eyebrow">August 7–9, 2026</div>
     <h2>The structure of <em>the weekend.</em></h2>
-    <p class="arc-deck">Friday through Sunday. Three days, each one a deliberate chapter, guided through awareness, vitality, and integration.</p>
+    <p class="arc-deck">Breakthrough is a guided three-day experience designed to help you step into your most fit, alive, clear, and connected years ahead. Here's what you'll experience.</p>
   </div>
   <div class="poster-row">
     <div class="poster p1">
-      <div>
+      <div class="poster-head">
         <div class="ptag">Day One · Friday, Aug 7</div>
         <div class="pnum">01</div>
       </div>
-      <div>
-        <div class="pname">Awareness</div>
-        <div class="pcap">Arrive, settle in, and start naming the patterns that have quietly run your life.</div>
+      <div class="poster-rest">
+        <div class="poster-body">
+          <div class="pname">Awareness</div>
+          <div class="pcap">Get clear on the patterns running your life. Open up to new possibilities and friendships.</div>
+          <div class="poster-toggle" data-day="Friday">See Friday's schedule +</div>
+        </div>
+        <div class="poster-schedule">
+          <div class="ps-item"><span class="ps-time">Morning</span><div class="ps-meat"><div class="ps-title">Welcome &amp; Opening Keynote</div><div class="ps-who">Dr. Anthony Balduzzi · "Intentional Living"</div></div></div>
+          <div class="ps-item"><span class="ps-time">Late Morning</span><div class="ps-meat"><div class="ps-title">Movement Breakouts</div><div class="ps-who">Workouts · Breathwork · Stretching</div></div></div>
+          <div class="ps-item"><span class="ps-time">Lunch</span><div class="ps-meat"><div class="ps-title">Connection Lunch</div><div class="ps-who">Real food. No seed oils. No compromises.</div></div></div>
+          <div class="ps-item"><span class="ps-time">Afternoon</span><div class="ps-meat"><div class="ps-title">Health Q&amp;A Panel</div><div class="ps-who">Caroline Alan + special guests</div></div></div>
+          <div class="ps-item"><span class="ps-time">Evening</span><div class="ps-meat"><div class="ps-title">Special Evening Keynote</div><div class="ps-who">Jim Flaherty · Living Proof at 89</div></div></div>
+          <div class="ps-item"><span class="ps-time">Night</span><div class="ps-meat"><div class="ps-title">Kava Happy Hour</div><div class="ps-who">Zero alcohol · Deep conversations</div></div></div>
+        </div>
       </div>
     </div>
     <div class="poster p2">
-      <div>
+      <div class="poster-head">
         <div class="ptag">Day Two · Saturday, Aug 8</div>
         <div class="pnum">02</div>
       </div>
-      <div>
-        <div class="pname">Vitality</div>
-        <div class="pcap">Reclaim your energy. Learn the science of hormones, heart, and lifelong vitality.</div>
+      <div class="poster-rest">
+        <div class="poster-body">
+          <div class="pname">Vitality</div>
+          <div class="pcap">Reclaim your energy. Learn the science of hormones, heart, and lifelong vitality.</div>
+          <div class="poster-toggle" data-day="Saturday">See Saturday's schedule +</div>
+        </div>
+        <div class="poster-schedule">
+          <div class="ps-item"><span class="ps-time">Sunrise</span><div class="ps-meat"><div class="ps-title">Yoga &amp; Movement</div><div class="ps-who">John Salisbury · Modern Yoga Scottsdale</div></div></div>
+          <div class="ps-item"><span class="ps-time">Morning</span><div class="ps-meat"><div class="ps-title">"Wake Up" Keynote</div><div class="ps-who">Dr. Jamil Sayegh</div></div></div>
+          <div class="ps-item"><span class="ps-time">Late Morning</span><div class="ps-meat"><div class="ps-title">Somatic Breathwork</div><div class="ps-who">Group session</div></div></div>
+          <div class="ps-item"><span class="ps-time">Early Afternoon</span><div class="ps-meat"><div class="ps-title">Thyroid, Hormones &amp; Midlife Energy</div><div class="ps-who">Dr. Amie Hornaman</div></div></div>
+          <div class="ps-item"><span class="ps-time">Late Afternoon</span><div class="ps-meat"><div class="ps-title">Heart Health Myths Debunked</div><div class="ps-who">Dr. Philip Ovadia</div></div></div>
+          <div class="ps-item"><span class="ps-time">Evening</span><div class="ps-meat"><div class="ps-title">Reclaiming Aliveness &amp; the Spark</div><div class="ps-who">Maraya Brown</div></div></div>
+          <div class="ps-item"><span class="ps-time">Night</span><div class="ps-meat"><div class="ps-title">Sunset Pool Party</div><div class="ps-who">Poolside at Arizona Grand Resort</div></div></div>
+        </div>
       </div>
     </div>
     <div class="poster p3">
-      <div>
+      <div class="poster-head">
         <div class="ptag">Day Three · Sunday, Aug 9</div>
         <div class="pnum">03</div>
       </div>
-      <div>
-        <div class="pname">Integration</div>
-        <div class="pcap">Open the heart. Distill the weekend into a clear plan you live for the rest of your life.</div>
+      <div class="poster-rest">
+        <div class="poster-body">
+          <div class="pname">Integration</div>
+          <div class="pcap">Distill the weekend into a clear plan you can live for the rest of your life, with an open heart.</div>
+          <div class="poster-toggle" data-day="Sunday">See Sunday's schedule +</div>
+        </div>
+        <div class="poster-schedule">
+          <div class="ps-item"><span class="ps-time">Sunrise</span><div class="ps-meat"><div class="ps-title">Cold Plunge &amp; Morning Movement</div><div class="ps-who">Optional</div></div></div>
+          <div class="ps-item"><span class="ps-time">Morning</span><div class="ps-meat"><div class="ps-title">Cacao Ceremony</div><div class="ps-who">Luana Marzluff · Founder of KAKAO</div></div></div>
+          <div class="ps-item"><span class="ps-time">Late Morning</span><div class="ps-meat"><div class="ps-title">Releasing What's Been Holding You Back</div><div class="ps-who">Dr. Jamil Sayegh · Integration Workshop</div></div></div>
+          <div class="ps-item"><span class="ps-time">Lunch</span><div class="ps-meat"><div class="ps-title">Final Connection Lunch</div><div class="ps-who">With the people who are now your community</div></div></div>
+          <div class="ps-item"><span class="ps-time">Afternoon</span><div class="ps-meat"><div class="ps-title">Closing Keynote</div><div class="ps-who">Dr. Anthony Balduzzi · Your Action Plan</div></div></div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="arc-cta">
-    <a href="#agenda">See the full agenda</a>
   </div>
 </section>
 
@@ -3333,180 +3415,7 @@ p:last-child { margin-bottom: 0; }
   </div>
 </section>
 
-<!-- ===== 9. AGENDA DETAIL ===== -->
-<section class="agenda-sec darken-bg" id="agenda">
-  <div class="container-wide">
-    <div class="eyebrow">The Full Agenda</div>
-    <h2 class="section-title">Three days. One journey. <em>A different you.</em></h2>
-    <p class="agenda-intro">Most events are a stack of unrelated talks. Breakthrough is a curated journey. Each day moves you one step further across the threshold — from waking up to where you are, to coming alive in your body, to stepping into who you're meant to be.</p>
-    <p class="agenda-intro-end">Here's the arc.</p>
-
-    <div class="day-card">
-      <div class="day-label"><span class="day">Friday</span> · Day One · Wake Up</div>
-      <div class="day-tagline">See what's really going on. Name what's been holding you back.</div>
-      <div class="schedule">
-        <div class="sch-item">
-          <div class="sch-time">Morning</div>
-          <div class="sch-meat">
-            <div class="sch-title">Welcome &amp; Opening Keynote</div>
-            <div class="sch-who">Dr. Anthony Balduzzi · "Intentional Living"</div>
-            <div class="sch-what">A simple way to look at your life honestly. What's draining your energy. What you've been doing on autopilot for years.</div>
-          </div>
-        </div>
-        <div class="sch-item">
-          <div class="sch-time">Late Morning</div>
-          <div class="sch-meat">
-            <div class="sch-title">Movement Breakouts</div>
-            <div class="sch-who">Workouts · Breathwork · Stretching</div>
-            <div class="sch-what">Pick what feels right. Move your body, then come back to the main room.</div>
-          </div>
-        </div>
-        <div class="sch-item">
-          <div class="sch-time">Lunch</div>
-          <div class="sch-meat">
-            <div class="sch-title">Connection Lunch</div>
-            <div class="sch-who">Real food. No seed oils. No compromises.</div>
-          </div>
-        </div>
-        <div class="sch-item">
-          <div class="sch-time">Afternoon</div>
-          <div class="sch-meat">
-            <div class="sch-title">Health Q&amp;A Panel</div>
-            <div class="sch-who">Caroline Alan + special guests</div>
-            <div class="sch-what">Bring your real questions. Get answers from doctors who don't read from slides.</div>
-          </div>
-        </div>
-        <div class="sch-item">
-          <div class="sch-time">Evening</div>
-          <div class="sch-meat">
-            <div class="sch-title">Special Evening Keynote</div>
-            <div class="sch-who">Speaker to be announced</div>
-          </div>
-        </div>
-        <div class="sch-item">
-          <div class="sch-time">Night</div>
-          <div class="sch-meat">
-            <div class="sch-title">Kava Happy Hour</div>
-            <div class="sch-who">Zero alcohol · Deep conversations</div>
-            <div class="sch-what">Where the night gets real and the new friendships start.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="day-card">
-      <div class="day-label"><span class="day">Saturday</span> · Day Two · Come Alive</div>
-      <div class="day-tagline">Your body comes online. The room starts to feel like family.</div>
-      <div class="schedule">
-        <div class="sch-item">
-          <div class="sch-time">Sunrise</div>
-          <div class="sch-meat">
-            <div class="sch-title">Yoga &amp; Movement</div>
-            <div class="sch-who">John Salisbury · Modern Yoga Scottsdale</div>
-            <div class="sch-what">60 minutes on a mat with 149 other people. The sun coming up over South Mountain.</div>
-          </div>
-        </div>
-        <div class="sch-item">
-          <div class="sch-time">Morning</div>
-          <div class="sch-meat">
-            <div class="sch-title">"Wake Up" Keynote</div>
-            <div class="sch-who">Dr. Jamil Sayegh</div>
-            <div class="sch-what">A soul-level invitation to stop sleepwalking through your one life.</div>
-          </div>
-        </div>
-        <div class="sch-item">
-          <div class="sch-time">Late Morning</div>
-          <div class="sch-meat">
-            <div class="sch-title">Somatic Breathwork</div>
-            <div class="sch-who">Group session</div>
-            <div class="sch-what">Reconnect with the signals your body has been trying to send for years.</div>
-          </div>
-        </div>
-        <div class="sch-item">
-          <div class="sch-time">Early Afternoon</div>
-          <div class="sch-meat">
-            <div class="sch-title">Thyroid, Hormones &amp; Midlife Fatigue</div>
-            <div class="sch-who">Dr. Amie Hornaman · The Thyroid-Fixer</div>
-            <div class="sch-what">Why you feel tired but wired. What actually works.</div>
-          </div>
-        </div>
-        <div class="sch-item">
-          <div class="sch-time">Late Afternoon</div>
-          <div class="sch-meat">
-            <div class="sch-title">Heart Health Myths Debunked</div>
-            <div class="sch-who">Dr. Philip Ovadia · Cardiac Surgeon</div>
-            <div class="sch-what">What your cardiologist never told you. How to stay off his operating table.</div>
-          </div>
-        </div>
-        <div class="sch-item">
-          <div class="sch-time">Evening</div>
-          <div class="sch-meat">
-            <div class="sch-title">Reclaiming Aliveness &amp; the Spark</div>
-            <div class="sch-who">Maraya Brown · Women's Health Expert</div>
-            <div class="sch-what">The session most attendees remember years later. Intimacy. The spark that's gone missing.</div>
-          </div>
-        </div>
-        <div class="sch-item">
-          <div class="sch-time">Night</div>
-          <div class="sch-meat">
-            <div class="sch-title">Sunset Pool Party</div>
-            <div class="sch-who">Poolside at Arizona Grand Resort</div>
-            <div class="sch-what">Where the room becomes family.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="day-card">
-      <div class="day-label"><span class="day">Sunday</span> · Day Three · Walk Through</div>
-      <div class="day-tagline">Let go of what's been holding you back. Walk out of the room different.</div>
-      <div class="schedule">
-        <div class="sch-item">
-          <div class="sch-time">Sunrise</div>
-          <div class="sch-meat">
-            <div class="sch-title">Cold Plunge &amp; Morning Movement</div>
-            <div class="sch-who">Optional</div>
-            <div class="sch-what">For the ones who want to start the day cracked open.</div>
-          </div>
-        </div>
-        <div class="sch-item">
-          <div class="sch-time">Morning</div>
-          <div class="sch-meat">
-            <div class="sch-title">Cacao Ceremony</div>
-            <div class="sch-who">Luana Marzluff · Founder of KAKAO</div>
-            <div class="sch-what">A clay cup of warm cacao. The whole room in a circle. The conditions for what comes next.</div>
-          </div>
-        </div>
-        <div class="sch-item">
-          <div class="sch-time">Late Morning</div>
-          <div class="sch-meat">
-            <div class="sch-title">Releasing What's Been Holding You Back</div>
-            <div class="sch-who">Dr. Jamil Sayegh · Integration Workshop</div>
-            <div class="sch-what">The deepest session of the weekend. Letting go of the patterns that have run your life.</div>
-            <div class="sch-callout">Attendees have called this the moment everything shifted.</div>
-          </div>
-        </div>
-        <div class="sch-item">
-          <div class="sch-time">Lunch</div>
-          <div class="sch-meat">
-            <div class="sch-title">Final Connection Lunch</div>
-            <div class="sch-who">With the people who are now your community</div>
-          </div>
-        </div>
-        <div class="sch-item">
-          <div class="sch-time">Afternoon</div>
-          <div class="sch-meat">
-            <div class="sch-title">Walking Through the Doorway</div>
-            <div class="sch-who">Closing Keynote · Dr. Anthony Balduzzi</div>
-            <div class="sch-what">You commit to your next chapter. Then you walk out the door already living it.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 10. VENUE ===== -->
+<!-- ===== 10. VENUE (Agenda Detail section retired 2026-05-24; content migrated into per-day expand inside Structure cards above) ===== -->
 <section class="venue-sec">
   <div class="venue-plate">
     <div class="vp-cap">
@@ -3768,6 +3677,26 @@ document.querySelectorAll('.spk-card').forEach(card => {
   card.addEventListener('click', () => {
     const open = card.classList.toggle('open');
     toggle.textContent = open ? 'Close bio –' : 'Read bio +';
+  });
+});
+
+// Per-day schedule toggle on the Structure poster cards. Only one open at a
+// time so the row doesn't get visually messy with two tall cards + one short.
+document.querySelectorAll('.poster-toggle').forEach(toggle => {
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const poster = toggle.closest('.poster');
+    const willOpen = !poster.classList.contains('open');
+    // Close any currently open posters first
+    document.querySelectorAll('.poster.open').forEach(p => {
+      p.classList.remove('open');
+      const t = p.querySelector('.poster-toggle');
+      if (t) t.textContent = `See ${t.dataset.day}'s schedule +`;
+    });
+    if (willOpen) {
+      poster.classList.add('open');
+      toggle.textContent = `Close ${toggle.dataset.day}'s schedule –`;
+    }
   });
 });
 

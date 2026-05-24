@@ -1320,9 +1320,12 @@ p:last-child { margin-bottom: 0; }
   line-height: 1.4;
 }
 @media (max-width: 540px) {
-  .ps-time { flex-basis: 88px; font-size: 9.5px; }
-  .ps-title { font-size: 13.5px; }
-  .ps-who { font-size: 12px; }
+  /* Stack the time chip ABOVE the title on phones — gives the title and
+     supporting line full card width to breathe. */
+  .ps-item { flex-direction: column; gap: 6px; }
+  .ps-time { flex-basis: auto; font-size: 9.5px; padding-top: 0; }
+  .ps-title { font-size: 14px; }
+  .ps-who { font-size: 12.5px; }
 }
 /* Per Anthony 2026-05-24: Day 1 = Sedona speaking close-up (welcoming Awareness),
    Day 2 = hands-up image moved from former Day 3 (Vitality fits high-energy),

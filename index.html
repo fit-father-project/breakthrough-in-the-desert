@@ -1269,9 +1269,13 @@ p:last-child { margin-bottom: 0; }
 }
 .poster > * { position: relative; z-index: 2; }
 
-/* OPEN state: drop the aspect-ratio so the card grows tall to fit the schedule */
+/* OPEN state: drop the aspect-ratio so the card grows tall to fit the schedule,
+   and darken the gradient overlay so the schedule is easy to read. */
 .poster.open { aspect-ratio: auto; }
 .poster.open:hover { transform: none; }
+.poster.open::before {
+  background: linear-gradient(180deg, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.95) 100%);
+}
 
 /* Schedule expand UI */
 .poster-toggle {
@@ -3323,7 +3327,7 @@ p:last-child { margin-bottom: 0; }
         <div class="poster-body">
           <div class="pname">Awareness</div>
           <div class="pcap">Get clear on the patterns running your life. Open up to new possibilities and friendships.</div>
-          <div class="poster-toggle" data-day="Friday">See Friday's schedule +</div>
+          <div class="poster-toggle" data-day="Friday">See Friday's full schedule +</div>
         </div>
         <div class="poster-schedule">
           <div class="ps-item"><span class="ps-time">Morning</span><div class="ps-meat"><div class="ps-title">Welcome &amp; Opening Keynote</div><div class="ps-who">Dr. Balduzzi and Dr. Jamil Sayegh on waking up to the rest of your life.</div></div></div>
@@ -3331,8 +3335,8 @@ p:last-child { margin-bottom: 0; }
           <div class="ps-item"><span class="ps-time">Lunch</span><div class="ps-meat"><div class="ps-title">Connection Lunch</div><div class="ps-who">Real healthy food, real conversations, no compromises.</div></div></div>
           <div class="ps-item"><span class="ps-time">Afternoon</span><div class="ps-meat"><div class="ps-title">Intentional Living Workshop</div><div class="ps-who">Dr. Balduzzi on evaluating your life, breaking bad habits, and creating your next vision.</div></div></div>
           <div class="ps-item"><span class="ps-time">Late Afternoon</span><div class="ps-meat"><div class="ps-title">Health Q&amp;A Panel</div><div class="ps-who">Dr. Balduzzi, Caroline Alan, and special guests answer your real questions.</div></div></div>
-          <div class="ps-item"><span class="ps-time">Evening</span><div class="ps-meat"><div class="ps-title">Closing Keynote</div><div class="ps-who">Jim Flaherty on thriving at 90.</div></div></div>
-          <div class="ps-item"><span class="ps-time">Night</span><div class="ps-meat"><div class="ps-title">Kava Happy Hour</div><div class="ps-who">Zero alcohol, deep conversations, where new friendships start.</div></div></div>
+          <div class="ps-item"><span class="ps-time">Closing</span><div class="ps-meat"><div class="ps-title">Thriving at 90 Keynote</div><div class="ps-who">Jim Flaherty on how he's thriving at 90.</div></div></div>
+          <div class="ps-item"><span class="ps-time">Night</span><div class="ps-meat"><div class="ps-title">Kava Happy Hour</div><div class="ps-who">Optional. Zero alcohol, deep conversations, where new friendships start.</div></div></div>
         </div>
       </div>
     </div>
@@ -3345,7 +3349,7 @@ p:last-child { margin-bottom: 0; }
         <div class="poster-body">
           <div class="pname">Vitality</div>
           <div class="pcap">Reclaim your energy. Learn the science of hormones, heart, and lifelong vitality.</div>
-          <div class="poster-toggle" data-day="Saturday">See Saturday's schedule +</div>
+          <div class="poster-toggle" data-day="Saturday">See Saturday's full schedule +</div>
         </div>
         <div class="poster-schedule">
           <div class="ps-item"><span class="ps-time">Sunrise</span><div class="ps-meat"><div class="ps-title">Morning Yoga</div><div class="ps-who">Led by John Salisbury, 60 minutes on the mat as the sun rises over South Mountain.</div></div></div>
@@ -3354,7 +3358,7 @@ p:last-child { margin-bottom: 0; }
           <div class="ps-item"><span class="ps-time">Lunch</span><div class="ps-meat"><div class="ps-title">Connection Lunch</div><div class="ps-who">Real food and real conversations with the people walking this with you.</div></div></div>
           <div class="ps-item"><span class="ps-time">Early Afternoon</span><div class="ps-meat"><div class="ps-title">Hormones, Thyroid &amp; Midlife Energy</div><div class="ps-who">Dr. Amie Hornaman on why you feel tired but wired, and what actually works.</div></div></div>
           <div class="ps-item"><span class="ps-time">Late Afternoon</span><div class="ps-meat"><div class="ps-title">Afternoon Breakouts</div><div class="ps-who">Dr. Philip Ovadia on heart health myths, and Maraya Brown on midlife vibrancy and intimacy.</div></div></div>
-          <div class="ps-item"><span class="ps-time">Evening</span><div class="ps-meat"><div class="ps-title">Longevity &amp; Life Force</div><div class="ps-who">Dr. Balduzzi's best strategies for cultivating energy and healthspan for life.</div></div></div>
+          <div class="ps-item"><span class="ps-time">Closing</span><div class="ps-meat"><div class="ps-title">Longevity &amp; Life Force Keynote</div><div class="ps-who">Dr. Balduzzi shares his most advanced strategies for cultivating energy and healthspan for life.</div></div></div>
           <div class="ps-item"><span class="ps-time">Night</span><div class="ps-meat"><div class="ps-title">Sunset Pool Party</div><div class="ps-who">Optional. Poolside at the Arizona Grand, where the room becomes family.</div></div></div>
         </div>
       </div>
@@ -3368,14 +3372,15 @@ p:last-child { margin-bottom: 0; }
         <div class="poster-body">
           <div class="pname">Integration</div>
           <div class="pcap">Distill the weekend into a clear plan you can live for the rest of your life, with an open heart.</div>
-          <div class="poster-toggle" data-day="Sunday">See Sunday's schedule +</div>
+          <div class="poster-toggle" data-day="Sunday">See Sunday's full schedule +</div>
         </div>
         <div class="poster-schedule">
           <div class="ps-item"><span class="ps-time">Sunrise</span><div class="ps-meat"><div class="ps-title">Cold Plunge &amp; Morning Movement</div><div class="ps-who">Optional, for those who want to start the day cracked open.</div></div></div>
           <div class="ps-item"><span class="ps-time">Morning</span><div class="ps-meat"><div class="ps-title">Cacao Ceremony</div><div class="ps-who">Luana Marzluff opens the heart for the integration work ahead.</div></div></div>
           <div class="ps-item"><span class="ps-time">Late Morning</span><div class="ps-meat"><div class="ps-title">90-Day Plan Workshop</div><div class="ps-who">Dr. Balduzzi walks you through distilling the weekend into your 90-day plan.</div></div></div>
           <div class="ps-item"><span class="ps-time">Lunch</span><div class="ps-meat"><div class="ps-title">Final Connection Lunch</div><div class="ps-who">With the people who are now your community.</div></div></div>
-          <div class="ps-item"><span class="ps-time">Afternoon</span><div class="ps-meat"><div class="ps-title">Closing Ceremony &amp; Love-Centered Meditation</div><div class="ps-who">Amber Mikesell and Austin Uhl (Suivera) seal the weekend with love and connection.</div></div></div>
+          <div class="ps-item"><span class="ps-time">Afternoon</span><div class="ps-meat"><div class="ps-title">Love-Centered Meditation Experience</div><div class="ps-who">Amber Mikesell and Austin Uhl (Suivera) lead a love-centered meditation to soften and open the heart.</div></div></div>
+          <div class="ps-item"><span class="ps-time">Closing</span><div class="ps-meat"><div class="ps-title">Closing Ceremony</div><div class="ps-who">Dr. Balduzzi closes the weekend and sends you off into the next chapter of your life.</div></div></div>
         </div>
       </div>
     </div>
@@ -3693,11 +3698,11 @@ document.querySelectorAll('.poster-toggle').forEach(toggle => {
     document.querySelectorAll('.poster.open').forEach(p => {
       p.classList.remove('open');
       const t = p.querySelector('.poster-toggle');
-      if (t) t.textContent = `See ${t.dataset.day}'s schedule +`;
+      if (t) t.textContent = `See ${t.dataset.day}'s full schedule +`;
     });
     if (willOpen) {
       poster.classList.add('open');
-      toggle.textContent = `Close ${toggle.dataset.day}'s schedule –`;
+      toggle.textContent = `Close ${toggle.dataset.day}'s full schedule –`;
     }
   });
 });

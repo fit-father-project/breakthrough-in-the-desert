@@ -1235,7 +1235,9 @@ p:last-child { margin-bottom: 0; }
 }
 @media (max-width: 1000px) {
   .lead-speaker { grid-template-columns: 1fr; text-align: center; }
-  .lead-speaker img { margin: 0 auto; width: 220px; height: 220px; }
+  /* Bumped from 220px -> 300px on tablet so the host portrait holds its own
+     against the full-width speaker cards below. */
+  .lead-speaker img { margin: 0 auto; width: 300px; height: 300px; max-width: 70%; }
   .circle-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 540px) {
@@ -2170,7 +2172,7 @@ p:last-child { margin-bottom: 0; }
   font-family: var(--display); font-style: italic;
   font-size: clamp(28px, 3.4vw, 40px);
   color: var(--gold);
-  margin-bottom: 14px;
+  margin-bottom: 6px;
   text-shadow: 0 2px 18px rgba(0,0,0,0.75), 0 1px 4px rgba(0,0,0,0.55);
 }
 .see-you-overlay .see-you-sig {
@@ -2535,7 +2537,9 @@ p:last-child { margin-bottom: 0; }
   /* Speakers */
   .speakers-intro { font-size: 16px; margin-bottom: 36px; }
   .lead-speaker { padding: 24px 20px; gap: 20px; margin-bottom: 36px; }
-  .lead-speaker img { width: 180px; height: 180px; }
+  /* Bumped from 180px -> 280px on mobile so Anthony's host portrait
+     reads at a similar weight to the full-width speaker cards below. */
+  .lead-speaker img { width: 280px; height: 280px; max-width: 80%; }
   .lead-speaker .ls-name { font-size: 28px; }
   .lead-speaker .ls-title { font-size: 14px; margin-bottom: 14px; }
   .lead-speaker .ls-bio { font-size: 15px; }
@@ -3317,7 +3321,8 @@ p:last-child { margin-bottom: 0; }
 <div class="countdown-bar">
   <strong>Limited to 150 seats</strong>
   <span class="sep">·</span>
-  <span id="countdown">Early-bird ends in 27 days</span>
+  <strong>Early-bird ends:</strong>
+  <span id="countdown">Sunday, June 21, 2026 (Father's Day)</span>
 </div>
 
 <!-- ===== HERO ===== -->
@@ -3888,7 +3893,7 @@ p:last-child { margin-bottom: 0; }
   <div class="see-you-photo" role="img" aria-label="Dr. Anthony sitting on a red rock at sunset in Sedona, Arizona">
     <div class="see-you-overlay">
       <div class="see-you-line">See you in the desert.</div>
-      <div class="see-you-sig">— Dr. Anthony &amp; the Fit Father / Fit Mother Team</div>
+      <div class="see-you-sig">— Dr. Anthony &amp; Fit Father / Fit Mother Team</div>
     </div>
   </div>
 </section>
@@ -3976,15 +3981,17 @@ document.querySelectorAll('.poster-toggle').forEach(toggle => {
   });
 });
 
-// Countdown to Father's Day 2026 — compact form for the top bar
+// Countdown to Father's Day 2026 — full Father's Day messaging restored
+// per Anthony's preference (even if it wraps to 2-3 lines on mobile).
 function updateCountdown() {
   const target = new Date('2026-06-21T23:59:59-07:00');
   const diff = target - new Date();
   const el = document.getElementById('countdown');
   if (!el) return;
-  if (diff <= 0) { el.textContent = "Tickets at full price"; return; }
+  if (diff <= 0) { el.textContent = "Father's Day, June 21, 2026"; return; }
   const days = Math.floor(diff / (1000*60*60*24));
-  el.textContent = "Early-bird ends in " + days + " day" + (days === 1 ? "" : "s");
+  const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+  el.textContent = days + " days, " + hours + " hours · Sunday, June 21 (Father's Day)";
 }
 updateCountdown();
 setInterval(updateCountdown, 60000);

@@ -1587,6 +1587,66 @@ p:last-child { margin-bottom: 0; }
   background-size: cover; background-position: center;
 }
 
+/* CAROUSEL VARIANT (venue-carousel.html only). 5 photos, auto-rotate every 5s,
+   dot indicators + prev/next arrows, fades between slides. */
+.venue-carousel {
+  position: relative;
+  width: 100%; height: 480px;
+  overflow: hidden;
+  background: #0a0908;
+}
+.vc-track { position: relative; width: 100%; height: 100%; }
+.vc-slide {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+.vc-slide.active { opacity: 1; }
+.vc-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 48px; height: 48px;
+  border: 1px solid rgba(255,255,255,0.4);
+  background: rgba(0,0,0,0.35);
+  color: var(--bone);
+  font-size: 28px; line-height: 1;
+  cursor: pointer; z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+}
+.vc-arrow:hover { background: rgba(0,0,0,0.6); border-color: var(--gold); }
+.vc-arrow-prev { left: 20px; }
+.vc-arrow-next { right: 20px; }
+.vc-dots {
+  position: absolute;
+  bottom: 22px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 10px;
+  z-index: 2;
+}
+.vc-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.7);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+.vc-dot:hover { transform: scale(1.25); }
+.vc-dot.active { background: var(--gold); border-color: var(--gold); }
+@media (max-width: 720px) {
+  .venue-carousel { height: 340px; }
+  .vc-arrow { width: 40px; height: 40px; font-size: 24px; }
+  .vc-arrow-prev { left: 12px; }
+  .vc-arrow-next { right: 12px; }
+}
+@media (max-width: 540px) {
+  .venue-carousel { height: 260px; }
+  .vc-dots { bottom: 14px; gap: 8px; }
+  .vc-dot { width: 8px; height: 8px; }
+}
+
 /* Single combined amenity box: ALL 8 amenities in one bordered container,
    2-column compact list on desktop, 1-column on mobile. */
 .venue-amenity-box {
@@ -3538,7 +3598,24 @@ p:last-child { margin-bottom: 0; }
     </div>
 
     <div class="venue-photo-strip-wrap">
-      <div class="venue-photo-strip" role="img" aria-label="Arizona Grand Resort sunset patio with fire pit, fountains, and lake"></div>
+      <div class="venue-carousel" data-carousel>
+        <div class="vc-track">
+          <img src="optimized/venue-gallery-1.jpg" class="vc-slide active" alt="Arizona Grand Resort at sunset, lake and palms" loading="lazy" />
+          <img src="optimized/venue-gallery-2.jpg" class="vc-slide" alt="Lazy river with waterfall and palms" loading="lazy" />
+          <img src="optimized/venue-gallery-3.jpg" class="vc-slide" alt="Sunset patio with fire pit and lake" loading="lazy" />
+          <img src="optimized/venue-gallery-4.jpg" class="vc-slide" alt="Evening covered lounge with candles" loading="lazy" />
+          <img src="optimized/venue-gallery-5.jpg" class="vc-slide" alt="All-suite bedroom with French doors to balcony" loading="lazy" />
+        </div>
+        <button class="vc-arrow vc-arrow-prev" aria-label="Previous photo">‹</button>
+        <button class="vc-arrow vc-arrow-next" aria-label="Next photo">›</button>
+        <div class="vc-dots">
+          <button class="vc-dot active" data-idx="0" aria-label="Slide 1"></button>
+          <button class="vc-dot" data-idx="1" aria-label="Slide 2"></button>
+          <button class="vc-dot" data-idx="2" aria-label="Slide 3"></button>
+          <button class="vc-dot" data-idx="3" aria-label="Slide 4"></button>
+          <button class="vc-dot" data-idx="4" aria-label="Slide 5"></button>
+        </div>
+      </div>
     </div>
 
     <div class="venue-amenity-box">
@@ -3791,6 +3868,29 @@ document.querySelectorAll('.spk-card').forEach(card => {
     const open = card.classList.toggle('open');
     toggle.textContent = open ? 'Close bio –' : 'Read bio +';
   });
+});
+
+// Venue carousel (preview variant). Auto-rotates every 5s; dots + arrows nav.
+document.querySelectorAll('[data-carousel]').forEach(carousel => {
+  const slides = carousel.querySelectorAll('.vc-slide');
+  const dots   = carousel.querySelectorAll('.vc-dot');
+  const prev   = carousel.querySelector('.vc-arrow-prev');
+  const next   = carousel.querySelector('.vc-arrow-next');
+  if (!slides.length) return;
+  let current = 0;
+  let timer;
+  function show(idx) {
+    slides[current].classList.remove('active');
+    dots[current] && dots[current].classList.remove('active');
+    current = (idx + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current] && dots[current].classList.add('active');
+  }
+  function reset() { clearInterval(timer); timer = setInterval(() => show(current + 1), 5000); }
+  dots.forEach((dot, idx) => dot.addEventListener('click', () => { show(idx); reset(); }));
+  prev && prev.addEventListener('click', () => { show(current - 1); reset(); });
+  next && next.addEventListener('click', () => { show(current + 1); reset(); });
+  reset();
 });
 
 // Per-day schedule toggle on the Structure poster cards. Only one open at a

@@ -721,9 +721,17 @@ p:last-child { margin-bottom: 0; }
   .promise-content { padding: 36px 28px 32px; max-width: 100%; }
 }
 
-/* ============ 4. LEAVE WITH (3 Cards) ============ */
+/* ============ 4. AT BREAKTHROUGH YOU'LL GAIN (3 Cards) ============ */
+/* Background swapped to desert-twilight per Anthony 2026-05-24: pure desert
+   atmosphere — saguaros silhouetted against orange-to-blue twilight, crescent
+   moon, mountain layers. No portrait. Lets the cards do the personal work
+   while the backdrop sets the Sedona/Arizona mood for the emotional climax. */
 .leave-sec {
-  background-image: url('photos-web/duzzi-water.jpg');
+  background-image: image-set(
+    url('optimized/desert-twilight.avif') type('image/avif'),
+    url('optimized/desert-twilight.webp') type('image/webp'),
+    url('optimized/desert-twilight.jpg') type('image/jpeg')
+  );
   background-size: cover;
   background-position: center;
 }
@@ -1082,6 +1090,10 @@ p:last-child { margin-bottom: 0; }
   background-image: url('https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/04-friday-stage-view.png');
   background-size: cover;
   background-position: center;
+  /* Override the default 120px section bottom padding — tighten the gap between
+     Speakers and Structure of the Weekend (Anthony 2026-05-24: "a lot of dead
+     space between"). 230px combined gap -> ~140px. */
+  padding-bottom: 70px;
 }
 .speakers-intro {
   text-align: center; max-width: 720px; margin: 0 auto 56px;
@@ -1226,7 +1238,8 @@ p:last-child { margin-bottom: 0; }
 /* ============ 8. 3-DAY ARC (THEATER POSTERS) ============ */
 .arc-sec {
   background: linear-gradient(180deg, #15120F 0%, #0a0908 100%);
-  padding: 110px 32px 130px;
+  /* Top padding cut from 110 -> 70 to tighten the Speakers->Structure transition */
+  padding: 70px 32px 130px;
   color: var(--bone);
 }
 .arc-head {
@@ -3464,7 +3477,6 @@ p:last-child { margin-bottom: 0; }
 
     <div class="speakers-tba">
       <div class="main">More speakers and special guests to be announced soon.</div>
-      <div class="sub">Check back on this page for additional faculty, partners, and sponsors.</div>
     </div>
   </div>
 </section>
@@ -3604,7 +3616,7 @@ p:last-child { margin-bottom: 0; }
         <div class="leave-photo" style="background-image:url('https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/06-sunday-prayer-hands.png')"></div>
         <div class="leave-num">01</div>
         <div class="leave-word">Clarity</div>
-        <div class="leave-body">A clear picture of the next chapter of your life: your health, relationships, purpose, and next adventures. No more vague longing. A real plan.</div>
+        <div class="leave-body">A clear picture of the next chapter of your life: your health, relationships, purpose, growth, and adventures. No more vague longing. A real plan to move forward.</div>
         <div class="leave-outcome">A plan you're still following 90 days later.</div>
       </div>
       <div class="leave-card">
@@ -3617,9 +3629,9 @@ p:last-child { margin-bottom: 0; }
       <div class="leave-card">
         <div class="leave-photo" style="background-image:url('https://pub-064ca9f62c404650b8307fec5832406c.r2.dev/11-gallery-love-friends.png')"></div>
         <div class="leave-num">03</div>
-        <div class="leave-word">Friends</div>
+        <div class="leave-word">Friendship</div>
         <div class="leave-body">A community of friends walking the same path of inspired living. Relationships rooted in trust, respect, and real connection that last long after the event ends.</div>
-        <div class="leave-outcome">Friends you message weekly &amp; fly to see.</div>
+        <div class="leave-outcome">Friends you message weekly and fly to see.</div>
       </div>
     </div>
     <div class="leave-cta-wrap">

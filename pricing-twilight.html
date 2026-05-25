@@ -1743,11 +1743,19 @@ p:last-child { margin-bottom: 0; }
    tiers (4/2/1) are defined inline with the .venue-features ruleset above. */
 
 /* ============ 11. PRICING ============ */
-/* Canonical: solid dark gradient (no image). Pricing is the decision moment;
-   the cards should do the work without a competing background photo. Preview
-   alternates exist at /pricing-twilight.html and /pricing-council.html. */
+/* PREVIEW VARIANT (pricing-twilight.html): desert-twilight image with heavy
+   overlay so it's purely textural mood. Reuses the Gain section image to
+   create a visual through-line into pricing. */
 .pricing-sec {
-  background: linear-gradient(180deg, #15120F 0%, #0a0908 100%);
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.93) 100%),
+    image-set(
+      url('optimized/desert-twilight.avif') type('image/avif'),
+      url('optimized/desert-twilight.webp') type('image/webp'),
+      url('optimized/desert-twilight.jpg') type('image/jpeg')
+    );
+  background-size: cover;
+  background-position: center;
   padding: 110px 32px;
 }
 .pricing-deadline {

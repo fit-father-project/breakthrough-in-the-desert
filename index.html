@@ -1471,15 +1471,14 @@ p:last-child { margin-bottom: 0; }
   display: flex; align-items: flex-end;
   padding: 0 40px 64px;
 }
-/* Variant: text floats centered in the upper sky region (used by canonical venue
-   redesign — sunset photo has open sky on top, putting text there reads cleanly
-   without competing with resort buildings + lake at the bottom). */
+/* Variant: text floats centered in the upper sky region. Now sits HIGHER on
+   desktop (smaller top padding) since the H2 is shorter (no breakthrough line). */
 .venue-plate--sky {
   align-items: flex-start;
-  padding: 80px 32px 0;
-  /* Lighten the gradient further — text isn't sitting on top of the bottom dark band */
+  padding: 56px 32px 0;
+  /* Whisper-light gradient — sky is already light at the top */
   background:
-    linear-gradient(180deg, rgba(0,0,0,0.20) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.25) 100%),
+    linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.20) 100%),
     image-set(
       url('optimized/venue-agr.avif') type('image/avif'),
       url('optimized/venue-agr.webp') type('image/webp'),
@@ -1489,10 +1488,11 @@ p:last-child { margin-bottom: 0; }
 }
 @media (max-width: 720px) {
   .venue-plate--sky {
-    padding: 56px 24px 0;
-    min-height: 460px;
+    /* Push text DOWN on mobile (was too high). Less drama, more breathing room. */
+    padding: 110px 20px 0;
+    min-height: 440px;
     background:
-      linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.35) 100%),
+      linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.30) 100%),
       image-set(
         url('optimized/venue-agr-mobile.avif') type('image/avif'),
         url('optimized/venue-agr-mobile.webp') type('image/webp'),
@@ -1504,8 +1504,16 @@ p:last-child { margin-bottom: 0; }
 /* Center the cap content horizontally over the sky */
 .vp-cap--center { text-align: center; }
 .vp-cap--center .vp-eyebrow {
-  /* Sits at the top of the eyebrow + h2 stack; center it */
   text-align: center;
+}
+/* Without the breakthrough line, "Arizona Grand Resort" is a single line of
+   text; scale it slightly larger so it carries the hero. */
+.venue-plate--sky h2 {
+  font-size: clamp(36px, 6vw, 76px);
+  line-height: 1.0;
+}
+@media (max-width: 540px) {
+  .venue-plate--sky h2 { font-size: 32px; }
 }
 @media (max-width: 1100px) {
   .venue-plate {
@@ -1553,9 +1561,13 @@ p:last-child { margin-bottom: 0; }
 }
 .venue-plate h2 em { font-style: italic; color: var(--gold); font-weight: 300; }
 
-/* BODY: dark theme, no background image (image lives in the strip below) */
+/* BODY: LIGHT cream treatment — the one warm "magazine moment" in the page.
+   The .venue-body--light modifier overrides any darken-bg behavior. */
 .venue-body {
   padding: 80px 32px 100px;
+}
+.venue-body--light {
+  background: var(--bone);
 }
 
 /* Three short location lines */
@@ -1573,7 +1585,7 @@ p:last-child { margin-bottom: 0; }
   color: var(--ember); margin-top: 22px;
 }
 
-/* Photo strip — edge-to-edge break out of body padding */
+/* Photo / carousel wrapper — edge-to-edge break out of body padding */
 .venue-photo-strip-wrap {
   margin: 0 -32px 70px;
 }
@@ -1587,53 +1599,99 @@ p:last-child { margin-bottom: 0; }
   background-size: cover; background-position: center;
 }
 
-/* Single combined amenity box: ALL 8 amenities in one bordered container,
-   2-column compact list on desktop, 1-column on mobile. */
-.venue-amenity-box {
-  max-width: 980px; margin: 0 auto;
-  background: var(--bone-soft);
-  border: 1px solid rgba(27, 25, 22, 0.10);
-  border-radius: 8px;
-  padding: 36px 40px;
-  box-shadow: 0 12px 40px rgba(27, 25, 22, 0.18);
+/* CAROUSEL (promoted to canonical 2026-05-24). 5 photos, auto-rotate every 5s,
+   dot indicators + prev/next arrows, fade between slides. */
+.venue-carousel {
+  position: relative;
+  width: 100%; height: 480px;
+  overflow: hidden;
+  background: #0a0908;
 }
-.venue-amenity-row {
+.vc-track { position: relative; width: 100%; height: 100%; }
+.vc-slide {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+.vc-slide.active { opacity: 1; }
+.vc-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 48px; height: 48px;
+  border: 1px solid rgba(255,255,255,0.4);
+  background: rgba(0,0,0,0.35);
+  color: var(--bone);
+  font-size: 28px; line-height: 1;
+  cursor: pointer; z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+}
+.vc-arrow:hover { background: rgba(0,0,0,0.6); border-color: var(--gold); }
+.vc-arrow-prev { left: 20px; }
+.vc-arrow-next { right: 20px; }
+.vc-dots {
+  position: absolute;
+  bottom: 22px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 10px;
+  z-index: 2;
+}
+.vc-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.7);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+.vc-dot:hover { transform: scale(1.25); }
+.vc-dot.active { background: var(--gold); border-color: var(--gold); }
+@media (max-width: 720px) {
+  .venue-carousel { height: 340px; }
+  .vc-arrow { width: 40px; height: 40px; font-size: 24px; }
+  .vc-arrow-prev { left: 12px; }
+  .vc-arrow-next { right: 12px; }
+}
+@media (max-width: 540px) {
+  .venue-carousel { height: 260px; }
+  .vc-dots { bottom: 14px; gap: 8px; }
+  .vc-dot { width: 8px; height: 8px; }
+}
+
+/* AMENITY LIST — clean 2-column typography, NO container box.
+   Replaces the floating box treatment that didn't work on dark bg. */
+.venue-amenity-list {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 28px 48px;
-  padding: 18px 0;
-  border-bottom: 1px solid rgba(27, 25, 22, 0.08);
+  gap: 30px 60px;
+  max-width: 980px; margin: 0 auto;
 }
-.venue-amenity-row:first-child { padding-top: 6px; }
-.venue-amenity-row:last-child  { padding-bottom: 6px; border-bottom: none; }
 .va-cell strong {
   display: block; position: relative;
   font-family: var(--display); font-weight: 500;
-  font-size: 17px; line-height: 1.3;
-  color: var(--ink); margin-bottom: 6px;
-  padding-top: 12px;
+  font-size: 17.5px; line-height: 1.3;
+  color: var(--ink); margin-bottom: 8px;
+  padding-top: 14px;
 }
 .va-cell strong::before {
   content: ""; display: block;
-  width: 24px; height: 1px;
+  width: 28px; height: 1px;
   background: var(--ember);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 .va-cell span {
   display: block; font-family: var(--body);
-  font-size: 14px; line-height: 1.5;
+  font-size: 14.5px; line-height: 1.55;
   color: var(--ink-soft);
 }
 
 @media (max-width: 960px) {
-  .venue-photo-strip { height: 280px; }
-  .venue-amenity-box { padding: 28px 28px; }
-  .venue-amenity-row { gap: 22px 36px; }
+  .venue-amenity-list { gap: 26px 40px; }
 }
 @media (max-width: 640px) {
-  .venue-amenity-row {
+  .venue-amenity-list {
     grid-template-columns: 1fr;
-    gap: 18px;
-    padding: 14px 0;
+    gap: 24px;
   }
 }
 @media (max-width: 540px) {
@@ -1643,7 +1701,6 @@ p:last-child { margin-bottom: 0; }
   .venue-location-lines { margin-bottom: 40px; }
   .venue-location-lines p { font-size: 16.5px; }
   .venue-location-lines .venue-promise { font-size: 22px; }
-  .venue-amenity-box { padding: 24px 22px; border-radius: 6px; }
 }
 
 /* DEAD: .venue-august no longer in HTML; rule kept as no-op selector for safety */
@@ -3523,41 +3580,50 @@ p:last-child { margin-bottom: 0; }
   </div>
 </section>
 
-<!-- ===== 10. VENUE (rebuilt 2026-05-24 v2: text centered in sky, copy tightened, merged amenity box) ===== -->
+<!-- ===== 10. VENUE (rebuilt 2026-05-24 v3: carousel promoted to canonical, light body, amenity box -> typography list, breakthrough line dropped) ===== -->
 <section class="venue-sec">
   <div class="venue-plate venue-plate--sky">
     <div class="vp-cap vp-cap--center">
       <div class="vp-eyebrow">The Venue · Phoenix, Arizona</div>
-      <h2>Arizona Grand Resort.<br><em>Where breakthrough happens.</em></h2>
+      <h2>Arizona Grand Resort</h2>
     </div>
   </div>
-  <div class="venue-body darken-bg">
+  <div class="venue-body venue-body--light">
     <div class="venue-location-lines">
       <p>10 minutes from Phoenix Sky Harbor. Sunrise hiking trails just steps from your room. A couple hours from Sedona's red rocks.</p>
       <p class="venue-promise">Your wellness vacation, retreat, and breakthrough — all in one place.</p>
     </div>
 
     <div class="venue-photo-strip-wrap">
-      <div class="venue-photo-strip" role="img" aria-label="Arizona Grand Resort sunset patio with fire pit, fountains, and lake"></div>
+      <div class="venue-carousel" data-carousel>
+        <div class="vc-track">
+          <img src="optimized/venue-gallery-1.jpg" class="vc-slide active" alt="Arizona Grand Resort at sunset, lake and palms" loading="lazy" />
+          <img src="optimized/venue-gallery-2.jpg" class="vc-slide" alt="Lazy river with waterfall and palms" loading="lazy" />
+          <img src="optimized/venue-gallery-3.jpg" class="vc-slide" alt="Sunset patio with fire pit and lake" loading="lazy" />
+          <img src="optimized/venue-gallery-4.jpg" class="vc-slide" alt="Evening covered lounge with candles" loading="lazy" />
+          <img src="optimized/venue-gallery-5.jpg" class="vc-slide" alt="All-suite bedroom with French doors to balcony" loading="lazy" />
+        </div>
+        <button class="vc-arrow vc-arrow-prev" aria-label="Previous photo">‹</button>
+        <button class="vc-arrow vc-arrow-next" aria-label="Next photo">›</button>
+        <div class="vc-dots">
+          <button class="vc-dot active" data-idx="0" aria-label="Slide 1"></button>
+          <button class="vc-dot" data-idx="1" aria-label="Slide 2"></button>
+          <button class="vc-dot" data-idx="2" aria-label="Slide 3"></button>
+          <button class="vc-dot" data-idx="3" aria-label="Slide 4"></button>
+          <button class="vc-dot" data-idx="4" aria-label="Slide 5"></button>
+        </div>
+      </div>
     </div>
 
-    <div class="venue-amenity-box">
-      <div class="venue-amenity-row">
-        <div class="va-cell"><strong>All-Suite Accommodations</strong><span>Every room is a full suite. Discounted rate ~$150/night for attendees.</span></div>
-        <div class="va-cell"><strong>7-Acre Oasis Water Park</strong><span>Lazy river, slides, spa pools, palm-shaded lounging.</span></div>
-      </div>
-      <div class="venue-amenity-row">
-        <div class="va-cell"><strong>Fitness Center &amp; Luxury Spa</strong><span>20,000 sq ft, available throughout your stay.</span></div>
-        <div class="va-cell"><strong>Sunrise Hiking Trails</strong><span>Just steps from the resort door.</span></div>
-      </div>
-      <div class="venue-amenity-row">
-        <div class="va-cell"><strong>Curated Healthy Cuisine</strong><span>Real food, clean protein, no seed oils.</span></div>
-        <div class="va-cell"><strong>18-Hole Championship Golf</strong><span>For early arrivers and extended-stay days.</span></div>
-      </div>
-      <div class="venue-amenity-row">
-        <div class="va-cell"><strong>Family-Friendly Resort</strong><span>Bring the whole crew. Paradise for everyone.</span></div>
-        <div class="va-cell"><strong>10 Minutes from Sky Harbor</strong><span>Short ride from Phoenix's international airport.</span></div>
-      </div>
+    <div class="venue-amenity-list">
+      <div class="va-cell"><strong>All-Suite Accommodations</strong><span>Every room is a full suite. Discounted rate ~$150/night for attendees.</span></div>
+      <div class="va-cell"><strong>7-Acre Oasis Water Park</strong><span>Lazy river, slides, spa pools, palm-shaded lounging.</span></div>
+      <div class="va-cell"><strong>Fitness Center &amp; Luxury Spa</strong><span>20,000 sq ft, available throughout your stay.</span></div>
+      <div class="va-cell"><strong>Sunrise Hiking Trails</strong><span>Just steps from the resort door.</span></div>
+      <div class="va-cell"><strong>Curated Healthy Cuisine</strong><span>Real food, clean protein, no seed oils.</span></div>
+      <div class="va-cell"><strong>18-Hole Championship Golf</strong><span>For early arrivers and extended-stay days.</span></div>
+      <div class="va-cell"><strong>Family-Friendly Resort</strong><span>Bring the whole crew. Paradise for everyone.</span></div>
+      <div class="va-cell"><strong>10 Minutes from Sky Harbor</strong><span>Short ride from Phoenix's international airport.</span></div>
     </div>
   </div>
 </section>
@@ -3791,6 +3857,29 @@ document.querySelectorAll('.spk-card').forEach(card => {
     const open = card.classList.toggle('open');
     toggle.textContent = open ? 'Close bio –' : 'Read bio +';
   });
+});
+
+// Venue carousel. Auto-rotates every 5s; dots + arrows for manual nav.
+document.querySelectorAll('[data-carousel]').forEach(carousel => {
+  const slides = carousel.querySelectorAll('.vc-slide');
+  const dots   = carousel.querySelectorAll('.vc-dot');
+  const prev   = carousel.querySelector('.vc-arrow-prev');
+  const next   = carousel.querySelector('.vc-arrow-next');
+  if (!slides.length) return;
+  let current = 0;
+  let timer;
+  function show(idx) {
+    slides[current].classList.remove('active');
+    dots[current] && dots[current].classList.remove('active');
+    current = (idx + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current] && dots[current].classList.add('active');
+  }
+  function reset() { clearInterval(timer); timer = setInterval(() => show(current + 1), 5000); }
+  dots.forEach((dot, idx) => dot.addEventListener('click', () => { show(idx); reset(); }));
+  prev && prev.addEventListener('click', () => { show(current - 1); reset(); });
+  next && next.addEventListener('click', () => { show(current + 1); reset(); });
+  reset();
 });
 
 // Per-day schedule toggle on the Structure poster cards. Only one open at a

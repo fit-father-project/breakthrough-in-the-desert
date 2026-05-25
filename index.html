@@ -658,7 +658,8 @@ p:last-child { margin-bottom: 0; }
   );
   background-size: cover;
   background-position: center;
-  padding: 110px 32px;
+  /* Top cut 110->70 to tighten the Founder->Promise transition */
+  padding: 70px 32px 110px;
   position: relative;
   min-height: 720px;
 }
@@ -1037,7 +1038,8 @@ p:last-child { margin-bottom: 0; }
 .founder-inner {
   position: relative; z-index: 2;
   max-width: 1180px; margin: 0 auto;
-  padding: 110px 40px;
+  /* Bottom cut 110->70 to tighten the Founder->Promise transition */
+  padding: 110px 40px 70px;
   display: grid; grid-template-columns: minmax(0, 58%) 1fr;
 }
 .founder-content { color: var(--bone); }
@@ -1360,9 +1362,11 @@ p:last-child { margin-bottom: 0; }
   color: var(--gold);
 }
 .poster .pnum {
-  font-family: var(--display); font-size: clamp(56px, 5vw, 76px);
+  font-family: var(--display); font-style: italic;
+  font-size: clamp(38px, 4vw, 56px);
   font-weight: 300; color: var(--bone);
-  line-height: 0.95; margin-top: 8px;
+  line-height: 1.0; margin-top: 8px;
+  letter-spacing: -0.005em;
 }
 .poster .pname {
   font-family: var(--display); font-style: italic;
@@ -1506,9 +1510,9 @@ p:last-child { margin-bottom: 0; }
 }
 @media (max-width: 720px) {
   .venue-plate--sky {
-    /* Push text DOWN on mobile (was too high). Less drama, more breathing room. */
-    padding: 110px 20px 0;
-    min-height: 440px;
+    /* Push text further DOWN on mobile (was still too cramped at the top). */
+    padding: 150px 20px 0;
+    min-height: 460px;
     background:
       linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.30) 100%),
       image-set(
@@ -1637,16 +1641,20 @@ p:last-child { margin-bottom: 0; }
 .vc-slide.active { opacity: 1; }
 .vc-arrow {
   position: absolute; top: 50%; transform: translateY(-50%);
-  width: 48px; height: 48px;
-  border: 1px solid rgba(255,255,255,0.4);
-  background: rgba(0,0,0,0.35);
-  color: var(--bone);
-  font-size: 28px; line-height: 1;
+  width: 52px; height: 52px;
+  border: 1.5px solid rgba(216, 184, 122, 0.85);  /* gold border, more visible */
+  background: rgba(27, 25, 22, 0.55);             /* warm dark bg */
+  color: var(--gold);
+  font-size: 30px; line-height: 1;
   cursor: pointer; z-index: 2;
   display: flex; align-items: center; justify-content: center;
-  transition: background 0.2s, border-color 0.2s;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
-.vc-arrow:hover { background: rgba(0,0,0,0.6); border-color: var(--gold); }
+.vc-arrow:hover {
+  background: rgba(168, 80, 46, 0.75);            /* ember on hover */
+  border-color: var(--ember);
+  color: var(--bone);
+}
 .vc-arrow-prev { left: 20px; }
 .vc-arrow-next { right: 20px; }
 .vc-dots {
@@ -1807,6 +1815,8 @@ p:last-child { margin-bottom: 0; }
   letter-spacing: 0.24em; text-transform: uppercase;
   color: var(--ink); background: var(--gold);
   padding: 6px 16px; border-radius: 2px;
+  white-space: nowrap;                /* never wrap */
+  text-align: center;                 /* belt + suspenders */
 }
 .tier-label {
   font-family: var(--label); font-size: 11px; font-weight: 600;
@@ -1934,7 +1944,8 @@ p:last-child { margin-bottom: 0; }
   background-image: url('photos-web/duzzi-profile-lake.jpg');
   background-size: cover;
   background-position: center 30%;
-  padding: 100px 0;
+  /* Top cut 100->70 to tighten the Worth->FAQ transition */
+  padding: 70px 0 100px;
   overflow: hidden;
 }
 .faq-sec::before {
@@ -2139,6 +2150,24 @@ p:last-child { margin-bottom: 0; }
   font-family: var(--label); font-size: 12px;
   letter-spacing: 0.22em; text-transform: uppercase;
   color: rgba(235, 227, 212, 0.7);
+}
+/* Full-bleed Sedona sunset farewell photo. Sits at the very bottom of the
+   Final CTA section, breaking out of the .final-cta-inner max-width so it
+   spans the full viewport. position:relative + z-index:2 to sit ABOVE the
+   .final-cta-sec::before overlay (which would otherwise dim it). */
+.see-you-photo {
+  position: relative; z-index: 2;
+  width: 100%; height: 520px;
+  margin-top: 80px;
+  background-image: url('photos-web/duzzi-sunset-rock.jpg');
+  background-size: cover;
+  background-position: center 28%;
+}
+@media (max-width: 720px) {
+  .see-you-photo { height: 360px; margin-top: 56px; }
+}
+@media (max-width: 540px) {
+  .see-you-photo { height: 280px; margin-top: 44px; }
 }
 
 /* ============ FOOTER ============ */
@@ -2457,10 +2486,17 @@ p:last-child { margin-bottom: 0; }
   .stat-band .sn { font-size: 26px; }
   .stat-band .sl { font-size: 9px; letter-spacing: 0.18em; }
   .glass-grid, .glass-grid-6 { gap: 14px; margin-bottom: 36px; }
-  .glass-card { grid-template-columns: 56px 1fr; gap: 14px; padding: 16px 18px; }
-  .glass-card .avatar { width: 56px; height: 56px; }
-  .glass-card .copy { font-size: 14px; line-height: 1.5; }
-  .glass-card .copy .gn { font-size: 9.5px; letter-spacing: 0.18em; margin-top: 6px; }
+  /* Mobile: stack the avatar ABOVE the copy so the text gets full width
+     (was a cramped 2-column layout). Avatar becomes a small badge on top. */
+  .glass-card {
+    grid-template-columns: 1fr;
+    gap: 14px; padding: 20px 20px 22px;
+  }
+  .glass-card .avatar { width: 52px; height: 52px; }
+  .glass-card .copy { font-size: 15.5px; line-height: 1.55; }
+  .glass-card .copy .gn { font-size: 10px; letter-spacing: 0.18em; margin-top: 8px; }
+  /* Centering the stranded 7th card doesn't apply at 1-col -- override */
+  .glass-grid-6 > .glass-card:nth-child(7):last-child { grid-column: auto; }
   .testimonials-wall-title { margin-bottom: 22px; font-size: 10px; }
   .tw-grid { gap: 12px; }
   .tw-card { padding: 18px 18px; }
@@ -2468,6 +2504,8 @@ p:last-child { margin-bottom: 0; }
   .tw-card .ta { font-size: 9.5px; margin-top: 12px; }
   .social-cta { margin-top: 32px; padding-top: 28px; }
   .social-cta-meta { font-size: 10px; margin-top: 12px; }
+  /* Mobile button size-down so "Hold a seat before Father's Day" fits 1 line */
+  .social-cta .btn-halo { font-size: 13px; padding: 14px 22px; letter-spacing: 0.10em; }
 
   /* Founder */
   .founder-inner { padding: 60px 18px; }
@@ -2484,8 +2522,10 @@ p:last-child { margin-bottom: 0; }
   .lead-speaker .ls-title { font-size: 14px; margin-bottom: 14px; }
   .lead-speaker .ls-bio { font-size: 15px; }
   .circle-grid { grid-template-columns: 1fr; gap: 16px; }
-  .spk-card { padding: 22px 20px; }
-  .spk-card img { max-width: 180px; margin-left: auto; margin-right: auto; }
+  .spk-card { padding: 0 0 24px; }
+  /* Removed the 180px max-width cap so headshots fill the full card width
+     on mobile (matches the edge-to-edge desktop treatment). */
+  .spk-card img { max-width: 100%; }
   .spk-card .spk-name { font-size: 19px; }
   .spk-card .spk-hook { font-size: 14px; }
 
@@ -2542,12 +2582,13 @@ p:last-child { margin-bottom: 0; }
   .tier-partner strong { font-size: 11px; }
   .tier-partner small { font-size: 13px; }
   .pricing-worth { margin-top: 44px; }
-  .pricing-worth h3 { font-size: 22px; }
-  .pricing-worth p { font-size: 15px; }
-  .pricing-worth .gift-line { font-size: 19px; margin: 20px 0; }
+  .pricing-worth h3 { font-size: 22px; line-height: 1.2; margin-bottom: 14px; }
+  .pricing-worth p { font-size: 15px; line-height: 1.55; margin-bottom: 12px; }
+  .pricing-worth .gift-line { font-size: 19px; line-height: 1.3; margin: 18px 0; }
+  .pricing-worth .worth-closer { font-size: 17px; line-height: 1.35; margin-top: 24px; }
 
-  /* FAQ */
-  .faq-sec { padding: 70px 0; }
+  /* FAQ — tightened top padding to close the gap with Pricing-Worth above */
+  .faq-sec { padding: 50px 0 70px; }
   .faq-inner { padding: 0 18px; }
   .faq-head { margin-bottom: 36px; }
   .faq-intro { font-size: 15px; }
@@ -2660,11 +2701,11 @@ p:last-child { margin-bottom: 0; }
   .pivot-sec p { font-size: 17.5px; line-height: 1.62; }
   .pivot-sec .doorway-line { font-size: 23px; }
 
-  /* Promise */
+  /* Promise — bumped sizes on mobile for the headline + lead paragraph */
   .promise-content { padding: 30px 24px 28px; }
-  .promise-title { font-size: 28px; line-height: 1.1; margin-bottom: 22px; }
-  .promise-content p { font-size: 17px; line-height: 1.62; }
-  .promise-content p.anchor { font-size: 22px; margin: 20px 0; }
+  .promise-title { font-size: 32px; line-height: 1.1; margin-bottom: 22px; }
+  .promise-content p { font-size: 18px; line-height: 1.62; }
+  .promise-content p.anchor { font-size: 24px; margin: 20px 0; }
 
   /* Leave With outcomes */
   .leave-card { padding: 0 0 28px; }
@@ -3258,8 +3299,7 @@ p:last-child { margin-bottom: 0; }
 <div class="countdown-bar">
   <strong>Limited to 150 seats</strong>
   <span class="sep">·</span>
-  <strong>Early-bird ends:</strong>
-  <span id="countdown">Sunday, June 21, 2026 (Father's Day)</span>
+  <span id="countdown">Early-bird ends in 27 days</span>
 </div>
 
 <!-- ===== HERO ===== -->
@@ -3510,14 +3550,14 @@ p:last-child { margin-bottom: 0; }
   <div class="poster-row">
     <div class="poster p1">
       <div class="poster-head">
-        <div class="ptag">Day One · Friday, Aug 7</div>
-        <div class="pnum">01</div>
+        <div class="ptag">Friday, Aug 7</div>
+        <div class="pnum">Day One</div>
       </div>
       <div class="poster-rest">
         <div class="poster-body">
           <div class="pname">Awareness</div>
           <div class="pcap">Get clear on the patterns running your life. Open up to new possibilities and friendships.</div>
-          <div class="poster-toggle" data-day="Friday">See Friday's full schedule +</div>
+          <div class="poster-toggle" data-day="Friday">Expand Friday's full schedule +</div>
         </div>
         <div class="poster-schedule">
           <div class="ps-item"><span class="ps-time">Morning</span><div class="ps-meat"><div class="ps-title">Welcome &amp; Opening Keynote</div><div class="ps-who">Dr. Balduzzi and Dr. Jamil Sayegh on waking up to the rest of your life.</div></div></div>
@@ -3532,14 +3572,14 @@ p:last-child { margin-bottom: 0; }
     </div>
     <div class="poster p2">
       <div class="poster-head">
-        <div class="ptag">Day Two · Saturday, Aug 8</div>
-        <div class="pnum">02</div>
+        <div class="ptag">Saturday, Aug 8</div>
+        <div class="pnum">Day Two</div>
       </div>
       <div class="poster-rest">
         <div class="poster-body">
           <div class="pname">Vitality</div>
           <div class="pcap">Reclaim your energy. Learn the science of hormones, heart, and lifelong vitality.</div>
-          <div class="poster-toggle" data-day="Saturday">See Saturday's full schedule +</div>
+          <div class="poster-toggle" data-day="Saturday">Expand Saturday's full schedule +</div>
         </div>
         <div class="poster-schedule">
           <div class="ps-item"><span class="ps-time">Sunrise</span><div class="ps-meat"><div class="ps-title">Morning Yoga</div><div class="ps-who">Led by John Salisbury, 60 minutes on the mat as the sun rises over South Mountain.</div></div></div>
@@ -3555,14 +3595,14 @@ p:last-child { margin-bottom: 0; }
     </div>
     <div class="poster p3">
       <div class="poster-head">
-        <div class="ptag">Day Three · Sunday, Aug 9</div>
-        <div class="pnum">03</div>
+        <div class="ptag">Sunday, Aug 9</div>
+        <div class="pnum">Day Three</div>
       </div>
       <div class="poster-rest">
         <div class="poster-body">
           <div class="pname">Integration</div>
           <div class="pcap">Distill the weekend into a clear plan you can live for the rest of your life, with an open heart.</div>
-          <div class="poster-toggle" data-day="Sunday">See Sunday's full schedule +</div>
+          <div class="poster-toggle" data-day="Sunday">Expand Sunday's full schedule +</div>
         </div>
         <div class="poster-schedule">
           <div class="ps-item"><span class="ps-time">Sunrise</span><div class="ps-meat"><div class="ps-title">Cold Plunge &amp; Morning Movement</div><div class="ps-who">Optional, for those who want to start the day cracked open.</div></div></div>
@@ -3827,6 +3867,9 @@ p:last-child { margin-bottom: 0; }
       <div class="see-you-sig">— Dr. Anthony &amp; the Fit Father / Fit Mother Team</div>
     </div>
   </div>
+
+  <!-- Full-bleed farewell photo: Anthony sitting on red rock at Sedona sunset -->
+  <div class="see-you-photo" role="img" aria-label="Dr. Anthony sitting on a red rock at sunset in Sedona, Arizona"></div>
 </section>
 
 </main>
@@ -3902,25 +3945,24 @@ document.querySelectorAll('.poster-toggle').forEach(toggle => {
     document.querySelectorAll('.poster.open').forEach(p => {
       p.classList.remove('open');
       const t = p.querySelector('.poster-toggle');
-      if (t) t.textContent = `See ${t.dataset.day}'s full schedule +`;
+      if (t) t.textContent = `Expand ${t.dataset.day}'s full schedule +`;
     });
     if (willOpen) {
       poster.classList.add('open');
-      toggle.textContent = `Close ${toggle.dataset.day}'s full schedule –`;
+      toggle.textContent = `Collapse ${toggle.dataset.day}'s full schedule –`;
     }
   });
 });
 
-// Countdown to Father's Day 2026
+// Countdown to Father's Day 2026 — compact form for the top bar
 function updateCountdown() {
   const target = new Date('2026-06-21T23:59:59-07:00');
   const diff = target - new Date();
   const el = document.getElementById('countdown');
   if (!el) return;
-  if (diff <= 0) { el.textContent = "Father's Day, June 21, 2026"; return; }
+  if (diff <= 0) { el.textContent = "Tickets at full price"; return; }
   const days = Math.floor(diff / (1000*60*60*24));
-  const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-  el.textContent = days + " days, " + hours + " hours · Sunday, June 21 (Father's Day)";
+  el.textContent = "Early-bird ends in " + days + " day" + (days === 1 ? "" : "s");
 }
 updateCountdown();
 setInterval(updateCountdown, 60000);

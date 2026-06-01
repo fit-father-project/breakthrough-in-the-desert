@@ -9,6 +9,11 @@
 <link rel="icon" href="favicon-32x32.png" type="image/png" sizes="32x32" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
+<!-- ===== Google Fonts (Newsreader serif for display, matches main event page) ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,300;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+
 <style>
 :root {
   --bone: #ebe3d4;
@@ -22,7 +27,7 @@
   --ink-soft: #3a342e;
   --umber: #6e5f4f;
   --line: rgba(27, 25, 22, 0.10);
-  --display: Georgia, 'Times New Roman', serif;
+  --display: 'Newsreader', Georgia, 'Times New Roman', serif;
   --body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --label: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
@@ -38,7 +43,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* TOP BRAND BAR */
+/* ===== TOP BRAND BAR ===== */
 .brand-bar {
   border-bottom: 1px solid var(--line);
   text-align: center;
@@ -53,122 +58,174 @@ body {
   color: var(--umber);
 }
 
-/* MAIN CONTAINER */
-.wrap {
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 56px 28px 80px;
+/* ===== HERO (full-bleed Bee image + overlay copy) ===== */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 62vh;
+  max-height: 760px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+}
+.hero picture,
+.hero .hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 55%, rgba(0,0,0,0.20) 0%, rgba(0,0,0,0.55) 70%),
+    linear-gradient(180deg, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.10) 40%, rgba(0,0,0,0.55) 100%);
+  z-index: 1;
+}
+.hero-overlay {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 52px 28px;
+  max-width: 760px;
+  color: var(--bone-bright);
+}
+.hero-overlay h1 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(60px, 10vw, 116px);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  color: var(--bone-bright);
+  margin: 0 0 24px;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.45);
+}
+.hero-overlay p {
+  font-size: clamp(16px, 1.55vw, 19px);
+  line-height: 1.55;
+  color: rgba(250, 246, 239, 0.94);
+  margin: 0;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.65);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero-signoff {
+  margin-top: 22px;
+  font-family: var(--display);
+  line-height: 1.35;
+}
+.hero-signoff .name {
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(19px, 1.95vw, 23px);
+  color: var(--bone-bright);
+  text-shadow: 0 1px 10px rgba(0,0,0,0.55);
+}
+.hero-signoff .role {
+  display: block;
+  margin-top: 2px;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(13px, 1.3vw, 15px);
+  color: var(--gold-soft);
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.6);
 }
 
-/* HERO */
-.hero { text-align: center; margin-bottom: 60px; }
-.hero h1 {
-  font-family: var(--display);
-  font-weight: 700;
-  font-style: italic;
-  font-size: clamp(48px, 8vw, 76px);
-  line-height: 1.0;
-  letter-spacing: -0.02em;
-  color: var(--ember);
-  margin: 0 0 6px;
+/* ===== WHITE-SPACE HEADLINE (between hero and grid) ===== */
+.intro-line {
+  text-align: center;
+  padding: 72px 28px 12px;
+  max-width: 820px;
+  margin: 0 auto;
 }
-.hero h2 {
+.intro-line h2 {
   font-family: var(--display);
   font-weight: 400;
-  font-style: italic;
-  font-size: clamp(22px, 3vw, 28px);
-  line-height: 1.25;
+  font-size: clamp(22px, 2.6vw, 30px);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
   color: var(--ink);
-  margin: 0 0 32px;
+  margin: 0;
 }
-.hero .welcome-line {
-  font-size: 18px;
-  color: var(--ink-soft);
-  margin: 0 0 14px;
+.intro-line h2 em {
+  font-style: italic;
+  color: var(--ember);
 }
-.hero p {
-  margin: 0 0 14px;
-  color: var(--ink-soft);
-}
-.hero p:last-child { margin-bottom: 0; }
 
-/* SECTION COMMON */
-.section {
+/* ===== INFO GRID (2x2 numbered cards, circles half-out at top) ===== */
+.info-grid {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 50px 24px 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px 22px;
+}
+.card {
+  position: relative;
   background: var(--bone-soft);
   border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 32px 28px;
-  margin-bottom: 22px;
+  padding: 40px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  /* overflow visible so circles can extend above */
 }
-.section h3 {
+.card-num {
+  position: absolute;
+  top: -23px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--ember);
+  color: var(--bone-bright);
   font-family: var(--display);
-  font-weight: 400;
+  font-style: normal;
+  font-weight: 500;
   font-size: 22px;
+  line-height: 46px;
+  text-align: center;
+  letter-spacing: 0;
+  box-shadow: 0 4px 14px rgba(168, 80, 46, 0.30), 0 1px 3px rgba(27, 25, 22, 0.18);
+  z-index: 3;
+}
+.card h3 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 24px;
   line-height: 1.2;
   color: var(--ink);
-  margin: 0 0 18px;
+  margin: 0 0 8px;
   letter-spacing: -0.005em;
 }
-.section h3 .emoji {
-  display: inline-block;
-  margin-right: 6px;
-  font-size: 22px;
-}
-.section p { margin: 0 0 14px; color: var(--ink-soft); }
-.section p:last-child { margin-bottom: 0; }
-
-/* DATES BLOCK */
-.dates-block { text-align: center; }
-.dates-block .event-name {
-  font-family: var(--display);
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--ink);
-  margin: 0 0 4px;
-}
-.dates-block .event-dates {
+.card .card-sub {
   font-family: var(--display);
   font-style: italic;
-  font-size: 20px;
-  color: var(--ember);
-  margin: 0 0 6px;
+  font-weight: 400;
+  font-size: 17px;
+  color: var(--gold);
+  margin: 0 0 18px;
+  letter-spacing: 0.005em;
 }
-.dates-block .event-location {
-  font-family: var(--label);
-  font-size: 12px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--umber);
-  margin: 0 0 28px;
+.card p {
+  margin: 0 0 14px;
+  color: var(--ink-soft);
 }
-.cal-buttons {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.cal-btn {
-  display: inline-block;
-  font-family: var(--label);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.10em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--ink);
-  background: var(--bone-bright);
-  border: 1px solid rgba(27, 25, 22, 0.18);
-  padding: 10px 16px;
-  border-radius: 4px;
-  transition: background 0.2s, border-color 0.2s, color 0.2s;
-}
-.cal-btn:hover {
-  background: var(--gold-soft);
-  border-color: var(--gold);
-  color: var(--ink);
-}
+.card p:last-child { margin-bottom: 0; }
 
-/* PRIMARY CTA (hotel + partner) */
+/* PRIMARY CTA */
 .btn-primary {
   display: inline-block;
   font-family: var(--label);
@@ -179,228 +236,304 @@ body {
   text-decoration: none;
   color: var(--bone-bright);
   background: var(--ember);
-  padding: 16px 28px;
+  padding: 14px 24px;
   border-radius: 4px;
-  margin: 14px 0 6px;
+  margin: 14px auto 8px;
   transition: background 0.2s;
+  align-self: center;
 }
-.btn-primary:hover {
-  background: var(--ember-warm);
-}
+.btn-primary:hover { background: var(--ember-warm); }
 .btn-primary .arrow {
   display: inline-block;
   margin-left: 8px;
   transition: transform 0.2s;
 }
-.btn-primary:hover .arrow {
-  transform: translateX(3px);
-}
+.btn-primary:hover .arrow { transform: translateX(3px); }
 .fine-print {
   font-size: 13.5px;
   color: var(--umber);
-  margin-top: 8px;
+  margin-top: 10px;
 }
+.fine-print a { color: var(--ember); text-decoration: none; font-weight: 600; }
+.fine-print a:hover { color: var(--ember-warm); }
 
-/* WHAT HAPPENS NEXT (ordered list) */
-.steps {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  counter-reset: step-counter;
-}
-.steps li {
-  position: relative;
-  padding: 0 0 18px 44px;
-  counter-increment: step-counter;
+/* WHAT-HAPPENS-NEXT body paragraphs */
+.next-body p {
+  margin: 0 0 14px;
   color: var(--ink-soft);
   line-height: 1.55;
+  font-size: 15.5px;
+  text-align: left;
 }
-.steps li::before {
-  content: counter(step-counter);
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--ember);
-  color: var(--bone-bright);
-  font-family: var(--label);
-  font-size: 13px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-}
-.steps li:last-child { padding-bottom: 0; }
-.steps li strong { color: var(--ink); font-weight: 600; }
+.next-body p:last-child { margin-bottom: 0; }
+.next-body p strong { color: var(--ink); font-weight: 600; }
+.next-body p a { color: var(--ember); text-decoration: none; font-weight: 600; }
+.next-body p a:hover { color: var(--ember-warm); }
 
-/* CLOSING / VISION */
-.closer {
-  text-align: center;
-  padding: 44px 28px 28px;
-  background: transparent;
-  border: none;
+/* DATES BLOCK (Card 4 — with venue background image) */
+.card.dates-block {
+  background-color: var(--bone-soft);
+  background-image:
+    linear-gradient(180deg, rgba(245, 240, 232, 0.88) 0%, rgba(245, 240, 232, 0.92) 60%, rgba(245, 240, 232, 0.96) 100%),
+    image-set(
+      url('optimized/venue-agr.avif') type('image/avif'),
+      url('optimized/venue-agr.webp') type('image/webp'),
+      url('optimized/venue-agr.jpg') type('image/jpeg')
+    );
+  background-size: cover;
+  background-position: center 35%;
 }
-.closer h3 {
+.dates-block .event-name {
   font-family: var(--display);
-  font-style: italic;
-  font-size: 26px;
-  color: var(--ember);
-  margin: 0 0 24px;
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--ink);
+  margin: 0 0 4px;
 }
-.closer p {
-  max-width: 540px;
-  margin: 0 auto 16px;
-  color: var(--ink-soft);
-}
-.closer .vision {
+.dates-block .event-dates {
   font-family: var(--display);
   font-style: italic;
   font-size: 19px;
-  color: var(--gold);
-  margin: 24px auto 28px;
-  max-width: 540px;
-  line-height: 1.45;
-}
-.closer .see-you {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 24px;
   color: var(--ember);
-  margin: 32px 0 12px;
+  margin: 0 0 6px;
 }
-.closer .signature {
-  font-family: var(--display);
-  font-size: 16px;
-  color: var(--ink);
-  margin: 0;
-}
-.closer .signature .role {
-  display: block;
-  font-style: italic;
-  font-size: 13px;
+.dates-block .event-location {
+  font-family: var(--label);
+  font-size: 11.5px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
   color: var(--umber);
-  margin-top: 4px;
+  margin: 0 0 4px;
+}
+.cal-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 6px 0 24px;
+}
+.cal-btn {
+  display: inline-block;
+  font-family: var(--label);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--bone-bright);
+  border: 1px solid rgba(27, 25, 22, 0.22);
+  padding: 10px 14px;
+  border-radius: 4px;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.cal-btn:hover {
+  background: var(--gold-soft);
+  border-color: var(--gold);
+  color: var(--ink);
 }
 
-/* FOOTER P.S. */
-.ps {
-  border-top: 1px solid var(--line);
-  margin-top: 40px;
-  padding-top: 32px;
-  text-align: center;
-  font-size: 15px;
-  color: var(--umber);
+/* ===== SEDONA SEE-YOU CLOSER ===== */
+.see-you-photo {
+  position: relative;
+  width: 100%;
+  min-height: 580px;
+  margin-top: 48px;
+  background-image: url('photos-web/duzzi-sunset-rock.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  background-color: #0c0a08;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
 }
-.ps strong { color: var(--ink); font-weight: 600; }
-.ps a { color: var(--ember); text-decoration: none; font-weight: 600; }
-.ps a:hover { color: var(--ember-warm); }
-.ps .ps-label {
+.see-you-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.20) 35%, rgba(0,0,0,0.20) 100%);
+}
+.see-you-overlay {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 78px 28px 32px;
+  color: var(--bone-bright);
+}
+.see-you-line {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(46px, 7vw, 76px);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  color: var(--bone-bright);
+  margin: 0 0 18px;
+  text-shadow: 0 2px 18px rgba(0,0,0,0.55);
+}
+.see-you-sig {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(16px, 1.7vw, 20px);
+  color: var(--gold-soft);
+  text-shadow: 0 1px 10px rgba(0,0,0,0.6);
+}
+
+/* ===== FOOTER BAR ===== */
+.footer {
+  background: #0c0a08;
+  color: var(--bone);
+  text-align: center;
+  padding: 40px 28px;
+}
+.footer .ps-label {
   font-family: var(--label);
   font-size: 11px;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: var(--ember);
+  color: var(--gold-soft);
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
+.footer p {
+  margin: 0 auto;
+  max-width: 620px;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: rgba(235, 227, 212, 0.88);
+}
+.footer p strong { color: var(--bone-bright); font-weight: 600; }
+.footer a {
+  color: var(--gold-soft);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(216, 184, 122, 0.35);
+}
+.footer a:hover { color: var(--bone-bright); border-bottom-color: var(--bone-bright); }
 
-/* MOBILE */
+/* ===== MOBILE ===== */
+@media (max-width: 820px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+    padding: 44px 18px 16px;
+    gap: 32px 0;
+  }
+}
 @media (max-width: 540px) {
-  .wrap { padding: 40px 18px 60px; }
-  .section { padding: 26px 22px; }
-  .hero { margin-bottom: 40px; }
-  .hero h1 { font-size: 56px; }
-  .hero h2 { font-size: 21px; }
-  .hero .welcome-line { font-size: 17px; }
-  .cal-buttons { flex-direction: column; align-items: stretch; }
-  .cal-btn { font-size: 11.5px; padding: 12px 16px; }
-  .btn-primary { font-size: 13px; padding: 14px 22px; display: block; text-align: center; }
-  .steps li { padding-left: 40px; }
+  .hero { min-height: 70vh; }
+  .hero-overlay { padding: 44px 22px; }
+  .hero-overlay h1 { font-size: clamp(54px, 16vw, 84px); margin-bottom: 20px; }
+  .intro-line { padding: 56px 22px 8px; }
+  .card { padding: 36px 22px 26px; }
+  .card-num { width: 42px; height: 42px; font-size: 20px; line-height: 42px; top: -21px; }
+  .see-you-photo { min-height: 460px; margin-top: 32px; }
+  .see-you-overlay { padding: 56px 22px 24px; }
+  .cal-btn { font-size: 11px; padding: 9px 12px; }
+  .btn-primary { font-size: 13px; padding: 13px 20px; }
 }
 </style>
 </head>
 <body>
 
+<!-- ===== TOP BRAND BAR ===== -->
 <div class="brand-bar">
-  <div class="brand-mark">Breakthrough in the Desert · August 7–9, 2026</div>
+  <div class="brand-mark">Welcome to Breakthrough in the Desert</div>
 </div>
 
-<div class="wrap">
-
-  <!-- HERO -->
-  <section class="hero">
-    <h1>You're In.</h1>
-    <h2>Welcome to Breakthrough in the Desert.</h2>
-    <p class="welcome-line"><span id="firstNameWelcome"></span>Thank you for registering. I'm so glad you said yes.</p>
-    <p>Three days that change the rest of your life. You'll be in the room for it.</p>
-    <p>Here's everything you need to know right now, and what's coming next.</p>
-  </section>
-
-  <!-- SAVE THE DATES + CALENDAR -->
-  <section class="section dates-block">
-    <h3><span class="emoji">📅</span>Save the Dates</h3>
-    <p class="event-name">Breakthrough in the Desert</p>
-    <p class="event-dates">Friday, August 7 — Sunday, August 9, 2026</p>
-    <p class="event-location">Arizona Grand Resort · Phoenix, Arizona</p>
-    <div class="cal-buttons">
-      <a class="cal-btn" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Breakthrough+in+the+Desert&dates=20260807/20260810&details=Three+days+of+deep+work%2C+transformation%2C+and+community+with+Dr.+Anthony+Balduzzi+and+a+curated+faculty+of+doctors%2C+healers%2C+and+teachers.+See+event.fitfatherproject.com+for+full+details.&location=Arizona+Grand+Resort%2C+8000+S+Arizona+Grand+Pkwy%2C+Phoenix%2C+AZ+85044">+ Google Calendar</a>
-      <a class="cal-btn" href="breakthrough-2026.ics" download>+ Apple Calendar</a>
-      <a class="cal-btn" href="breakthrough-2026.ics" download>+ Outlook</a>
+<!-- ===== HERO (full-bleed Bee image + overlay) ===== -->
+<section class="hero" aria-labelledby="hero-title">
+  <picture>
+    <source srcset="optimized/bee.avif" type="image/avif" media="(min-width: 1100px)">
+    <source srcset="optimized/bee.webp" type="image/webp" media="(min-width: 1100px)">
+    <source srcset="optimized/bee-1920.avif" type="image/avif" media="(min-width: 720px)">
+    <source srcset="optimized/bee-1920.webp" type="image/webp" media="(min-width: 720px)">
+    <source srcset="optimized/bee-mobile.avif" type="image/avif">
+    <source srcset="optimized/bee-mobile.webp" type="image/webp">
+    <img class="hero-img" src="optimized/bee-mobile.jpg" alt="Wide Arizona mountain vista at sunrise, layered ridges against warm amber sky." fetchpriority="high">
+  </picture>
+  <div class="hero-overlay">
+    <h1 id="hero-title">You're In!</h1>
+    <p><span id="firstNameWelcome"></span>Thank you for registering for this amazing event! I'm so glad you said YES. These 3 days together will help you break through what's been holding you back, and step into your most fit, alive, clear, and connected years ahead. I am excited &amp; grateful for our upcoming experience together&nbsp;🙏&nbsp;❤️</p>
+    <div class="hero-signoff">
+      <div class="name">Dr. Anthony Balduzzi</div>
+      <div class="role">— Event Host, Breakthrough in the Desert</div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- HOTEL -->
-  <section class="section">
-    <h3><span class="emoji">🏨</span>Book Your Room at Our Special Rate</h3>
-    <p>We've negotiated a discounted rate for Breakthrough attendees at the Arizona Grand Resort. All rooms are full suites — your sanctuary between sessions, and the kind of space that helps your nervous system actually settle.</p>
+<!-- ===== WHITE-SPACE HEADLINE (between hero and grid) ===== -->
+<div class="intro-line">
+  <h2>Here's everything you need to know now <em>&amp; what's next.</em></h2>
+</div>
+
+<!-- ===== 2x2 NUMBERED INFO GRID ===== -->
+<section class="info-grid">
+
+  <!-- 1. Book Your Room -->
+  <div class="card">
+    <div class="card-num">1</div>
+    <h3>Book Your Room at Our Special Rate</h3>
+    <div class="card-sub">From $150 / night · all suites</div>
+    <p>We've negotiated an amazing discounted rate for Breakthrough attendees at the Arizona Grand Resort. Your sanctuary between sessions, and the kind of space that helps your nervous system actually settle.</p>
     <a class="btn-primary" target="_blank" rel="noopener" href="https://be.synxis.com/landing?adult=1&arrive=2026-08-05&chain=32547&child=0&config=GROUP&currency=USD&depart=2026-08-10&group=0716AGRFITF&hotel=46465&level=hotel&locale=en-US&productcurrency=USD&rooms=1">Book your room <span class="arrow">→</span></a>
-    <p class="fine-print">We recommend booking sooner rather than later — rooms at our negotiated rate are limited, and we want you settled in well before the event.</p>
-  </section>
-
-  <!-- WHAT HAPPENS NEXT -->
-  <section class="section">
-    <h3><span class="emoji">📧</span>What Happens Next</h3>
-    <ol class="steps">
-      <li><strong>Check your inbox.</strong> Your order confirmation is on the way. If it lands in spam, please mark it "not spam" so the rest of our emails arrive smoothly.</li>
-      <li><strong>Over the coming weeks</strong>, Dr. Anthony will send you a series of emails covering the full agenda, what to pack, what to bring, and what to expect from each day.</li>
-      <li><strong>A week before the event</strong>, you'll get final logistics: arrival times, the welcome packet, and how to make the most of your first day in the desert.</li>
-    </ol>
-  </section>
-
-  <!-- PARTNER UPSELL -->
-  <section class="section">
-    <h3><span class="emoji">💛</span>Bring Someone With You</h3>
-    <p>Breakthroughs go deeper, and last longer, when the people closest to you walk the path with you. Partner tickets are available — full event access for a spouse, friend, or adult child (15+).</p>
-    <a class="btn-primary" href="mailto:support@fitfatherproject.com?subject=Add%20a%20partner%20ticket%20to%20my%20Breakthrough%20registration&body=Hi%20Breakthrough%20team%2C%0A%0AI%27d%20like%20to%20add%20a%20partner%20ticket%20to%20my%20Breakthrough%20in%20the%20Desert%20registration.%20Please%20send%20me%20the%20next%20steps.%0A%0AThanks.">Email us to add a partner ticket <span class="arrow">→</span></a>
-    <p class="fine-print">GA+ partner: +$595 · VIP partner: +$895 (includes VIP lunches and lounge access).</p>
-  </section>
-
-  <!-- CLOSER / VISION -->
-  <section class="closer">
-    <h3>Get Ready for Transformation.</h3>
-    <p>This isn't another conference. It's a homecoming for our community. Three days of deep work, real connection, and the breakthroughs that change the rest of your life.</p>
-    <p class="vision">I built this event for the version of me I want to be at 90. I built it for you, too.</p>
-    <p class="see-you">See you in the desert.</p>
-    <p class="signature">
-      — Dr. Anthony Balduzzi
-      <span class="role">Founder, The Fit Father Project &amp; The Fit Mother Project</span>
-    </p>
-  </section>
-
-  <!-- P.S. -->
-  <div class="ps">
-    <span class="ps-label">P.S.</span>
-    Questions before the event? Our team is here. Email <a href="mailto:support@fitfatherproject.com">support@fitfatherproject.com</a> or text <a href="sms:602-999-0004">602-999-0004</a>. We'll take care of you.
+    <p class="fine-print">We recommend booking sooner rather than later. Rooms at our negotiated rate are limited.</p>
   </div>
 
+  <!-- 2. What Happens Next -->
+  <div class="card">
+    <div class="card-num">2</div>
+    <h3>What Happens Next</h3>
+    <div class="next-body">
+      <p><strong>Check your inbox.</strong> Your registration confirmation is on the way. If it lands in spam, please mark it "not spam." If you don't receive it within 30 minutes, message <a href="mailto:support@fitfatherproject.com">support@fitfatherproject.com</a>.</p>
+      <p><strong>Over the coming weeks</strong>, Dr. Anthony will send you a series of emails with the full agenda, what to pack, what to bring, and what to expect from each day.</p>
+      <p><strong>A week before the event</strong>, you'll get final logistics: arrival times, the welcome packet, and how to make the most of your first day in the desert.</p>
+    </div>
+  </div>
+
+  <!-- 3. Bring Someone With You -->
+  <div class="card">
+    <div class="card-num">3</div>
+    <h3>Bring Someone With You</h3>
+    <p>Breakthroughs go deeper, and last longer, when the people closest to you walk the path with you. Partner tickets are available for a spouse, friend, or adult child (15+).</p>
+    <a class="btn-primary" href="mailto:support@fitfatherproject.com?subject=Add%20a%20partner%20ticket%20to%20my%20Breakthrough%20registration&body=Hi%20Breakthrough%20team%2C%0A%0AI%27d%20like%20to%20add%20a%20partner%20ticket%20to%20my%20Breakthrough%20in%20the%20Desert%20registration.%20Please%20send%20me%20the%20next%20steps.%0A%0AThanks.">Email us to add a partner ticket <span class="arrow">→</span></a>
+    <p class="fine-print">Or reach us at <a href="mailto:support@fitfatherproject.com">support@fitfatherproject.com</a> · GA+ partner: +$595 · VIP partner: +$895 (includes VIP lunches and lounge access).</p>
+  </div>
+
+  <!-- 4. Add to Your Calendar (with venue background, buttons up top) -->
+  <div class="card dates-block">
+    <div class="card-num">4</div>
+    <h3>Add to Your Calendar</h3>
+    <div class="cal-buttons">
+      <a class="cal-btn" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Breakthrough+in+the+Desert&dates=20260807/20260810&details=Three+days+of+deep+work%2C+transformation%2C+and+community+with+Dr.+Anthony+Balduzzi+and+a+curated+faculty+of+doctors%2C+healers%2C+and+teachers.+See+event.fitfatherproject.com+for+full+details.&location=Arizona+Grand+Resort%2C+8000+S+Arizona+Grand+Pkwy%2C+Phoenix%2C+AZ+85044">+ Google</a>
+      <a class="cal-btn" href="breakthrough-2026.ics" download>+ Apple</a>
+      <a class="cal-btn" href="breakthrough-2026.ics" download>+ Outlook</a>
+    </div>
+    <p class="event-name">Breakthrough in the Desert</p>
+    <p class="event-dates">Friday, August 7 to Sunday, August 9, 2026</p>
+    <p class="event-location">Arizona Grand Resort · Phoenix, Arizona</p>
+  </div>
+
+</section>
+
+<!-- ===== SEDONA CLOSER ===== -->
+<div class="see-you-photo" role="img" aria-label="Dr. Anthony sitting on a red rock at sunset in Sedona, Arizona">
+  <div class="see-you-overlay">
+    <div class="see-you-line">See you in the desert!</div>
+    <div class="see-you-sig">— Dr. Anthony Balduzzi</div>
+  </div>
 </div>
+
+<!-- ===== FOOTER BAR ===== -->
+<footer class="footer">
+  <span class="ps-label">Questions Before The Event?</span>
+  <p>Our team is here. Email <a href="mailto:support@fitfatherproject.com">support@fitfatherproject.com</a> or text <a href="sms:602-999-0004">602-999-0004</a>. We'll take care of you, and we're excited to see you soon.</p>
+</footer>
 
 <script>
   // Greet the attendee by name if Spiffy passed it via ?name_first=... in the redirect URL.
-  // Defensively handles missing/blank values.
   (function () {
     var params = new URLSearchParams(window.location.search);
     var firstName = (params.get('name_first') || '').trim();
@@ -409,7 +542,7 @@ body {
       // Sanitize: only first word, max 30 chars, alphanumeric + space + hyphen + apostrophe
       var clean = firstName.split(/\s+/)[0].slice(0, 30).replace(/[^A-Za-zÀ-ſ'\-]/g, '');
       if (clean) {
-        el.textContent = clean + ' — ';
+        el.textContent = clean + ', ';
       }
     }
   })();

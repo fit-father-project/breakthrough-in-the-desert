@@ -1,0 +1,28 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fit Father Project//Breakthrough in the Desert 2026//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:breakthrough-in-the-desert-2026@event.fitfatherproject.com
+DTSTAMP:20260601T120000Z
+DTSTART;VALUE=DATE:20260807
+DTEND;VALUE=DATE:20260810
+SUMMARY:Breakthrough in the Desert 2026
+LOCATION:Arizona Grand Resort & Spa\, 8000 S Arizona Grand Pkwy\, Phoenix\, AZ 85044
+DESCRIPTION:Three days with Dr. Anthony Balduzzi and the Fit Father Project faculty. Arizona Grand Resort\, Phoenix\, AZ.\n\nDetails: https://event.fitfatherproject.com\nQuestions: support@fitfatherproject.com or 602-999-0004
+URL:https://event.fitfatherproject.com
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-P7D
+ACTION:DISPLAY
+DESCRIPTION:Breakthrough in the Desert starts in 1 week — Arizona Grand Resort\, Phoenix
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Breakthrough in the Desert starts tomorrow — Arizona Grand Resort\, Phoenix
+END:VALARM
+END:VEVENT
+END:VCALENDAR

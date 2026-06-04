@@ -1049,10 +1049,13 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
   padding-top: 56.25%;
 }
 .video-caption {
-  font-family: var(--display); /* Newsreader — designed for screen readability, italic included */
-  font-style: italic;
+  /* Matches the rendered hero subhead .hero-v2 .hero-question exactly:
+     Newsreader, weight 300, normal (not italic), same size + line-height. */
+  font-family: var(--display);
+  font-style: normal;
   font-weight: 300;
-  font-size: clamp(17px, 1.4vw, 19px);
+  font-size: clamp(18px, 1.95vw, 23px);
+  line-height: 1.45;
   letter-spacing: 0;
   color: var(--bone);
   opacity: 0.88;

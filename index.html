@@ -1049,20 +1049,19 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
   padding-top: 56.25%;
 }
 .video-caption {
-  font-family: var(--label);
+  font-family: var(--body);
   font-style: italic;
-  font-size: 15px;
-  letter-spacing: 0.04em;
+  font-size: 17px;
+  letter-spacing: 0;
   color: var(--bone);
-  opacity: 0.8;
+  opacity: 0.85;
   text-align: center;
-  margin-bottom: 26px;
+  margin-bottom: 22px;
 }
-.video-caption .nowrap { white-space: nowrap; }
 @media (max-width: 720px) {
-  .video-sec { padding: 56px 16px 64px; }
+  .video-sec { padding: 32px 16px 48px; }
   .video-frame { border-radius: 10px; }
-  .video-caption { font-size: 13.5px; margin-bottom: 20px; }
+  .video-caption { font-size: 15px; margin-bottom: 14px; }
 }
 
 .founder-sec {
@@ -2586,6 +2585,8 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
   .founder-sec p { font-size: 15.5px; }
   .founder-sec .anchor-quote { font-size: 21px; margin: 24px 0; padding: 18px 0; }
   .founder-sec .signature { font-size: 20px; }
+  /* Img breakout adjusted: .founder-inner padding is 18px each side at this breakpoint */
+  .founder-mobile-img { width: calc(100% + 36px); margin: 20px -18px 24px; }
 
   /* Speakers */
   .speakers-intro { font-size: 16px; margin-bottom: 36px; }
@@ -3259,8 +3260,8 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
   .founder-sec::before { display: none !important; }
   .founder-mobile-img {
     display: block;
-    width: 100%;
-    margin: 0;
+    width: calc(100% + 48px); /* break out of .founder-inner 24px horizontal padding at 880px */
+    margin: 22px -24px 26px;
     background: #0a0908;
     aspect-ratio: 4 / 3;
     object-fit: cover;
@@ -3416,7 +3417,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 <!-- ===== 0.5 PERSONAL VIDEO (Dr. Balduzzi inviting from the desert, between hero and letter) ===== -->
 <section class="video-sec" aria-label="A personal video invitation from Dr. Anthony Balduzzi">
   <div class="video-inner">
-    <div class="video-caption">A personal invitation from Dr. Anthony Balduzzi · <span class="nowrap">~2 minutes</span></div>
+    <div class="video-caption">A personal invitation from Dr. Anthony Balduzzi</div>
     <div class="video-frame">
       <script src="https://fast.wistia.com/player.js" async></script>
       <script src="https://fast.wistia.com/embed/mikhgbxilc.js" async type="module"></script>
@@ -3427,11 +3428,11 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 
 <!-- ===== 1. FOUNDER LETTER (moved up from former section 6) ===== -->
 <section class="founder-sec">
-  <img class="founder-mobile-img" src="photos-web/duzzi-brooke.jpg" alt="Dr. Anthony Balduzzi with his daughter Brooke">
   <div class="founder-inner">
     <div class="founder-content">
       <div class="founder-eyebrow">A Letter From the Founder</div>
       <h2>I created this event for the <em>version of me I want to be at 90.</em></h2>
+      <img class="founder-mobile-img" src="photos-web/duzzi-brooke.jpg" alt="Dr. Anthony Balduzzi with his daughter Brooke">
       <p>I'm Dr. Anthony Balduzzi, founder of Fit Father &amp; Fit Mother. Over the past decade I've helped 70,000+ families reclaim their health and vitality. I believe lifelong health and aliveness is one of the deepest aims of life.</p>
       <p>When I imagine myself at 90: I'm strong, sharp, still teaching, still in love with my life, still enjoying my family.</p>
       <p><strong class="reader-prompt">Now imagine the best version of YOU at 90.</strong> Your body still moves the way you want it to. Your mind is sharp and curious. You're surrounded by the people you love most. You're playing with your great-grandkids. You're grateful for the life you actually lived. Every chapter, every relationship, every choice.</p>

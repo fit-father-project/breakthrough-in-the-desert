@@ -1051,17 +1051,18 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 .video-caption {
   font-family: var(--label);
   font-style: italic;
-  font-size: 13.5px;
-  letter-spacing: 0.05em;
+  font-size: 15px;
+  letter-spacing: 0.04em;
   color: var(--bone);
-  opacity: 0.62;
+  opacity: 0.8;
   text-align: center;
-  margin-top: 26px;
+  margin-bottom: 26px;
 }
+.video-caption .nowrap { white-space: nowrap; }
 @media (max-width: 720px) {
   .video-sec { padding: 56px 16px 64px; }
   .video-frame { border-radius: 10px; }
-  .video-caption { font-size: 12.5px; margin-top: 20px; }
+  .video-caption { font-size: 13.5px; margin-bottom: 20px; }
 }
 
 .founder-sec {
@@ -3415,12 +3416,12 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 <!-- ===== 0.5 PERSONAL VIDEO (Dr. Balduzzi inviting from the desert, between hero and letter) ===== -->
 <section class="video-sec" aria-label="A personal video invitation from Dr. Anthony Balduzzi">
   <div class="video-inner">
+    <div class="video-caption">A personal invitation from Dr. Anthony Balduzzi · <span class="nowrap">~2 minutes</span></div>
     <div class="video-frame">
       <script src="https://fast.wistia.com/player.js" async></script>
       <script src="https://fast.wistia.com/embed/mikhgbxilc.js" async type="module"></script>
       <wistia-player media-id="mikhgbxilc" aspect="1.7777777777777777"></wistia-player>
     </div>
-    <div class="video-caption">A personal invitation from Dr. Anthony Balduzzi · ~2 minutes</div>
   </div>
 </section>
 

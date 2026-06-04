@@ -1049,19 +1049,20 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
   padding-top: 56.25%;
 }
 .video-caption {
-  font-family: var(--body);
+  font-family: var(--display); /* Newsreader — designed for screen readability, italic included */
   font-style: italic;
-  font-size: 17px;
+  font-weight: 300;
+  font-size: clamp(17px, 1.4vw, 19px);
   letter-spacing: 0;
   color: var(--bone);
-  opacity: 0.85;
+  opacity: 0.88;
   text-align: center;
   margin-bottom: 22px;
 }
 @media (max-width: 720px) {
   .video-sec { padding: 32px 16px 48px; }
   .video-frame { border-radius: 10px; }
-  .video-caption { font-size: 15px; margin-bottom: 14px; }
+  .video-caption { font-size: 17px; margin-bottom: 14px; }
 }
 
 .founder-sec {
@@ -3275,6 +3276,14 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
     text-align: right;
     background: #0a0908;
   }
+  /* Mobile-only reorder of Founder Letter children:
+     headline → photo → eyebrow → body
+     Eyebrow becomes a transition signal between photo and body
+     rather than a structural label above the headline. */
+  .founder-content { display: flex; flex-direction: column; }
+  .founder-content > h2 { order: -3; }
+  .founder-content > .founder-mobile-img { order: -2; }
+  .founder-content > .founder-eyebrow { order: -1; margin-top: 4px; }
 }
 
 /* Promise section: heavier dim overlay on community photo so copy stays the focus */
@@ -3417,7 +3426,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 <!-- ===== 0.5 PERSONAL VIDEO (Dr. Balduzzi inviting from the desert, between hero and letter) ===== -->
 <section class="video-sec" aria-label="A personal video invitation from Dr. Anthony Balduzzi">
   <div class="video-inner">
-    <div class="video-caption">A personal invitation from Dr. Anthony Balduzzi</div>
+    <div class="video-caption">Your invitation from Dr. Anthony Balduzzi</div>
     <div class="video-frame">
       <script src="https://fast.wistia.com/player.js" async></script>
       <script src="https://fast.wistia.com/embed/mikhgbxilc.js" async type="module"></script>

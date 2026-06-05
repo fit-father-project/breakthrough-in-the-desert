@@ -2589,8 +2589,6 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
   .founder-sec p { font-size: 15.5px; }
   .founder-sec .anchor-quote { font-size: 21px; margin: 24px 0; padding: 18px 0; }
   .founder-sec .signature { font-size: 20px; }
-  /* Img breakout adjusted: .founder-inner padding is 18px each side at this breakpoint */
-  .founder-mobile-img { width: calc(100% + 36px); margin: 20px -18px 24px; }
 
   /* Speakers */
   .speakers-intro { font-size: 16px; margin-bottom: 36px; }
@@ -3264,8 +3262,8 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
   .founder-sec::before { display: none !important; }
   .founder-mobile-img {
     display: block;
-    width: calc(100% + 48px); /* break out of .founder-inner 24px horizontal padding at 880px */
-    margin: 22px -24px 26px;
+    width: 100%;
+    margin: 0;
     background: #0a0908;
     aspect-ratio: 4 / 3;
     object-fit: cover;
@@ -3279,14 +3277,6 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
     text-align: right;
     background: #0a0908;
   }
-  /* Mobile-only reorder of Founder Letter children:
-     headline → photo → eyebrow → body
-     Eyebrow becomes a transition signal between photo and body
-     rather than a structural label above the headline. */
-  .founder-content { display: flex; flex-direction: column; }
-  .founder-content > h2 { order: -3; }
-  .founder-content > .founder-mobile-img { order: -2; }
-  .founder-content > .founder-eyebrow { order: -1; margin-top: 4px; }
 }
 
 /* Promise section: heavier dim overlay on community photo so copy stays the focus */
@@ -3440,11 +3430,11 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 
 <!-- ===== 1. FOUNDER LETTER (moved up from former section 6) ===== -->
 <section class="founder-sec">
+  <img class="founder-mobile-img" src="photos-web/duzzi-brooke.jpg" alt="Dr. Anthony Balduzzi with his daughter Brooke">
   <div class="founder-inner">
     <div class="founder-content">
       <div class="founder-eyebrow">A Letter From the Founder</div>
       <h2>I created this event for the <em>version of me I want to be at 90.</em></h2>
-      <img class="founder-mobile-img" src="photos-web/duzzi-brooke.jpg" alt="Dr. Anthony Balduzzi with his daughter Brooke">
       <p>I'm Dr. Anthony Balduzzi, founder of Fit Father &amp; Fit Mother. Over the past decade I've helped 70,000+ families reclaim their health and vitality. I believe lifelong health and aliveness is one of the deepest aims of life.</p>
       <p>When I imagine myself at 90: I'm strong, sharp, still teaching, still in love with my life, still enjoying my family.</p>
       <p><strong class="reader-prompt">Now imagine the best version of YOU at 90.</strong> Your body still moves the way you want it to. Your mind is sharp and curious. You're surrounded by the people you love most. You're playing with your great-grandkids. You're grateful for the life you actually lived. Every chapter, every relationship, every choice.</p>

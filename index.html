@@ -1023,7 +1023,7 @@ p:last-child { margin-bottom: 0; }
 /* ===== PERSONAL VIDEO SECTION (between hero and founder letter) ===== */
 .video-sec {
   background: var(--ink);
-  padding: 90px 24px 100px;
+  padding: 50px 24px 100px;
   position: relative;
 }
 .video-inner {
@@ -1049,18 +1049,18 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
   padding-top: 56.25%;
 }
 .video-caption {
-  /* Matches the rendered hero subhead .hero-v2 .hero-question exactly:
-     Newsreader, weight 300, normal (not italic), same size + line-height. */
-  font-family: var(--display);
+  /* Quiet body-style label — Spectral serif at body size so the caption
+     introduces the video without competing with the headlines below. */
+  font-family: var(--body);
   font-style: normal;
-  font-weight: 300;
-  font-size: clamp(18px, 1.95vw, 23px);
-  line-height: 1.45;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
   letter-spacing: 0;
   color: var(--bone);
-  opacity: 0.88;
+  opacity: 0.78;
   text-align: center;
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 @media (max-width: 720px) {
   .video-sec { padding: 32px 16px 48px; }

@@ -1027,6 +1027,7 @@ p:last-child { margin-bottom: 0; }
   background: var(--ink);
   padding: 50px 24px 100px;
   position: relative;
+  scroll-margin-top: 80px; /* Anchor-link offset: clears the sticky countdown bar */
 }
 .video-inner {
   max-width: 920px;
@@ -1065,7 +1066,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
   margin-bottom: 18px;
 }
 @media (max-width: 720px) {
-  .video-sec { padding: 32px 16px 48px; }
+  .video-sec { padding: 32px 16px 48px; scroll-margin-top: 110px; /* mobile countdown bar can wrap to 2-3 lines */ }
   .video-frame { border-radius: 10px; }
   .video-caption { font-size: 17px; margin-bottom: 14px; }
 }
@@ -3419,7 +3420,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 </section>
 
 <!-- ===== 0.5 PERSONAL VIDEO (Dr. Balduzzi inviting from the desert, between hero and letter) ===== -->
-<section class="video-sec" aria-label="A personal video invitation from Dr. Anthony Balduzzi">
+<section class="video-sec" id="invitation" aria-label="A personal video invitation from Dr. Anthony Balduzzi">
   <div class="video-inner">
     <div class="video-caption">Your invitation from Dr. Anthony Balduzzi</div>
     <div class="video-frame">

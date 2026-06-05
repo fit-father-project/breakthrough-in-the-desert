@@ -1027,7 +1027,18 @@ p:last-child { margin-bottom: 0; }
   background: var(--ink);
   padding: 50px 24px 100px;
   position: relative;
-  scroll-margin-top: 80px; /* Anchor-link offset: clears the sticky countdown bar */
+}
+/* Shared anchor-link scroll offset — clears the sticky countdown bar
+   for every section that's a deep-link target. Add this section's
+   selector here when wiring a new id="" anchor. */
+.video-sec,
+.speakers-sec,
+.social-sec,
+.arc-sec,
+.venue-sec,
+.pricing-sec,
+.faq-sec {
+  scroll-margin-top: 80px;
 }
 .video-inner {
   max-width: 920px;
@@ -1066,9 +1077,13 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
   margin-bottom: 18px;
 }
 @media (max-width: 720px) {
-  .video-sec { padding: 32px 16px 48px; scroll-margin-top: 110px; /* mobile countdown bar can wrap to 2-3 lines */ }
+  .video-sec { padding: 32px 16px 48px; }
   .video-frame { border-radius: 10px; }
   .video-caption { font-size: 17px; margin-bottom: 14px; }
+  /* Mobile countdown bar can wrap to 2-3 lines — give all anchor targets extra clearance */
+  .video-sec, .speakers-sec, .social-sec, .arc-sec, .venue-sec, .pricing-sec, .faq-sec {
+    scroll-margin-top: 110px;
+  }
 }
 
 .founder-sec {
@@ -3465,7 +3480,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 </section>
 
 <!-- ===== 7. SPEAKERS (moved above Social Proof 2026-05-24 — authority before social proof) ===== -->
-<section class="speakers-sec darken-bg">
+<section class="speakers-sec darken-bg" id="faculty">
   <div class="container-xwide">
     <div class="eyebrow">The Faculty</div>
     <h2 class="section-title">The people <em>in the room</em> with you.</h2>
@@ -3555,7 +3570,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 </section>
 
 <!-- ===== 3. SOCIAL PROOF (now below Speakers — testimonials reinforce the lineup) ===== -->
-<section class="social-sec">
+<section class="social-sec" id="testimonials">
   <div class="social-inner">
     <div class="social-head">
       <div class="social-eyebrow">Voices from last year's event</div>
@@ -3632,7 +3647,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 </section>
 
 <!-- ===== 8. STRUCTURE OF THE WEEKEND (moved above Leave With per Anthony 2026-05-24) ===== -->
-<section class="arc-sec">
+<section class="arc-sec" id="agenda">
   <div class="arc-head">
     <div class="arc-eyebrow">August 7–9, 2026</div>
     <h2>The structure of <em>the weekend.</em></h2>
@@ -3709,7 +3724,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 </section>
 
 <!-- ===== 10. VENUE (moved BEFORE Leave With 2026-05-24: emotional close sits closest to pricing) ===== -->
-<section class="venue-sec">
+<section class="venue-sec" id="venue">
   <div class="venue-plate venue-plate--sky">
     <div class="vp-cap vp-cap--center">
       <div class="vp-eyebrow">The Venue · Phoenix, Arizona</div>
@@ -3872,7 +3887,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 </section>
 
 <!-- ===== 12. FAQ ===== -->
-<section class="faq-sec">
+<section class="faq-sec" id="faq">
   <div class="faq-inner">
     <div class="faq-head">
       <div class="faq-eyebrow">Frequently Asked</div>

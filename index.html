@@ -76,23 +76,23 @@
       "offers": [
         {
           "@type": "Offer",
-          "name": "GA+ Ticket (Early Bird)",
-          "price": "845",
+          "name": "GA+ Ticket (Father's Day Flash Sale)",
+          "price": "597",
           "priceCurrency": "USD",
           "availability": "https://schema.org/InStock",
-          "validFrom": "2025-11-01T00:00:00-07:00",
-          "validThrough": "2026-06-21T23:59:59-07:00",
+          "validFrom": "2026-06-13T00:00:00-07:00",
+          "validThrough": "2026-06-23T00:00:00-07:00",
           "url": "https://event.fitfatherproject.com/#pricing",
           "category": "GA+"
         },
         {
           "@type": "Offer",
-          "name": "VIP Ticket (Early Bird)",
-          "price": "1295",
+          "name": "VIP Ticket (Father's Day Flash Sale)",
+          "price": "999",
           "priceCurrency": "USD",
           "availability": "https://schema.org/InStock",
-          "validFrom": "2025-11-01T00:00:00-07:00",
-          "validThrough": "2026-06-21T23:59:59-07:00",
+          "validFrom": "2026-06-13T00:00:00-07:00",
+          "validThrough": "2026-06-23T00:00:00-07:00",
           "url": "https://event.fitfatherproject.com/#pricing",
           "category": "VIP"
         }
@@ -3384,6 +3384,166 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
   color: var(--gold);
   font-weight: 400;
 }
+
+/* ====================================================================
+   FLASH SALE styles — added for Father's Day Flash Sale 2026.
+   To revert: delete this entire block (between the FLASH SALE markers).
+   ==================================================================== */
+/* FLASH SALE: countdown bar sale badge */
+.countdown-bar .sale-badge {
+  display: inline-block;
+  background: var(--ember);
+  color: var(--bone);
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  margin-right: 2px;
+}
+/* FLASH SALE: pricing deadline strip */
+.pricing-deadline.flash-sale {
+  background: rgba(168, 80, 46, 0.08);
+  border-top: 1px solid rgba(168, 80, 46, 0.30);
+  border-bottom: 1px solid rgba(168, 80, 46, 0.30);
+  padding: 18px 24px;
+  border-radius: 6px;
+  text-align: center;
+  line-height: 1.55;
+}
+.pricing-deadline .sale-pill {
+  display: inline-block;
+  background: var(--ember);
+  color: var(--bone);
+  font-family: var(--label);
+  font-size: 11.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 12px;
+  margin-right: 10px;
+  vertical-align: 2px;
+  font-weight: 700;
+}
+.pricing-deadline .sale-pill.inline { font-size: 9.5px; padding: 2px 7px; margin-left: 8px; }
+/* FLASH SALE: tier card sale ribbon (GA+ uses sale-ribbon; VIP keeps its existing "Most attendees" ribbon) */
+.tier-card .sale-ribbon {
+  background: var(--ember);
+  color: var(--bone);
+}
+/* FLASH SALE: strike-through styling — make slashed price clearly canceled */
+.tier-card.flash-sale .price-strike {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  opacity: 0.75;
+  margin-left: 8px;
+}
+/* FLASH SALE: save badge next to price */
+.tier-card .save-badge {
+  display: inline-block;
+  background: var(--ember);
+  color: var(--bone);
+  font-family: var(--label);
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 12px;
+  margin-left: 10px;
+  font-weight: 700;
+  vertical-align: 8px;
+}
+@media (max-width: 720px) {
+  .tier-card .save-badge { display: block; margin: 8px 0 0; vertical-align: baseline; width: fit-content; }
+}
+/* FLASH SALE: Travel Made Easy callout — between pricing and FAQ */
+.travel-callout {
+  background: var(--bone-soft);
+  padding: 80px 24px;
+  position: relative;
+}
+.travel-callout .travel-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+}
+.travel-callout .travel-eyebrow {
+  font-family: var(--label);
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 18px;
+}
+.travel-callout h3 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(28px, 3.4vw, 42px);
+  line-height: 1.18;
+  color: var(--ink);
+  margin: 0 0 44px;
+}
+.travel-callout h3 em { font-style: italic; color: var(--ember-warm); font-weight: 300; }
+.travel-callout .travel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  text-align: left;
+}
+.travel-callout .travel-item {
+  background: var(--bone);
+  padding: 32px 32px 28px;
+  border-radius: 8px;
+  border: 1px solid rgba(90, 70, 49, 0.18);
+}
+.travel-callout .travel-label {
+  font-family: var(--label);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--umber);
+  margin-bottom: 12px;
+}
+.travel-callout .travel-item h4 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 22px;
+  color: var(--ink);
+  margin: 0 0 12px;
+}
+.travel-callout .travel-item p {
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0 0 16px;
+}
+.travel-callout .travel-item p strong { color: var(--ember); }
+.travel-callout .travel-link {
+  display: inline-block;
+  font-family: var(--label);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ember);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  margin-top: 6px;
+}
+.travel-callout .travel-link:hover { color: var(--ember-warm); }
+.travel-callout .travel-foot {
+  margin-top: 40px;
+  font-family: var(--body);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--umber);
+}
+@media (max-width: 720px) {
+  .travel-callout { padding: 56px 18px; }
+  .travel-callout .travel-grid { grid-template-columns: 1fr; gap: 18px; }
+  .travel-callout .travel-item { padding: 24px 22px 22px; }
+}
+/* ==================== END FLASH SALE styles ==================== */
 </style>
 </head>
 <body>
@@ -3395,11 +3555,14 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 <div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- ===== COUNTDOWN BAR ===== -->
-<div class="countdown-bar">
-  <strong>Limited to 150 seats</strong>
+<!-- FLASH SALE: Countdown bar copy — revert to original Father's Day early-bird messaging after June 22, 2026 -->
+<div class="countdown-bar flash-sale">
+  <strong class="sale-badge">$250+ OFF</strong>
   <span class="sep">·</span>
-  <strong>Early-bird ends:</strong>
-  <span id="countdown">Sunday, June 21, 2026 (Father's Day)</span>
+  <strong>150 seats</strong>
+  <span class="sep">·</span>
+  <strong>Ends:</strong>
+  <span id="countdown">Mon, June 22 (midnight AZ)</span>
 </div>
 
 <!-- ===== HERO ===== -->
@@ -3838,7 +4001,11 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
   <div class="container-wide">
     <div class="eyebrow">Reserve Your Spot</div>
     <h2 class="section-title">Two tickets. <em>One Breakthrough.</em></h2>
-    <div class="pricing-deadline">Early-bird pricing ends <strong>Sunday, June 21, 2026</strong> &mdash; Father's Day.</div>
+    <!-- FLASH SALE: Pricing deadline replaced with sale messaging. Original: "Early-bird pricing ends Sunday, June 21, 2026 — Father's Day." -->
+    <div class="pricing-deadline flash-sale">
+      <span class="sale-pill">Father's Day Flash Sale</span>
+      Save $250+ when you reserve before <strong>Monday, June 22 (midnight AZ)</strong>. After that, prices return to full early-bird.
+    </div>
 
     <div class="pricing-scarcity">
       <span class="dot"></span>
@@ -3847,13 +4014,16 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
     </div>
 
     <div class="pricing-grid">
-      <div class="tier-card">
+      <!-- FLASH SALE: GA+ tier card — sale price $597 (was $845). Revert after June 22. -->
+      <div class="tier-card flash-sale">
+        <div class="tier-ribbon sale-ribbon">Father's Day Flash Sale</div>
         <div class="tier-label">GA+ Ticket</div>
         <div class="tier-price">
-          <span class="price-current">$845</span>
-          <span class="price-strike">$995</span>
+          <span class="price-current">$597</span>
+          <span class="price-strike">$845</span>
+          <span class="save-badge">Save $248</span>
         </div>
-        <div class="tier-tagline">Early-bird through Father's Day</div>
+        <div class="tier-tagline">Flash sale ends Monday, June 22 (midnight AZ)</div>
         <div class="tier-summary">The full Breakthrough experience. Three days, all in.</div>
         <ul class="tier-features">
           <li>All three days of keynotes, workshops, and main-stage sessions</li>
@@ -3863,21 +4033,23 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
           <li>Optional: sunrise hikes, cold plunge, and after parties</li>
         </ul>
         <div class="tier-partner">
-          <strong>Add a partner ticket for +$595</strong>
-          <small>Full GA+ access for your partner, friend, or child (15+).</small>
+          <strong>Bring a partner for the same price &mdash; $597</strong>
+          <small>Add a second GA+ ticket at the same flash-sale price for your partner, friend, or child (15+).</small>
         </div>
-        <a href="https://secure.fitfatherproject.com/checkout/breakthrough-in-the-desert-ga" class="tier-cta">Reserve Your GA+ Spot →</a>
+        <a href="https://secure.fitfatherproject.com/checkout/breakthrough-in-the-desert-ga" class="tier-cta">Claim Your GA+ Spot →</a>
         <div class="tier-pay">3-pay option available at checkout</div>
       </div>
 
-      <div class="tier-card vip">
+      <!-- FLASH SALE: VIP tier card — sale price $999 (was $1,295). Revert after June 22. -->
+      <div class="tier-card vip flash-sale">
         <div class="tier-ribbon">Most attendees choose this</div>
-        <div class="tier-label">VIP Ticket</div>
+        <div class="tier-label">VIP Ticket <span class="sale-pill inline">Flash Sale</span></div>
         <div class="tier-price">
-          <span class="price-current">$1,295</span>
-          <span class="price-strike">$1,495</span>
+          <span class="price-current">$999</span>
+          <span class="price-strike">$1,295</span>
+          <span class="save-badge">Save $296</span>
         </div>
-        <div class="tier-tagline">Early-bird through Father's Day</div>
+        <div class="tier-tagline">Flash sale ends Monday, June 22 (midnight AZ)</div>
         <div class="tier-summary">Everything in GA+, plus front-row access to the speakers, the experience, and Dr. Anthony.</div>
         <ul class="tier-features">
           <li><strong>Front-row, priority seating</strong> in all main stage sessions</li>
@@ -3888,10 +4060,10 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
           <li><strong>2026 event recordings</strong> &mdash; yours to keep and revisit</li>
         </ul>
         <div class="tier-partner">
-          <strong>Add a partner ticket for +$895</strong>
-          <small>Full VIP access for your partner, friend, or child (15+).</small>
+          <strong>Bring a partner for the same price &mdash; $999</strong>
+          <small>Add a second VIP ticket at the same flash-sale price for your partner, friend, or child (15+).</small>
         </div>
-        <a href="https://secure.fitfatherproject.com/checkout/breakthrough-in-the-desert-vip" class="tier-cta">Reserve Your VIP Spot →</a>
+        <a href="https://secure.fitfatherproject.com/checkout/breakthrough-in-the-desert-vip" class="tier-cta">Claim Your VIP Spot →</a>
         <div class="tier-pay">3-pay option available at checkout</div>
       </div>
     </div>
@@ -3903,6 +4075,29 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
       <p>You can bring your partner, friends, and older children to walk this path with you. The transformation goes deeper, and lasts longer, when the people closest to you are in it too.</p>
       <p class="worth-closer">Three days you'll remember every August for the rest of your life.</p>
     </div>
+  </div>
+</section>
+
+<!-- FLASH SALE: Travel Made Easy section — added for Father's Day Flash Sale 2026.
+     To revert: delete this entire <section class="travel-callout">...</section> block. -->
+<section class="travel-callout">
+  <div class="travel-inner">
+    <div class="travel-eyebrow">Logistics, handled</div>
+    <h3>Travel is easier <em>than you think.</em></h3>
+    <div class="travel-grid">
+      <div class="travel-item">
+        <div class="travel-label">Flights</div>
+        <h4>Phoenix Sky Harbor (PHX)</h4>
+        <p>One of the most-connected airports in the U.S. Direct flights from nearly every major city, low-cost carriers included. From the gate to the resort is a 15-minute drive.</p>
+      </div>
+      <div class="travel-item">
+        <div class="travel-label">Lodging</div>
+        <h4>$150/night at the resort</h4>
+        <p>Group rate at the Arizona Grand Resort: <strong>$150/night</strong> in spacious suites with full kitchenettes. Includes all-day access to the 7-acre water park, pools, hiking trails, and on-site restaurants.</p>
+        <a href="https://be.synxis.com/landing?adult=1&amp;arrive=2026-08-05&amp;chain=32547&amp;child=0&amp;config=GROUP&amp;currency=USD&amp;depart=2026-08-10&amp;group=0716AGRFITF&amp;hotel=46465&amp;level=hotel&amp;locale=en-US&amp;productcurrency=USD&amp;rooms=1" target="_blank" rel="noopener" class="travel-link">Reserve a room →</a>
+      </div>
+    </div>
+    <p class="travel-foot">Don't let logistics talk you out of August. Once you say yes, the rest gets simple.</p>
   </div>
 </section>
 
@@ -4084,17 +4279,20 @@ document.querySelectorAll('.poster-toggle').forEach(toggle => {
   });
 });
 
-// Countdown to Father's Day 2026 — full Father's Day messaging restored
-// per Anthony's preference (even if it wraps to 2-3 lines on mobile).
+// FLASH SALE: Countdown target — Monday June 22 midnight Arizona time (= June 23 00:00 MST)
+// Revert to Father's Day 2026 target after sale ends.
+// Original target: new Date('2026-06-21T23:59:59-07:00')
+// Original fallback text: "Father's Day, June 21, 2026"
+// Original active text: days + " days, " + hours + " hours · Sunday, June 21 (Father's Day)"
 function updateCountdown() {
-  const target = new Date('2026-06-21T23:59:59-07:00');
+  const target = new Date('2026-06-23T00:00:00-07:00');
   const diff = target - new Date();
   const el = document.getElementById('countdown');
   if (!el) return;
-  if (diff <= 0) { el.textContent = "Father's Day, June 21, 2026"; return; }
+  if (diff <= 0) { el.textContent = "Flash sale ended"; return; }
   const days = Math.floor(diff / (1000*60*60*24));
   const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-  el.textContent = days + " days, " + hours + " hours · Sunday, June 21 (Father's Day)";
+  el.textContent = days + " days, " + hours + " hours · Mon, June 22 (midnight AZ)";
 }
 updateCountdown();
 setInterval(updateCountdown, 60000);

@@ -11,7 +11,7 @@
     - Founder Letter intro: "naturopathic doctor" (not "Founder of
       Fit Father & Fit Mother")
     - Hero presents line: "Dr. Anthony Balduzzi Presents"
-    - Sale name: "Summer Launch Pricing" ending Tue, July 15
+    - Sale name: "Summer Launch Pricing" ending Sun, July 19
       (was: "Father's Day Flash Sale" ending Mon, June 22 on index.html)
     - FAQ: audience descriptor reframed; "FFP/FMP membership"
       question reframed for cold readers
@@ -102,7 +102,7 @@
           "priceCurrency": "USD",
           "availability": "https://schema.org/InStock",
           "validFrom": "2026-06-13T00:00:00-07:00",
-          "validThrough": "2026-07-16T00:00:00-07:00",
+          "validThrough": "2026-07-20T00:00:00-07:00",
           "url": "https://event.fitfatherproject.com/#pricing",
           "category": "GA+"
         },
@@ -113,7 +113,7 @@
           "priceCurrency": "USD",
           "availability": "https://schema.org/InStock",
           "validFrom": "2026-06-13T00:00:00-07:00",
-          "validThrough": "2026-07-16T00:00:00-07:00",
+          "validThrough": "2026-07-20T00:00:00-07:00",
           "url": "https://event.fitfatherproject.com/#pricing",
           "category": "VIP"
         }
@@ -3584,7 +3584,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
   <strong>150 seats</strong>
   <span class="sep">·</span>
   <strong>Sale ends:</strong>
-  <span id="countdown">Tue, July 15 (midnight AZ)</span>
+  <span id="countdown">Sun, July 19 (midnight AZ)</span>
 </div>
 
 <!-- ===== HERO ===== -->
@@ -3853,7 +3853,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 
     <div class="social-cta">
       <a href="#pricing" class="btn-halo">Claim your summer launch price <span class="arrow">→</span></a>
-      <div class="social-cta-meta">Summer Launch Pricing ends Tuesday, July 15</div>
+      <div class="social-cta-meta">Summer Launch Pricing ends Sunday, July 19</div>
     </div>
   </div>
 </section>
@@ -4034,7 +4034,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
     <!-- FLASH SALE: Pricing deadline replaced with sale messaging. Original: "Early-bird pricing ends Sunday, June 21, 2026 — Father's Day." -->
     <div class="pricing-deadline flash-sale">
       <span class="sale-pill">Summer Launch Pricing</span>
-      Save $250+ when you reserve before <strong>Tuesday, July 15 (midnight AZ)</strong>. After that, prices return to full early-bird.
+      Save $250+ when you reserve before <strong>Sunday, July 19 (midnight AZ)</strong>. After that, prices return to full early-bird.
     </div>
 
     <div class="pricing-scarcity">
@@ -4053,7 +4053,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
           <span class="price-strike">$845</span>
           <span class="save-badge">Save $248</span>
         </div>
-        <div class="tier-tagline">Summer launch ends Tuesday, July 15 (midnight AZ)</div>
+        <div class="tier-tagline">Summer launch ends Sunday, July 19 (midnight AZ)</div>
         <div class="tier-summary">The full Breakthrough experience. Three days, all in.</div>
         <ul class="tier-features">
           <li>All three days of keynotes, workshops, and main-stage sessions</li>
@@ -4079,7 +4079,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
           <span class="price-strike">$1,295</span>
           <span class="save-badge">Save $296</span>
         </div>
-        <div class="tier-tagline">Summer launch ends Tuesday, July 15 (midnight AZ)</div>
+        <div class="tier-tagline">Summer launch ends Sunday, July 19 (midnight AZ)</div>
         <div class="tier-summary">Everything in GA+, plus front-row access to the speakers, the experience, and Dr. Anthony.</div>
         <ul class="tier-features">
           <li><strong>Front-row, priority seating</strong> in all main stage sessions</li>
@@ -4200,7 +4200,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 
     <div class="tagline">Three Days.<br>One Breakthrough.<br>The Rest of Your Life.</div>
     <div class="tagline-meta">August 7–9, 2026 · Arizona Grand Resort, Phoenix</div>
-    <div class="tagline-deadline">Summer Launch Pricing ends Tuesday, July 15.</div>
+    <div class="tagline-deadline">Summer Launch Pricing ends Sunday, July 19.</div>
 
     <div class="final-cta-buttons">
       <a href="https://secure.fitfatherproject.com/checkout/breakthrough-in-the-desert-ga-promo" class="btn-halo">Reserve GA+ — $597 <span class="arrow">→</span></a>
@@ -4315,14 +4315,14 @@ document.querySelectorAll('.poster-toggle').forEach(toggle => {
 // Original fallback text: "Father's Day, June 21, 2026"
 // Original active text: days + " days, " + hours + " hours · Sunday, June 21 (Father's Day)"
 function updateCountdown() {
-  const target = new Date('2026-07-16T00:00:00-07:00');
+  const target = new Date('2026-07-20T00:00:00-07:00');
   const diff = target - new Date();
   const el = document.getElementById('countdown');
   if (!el) return;
   if (diff <= 0) { el.textContent = "Flash sale ended"; return; }
   const days = Math.floor(diff / (1000*60*60*24));
   const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-  el.textContent = days + " days, " + hours + " hours · Tue, July 15 (midnight AZ)";
+  el.textContent = days + " days, " + hours + " hours · Sun, July 19 (midnight AZ)";
 }
 updateCountdown();
 setInterval(updateCountdown, 60000);

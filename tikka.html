@@ -2002,6 +2002,12 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
   color: var(--ink-soft); line-height: 1.5;
 }
 .tier-card.vip .tier-partner small { color: rgba(235, 227, 212, 0.78); }
+/* TIKKA: tighter spacing variant for the 3-col grid */
+.tier-partner--tight { margin-bottom: 16px; padding: 12px 14px; }
+.tier-partner--tight strong { margin-bottom: 3px; font-size: 11.5px; }
+.tier-partner--tight small { font-size: 12.5px; line-height: 1.4; }
+/* TIKKA: force CTA text onto one line */
+.tier-cta--nowrap { white-space: nowrap; padding-left: 12px; padding-right: 12px; font-size: 12px; letter-spacing: 0.08em; }
 .tier-cta {
   display: block; margin-top: auto;
   font-family: var(--label); font-size: 13px; font-weight: 600;
@@ -4058,7 +4064,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
           <span class="save-badge">Save $547</span>
         </div>
         <div class="tier-tagline">All 3 days · Fri–Sun · Aug 7–9</div>
-        <div class="tier-summary">The full Breakthrough experience. Three days, all in. 55% off for the Tikka Drive family.</div>
+        <div class="tier-summary">The full Breakthrough experience. Three days, all in. 55% off for Tikka Drive.</div>
         <ul class="tier-features">
           <li><strong>All three days</strong> of keynotes, workshops, and main-stage sessions</li>
           <li>Access to every experiential breakout: workouts, breathwork, and yoga</li>
@@ -4066,16 +4072,16 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
           <li>Curated vendor hall featuring leading-edge health brands</li>
           <li>Optional: sunrise hikes, cold plunge, and after parties</li>
         </ul>
-        <div class="tier-partner">
+        <div class="tier-partner tier-partner--tight">
           <strong>Bring a partner for the same price &mdash; $450</strong>
           <small>Add a second GA+ ticket at the same discounted price for your partner, friend, or child (15+).</small>
         </div>
-        <a href="https://secure.fitfatherproject.com/checkout/breakthrough-tikka-full" class="tier-cta">Reserve Your Full Event Ticket →</a>
+        <a href="https://secure.fitfatherproject.com/checkout/breakthrough-tikka-full" class="tier-cta tier-cta--nowrap">Reserve Full Event Ticket →</a>
       </div>
 
       <!-- Option 2: Weekend Pass (Sat + Sun) -->
       <div class="tier-card flash-sale">
-        <div class="tier-ribbon sale-ribbon">No Friday needed</div>
+        <div class="tier-ribbon sale-ribbon">Weekend Pass</div>
         <div class="tier-label">Weekend Pass</div>
         <div class="tier-price">
           <span class="price-current">$375</span>
@@ -4083,7 +4089,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
           <span class="save-badge">Save $322</span>
         </div>
         <div class="tier-tagline">Sat + Sun · Aug 8–9</div>
-        <div class="tier-summary">Don't want to take Friday off work? Come for the weekend and get the heart of the experience.</div>
+        <div class="tier-summary">Don't want to take Friday off work? Come for the weekend and get the heart of it.</div>
         <ul class="tier-features">
           <li>Full Saturday: hormones, longevity, breathwork, workshops</li>
           <li>Full Sunday: yoga, cacao ceremony, 90-day plan workshop, closing</li>
@@ -4091,11 +4097,11 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
           <li>Access to every Sat + Sun experiential breakout</li>
           <li>Vendor hall + optional cold plunge and after parties</li>
         </ul>
-        <div class="tier-partner">
+        <div class="tier-partner tier-partner--tight">
           <strong>Bring a partner for the same price &mdash; $375</strong>
           <small>Add a second weekend-pass ticket at the same discounted price for your partner, friend, or child (15+).</small>
         </div>
-        <a href="https://secure.fitfatherproject.com/checkout/breakthrough-tikka-weekend" class="tier-cta">Reserve Your Weekend Pass →</a>
+        <a href="https://secure.fitfatherproject.com/checkout/breakthrough-tikka-weekend" class="tier-cta tier-cta--nowrap">Reserve Weekend Pass →</a>
       </div>
 
       <!-- Option 3: Single Day Pass — with radio selector for Fri/Sat/Sun -->
@@ -4108,46 +4114,51 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
           <span class="save-badge">Save $202</span>
         </div>
         <div class="tier-tagline">Any 1 day · Fri, Sat, OR Sun</div>
-        <div class="tier-summary">Just want a taste? Come for any single day. Pick below — your button updates to that day's checkout.</div>
 
-        <!-- Radio selector: Saturday pre-checked, JS swaps button href based on selection -->
-        <fieldset class="day-selector" style="border: 1px solid rgba(216, 184, 122, 0.3); padding: 14px 16px; margin: 16px 0; border-radius: 4px; background: rgba(216, 184, 122, 0.06);">
-          <legend style="padding: 0 8px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600;">Choose Your Day</legend>
-          <label style="display: flex; align-items: center; gap: 10px; padding: 6px 0; cursor: pointer; font-size: 14px; color: rgba(235, 227, 212, 0.9);">
+        <!-- Radio selector moved up so bring-a-partner sits higher -->
+        <fieldset class="day-selector" style="border: 1px solid rgba(216, 184, 122, 0.3); padding: 10px 14px; margin: 10px 0 14px; border-radius: 4px; background: rgba(216, 184, 122, 0.06);">
+          <legend style="padding: 0 8px; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600;">Choose Your Day</legend>
+          <label style="display: flex; align-items: center; gap: 10px; padding: 4px 0; cursor: pointer; font-size: 14px; color: rgba(235, 227, 212, 0.9);">
             <input type="radio" name="single-day" value="fri" data-url="https://secure.fitfatherproject.com/checkout/breakthrough-tikka-friday" style="width: 18px; height: 18px; accent-color: var(--gold);">
-            <span><strong>Friday</strong> · Aug 7 · Awareness</span>
+            <span><strong>Friday</strong> · Aug 7</span>
           </label>
-          <label style="display: flex; align-items: center; gap: 10px; padding: 6px 0; cursor: pointer; font-size: 14px; color: rgba(235, 227, 212, 0.9);">
+          <label style="display: flex; align-items: center; gap: 10px; padding: 4px 0; cursor: pointer; font-size: 14px; color: rgba(235, 227, 212, 0.9);">
             <input type="radio" name="single-day" value="sat" data-url="https://secure.fitfatherproject.com/checkout/breakthrough-tikka-saturday" checked style="width: 18px; height: 18px; accent-color: var(--gold);">
-            <span><strong>Saturday</strong> · Aug 8 · Vitality</span>
+            <span><strong>Saturday</strong> · Aug 8</span>
           </label>
-          <label style="display: flex; align-items: center; gap: 10px; padding: 6px 0; cursor: pointer; font-size: 14px; color: rgba(235, 227, 212, 0.9);">
+          <label style="display: flex; align-items: center; gap: 10px; padding: 4px 0; cursor: pointer; font-size: 14px; color: rgba(235, 227, 212, 0.9);">
             <input type="radio" name="single-day" value="sun" data-url="https://secure.fitfatherproject.com/checkout/breakthrough-tikka-sunday" style="width: 18px; height: 18px; accent-color: var(--gold);">
-            <span><strong>Sunday</strong> · Aug 9 · Integration</span>
+            <span><strong>Sunday</strong> · Aug 9</span>
           </label>
         </fieldset>
+
+        <div class="tier-summary">Come for any single day. Pick above — your checkout updates to your preferred day.</div>
 
         <ul class="tier-features">
           <li>All keynotes, workshops, and main-stage sessions for your chosen day</li>
           <li>Full experiential breakout access (workouts, breathwork, yoga)</li>
           <li>Connection lunch for your chosen day</li>
-          <li>Vendor hall access</li>
         </ul>
-        <div class="tier-partner">
+        <div class="tier-partner tier-partner--tight">
           <strong>Bring a partner for the same price &mdash; $195</strong>
           <small>Add a second single-day ticket at the same discounted price for your partner, friend, or child (15+).</small>
         </div>
-        <a href="https://secure.fitfatherproject.com/checkout/breakthrough-tikka-saturday" id="single-day-cta" class="tier-cta">Reserve Your Saturday Ticket →</a>
+        <a href="https://secure.fitfatherproject.com/checkout/breakthrough-tikka-saturday" id="single-day-cta" class="tier-cta tier-cta--nowrap">Reserve Saturday Ticket →</a>
       </div>
 
     </div>
+  </div>
+</section>
 
-    <div class="pricing-worth">
-      <h3>A gift from our health-minded team to you.</h3>
-      <p>Rahul and Dr. Anthony Balduzzi have been building the Tikka Drive menu to help you and your family eat healthier — without giving up flavor. This is our way of extending that partnership into your overall wellness.</p>
-      <p>Three days that could change how you look, feel, and improve your health, body, and mind for the rest of your life.</p>
-      <p class="gift-line">If you're free August 7–9, this is one of the most impactful ways you could spend your weekend.</p>
-    </div>
+<!-- ===== 11.5 A GIFT FROM OUR HEALTH-MINDED TIKKA TEAM (own section with Tikka Drive food-photo bg) ===== -->
+<section class="tikka-gift-sec" style="position: relative; padding: 80px 24px; color: var(--bone); overflow: hidden; text-align: center;">
+  <div aria-hidden="true" style="position: absolute; inset: 0; background: url('https://tikkadrive.com/wp-content/uploads/2025/06/about-hero-bg-2.png.webp') center center / cover no-repeat; filter: grayscale(1); z-index: 0;"></div>
+  <div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(27,25,22,0.88) 0%, rgba(27,25,22,0.78) 60%, rgba(27,25,22,0.88) 100%); z-index: 1;"></div>
+  <div style="position: relative; z-index: 2; max-width: 780px; margin: 0 auto;">
+    <div style="font-size: 11pt; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-soft); margin-bottom: 14px;">From Rahul &amp; Dr. Anthony</div>
+    <h3 style="font-family: 'Newsreader', Georgia, serif; font-size: clamp(28px, 4vw, 40px); font-weight: 400; line-height: 1.15; margin: 0 0 26px 0; color: var(--bone);">A gift from our health-minded <em style="color: var(--gold-soft);">Tikka team</em> to you.</h3>
+    <p style="font-size: 17px; line-height: 1.7; color: rgba(235, 227, 212, 0.92); margin: 0 0 22px 0;">Rahul and Dr. Anthony Balduzzi have been building the Tikka Drive menu to help you and your family eat healthier — without giving up flavor. This is our way of extending that partnership into your overall wellness: three days that can change how you look, feel, and how you show up in your body, mind, and life for years to come.</p>
+    <p style="font-size: 19px; line-height: 1.5; color: var(--gold-soft); font-style: italic; margin: 0; font-weight: 500;">If you're free August 7–9, this is the most impactful way you could spend your weekend.</p>
   </div>
 </section>
 
@@ -4371,7 +4382,7 @@ document.querySelectorAll('input[name="single-day"]').forEach(radio => {
     const dayLabel = { fri: 'Friday', sat: 'Saturday', sun: 'Sunday' }[day];
     if (cta && url) {
       cta.setAttribute('href', url);
-      cta.innerHTML = `Reserve Your ${dayLabel} Ticket &rarr;`;
+      cta.innerHTML = `Reserve ${dayLabel} Ticket &rarr;`;
     }
   });
 });

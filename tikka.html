@@ -3597,7 +3597,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
   <strong>Save up to 55% off tickets</strong>
   <span class="sep">·</span>
   <strong>Offer ends:</strong>
-  <span id="countdown">Fri, July 31 (midnight AZ)</span>
+  <span id="countdown">Sun, August 3 (midnight AZ)</span>
 </div>
 
 <!-- ===== HERO ===== -->
@@ -3619,7 +3619,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
   <div class="hero-content">
     <div class="hero-presents">A Special Offer for the Tikka Drive Family</div>
     <h1 class="hero-title" id="hero-title">Breakthrough<em>in the Desert</em></h1>
-    <p class="hero-question">Rahul recently sat down with me on the podcast to talk about how we've been reworking the Tikka Drive menu to make it healthier for you and your family. As a thank-you to the Tikka Drive community, I'm offering you a special discount on my annual 3-day wellness event in Phoenix — <strong>Breakthrough in the Desert</strong>. Save up to 55% and come for the full 3 days, just the weekend, or any single day.</p>
+    <p class="hero-question"><strong>Rahul Sahota, founder of Tikka Drive</strong>, recently sat down with me on <a href="https://www.youtube.com/watch?v=VU8QWt4A070" target="_blank" rel="noopener" style="color: var(--gold); text-decoration: underline; text-underline-offset: 3px;">the podcast</a> to talk about how we've been reworking the Tikka Drive menu to make it healthier for you and your family. As a thank-you to the Tikka Drive community, I'm offering you a special discount on my annual 3-day wellness event in Phoenix — <strong>Breakthrough in the Desert</strong>. Save up to 55% and come for the full 3 days, just the weekend, or any single day.</p>
     <div class="hero-meta">
       <span>Aug 7–9, 2026</span>
       <span class="sep">·</span>
@@ -4042,7 +4042,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
     <h2 class="section-title">Three ways to come. <em>All at a Tikka Drive family discount.</em></h2>
     <div class="pricing-deadline flash-sale">
       <span class="sale-pill">Tikka Drive Customer Discount</span>
-      Reserve by <strong>Fri, July 31 (midnight AZ)</strong> to lock in your discounted rate. Choose the tier that fits your schedule.
+      Reserve by <strong>Sun, August 3 (midnight AZ)</strong> to lock in your discounted rate. Choose the tier that fits your schedule.
     </div>
 
     <div class="pricing-grid pricing-grid--3col">
@@ -4245,7 +4245,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 
     <div class="tagline">Three Days.<br>One Breakthrough.<br>The Rest of Your Life.</div>
     <div class="tagline-meta">August 7–9, 2026 · Arizona Grand Resort, Phoenix</div>
-    <div class="tagline-deadline">Tikka Drive family discount — reserve by <strong>Fri, July 31 (midnight AZ)</strong>.</div>
+    <div class="tagline-deadline">Tikka Drive family discount — reserve by <strong>Sun, August 3 (midnight AZ)</strong>.</div>
 
     <div class="final-cta-buttons">
       <a href="#pricing" class="btn-halo">See Your Options <span class="arrow">↓</span></a>
@@ -4289,7 +4289,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 
 <!-- ===== STICKY CTA ===== -->
 <div class="sticky-cta" id="stickyCta">
-  <div class="sc-text"><strong>Tikka Drive family discount</strong><span class="sep">·</span>Save up to 55%<span class="sep">·</span>Ends Fri, July 31 (midnight AZ)</div>
+  <div class="sc-text"><strong>Tikka Drive family discount</strong><span class="sep">·</span>Save up to 55%<span class="sep">·</span>Ends Sun, August 3 (midnight AZ)</div>
   <a href="#pricing">See Your Options →</a>
 </div>
 
@@ -4352,16 +4352,16 @@ document.querySelectorAll('.poster-toggle').forEach(toggle => {
   });
 });
 
-// TIKKA DRIVE: Countdown target — Friday, July 31, 2026 midnight AZ (= Aug 1 00:00 MST)
+// TIKKA DRIVE: Countdown target — Sunday, August 3, 2026 midnight AZ (= Aug 4 00:00 MST)
 function updateCountdown() {
-  const target = new Date('2026-08-01T00:00:00-07:00');
+  const target = new Date('2026-08-04T00:00:00-07:00');
   const diff = target - new Date();
   const el = document.getElementById('countdown');
   if (!el) return;
   if (diff <= 0) { el.textContent = "Offer ended — contact us"; return; }
   const days = Math.floor(diff / (1000*60*60*24));
   const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-  el.textContent = days + " days, " + hours + " hours · Fri, July 31 (midnight AZ)";
+  el.textContent = days + " days, " + hours + " hours · Sun, August 3 (midnight AZ)";
 }
 
 // TIKKA DRIVE: Single Day Pass radio selector — swap CTA button href based on selected day

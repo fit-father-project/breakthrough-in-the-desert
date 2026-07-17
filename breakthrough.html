@@ -1109,12 +1109,23 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
   color: var(--bone);
   opacity: 0.78;
   text-align: center;
+  margin-bottom: 6px;
+}
+.video-subcaption {
+  font-family: var(--label);
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.85;
+  text-align: center;
   margin-bottom: 18px;
 }
 @media (max-width: 720px) {
   .video-sec { padding: 32px 16px 48px; }
   .video-frame { border-radius: 10px; }
-  .video-caption { font-size: 17px; margin-bottom: 14px; }
+  .video-caption { font-size: 17px; margin-bottom: 4px; }
+  .video-subcaption { font-size: 10.5px; margin-bottom: 14px; }
   /* Mobile countdown bar can wrap to 2-3 lines — give all anchor targets extra clearance */
   .video-sec, .speakers-sec, .social-sec, .arc-sec, .venue-sec, .pricing-sec, .faq-sec {
     scroll-margin-top: 110px;
@@ -3649,6 +3660,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 <section class="video-sec" id="invitation" aria-label="A personal video invitation from Dr. Anthony Balduzzi">
   <div class="video-inner">
     <div class="video-caption">Your invitation from Dr. Anthony Balduzzi</div>
+    <div class="video-subcaption">Naturopathic Doctor · Father · Host of Breakthrough in the Desert</div>
     <div class="video-frame">
       <script src="https://fast.wistia.com/player.js" async></script>
       <script src="https://fast.wistia.com/embed/mikhgbxilc.js" async type="module"></script>

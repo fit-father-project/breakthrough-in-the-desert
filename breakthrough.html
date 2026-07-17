@@ -97,25 +97,36 @@
       "offers": [
         {
           "@type": "Offer",
-          "name": "GA+ Ticket (Summer Launch Pricing)",
-          "price": "597",
+          "name": "Full 3-Day Event",
+          "price": "450",
           "priceCurrency": "USD",
           "availability": "https://schema.org/InStock",
-          "validFrom": "2026-06-13T00:00:00-07:00",
-          "validThrough": "2026-07-20T00:00:00-07:00",
-          "url": "https://event.fitfatherproject.com/#pricing",
-          "category": "GA+"
+          "validFrom": "2026-07-17T00:00:00-07:00",
+          "validThrough": "2026-08-04T00:00:00-07:00",
+          "url": "https://event.fitfatherproject.com/breakthrough#pricing",
+          "category": "Full Event"
         },
         {
           "@type": "Offer",
-          "name": "VIP Ticket (Summer Launch Pricing)",
-          "price": "999",
+          "name": "Weekend Pass (Sat + Sun)",
+          "price": "375",
           "priceCurrency": "USD",
           "availability": "https://schema.org/InStock",
-          "validFrom": "2026-06-13T00:00:00-07:00",
-          "validThrough": "2026-07-20T00:00:00-07:00",
-          "url": "https://event.fitfatherproject.com/#pricing",
-          "category": "VIP"
+          "validFrom": "2026-07-17T00:00:00-07:00",
+          "validThrough": "2026-08-04T00:00:00-07:00",
+          "url": "https://event.fitfatherproject.com/breakthrough#pricing",
+          "category": "Weekend Pass"
+        },
+        {
+          "@type": "Offer",
+          "name": "Single Day Pass",
+          "price": "195",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "validFrom": "2026-07-17T00:00:00-07:00",
+          "validThrough": "2026-08-04T00:00:00-07:00",
+          "url": "https://event.fitfatherproject.com/breakthrough#pricing",
+          "category": "Single Day"
         }
       ],
       "performer": [
@@ -154,14 +165,14 @@
       "mainEntity": [
         { "@type": "Question", "name": "Is this for me? Who is Breakthrough actually for?", "acceptedAnswer": { "@type": "Answer", "text": "Breakthrough is for adults committed to thriving for the long run — professionals, parents, entrepreneurs, and high performers who want to integrate their physical and mental health and step into their next level. You don't need to be in great shape. You don't need to know what your next chapter looks like. You just need to be ready to stop coasting through your best years." } },
         { "@type": "Question", "name": "Who is this NOT for?", "acceptedAnswer": { "@type": "Answer", "text": "If you're looking for a tactical fitness bootcamp, a quick-fix weight-loss weekend, or a conference where you take notes and forget them by Tuesday, this isn't that. Breakthrough goes deeper, touching on relationships, purpose, grief, intimacy, faith, and soul-level patterns." } },
-        { "@type": "Question", "name": "Are payment plans available?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We offer a 3-pay installment option on both GA+ and VIP tickets at checkout, with no interest and no fees." } },
+        { "@type": "Question", "name": "Are payment plans available?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We offer a 3-pay installment option at checkout, with no interest and no fees." } },
         { "@type": "Question", "name": "Are tickets refundable?", "acceptedAnswer": { "@type": "Answer", "text": "Ticket purchases are non-refundable but fully transferable at no additional cost. You can transfer your ticket to a spouse, friend, or anyone else." } },
         { "@type": "Question", "name": "Do I need prior experience or program membership to attend?", "acceptedAnswer": { "@type": "Answer", "text": "Not at all. Breakthrough is open to anyone called to the work. Many attendees come from Dr. Balduzzi's online wellness communities (the Fit Father Project and Fit Mother Project), but plenty of others arrive fresh." } },
         { "@type": "Question", "name": "When should I arrive and depart?", "acceptedAnswer": { "@type": "Answer", "text": "The event runs Friday August 7 through Sunday August 9, 2026. We recommend arriving Thursday August 6 to settle in. The first session begins Friday morning at 8:45am. The final session wraps Sunday afternoon by 4:00pm." } },
         { "@type": "Question", "name": "Which airport should I fly into?", "acceptedAnswer": { "@type": "Answer", "text": "Phoenix Sky Harbor International (PHX). It's just 10 minutes from the Arizona Grand Resort." } },
         { "@type": "Question", "name": "What are hotel rooms like, and what do they cost?", "acceptedAnswer": { "@type": "Answer", "text": "We've secured a discounted Breakthrough rate of approximately $150 per night at the Arizona Grand Resort. Every room is a full suite. Hotel accommodations are not included in the ticket price." } },
         { "@type": "Question", "name": "Isn't it going to be hot in Arizona in August?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, and most people find Arizona's dry heat dramatically more comfortable than the humidity they're used to. Every minute of the event experience happens inside an air-conditioned venue. The 7-acre water park makes the heat feel like a feature." } },
-        { "@type": "Question", "name": "Can I bring my spouse, partner, or family?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, and we encourage it. We offer Bring-a-Partner add-ons at both tiers, plus $595 for GA+ and plus $895 for VIP. Conference sessions are reserved for ages 15 and over." } },
+        { "@type": "Question", "name": "Can I bring my spouse, partner, or family?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, and we encourage it. Every tier includes a Bring-a-Partner add-on at the same discounted price. Conference sessions are reserved for ages 15 and over." } },
         { "@type": "Question", "name": "Do I need to be in great shape to come?", "acceptedAnswer": { "@type": "Answer", "text": "No. Every fitness level is welcome. All workouts, yoga, breathwork, and somatic experiences are adaptable. We have attendees who run marathons and attendees just starting their health journey." } },
         { "@type": "Question", "name": "Will there be sessions specific to women?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Our 2026 lineup includes Dr. Amie Hornaman on thyroid and hormone optimization, and Maraya Brown on women's vibrancy and intimacy — both with focused content for women navigating midlife transitions, perimenopause, and menopause." } }
       ]
@@ -1894,6 +1905,16 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
   display: grid; grid-template-columns: repeat(2, 1fr);
   gap: 28px; max-width: 1000px; margin: 0 auto;
 }
+.pricing-grid--3col {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1200px;
+  gap: 22px;
+}
+.pricing-grid--3col .tier-card { padding: 32px 22px; }
+.pricing-grid--3col .tier-features { font-size: 14px; }
+@media (max-width: 900px) {
+  .pricing-grid--3col { grid-template-columns: 1fr; }
+}
 .tier-card {
   background: var(--bone);
   border: 1px solid rgba(27, 25, 22, 0.12);
@@ -1988,6 +2009,10 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
   color: var(--ink-soft); line-height: 1.5;
 }
 .tier-card.vip .tier-partner small { color: rgba(235, 227, 212, 0.78); }
+.tier-partner--tight { margin-bottom: 16px; padding: 12px 14px; }
+.tier-partner--tight strong { margin-bottom: 3px; font-size: 11.5px; }
+.tier-partner--tight small { font-size: 12.5px; line-height: 1.4; }
+.tier-cta--nowrap { white-space: nowrap; padding-left: 12px; padding-right: 12px; font-size: 12px; letter-spacing: 0.08em; }
 .tier-cta {
   display: block; margin-top: auto;
   font-family: var(--label); font-size: 13px; font-weight: 600;
@@ -3576,14 +3601,13 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 <div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- ===== COUNTDOWN BAR ===== -->
-<!-- FLASH SALE: Countdown bar copy — revert to original Father's Day early-bird messaging after June 22, 2026 -->
 <div class="countdown-bar flash-sale">
-  <strong class="sale-badge">$250+ OFF TICKETS</strong>
+  <strong class="sale-badge">SAVE UP TO 55% OFF</strong>
   <span class="sep">·</span>
   <strong>150 seats</strong>
   <span class="sep">·</span>
   <strong>Sale ends:</strong>
-  <span id="countdown">Sun, July 19 (midnight AZ)</span>
+  <span id="countdown">Sun, August 3 (midnight AZ)</span>
 </div>
 
 <!-- ===== HERO ===== -->
@@ -3611,7 +3635,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
       <span class="sep">·</span>
       <span>Arizona Grand Resort, Phoenix</span>
       <span class="sep">·</span>
-      <span>From <span class="price">$597</span></span>
+      <span>From <span class="price">$195</span></span>
       
     </div>
     <div class="hero-ctas">
@@ -3698,7 +3722,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
         <div class="spk-title">The Certified Health Nut · Natural Health &amp; Movement Expert</div>
         <div class="spk-hook">Do qigong with him Saturday morning, learn his health philosophy, and carry his natural-health protocols for life.</div>
         <div class="spk-toggle">Read bio +</div>
-        <div class="spk-bio">Troy — known online as the Certified Health Nut — has spent over 30 years studying and teaching natural health, breath work, and movement. Trained at the CHEK Institute under Paul Chek and shaped by years of work in nutrition, indigenous Amazon medicine, Vipassana meditation, and Ashtanga yoga, he teaches the 9 Pillars of Health to a global community of 1.9 million followers. He's the author of <em>#RIPPEDAT50: A Journey to Self Love</em> and has been featured on Discovery, MTV, Fox, and Netflix. At Breakthrough, Troy joins the Health Panel on Friday, leads Sunday morning qigong as part of the morning movement, and signs books with VIP attendees on Saturday.</div>
+        <div class="spk-bio">Troy — known online as the Certified Health Nut — has spent over 30 years studying and teaching natural health, breath work, and movement. Trained at the CHEK Institute under Paul Chek and shaped by years of work in nutrition, indigenous Amazon medicine, Vipassana meditation, and Ashtanga yoga, he teaches the 9 Pillars of Health to a global community of 1.9 million followers. He's the author of <em>#RIPPEDAT50: A Journey to Self Love</em> and has been featured on Discovery, MTV, Fox, and Netflix. At Breakthrough, Troy joins the Health Panel on Friday, leads Sunday morning qigong as part of the morning movement, and signs books on Saturday evening.</div>
       </div>
       <div class="spk-card">
         <img src="speakers/sayegh.webp" alt="Dr. Jamil Sayegh" loading="lazy" />
@@ -3851,8 +3875,8 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
     </div>
 
     <div class="social-cta">
-      <a href="#pricing" class="btn-halo">Claim your summer launch price <span class="arrow">→</span></a>
-      <div class="social-cta-meta">Summer Launch Pricing ends Sunday, July 19</div>
+      <a href="#pricing" class="btn-halo">Reserve your discounted spot <span class="arrow">→</span></a>
+      <div class="social-cta-meta">Save up to 55% — ends Sunday, August 3</div>
     </div>
   </div>
 </section>
@@ -3906,7 +3930,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
           <div class="ps-item"><span class="ps-time">Early Afternoon</span><div class="ps-meat"><div class="ps-title">Hormones, Thyroid &amp; Midlife Energy</div><div class="ps-who">Dr. Amie Hornaman on why you feel tired but wired, and what actually works.</div></div></div>
           <div class="ps-item"><span class="ps-time">Late Afternoon</span><div class="ps-meat"><div class="ps-title">Intimacy, Relationships &amp; Vibrancy</div><div class="ps-who">Maraya Brown leads an experiential session on falling back in love with your life. For men and women who want passion and zest back.</div></div></div>
           <div class="ps-item"><span class="ps-time">Closing</span><div class="ps-meat"><div class="ps-title">Longevity &amp; Life Force Keynote</div><div class="ps-who">Dr. Balduzzi shares his most advanced strategies for cultivating energy and healthspan for life.</div></div></div>
-          <div class="ps-item"><span class="ps-time">Evening</span><div class="ps-meat"><div class="ps-title">VIP Book Signing</div><div class="ps-who">VIPs meet the speakers up close and get books signed.</div></div></div>
+          <div class="ps-item"><span class="ps-time">Evening</span><div class="ps-meat"><div class="ps-title">Evening Book Signing</div><div class="ps-who">Meet the speakers up close and get books signed.</div></div></div>
           <div class="ps-item"><span class="ps-time">Night</span><div class="ps-meat"><div class="ps-title">Sunset Pool Party</div><div class="ps-who">Optional. Poolside at the Arizona Grand, where the room becomes family.</div></div></div>
         </div>
       </div>
@@ -4034,11 +4058,10 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 <section class="pricing-sec darken-bg" id="pricing">
   <div class="container-wide">
     <div class="eyebrow">Reserve Your Spot</div>
-    <h2 class="section-title">Two tickets. <em>One Breakthrough.</em></h2>
-    <!-- FLASH SALE: Pricing deadline replaced with sale messaging. Original: "Early-bird pricing ends Sunday, June 21, 2026 — Father's Day." -->
+    <h2 class="section-title">Three ways to come. <em>All at up to 55% off.</em></h2>
     <div class="pricing-deadline flash-sale">
-      <span class="sale-pill">Summer Launch Pricing</span>
-      Save $250+ when you reserve before <strong>Sunday, July 19 (midnight AZ)</strong>. After that, prices return to full early-bird.
+      <span class="sale-pill">Save up to 55% off</span>
+      Reserve by <strong>Sun, August 3 (midnight AZ)</strong> to lock in your discounted rate.
     </div>
 
     <div class="pricing-scarcity">
@@ -4047,59 +4070,99 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
       <span class="dot"></span>
     </div>
 
-    <div class="pricing-grid">
-      <!-- FLASH SALE: GA+ tier card — sale price $597 (was $845). Revert after June 22. -->
-      <div class="tier-card flash-sale">
-        <div class="tier-ribbon sale-ribbon">Summer Launch Pricing</div>
-        <div class="tier-label">GA+ Ticket</div>
+    <div class="pricing-grid pricing-grid--3col">
+
+      <!-- Option 1: Full 3-Day Event -->
+      <div class="tier-card vip flash-sale">
+        <div class="tier-ribbon">Best value — Most popular</div>
+        <div class="tier-label">Full 3-Day Event</div>
         <div class="tier-price">
-          <span class="price-current">$597</span>
-          <span class="price-strike">$845</span>
-          <span class="save-badge">Save $248</span>
+          <span class="price-current">$450</span>
+          <span class="price-strike">$997</span>
+          <span class="save-badge">Save $547</span>
         </div>
-        <div class="tier-tagline">Summer launch ends Sunday, July 19 (midnight AZ)</div>
+        <div class="tier-tagline">All 3 days · Fri–Sun · Aug 7–9</div>
         <div class="tier-summary">The full Breakthrough experience. Three days, all in.</div>
         <ul class="tier-features">
-          <li>All three days of keynotes, workshops, and main-stage sessions</li>
+          <li><strong>All three days</strong> of keynotes, workshops, and main-stage sessions</li>
           <li>Access to every experiential breakout: workouts, breathwork, and yoga</li>
-          <li>Three GA+ connection lunches</li>
+          <li>Three connection lunches (real food, no compromises)</li>
           <li>Curated vendor hall featuring leading-edge health brands</li>
           <li>Optional: sunrise hikes, cold plunge, and after parties</li>
         </ul>
-        <div class="tier-partner">
-          <strong>Bring a partner for the same price &mdash; $597</strong>
-          <small>Add a second GA+ ticket at the same flash-sale price for your partner, friend, or child (15+).</small>
+        <div class="tier-partner tier-partner--tight">
+          <strong>Bring a partner for the same price &mdash; $450</strong>
+          <small>Add a second GA+ ticket at the same discounted price for your partner, friend, or child (15+).</small>
         </div>
-        <a href="https://secure.fitfatherproject.com/checkout/breakthrough-ga-discounted-597" class="tier-cta">Claim Your GA+ Spot →</a>
-        <div class="tier-pay">3-pay option available at checkout</div>
+        <a href="https://secure.fitfatherproject.com/checkout/breakthrough-main-full" class="tier-cta tier-cta--nowrap">Reserve Full Event Ticket →</a>
       </div>
 
-      <!-- FLASH SALE: VIP tier card — sale price $999 (was $1,295). Revert after June 22. -->
-      <div class="tier-card vip flash-sale">
-        <div class="tier-ribbon">Most attendees choose this</div>
-        <div class="tier-label">VIP Ticket <span class="sale-pill inline">Flash Sale</span></div>
+      <!-- Option 2: Weekend Pass (Sat + Sun) -->
+      <div class="tier-card flash-sale">
+        <div class="tier-ribbon sale-ribbon">Weekend Pass</div>
+        <div class="tier-label">Weekend Pass</div>
         <div class="tier-price">
-          <span class="price-current">$999</span>
-          <span class="price-strike">$1,295</span>
-          <span class="save-badge">Save $296</span>
+          <span class="price-current">$375</span>
+          <span class="price-strike">$697</span>
+          <span class="save-badge">Save $322</span>
         </div>
-        <div class="tier-tagline">Summer launch ends Sunday, July 19 (midnight AZ)</div>
-        <div class="tier-summary">Everything in GA+, plus front-row access to the speakers, the experience, and Dr. Anthony.</div>
+        <div class="tier-tagline">Sat + Sun · Aug 8–9</div>
+        <div class="tier-summary">Don't want to take Friday off work? Come for the weekend and get the heart of it.</div>
         <ul class="tier-features">
-          <li><strong>Front-row, priority seating</strong> in all main stage sessions</li>
-          <li><strong>VIP-only daily connection lunch</strong> with Dr. Anthony, speakers, and fellow VIPs</li>
-          <li><strong>VIP-only Q&amp;A session</strong> with Dr. Anthony</li>
-          <li><strong>VIP lounge access</strong> with premium refreshments and snacks</li>
-          <li><strong>Priority access to speakers</strong> between sessions</li>
-          <li><strong>2026 event recordings</strong> &mdash; yours to keep and revisit</li>
+          <li>Full Saturday: hormones, longevity, breathwork, workshops</li>
+          <li>Full Sunday: yoga, cacao ceremony, 90-day plan workshop, closing</li>
+          <li>Two connection lunches with the community</li>
+          <li>Access to every Sat + Sun experiential breakout</li>
+          <li>Vendor hall + optional cold plunge and after parties</li>
         </ul>
-        <div class="tier-partner">
-          <strong>Bring a partner for the same price &mdash; $999</strong>
-          <small>Add a second VIP ticket at the same flash-sale price for your partner, friend, or child (15+).</small>
+        <div class="tier-partner tier-partner--tight">
+          <strong>Bring a partner for the same price &mdash; $375</strong>
+          <small>Add a second weekend-pass ticket at the same discounted price for your partner, friend, or child (15+).</small>
         </div>
-        <a href="https://secure.fitfatherproject.com/checkout/breakthrough-vip-discounted-999" class="tier-cta">Claim Your VIP Spot →</a>
-        <div class="tier-pay">3-pay option available at checkout</div>
+        <a href="https://secure.fitfatherproject.com/checkout/breakthrough-weekend" class="tier-cta tier-cta--nowrap">Reserve Weekend Pass →</a>
       </div>
+
+      <!-- Option 3: Single Day Pass — with radio selector for Fri/Sat/Sun -->
+      <div class="tier-card flash-sale">
+        <div class="tier-ribbon sale-ribbon">Pick your day</div>
+        <div class="tier-label">Single Day Pass</div>
+        <div class="tier-price">
+          <span class="price-current">$195</span>
+          <span class="price-strike">$397</span>
+          <span class="save-badge">Save $202</span>
+        </div>
+        <div class="tier-tagline">Any 1 day · Fri, Sat, OR Sun</div>
+
+        <fieldset class="day-selector" style="border: 1px solid rgba(216, 184, 122, 0.3); padding: 10px 14px; margin: 10px 0 14px; border-radius: 4px; background: rgba(216, 184, 122, 0.06);">
+          <legend style="padding: 0 8px; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600;">Choose Your Day</legend>
+          <label style="display: flex; align-items: center; gap: 10px; padding: 4px 0; cursor: pointer; font-size: 14px; color: rgba(235, 227, 212, 0.9);">
+            <input type="radio" name="single-day" value="fri" data-url="https://secure.fitfatherproject.com/checkout/breakthrough-friday" style="width: 18px; height: 18px; accent-color: var(--gold);">
+            <span><strong>Friday</strong> · Aug 7</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 10px; padding: 4px 0; cursor: pointer; font-size: 14px; color: rgba(235, 227, 212, 0.9);">
+            <input type="radio" name="single-day" value="sat" data-url="https://secure.fitfatherproject.com/checkout/breakthrough-saturday" checked style="width: 18px; height: 18px; accent-color: var(--gold);">
+            <span><strong>Saturday</strong> · Aug 8</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 10px; padding: 4px 0; cursor: pointer; font-size: 14px; color: rgba(235, 227, 212, 0.9);">
+            <input type="radio" name="single-day" value="sun" data-url="https://secure.fitfatherproject.com/checkout/breakthrough-sunday" style="width: 18px; height: 18px; accent-color: var(--gold);">
+            <span><strong>Sunday</strong> · Aug 9</span>
+          </label>
+        </fieldset>
+
+        <div class="tier-summary">Come for any single day. Pick above — your checkout updates to your preferred day.</div>
+
+        <ul class="tier-features">
+          <li>All keynotes, workshops, and main-stage sessions for your chosen day</li>
+          <li>Full experiential breakout access (workouts, breathwork, yoga)</li>
+          <li>Connection lunch for your chosen day</li>
+        </ul>
+        <div class="tier-partner tier-partner--tight">
+          <strong>Bring a partner for the same price &mdash; $195</strong>
+          <small>Add a second single-day ticket at the same discounted price for your partner, friend, or child (15+).</small>
+        </div>
+        <a href="https://secure.fitfatherproject.com/checkout/breakthrough-saturday" id="single-day-cta" class="tier-cta tier-cta--nowrap">Reserve Saturday Ticket →</a>
+      </div>
+
     </div>
 
     <div class="pricing-worth">
@@ -4151,7 +4214,10 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
         <div class="faq-answer"><p>If you're looking for a tactical fitness bootcamp, a quick-fix weight-loss weekend, or another conference where you take notes and forget them by Tuesday — this isn't that. Breakthrough goes deeper. We touch on relationships, purpose, grief, intimacy, faith, and the soul-level patterns that have been quietly running your life.</p></div>
       </div>
       <div class="faq-item"><button class="faq-question">Are payment plans available? <span class="toggle">+</span></button>
-        <div class="faq-answer"><p>Yes. We offer a <strong>3-pay installment option</strong> on both GA+ and VIP tickets at checkout.</p></div>
+        <div class="faq-answer"><p>Yes. We offer a <strong>3-pay installment option</strong> at checkout on the Full 3-Day Event and Weekend passes.</p></div>
+      </div>
+      <div class="faq-item"><button class="faq-question">Is there a VIP option? <span class="toggle">+</span></button>
+        <div class="faq-answer"><p>Yes. VIP tickets are available if you'd like to upgrade — including front-row seating, private lunches with Dr. Anthony and the speakers, and a VIP-only Q&amp;A. Email <a href="mailto:support@fitfatherproject.com">support@fitfatherproject.com</a> and our team will get you set up.</p></div>
       </div>
       <div class="faq-item"><button class="faq-question">Are tickets refundable? <span class="toggle">+</span></button>
         <div class="faq-answer"><p>Ticket purchases are <strong>non-refundable</strong> — but <strong>fully transferable</strong> at no additional cost. If your plans change, you can transfer your ticket to a spouse, friend, or anyone else. Just email our team to update the name on file.</p></div>
@@ -4172,7 +4238,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
         <div class="faq-answer"><p>Yes — and most people find Arizona's dry heat dramatically more comfortable than the humidity they're used to. Every minute of the event experience happens inside an air-conditioned venue. The 7-acre water park makes 105° feel like a gift.</p></div>
       </div>
       <div class="faq-item"><button class="faq-question">Can I bring my spouse, partner, or family? <span class="toggle">+</span></button>
-        <div class="faq-answer"><p>Yes — and we encourage it. We offer <strong>Bring-a-Partner add-ons</strong> at both tiers (+$595 GA+, +$895 VIP). Conference sessions are reserved for ages 15+, but the rest of the resort is built for everyone.</p></div>
+        <div class="faq-answer"><p>Yes — and we encourage it. Every tier includes a <strong>Bring-a-Partner add-on at the same discounted price</strong> (see each pass card above). Conference sessions are reserved for ages 15+, but the rest of the resort is built for everyone.</p></div>
       </div>
       <div class="faq-item"><button class="faq-question">Do I need to be in great shape to come? <span class="toggle">+</span></button>
         <div class="faq-answer"><p>No. Every fitness level is welcome. All workouts, yoga sessions, breathwork, and somatic experiences are adaptable. We have attendees who run marathons and attendees just starting their health journey. Both belong.</p></div>
@@ -4204,11 +4270,10 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 
     <div class="tagline">Three Days.<br>One Breakthrough.<br>The Rest of Your Life.</div>
     <div class="tagline-meta">August 7–9, 2026 · Arizona Grand Resort, Phoenix</div>
-    <div class="tagline-deadline">Summer Launch Pricing ends Sunday, July 19.</div>
+    <div class="tagline-deadline">Save up to 55% — reserve by <strong>Sun, August 3 (midnight AZ)</strong>.</div>
 
     <div class="final-cta-buttons">
-      <a href="https://secure.fitfatherproject.com/checkout/breakthrough-ga-discounted-597" class="btn-halo">Reserve GA+ — $597 <span class="arrow">→</span></a>
-      <a href="https://secure.fitfatherproject.com/checkout/breakthrough-vip-discounted-999" class="btn-halo solid">Reserve VIP — $999 <span class="arrow">→</span></a>
+      <a href="#pricing" class="btn-halo">Reserve Your Ticket <span class="arrow">→</span></a>
     </div>
 
     <div class="fence">
@@ -4249,7 +4314,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 
 <!-- ===== STICKY CTA ===== -->
 <div class="sticky-cta" id="stickyCta">
-  <div class="sc-text"><strong>Breakthrough in the Desert</strong><span class="sep">·</span>August 7–9, 2026<span class="sep">·</span>Summer Launch ends July 19</div>
+  <div class="sc-text"><strong>Breakthrough in the Desert</strong><span class="sep">·</span>August 7–9, 2026<span class="sep">·</span>Save up to 55% — ends Aug 3</div>
   <a href="#pricing">Reserve Your Spot →</a>
 </div>
 
@@ -4312,23 +4377,32 @@ document.querySelectorAll('.poster-toggle').forEach(toggle => {
   });
 });
 
-// FLASH SALE: Countdown target — Monday June 22 midnight Arizona time (= June 23 00:00 MST)
-// Revert to Father's Day 2026 target after sale ends.
-// Original target: new Date('2026-06-21T23:59:59-07:00')
-// Original fallback text: "Father's Day, June 21, 2026"
-// Original active text: days + " days, " + hours + " hours · Sunday, June 21 (Father's Day)"
 function updateCountdown() {
-  const target = new Date('2026-07-20T00:00:00-07:00');
+  const target = new Date('2026-08-04T00:00:00-07:00');
   const diff = target - new Date();
   const el = document.getElementById('countdown');
   if (!el) return;
-  if (diff <= 0) { el.textContent = "Flash sale ended"; return; }
+  if (diff <= 0) { el.textContent = "Sale ended"; return; }
   const days = Math.floor(diff / (1000*60*60*24));
   const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-  el.textContent = days + " days, " + hours + " hours · Sun, July 19 (midnight AZ)";
+  el.textContent = days + " days, " + hours + " hours · Sun, August 3 (midnight AZ)";
 }
 updateCountdown();
 setInterval(updateCountdown, 60000);
+
+// Single Day Pass radio selector — swap CTA button href based on selected day
+document.querySelectorAll('input[name="single-day"]').forEach(radio => {
+  radio.addEventListener('change', (e) => {
+    const cta = document.getElementById('single-day-cta');
+    const url = e.target.dataset.url;
+    const day = e.target.value;
+    const dayLabel = { fri: 'Friday', sat: 'Saturday', sun: 'Sunday' }[day];
+    if (cta && url) {
+      cta.setAttribute('href', url);
+      cta.innerHTML = `Reserve ${dayLabel} Ticket &rarr;`;
+    }
+  });
+});
 
 // Reveal on scroll — applies to .fade-in plus all the motion-decorated elements
 const revealSelectors = [

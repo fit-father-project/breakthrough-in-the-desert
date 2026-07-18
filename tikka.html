@@ -1240,12 +1240,14 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
   line-height: 1.65; color: var(--ink-soft);
 }
 .circle-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 28px;
   margin-bottom: 36px;
 }
 .spk-card {
+  flex: 0 0 calc((100% - 84px) / 4);  /* 4 per row; incomplete last row centers via container */
   background: var(--bone-soft);
   border: 1px solid rgba(27, 25, 22, 0.08);
   border-radius: 6px;
@@ -1339,10 +1341,10 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
   /* Bumped from 220px -> 300px on tablet so the host portrait holds its own
      against the full-width speaker cards below. */
   .lead-speaker img { margin: 0 auto; width: 300px; height: 300px; max-width: 70%; }
-  .circle-grid { grid-template-columns: repeat(2, 1fr); }
+  .circle-grid .spk-card { flex-basis: calc((100% - 28px) / 2); }
 }
 @media (max-width: 540px) {
-  .circle-grid { grid-template-columns: 1fr; }
+  .circle-grid .spk-card { flex-basis: 100%; }
 }
 
 /* ============ 8. 3-DAY ARC (THEATER POSTERS) ============ */
@@ -2660,7 +2662,8 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
   .lead-speaker .ls-name { font-size: 28px; }
   .lead-speaker .ls-title { font-size: 14px; margin-bottom: 14px; }
   .lead-speaker .ls-bio { font-size: 15px; }
-  .circle-grid { grid-template-columns: 1fr; gap: 16px; }
+  .circle-grid { gap: 16px; }
+  .circle-grid .spk-card { flex-basis: 100%; }
   .spk-card { padding: 0 0 24px; }
   /* Removed the 180px max-width cap so headshots fill the full card width
      on mobile (matches the edge-to-edge desktop treatment). */
